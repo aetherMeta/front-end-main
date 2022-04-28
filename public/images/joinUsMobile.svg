@@ -1,0 +1,48 @@
+<svg
+  width="503"
+  height="501"
+  viewBox="0 0 375 501"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+<ellipse
+    cx="136.5"
+    cy="250.5"
+    rx="251.5"
+    ry="250.5"
+    fill="url(#paint0_radial_73_3778)"
+  />
+<circle
+    cx="259.5"
+    cy="469.5"
+    r="29"
+    fill="white"
+    fill-opacity="0.7"
+    stroke="url(#paint1_linear_73_3778)"
+    stroke-dasharray="3 3"
+  />
+<defs>
+<radialGradient
+      id="paint0_radial_73_3778"
+      cx="0"
+      cy="0"
+      r="1"
+      gradientUnits="userSpaceOnUse"
+      gradientTransform="translate(144.608 250.583) rotate(40.3382) scale(270.926 268.855)"
+    >
+<stop stop-color="white" />
+<stop offset="1" stop-color="white" />
+</radialGradient>
+<linearGradient
+      id="paint1_linear_73_3778"
+      x1="230"
+      y1="499"
+      x2="289"
+      y2="499"
+      gradientUnits="userSpaceOnUse"
+    >
+<stop stop-color="#F416A0" />
+<stop offset="1" stop-color="#AE72FF" />
+</linearGradient>
+</defs>
+</svg>

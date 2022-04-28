@@ -3,36 +3,77 @@ import styled from "styled-components";
 import { Flex, Text } from "@aether/uikit";
 
 const Container = styled.div`
-  padding 124px 180px 124px 70px;
-  background: url(/images/welcome.svg);
+  padding 80px 22px 80px;
+  margin-top: -140px;
+  background: url(/images/welcomeMobile.svg);
   background-repeat: no-repeat;
-  background-size: 2352px;
+  background-size: 2124px;
   background-color: ${({ theme }) => theme.colors.background};
+  ${({ theme }) => theme.mediaQueries.lg} {
+    padding 124px 70px 142px;
+    background: url(/images/welcome.svg);
+    background-repeat: no-repeat;
+    background-size: 2352px;
+    background-color: ${({ theme }) => theme.colors.background};
+  }
 `;
 
 const FlexContainer = styled(Flex)`
   height: 100%;
   flex-direction: column;
+  margin-top: 140px;
+`;
+
+const StyledFlex = styled(Flex)`
+  flex-direction: column;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    flex-direction: row;
+    justify-content; space-between;
+  }
 `;
 
 const StyledInline = styled.div`
   display: inline;
-  margin-bottom: 76px;
+  margin-bottom: 38px;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    margin-bottom: 76px;
+  }
 `;
 
 const TextContainer = styled.div`
   max-width: 530px;
 `;
 
+const TextContainer2 = styled.div`
+  max-width: 530px;
+  margin-left: 0;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    margin-left: 76px;
+  }
+`;
+
 const StyledText = styled(Text)`
   margin-top: 16px;
 `;
 
+const StyledText2 = styled(Text)`
+  margin-top: 38px;
+  margin-bottom: 16px;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    margin-top: 124px;
+  }
+`;
+
 const WelcomeSymbol = styled.div`
   margin-top: 84px;
-  width: 164px;
-  height: 278px;
-  background: url(/images/welcomeSymbol.svg);
+  width: 100px;
+  height: 172px;
+  background: url(/images/welcomeSymbolMobile.svg);
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: 164px;
+    height: 278px;
+    background: url(/images/welcomeSymbol.svg);
+  }
 `;
 
 const LearnMore: React.FC = () => {
@@ -50,7 +91,7 @@ const LearnMore: React.FC = () => {
             META
           </Text>
         </StyledInline>
-        <Flex justifyContent="space-between">
+        <StyledFlex>
           <TextContainer>
             <Text variant="body">
               Hundreds of years ago, a civilization from the stars stumbled upon
@@ -79,10 +120,8 @@ const LearnMore: React.FC = () => {
               shallow memory of its once vast power.
             </StyledText>
           </TextContainer>
-          <TextContainer style={{ marginLeft: "130px" }}>
-            <Text variant="h3Bold" mt="124px" mb="16px">
-              Then our team arrived.
-            </Text>
+          <TextContainer2>
+            <StyledText2 variant="h3Bold">Then our team arrived.</StyledText2>
             <Text variant="body">
               From the moment our feet touched the terraced gardens, we knew
               this place was special. It was as if something within us changed.
@@ -111,8 +150,8 @@ const LearnMore: React.FC = () => {
               restore AetherMeta to an everlasting ecosystem of luxury and
               creativity. All are welcome – you just have to find a way up here.
             </StyledText>
-          </TextContainer>
-        </Flex>
+          </TextContainer2>
+        </StyledFlex>
         <Flex flexDirection="column" alignItems="center">
           <WelcomeSymbol />
           <Flex flexDirection="column" maxWidth="682px">
