@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
+import { Button } from "@aether/uikit";
 import { ToastProps } from "./types";
 
 const StyledToast = styled.div`
@@ -25,7 +26,7 @@ const Toast: React.FC<ToastProps> = ({
   const timer = useRef<number>();
   const ref = useRef(null);
   const removeHandler = useRef(onRemove);
-  const { id, title, description, type } = toast;
+  const { id, title, description } = toast;
 
   const handleRemove = useCallback(
     () => removeHandler.current(id),
@@ -67,9 +68,9 @@ const Toast: React.FC<ToastProps> = ({
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <button title={title} onClick={handleRemove}>
+        <Button title={title} onClick={handleRemove}>
           {description}
-        </button>
+        </Button>
       </StyledToast>
     </CSSTransition>
   );

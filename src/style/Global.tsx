@@ -8,11 +8,8 @@ declare module "styled-components" {
 }
 
 const GlobalStyle = createGlobalStyle`
-  * {
-    font-family: 'Inter', sans-serif;
-  }
   body {
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.invertedContrast};
     img {
       height: auto;
       max-width: 100%;
