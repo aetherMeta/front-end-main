@@ -22,10 +22,10 @@ const App: React.FC = () => {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/about">
+          <Route path="/about" exact>
             <About />
           </Route>
-          <Route path="/soon">
+          <Route path="/soon" exact>
             <Soon />
           </Route>
           <Route>
