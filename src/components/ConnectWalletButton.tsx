@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@aether/uikit";
+import { Button } from "@aethermeta/uikit";
 import useAuth from "hooks/useAuth";
 import { ConnectorNames } from "utils/web3React";
 

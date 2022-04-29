@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex, Text, Button, DiscordIcon, MailIcon } from "@aether/uikit";
+import { Flex, Text, Button, DiscordIcon, MailIcon } from "@aethermeta/uikit";
 
 const Container = styled.div`
   padding-top: 140px;

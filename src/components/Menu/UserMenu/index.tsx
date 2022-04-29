@@ -5,7 +5,7 @@ import {
   LogoutIcon,
   UserMenu as UIKitUserMenu,
   UserMenuItem,
-} from "@aether/uikit";
+} from "@aethermeta/uikit";
 import useAuth from "hooks/useAuth";
 import ConnectWalletButton from "components/ConnectWalletButton";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button, Heading, Text, LogoIcon } from "@aether/uikit";
+import { Button, Heading, Text, LogoIcon } from "@aethermeta/uikit";
 
 const StyledNotFound = styled.div`
   align-items: center;

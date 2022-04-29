@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex, Text } from "@aether/uikit";
+import { Flex, Text } from "@aethermeta/uikit";
 
 const Container = styled.div`
   padding 0px 180px 444px;  

@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu as UikitMenu } from "@aether/uikit";
+import { Menu as UikitMenu } from "@aethermeta/uikit";
 import config from "./config";
 import UserMenu from "./UserMenu";
 import GlobalSettings from "./GlobalMenu";

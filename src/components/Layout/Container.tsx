@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, BoxProps } from "@aether/uikit";
+import { Box, BoxProps } from "@aethermeta/uikit";
 
 const Container: React.FC<BoxProps> = ({ children, ...props }) => (
   <Box mx="auto" {...props}>

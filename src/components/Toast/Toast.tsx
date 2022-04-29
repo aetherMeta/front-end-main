@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
-import { Button } from "@aether/uikit";
+import { Button } from "@aethermeta/uikit";
 import { ToastProps } from "./types";
 
 const StyledToast = styled.div`

@@ -1,6 +1,6 @@
 import React from "react";
 import Page from "components/Layout/Page";
-import { useMatchBreakpoints } from "@aether/uikit";
+import { useMatchBreakpoints } from "@aethermeta/uikit";
 import Welcome from "./Welcome";
 import Roadmap from "./Roadmap";
 import Ready from "./Ready";

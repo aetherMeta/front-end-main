@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button, Text, LogoIcon } from "@aether/uikit";
+import { Button, Text, LogoIcon } from "@aethermeta/uikit";
 
 const StyledSoon = styled.div`
   align-items: center;

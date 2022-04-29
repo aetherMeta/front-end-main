@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Flex } from "@aether/uikit";
+import { Button, Flex } from "@aethermeta/uikit";
 
 const GlobalMenu = () => {
   return (

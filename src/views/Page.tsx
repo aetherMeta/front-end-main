@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex } from "@aether/uikit";
+import { Flex } from "@aethermeta/uikit";
 
 const StyledPage = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Web3ReactProvider } from "@web3-react/core";
-import { light } from "@aether/uikit";
+import { light } from "@aethermeta/uikit";
 import { ThemeProvider } from "styled-components";
 import { ToastsProvider } from "contexts/ToastsContext";
 import { getLibrary } from "utils/web3React";
