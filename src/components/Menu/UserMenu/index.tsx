@@ -9,12 +9,16 @@ import {
 import useAuth from "hooks/useAuth";
 import ConnectWalletButton from "components/ConnectWalletButton";
 
-const UserMenu = () => {
+export interface UserMenuProps {
+  maxWidth?: boolean;
+}
+
+const UserMenu: React.FunctionComponent<UserMenuProps> = ({ maxWidth }) => {
   const { account } = useWeb3React();
   const { logout } = useAuth();
 
   if (!account) {
-    return <ConnectWalletButton />;
+    return <ConnectWalletButton maxWidth={maxWidth} />;
   }
 
   return (
