@@ -13,6 +13,7 @@ const StyledEllipse = styled.div`
   margin-bottom: 40px;
   background-repeat: no-repeat;
   ${({ theme }) => theme.mediaQueries.sm} {
+    background-repeat: no-repeat;
     background: url(/images/learnMore.svg);
     height: 634px;
     width: 580px;
