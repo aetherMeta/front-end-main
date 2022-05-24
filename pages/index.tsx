@@ -12,32 +12,12 @@ const App: React.FC = () => {
   
   const { isTablet, isMobile } = useMatchBreakpoints()
 
-
-
-  // let mobile = React.useRef(false)
-  // let tablet = React.useRef(false)
-
-  // // if (typeof window !== "undefined") {
-  //   const { isTablet, isMobile } = useMatchBreakpoints()
-  //   mobile.current = isMobile
-  //   tablet.current = isTablet
-  // // }
-
-  // const [_document, setDocument] = React.useState(null)
-
-  // React.useEffect(() => {
-  //     const { isTablet, isMobile } = useMatchBreakpoints()
-  //     mobile.current = isMobile
-  //     tablet.current = isTablet
-  //     // setDocument(document)
-  // }, [])
   return (
-    // <Home/>
-    <Page>
-      <ViewNFTs />
-      <LearnMore />
-      {isTablet || isMobile ? <AboutAetherTablet /> : <AboutAether />}
-    </Page>
+      <Page>
+        <ViewNFTs />
+        <LearnMore />
+        {isTablet || isMobile ? <AboutAetherTablet /> : <AboutAether />}
+      </Page>
   );
 };
 
