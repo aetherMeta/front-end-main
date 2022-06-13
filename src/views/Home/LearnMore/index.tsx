@@ -14,6 +14,7 @@ const StyledEllipse = styled.div`
   background-repeat: no-repeat;
   ${({ theme }) => theme.mediaQueries.sm} {
     background: url(/images/learnMore.svg);
+    background-repeat: no-repeat;
     height: 634px;
     width: 580px;
   }
@@ -47,9 +48,9 @@ const LearnMore: React.FC = () => {
             </Text>
           </div>
           <Text variant="body" mt="16px">
-            If you can get in, you will walk into the most exclusive marketplace
-            in the metaverse: a stunning collection of luxury brands, art – and
-            more.
+            Aether Meta is offering the unique opportunity to gain access to the
+            most exclusive marketplace in the metaverse: a stunning collection
+            of luxury brands, art,
           </Text>
         </Flex>
       </FlexContainer>
