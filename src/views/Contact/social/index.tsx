@@ -13,6 +13,8 @@ const FlexContainer = styled(Flex) `
 const StyledMoon = styled.div`
     background: url(/images/contactMoon.svg);
     background-repeat: no-repeat;
+    height: 40em;
+    width: 40em;
 
 `
 

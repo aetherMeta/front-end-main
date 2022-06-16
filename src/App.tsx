@@ -7,7 +7,7 @@ import NotFound from "./views/NotFound";
 import About from "./views/About";
 import Soon from "./views/Soon";
 import Home from "./views/Home";
-import Contact from "./views/Contact"
+import Contact from "./views/Contact";
 import Menu from "./components/Menu";
 import GlobalStyle from "./style/Global";
 import history from "./routerHistory";
