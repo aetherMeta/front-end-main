@@ -20,7 +20,7 @@ const StyledFlex = styled(Flex)`
   margin-left: 46px;
   position: relative;
   top: -3em;
-  min-width: 10em;
+  min-width: 310px;
   
   ${({ theme }) => theme.mediaQueries.lg} {
     margin-top: 46px;
