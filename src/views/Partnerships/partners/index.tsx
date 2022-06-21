@@ -4,23 +4,12 @@ import { Flex, Text, Grid } from "@aethermeta/uikit";
 
 const Container = styled.div`
   padding 5em 20px 80px;
-  background: url(/images/joinUsMobile.svg);
-  background-repeat: no-repeat;
-  background-size: 503px;
-  background-color: ${({ theme }) => theme.colors.background};
-  ${({ theme }) => theme.mediaQueries.lg} {
-    padding 5em 70px;
-    background: url(/images/joinUs.svg);
-    background-repeat: no-repeat;
-    background-size: 1706px;
-    background-color: ${({ theme }) => theme.colors.background};
-  }
+  
+ 
   ${({ theme }) => theme.mediaQueries.xxl} {
     padding 5em 180px;
-    background: url(/images/joinUs.svg);
-    background-repeat: no-repeat;
+    
     background-size: 1706px;
-    background-color: ${({ theme }) => theme.colors.background};
   }
 `;
 
@@ -47,7 +36,7 @@ const Diagram = styled.div`
 `;
 
 const Icon1 = styled.div`
-  background: url(/images/icon1.svg);
+  background: url(/images/partnershipIcon1.svg);
   background-repeat: no-repeat;
   background-size: 10em;
   min-width: 10em;
@@ -55,7 +44,7 @@ const Icon1 = styled.div`
 `;
 
 const Icon2 = styled.div`
-  background: url(/images/icon2.svg);
+  background: url(/images/partnershipIcon2.svg);
   background-repeat: no-repeat;
   background-size: 10em;
   min-width: 10em;
@@ -63,7 +52,7 @@ const Icon2 = styled.div`
 `;
 
 const Icon3 = styled.div`
-  background: url(/images/icon3.svg);
+  background: url(/images/partnershipIcon3.svg);
   background-repeat: no-repeat;
   background-size: 10em;
   min-width: 10em;
@@ -71,7 +60,7 @@ const Icon3 = styled.div`
 `;
 
 const Icon4 = styled.div`
-  background: url(/images/icon4.svg);
+  background: url(/images/partnershipIcon4.svg);
   background-repeat: no-repeat;
   background-size: 10em;
   min-width: 10em;
@@ -154,10 +143,6 @@ const Partners: React.FC = () => {
                       suppliers and distributors.
                   </Text>
                 </DescriptionContainer>
-                  
-                
-            
-            
                 <DescriptionContainer>
                  <Feature variant="h4Bold">
                       High-fedelity designs
@@ -165,12 +150,7 @@ const Partners: React.FC = () => {
                   <Text variant="body">
                       Unlike the competition we deliver high-fedelity designs that closely resemble you physical products.
                   </Text>
-                </DescriptionContainer>
-                  
-                
-                
-            
-            
+                </DescriptionContainer> 
                 <DescriptionContainer>
                   <Feature variant="h4Bold">
                       Tailored brand experience
@@ -178,11 +158,7 @@ const Partners: React.FC = () => {
                   <Text variant="body">
                       Our team can tailor the experience to crea a new, enhanced brand experience that energizes your target audience and creates unique talking points for marketing opportunites.
                   </Text>
-                </DescriptionContainer>
-                  
-                
-                  
-              
+                </DescriptionContainer> 
             </FeatureContainer>
         </Container>
     );

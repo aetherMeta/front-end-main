@@ -8,20 +8,6 @@ const Container = styled.div`
   background-repeat: no-repeat;
   background-size: 503px;
   background-color: ${({ theme }) => theme.colors.background};
-  ${({ theme }) => theme.mediaQueries.lg} {
-    padding 5em 70px;
-    background: url(/images/joinUs.svg);
-    background-repeat: no-repeat;
-    background-size: 1706px;
-    background-color: ${({ theme }) => theme.colors.background};
-  }
-  ${({ theme }) => theme.mediaQueries.xxl} {
-    padding 5em 180px;
-    background: url(/images/joinUs.svg);
-    background-repeat: no-repeat;
-    background-size: 1706px;
-    background-color: ${({ theme }) => theme.colors.background};
-  }
 `;
 
 const EnquiryContainer = styled(Flex)`
