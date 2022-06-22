@@ -30,54 +30,44 @@ const EnquiryContainer2 = styled(Flex)`
   justify-content: flex-start;
   align-content: flex-start;
   min-width: 40rem;
-` 
+`;
 
 const Enquiry = styled(Flex)`
   justify-content: flex-start;
 `;
 
-const Center = styled(Text) `
+const Center = styled(Text)`
   font-size: 34px;
   line-height: 41px;
   text-align: center;
-  color: ${({theme})  => theme.colors.priamryDark};
-`
+  color: ${({ theme }) => theme.colors.primaryDark};
+`;
 
 const Enquires: React.FC = () => {
-    return (
-        <Container>
-            <Center variant="h4Bold">
-                Get in touch with out sales team for more details on how you can onboard to the newest marketing touchpoint for generation Z.
-            </Center>
-            <EnquiryContainer>
-              <EnquiryContainer2>
-                  <Enquiry>
-                    <Text variant="h3Bold">
-                        Enquiries
-                    </Text>
-                  </Enquiry>
-                  <Label>
-                    Company
-                  </Label>
-                  <Input type="text" placeholder="Company Name"/> <br />
-                  <Label>
-                    Email
-                  </Label>
-                  <Input type="email" placeholder="Business Email Address"/> <br />
-                  <Label>
-                    Description
-                  </Label>
-                  <TextArea placeholder="Describe your Business"/>
-                  
-                  <Enquiry>
-                    <Button variant="text">Submit</Button>
-                  </Enquiry>
-                  
-                </EnquiryContainer2>
-            </EnquiryContainer>
-                
-        </Container>
-    );
-}
+  return (
+    <Container>
+      <Center variant="h4Bold">
+        Get in touch with out sales team for more details on how you can onboard
+        to the newest marketing touchpoint for generation Z.
+      </Center>
+      <EnquiryContainer>
+        <EnquiryContainer2>
+          <Enquiry>
+            <Text variant="h3Bold">Enquiries</Text>
+          </Enquiry>
+          <Label>Company</Label>
+          <Input type="text" placeholder="Company Name" /> <br />
+          <Label>Email</Label>
+          <Input type="email" placeholder="Business Email Address" /> <br />
+          <Label>Description</Label>
+          <TextArea placeholder="Describe your Business" />
+          <Enquiry>
+            <Button variant="text">Submit</Button>
+          </Enquiry>
+        </EnquiryContainer2>
+      </EnquiryContainer>
+    </Container>
+  );
+};
 
 export default Enquires;
