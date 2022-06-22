@@ -30,14 +30,14 @@ const EnquiryContainer2 = styled(Flex)`
   justify-content: flex-start;
   align-content: flex-start;
   min-width: 40rem;
-` 
+`;
 
 const Enquiry = styled(Flex)`
   justify-content: flex-start;
   padding: 0;
 `;
 
-const Center = styled(Text) `
+const Center = styled(Text)`
   font-size: 34px;
   line-height: 41px;
   text-align: center;
