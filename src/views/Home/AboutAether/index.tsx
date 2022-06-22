@@ -1,6 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex, Text, Button, DiscordIcon, MailIcon } from "@aethermeta/uikit";
+import {
+  Flex,
+  Text,
+  Button,
+  DiscordIcon,
+  InstagramIcon,
+  TwitterIcon,
+  ArrowForwardIcon,
+} from "@aethermeta/uikit";
 
 const Container = styled.div`
   padding-top: 140px;
@@ -8,7 +16,7 @@ const Container = styled.div`
 `;
 
 const ContainerInner = styled.div`
-  padding-bottom: 320px;
+  padding-bottom: 482px;
   background: url(/images/aboutAether.svg);
   background-repeat: no-repeat;
   background-size: 2020px;
@@ -36,12 +44,6 @@ const StyledFlex = styled(Flex)`
   }
 `;
 
-const StyledButton = styled(Button)`
-  width: 236px;
-  border-radius: 0;
-  margin-top: 20px;
-`;
-
 const AboutAether: React.FC = () => {
   return (
     <Container>
@@ -60,54 +62,117 @@ const AboutAether: React.FC = () => {
           </StyledTitle>
           <StyledFlex mt="140px" justifyContent="flex-end">
             <Flex flexDirection="column" maxWidth="310px">
-              <Text variant="h2Bold">What is an NFT?</Text>
-              <Text variant="body" mt="16px">
-                NFTs are the latest evolution of Web3 and crypto techonology.
-                With NFTs (non-fungible-tokens) digital assets become unique.
-                Even though a digital file can be copied and spread across the
-                internet, by purchasing an NFT your digital asset becomes the
-                bona-fide original. Your ownership gets preserved on the
-                blockchain, easily verified by anyone.
-              </Text>
-            </Flex>
-          </StyledFlex>
-          <StyledFlex mt="460px" justifyContent="flex-start">
-            <Flex flexDirection="column" maxWidth="343px">
               <Text variant="h2Bold">What is AetherMeta?</Text>
               <Text variant="body" mt="16px">
-                AetherMeta is a virtual NFT marketplace, elevating the online
-                luxury shopping experience. AetherMeta is developed by veterans
-                of the fashion and luxury goods industry. With NFTS and VR, we
-                aim to deepen the relationship between brands and luxury
-                enthusiasts.
+                AetherMeta is the future of online shopping. We seek to provide
+                an immersive metaverse platform that allows users to interact
+                with the next generation of luxury in a digital world. This
+                surreal, captivating experience is unique and innovative;
+                providing an ethereal experience to all users.
               </Text>
+              <Button
+                variant="text"
+                as="a"
+                startIcon={<ArrowForwardIcon color="primary" />}
+                href="/about"
+                width="117px"
+                padding="0"
+              >
+                <Text variant="link" color="primary">
+                  Learn More
+                </Text>
+              </Button>
             </Flex>
           </StyledFlex>
-          <StyledFlex mt="446px" justifyContent="flex-end">
-            <Flex flexDirection="column" maxWidth="310px">
-              <Text variant="h2Bold">How do I join?</Text>
+          <StyledFlex mt="432px" justifyContent="flex-start">
+            <Flex flexDirection="column" maxWidth="343px">
+              <Text variant="h2Bold">What is a metaverse?</Text>
               <Text variant="body" mt="16px">
-                Join the conversation with our fans and support team on our
-                public Discord channel. We&apos;ll announce details of how to
-                get VIP and Founder memberships shortly.
+                A metaverse is an immersive 3D virtual world that can be
+                accessed by users to create strong social connections in an
+                online setting. From an online shopping perspective, this
+                creates the ideal setting for the personalization and intimacy
+                of in-person shopping, but from the comfort of the users’ own
+                homes. Aether Meta is harnessing the technology of the metaverse
+                to master this experience.
               </Text>
-              <StyledButton startIcon={<DiscordIcon />}>
-                <Text variant="label" color="invertedContrast">
-                  AetherMeta Discord
-                </Text>
-              </StyledButton>
-              <Flex flexDirection="column" mt="80px">
-                <Text variant="h3Bold">Partnership Opportunities</Text>
-                <Text variant="body" mt="16px">
-                  If you are looking to join other luxury brands in the
-                  metaverse, send us an email.
-                </Text>
-              </Flex>
-              <StyledButton startIcon={<MailIcon />}>
-                <Text variant="label" color="invertedContrast">
-                  Partnership Enquiries
-                </Text>
-              </StyledButton>
+              <Button
+                as="a"
+                variant="primary"
+                href="https://aethercagoose.web.app/"
+                target="_blank"
+                mt="16px"
+                width="134px"
+              >
+                Explore now
+              </Button>
+            </Flex>
+          </StyledFlex>
+          <StyledFlex mt="342px" justifyContent="flex-end">
+            <Flex flexDirection="column" maxWidth="310px">
+              <Text variant="h2Bold">How do I join the community?</Text>
+              <Text variant="body" mt="16px">
+                Hoping to join our growing community and be in the know about
+                our various luxury drops and project developments? To get
+                information on all the amazing upcoming releases and to be able
+                to interact with our incredible Aether Team, join our Discord
+                server right now and follow us on Twitter and Instagram.
+              </Text>
+              <div>
+                <Button
+                  as="a"
+                  startIcon={<DiscordIcon />}
+                  href="https://discord.gg/K4DXfzxXeJ"
+                  external
+                  mt="20px"
+                  style={{ borderRadius: 0 }}
+                >
+                  <Text variant="label" color="invertedContrast">
+                    AetherMeta Discord
+                  </Text>
+                </Button>
+                <Button
+                  as="a"
+                  startIcon={<TwitterIcon />}
+                  href="https://twitter.com/AetherMeta"
+                  external
+                  mt="20px"
+                  style={{ borderRadius: 0 }}
+                >
+                  <Text variant="label" color="invertedContrast">
+                    AetherMeta Twitter
+                  </Text>
+                </Button>
+                <Button
+                  as="a"
+                  startIcon={<InstagramIcon />}
+                  href="https://www.instagram.com/aethermeta/?hl=en"
+                  external
+                  mt="20px"
+                  style={{ borderRadius: 0 }}
+                >
+                  <Text variant="label" color="invertedContrast">
+                    AetherMeta IG
+                  </Text>
+                </Button>
+              </div>
+            </Flex>
+          </StyledFlex>
+          <StyledFlex mt="362px" justifyContent="flex-start">
+            <Flex flexDirection="column" maxWidth="376px">
+              <Text variant="h2Bold">Partnership Opportunities</Text>
+              <Text variant="body" mt="16px">
+                Looking to join the growing list of brands that are trailblazing
+                in the metaverse?
+              </Text>
+              <Text variant="body" mt="16px">
+                Unsure of how to explore the Web3 and VR landscapes?
+              </Text>
+              <Text variant="body" mt="16px">
+                Aether Meta provides a new world of commerce for your brand.
+                Contact us today to get your brand and products into the
+                metaverse.
+              </Text>
             </Flex>
           </StyledFlex>
         </FlexContainer>

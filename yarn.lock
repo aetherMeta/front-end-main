@@ -3,10 +3,11 @@
 
 
 "@aethermeta/uikit@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@aethermeta/uikit/-/uikit-1.0.0.tgz#64cea2d8f01f909ad8ec0023f936e6a734652948"
-  integrity sha512-NUP6BF3p4yailCKWzkWHYhp7jIudTUnS/2/qRYx4qdaGDMc+HrTt0pU5VmSYcjwflTG1t13IBt3hvis0OJyWbw==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@aethermeta/uikit/-/uikit-1.0.1.tgz#3aa063d959cd1ffc5639d186dd5ccb7bf91e3172"
+  integrity sha512-x0a1o+SSnT51jFixW0HebvHuSydTcZQz9/rwDKp0hVVNJmKzvYNh4hCqCpR6shAIgffefVlmNZSRq2phYWL57w==
   dependencies:
+    "@aethermeta/uikit" "^1.0.0"
     "@rollup/plugin-url" "^6.1.0"
     "@types/lodash" "^4.14.162"
     "@types/styled-system" "^5.1.10"
@@ -5233,9 +5234,9 @@ cssstyle@^2.3.0:
     cssom "~0.3.6"
 
 csstype@^3.0.2:
-  version "3.0.11"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.11.tgz#d66700c5eacfac1940deb4e3ee5642792d85cd33"
-  integrity sha512-sa6P2wJ+CAbgyy4KFssIb/JNMLxFvKF1pCYCSXS8ZMuqZnMsrxqI2E5sPyoTpxoPU/gVZMzr2zjOfg8GIZOMsw==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.0.tgz#4ddcac3718d787cf9df0d1b7d15033925c8f29f2"
+  integrity sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==
 
 cyclist@^1.0.1:
   version "1.0.1"
@@ -8880,9 +8881,9 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.2.0, loose-envify@^1.3
     js-tokens "^3.0.0 || ^4.0.0"
 
 lottie-web@^5.8.1:
-  version "5.9.3"
-  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.9.3.tgz#d84e0176d785fcc373095ad085e3ae4e6da032d6"
-  integrity sha512-QKA31Lu57SMfS09oUvuheEL+BkzjWHuzi7VkO9gSBaynK8tOMF2EwBgRdvcn3vXvX79/Y9RFlm75mjsS8je2+w==
+  version "5.9.4"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.9.4.tgz#c01478ee5dd47f916cb4bb79040c11d427872d57"
+  integrity sha512-bSs1ZTPifnBVejO1MnQHdfrKfcn02YTCmgOh2wcAEICqRA0V7GzDh8FnwXY6+EzT+i8XOunaIloo/5xC5YNbsA==
 
 lower-case@^2.0.2:
   version "2.0.2"
@@ -9752,7 +9753,7 @@ nwsapi@^2.2.0:
 object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
-  integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
+  integrity sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==
 
 object-copy@^0.1.0:
   version "0.1.0"

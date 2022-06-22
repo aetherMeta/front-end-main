@@ -3,37 +3,37 @@ import styled from "styled-components";
 import { Flex, Text } from "@aethermeta/uikit";
 
 const Container = styled.div`
-  padding 210px 22px 0px;  
-  background: linear-gradient(to bottom, transparent 0 60%, white 100%), url(/images/viewNFTsMobile.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  position: relative;
+  padding: 210px 22px 0px;
   margin-top: -140px;
   height: 75vh;
 
   ${({ theme }) => theme.mediaQueries.sm} {
-    padding 210px 70px 0px;
-    background: linear-gradient(to bottom, transparent 0 60%, white 100%), url(/images/viewNFTs.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    padding: 210px 70px 0px;
     height: 75vh;
   }
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    padding 210px 70px 70px;
-    background: url(/images/viewNFTs.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    padding: 210px 70px 70px;
     height: 90vh;
   }
 `;
 
+const StyledVideo = styled.video`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+`;
+
 const StyledFlex = styled(Flex)`
+  position: absolute;
+  right: 0;
+  z-index: 1;
   justify-content: center;
-  align-items: flex-end;
-  ${({ theme }) => theme.mediaQueries.lg} {
-    justify-content: flex-end;
-    align-items: center;
-  }
+  align-items: center;
 `;
 
 const ViewNFTs: React.FC = () => {
@@ -41,12 +41,17 @@ const ViewNFTs: React.FC = () => {
     <Container>
       <StyledFlex height="100%">
         <Flex flexDirection="column" maxWidth="592px">
-          <Text variant="h1Light" fontWeight="300">
-            BRINGING LUXURY SHOPPING
+          <Text variant="h1Light" fontWeight="300" color="invertedContrast">
+            BRINGING SHOPPING
           </Text>
-          <Text variant="h1Bold">TO NEW HEIGHTS</Text>
+          <Text variant="h1Bold" color="invertedContrast">
+            TO NEW HEIGHTS
+          </Text>
         </Flex>
       </StyledFlex>
+      <StyledVideo muted autoPlay loop playsInline>
+        <source src="images/trailer2.mp4" type="video/mp4" />
+      </StyledVideo>
     </Container>
   );
 };
