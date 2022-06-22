@@ -34,15 +34,19 @@ const EnquiryContainer2 = styled(Flex)`
 
 const Enquiry = styled(Flex)`
   justify-content: flex-start;
+  padding: 0;
 `;
 
 const Center = styled(Text) `
   font-size: 34px;
   line-height: 41px;
   text-align: center;
-  color: ${({theme})  => theme.colors.priamryDark};
+
 `
 
+const Submit = styled(Button)`
+  padding: 0;
+`
 const Enquires: React.FC = () => {
     return (
         <Container>
@@ -56,21 +60,21 @@ const Enquires: React.FC = () => {
                         Enquiries
                     </Text>
                   </Enquiry>
-                  <Label>
+                  <Label color="black">
                     Company
                   </Label>
                   <Input type="text" placeholder="Company Name"/> <br />
-                  <Label>
+                  <Label color="black">
                     Email
                   </Label>
                   <Input type="email" placeholder="Business Email Address"/> <br />
-                  <Label>
+                  <Label color="black">
                     Description
                   </Label>
                   <TextArea placeholder="Describe your Business"/>
                   
                   <Enquiry>
-                    <Button variant="text">Submit</Button>
+                    <Submit variant="text">Submit</Submit>
                   </Enquiry>
                   
                 </EnquiryContainer2>

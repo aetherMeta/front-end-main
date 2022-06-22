@@ -32,7 +32,7 @@ const Diagram = styled.div`
 `;
 
 const Icon1 = styled.div`
-  background: url(/images/icon1.svg);
+  background: url(/images/partnershipIcon1.svg);
   background-repeat: no-repeat;
   background-size: 10em;
   min-width: 10em;
@@ -40,7 +40,7 @@ const Icon1 = styled.div`
 `;
 
 const Icon2 = styled.div`
-  background: url(/images/icon2.svg);
+  background: url(/images/partnershipIcon2.svg);
   background-repeat: no-repeat;
   background-size: 10em;
   min-width: 10em;
@@ -48,7 +48,7 @@ const Icon2 = styled.div`
 `;
 
 const Icon3 = styled.div`
-  background: url(/images/icon3.svg);
+  background: url(/images/partnershipIcon3.svg);
   background-repeat: no-repeat;
   background-size: 10em;
   min-width: 10em;
@@ -56,7 +56,7 @@ const Icon3 = styled.div`
 `;
 
 const Icon4 = styled.div`
-  background: url(/images/icon4.svg);
+  background: url(/images/partnershipIcon4.svg);
   background-repeat: no-repeat;
   background-size: 10em;
   min-width: 10em;
