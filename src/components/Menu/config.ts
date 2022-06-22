@@ -1,7 +1,7 @@
 const config = [
   {
     label: "Collections",
-    href: "/collections",
+    href: "/soon",
   },
   // {
   //   label: "Products",
@@ -20,7 +20,7 @@ const config = [
 export const socials = [
   {
     label: "Discord",
-    href: "https://telegram.org",
+    href: "https://discord.gg/K4DXfzxXeJ",
   },
   {
     label: "Instagram",
@@ -30,18 +30,18 @@ export const socials = [
     label: "Twitter",
     href: "https://twitter.com/AetherMeta",
   },
-  {
-    label: "YouTube",
-    href: "https://twitter.com",
-  },
+  // {
+  //   label: "YouTube",
+  //   href: "https://twitter.com",
+  // },
   {
     label: "OpenSea",
     href: "https://opensea.io/aethermeta",
   },
-  {
-    label: "Facebook",
-    href: "https://twitter.com",
-  },
+  // {
+  //   label: "Facebook",
+  //   href: "https://twitter.com",
+  // },
 ];
 
 export default config;

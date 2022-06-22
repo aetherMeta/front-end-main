@@ -7,6 +7,7 @@ import {
   DiscordIcon,
   InstagramIcon,
   TwitterIcon,
+  ArrowForwardIcon,
 } from "@aethermeta/uikit";
 
 const Container = styled.div`
@@ -15,7 +16,7 @@ const Container = styled.div`
 `;
 
 const ContainerInner = styled.div`
-  padding-bottom: 320px;
+  padding-bottom: 482px;
   background: url(/images/aboutAether.svg);
   background-repeat: no-repeat;
   background-size: 2020px;
@@ -43,11 +44,6 @@ const StyledFlex = styled(Flex)`
   }
 `;
 
-const StyledButton = styled(Button)`
-  border-radius: 0;
-  margin-top: 20px;
-`;
-
 const AboutAether: React.FC = () => {
   return (
     <Container>
@@ -71,12 +67,24 @@ const AboutAether: React.FC = () => {
                 AetherMeta is the future of online shopping. We seek to provide
                 an immersive metaverse platform that allows users to interact
                 with the next generation of luxury in a digital world. This
-                surreal, captivating one-of-a-kind experience is unique and
-                innovative; providing an ethereal experience to all users.
+                surreal, captivating experience is unique and innovative;
+                providing an ethereal experience to all users.
               </Text>
+              <Button
+                variant="text"
+                as="a"
+                startIcon={<ArrowForwardIcon color="primary" />}
+                href="/about"
+                width="117px"
+                padding="0"
+              >
+                <Text variant="link" color="primary">
+                  Learn More
+                </Text>
+              </Button>
             </Flex>
           </StyledFlex>
-          <StyledFlex mt="460px" justifyContent="flex-start">
+          <StyledFlex mt="432px" justifyContent="flex-start">
             <Flex flexDirection="column" maxWidth="343px">
               <Text variant="h2Bold">What is a metaverse?</Text>
               <Text variant="body" mt="16px">
@@ -85,12 +93,22 @@ const AboutAether: React.FC = () => {
                 online setting. From an online shopping perspective, this
                 creates the ideal setting for the personalization and intimacy
                 of in-person shopping, but from the comfort of the users’ own
-                home. Aether Meta is harnessing the technology of the metaverse
+                homes. Aether Meta is harnessing the technology of the metaverse
                 to master this experience.
               </Text>
+              <Button
+                as="a"
+                variant="primary"
+                href="https://aethercagoose.web.app/"
+                target="_blank"
+                mt="16px"
+                width="134px"
+              >
+                Explore now
+              </Button>
             </Flex>
           </StyledFlex>
-          <StyledFlex mt="446px" justifyContent="flex-end">
+          <StyledFlex mt="342px" justifyContent="flex-end">
             <Flex flexDirection="column" maxWidth="310px">
               <Text variant="h2Bold">How do I join the community?</Text>
               <Text variant="body" mt="16px">
@@ -101,34 +119,59 @@ const AboutAether: React.FC = () => {
                 server right now and follow us on Twitter and Instagram.
               </Text>
               <div>
-                <StyledButton startIcon={<DiscordIcon />}>
+                <Button
+                  as="a"
+                  startIcon={<DiscordIcon />}
+                  href="https://discord.gg/K4DXfzxXeJ"
+                  external
+                  mt="20px"
+                  style={{ borderRadius: 0 }}
+                >
                   <Text variant="label" color="invertedContrast">
                     AetherMeta Discord
                   </Text>
-                </StyledButton>
-                <StyledButton startIcon={<TwitterIcon />}>
+                </Button>
+                <Button
+                  as="a"
+                  startIcon={<TwitterIcon />}
+                  href="https://twitter.com/AetherMeta"
+                  external
+                  mt="20px"
+                  style={{ borderRadius: 0 }}
+                >
                   <Text variant="label" color="invertedContrast">
                     AetherMeta Twitter
                   </Text>
-                </StyledButton>
-                <StyledButton startIcon={<InstagramIcon />}>
+                </Button>
+                <Button
+                  as="a"
+                  startIcon={<InstagramIcon />}
+                  href="https://www.instagram.com/aethermeta/?hl=en"
+                  external
+                  mt="20px"
+                  style={{ borderRadius: 0 }}
+                >
                   <Text variant="label" color="invertedContrast">
                     AetherMeta IG
                   </Text>
-                </StyledButton>
+                </Button>
               </div>
             </Flex>
           </StyledFlex>
           <StyledFlex mt="362px" justifyContent="flex-start">
-            <Flex flexDirection="column" maxWidth="343px">
+            <Flex flexDirection="column" maxWidth="376px">
               <Text variant="h2Bold">Partnership Opportunities</Text>
               <Text variant="body" mt="16px">
-                Looking to join the growing list of luxury brands that make up
-                Aether Meta’s trailblazing partners in the metaverse? Unsure of
-                how to explore the Web3 and VR landscapes? Aether Meta offers a
-                strong understanding of these landscapes and can help you
-                establish your brand in the NFT and metaverse space. Contact us
-                today to discover our latest partnership opportunities.
+                Looking to join the growing list of brands that are trailblazing
+                in the metaverse?
+              </Text>
+              <Text variant="body" mt="16px">
+                Unsure of how to explore the Web3 and VR landscapes?
+              </Text>
+              <Text variant="body" mt="16px">
+                Aether Meta provides a new world of commerce for your brand.
+                Contact us today to get your brand and products into the
+                metaverse.
               </Text>
             </Flex>
           </StyledFlex>

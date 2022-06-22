@@ -49,8 +49,8 @@ const LearnMore: React.FC = () => {
           </div>
           <Text variant="body" mt="16px">
             Aether Meta is offering the unique opportunity to gain access to the
-            most exclusive marketplace in the metaverse: a stunning collection
-            of luxury brands, art,
+            most marketplace in the metaverse; a stunning collection of brands,
+            art, and more.
           </Text>
         </Flex>
       </FlexContainer>

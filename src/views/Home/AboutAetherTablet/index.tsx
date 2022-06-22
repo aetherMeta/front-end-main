@@ -32,10 +32,37 @@ const StyledFlex = styled(Flex)`
   justify-content: center;
 `;
 
-const StyledButton = styled(Button)`
-  width: 236px;
-  border-radius: 0;
-  margin-top: 20px;
+const StyledFlex2 = styled(Flex)`
+  width: 100%;
+  justify-content: center;
+  margin-top: 460px;
+  @media screen and (min-width: 354px) {
+    margin-top: 520px;
+  }
+  @media screen and (min-width: 360px) {
+    margin-top: 546px;
+  }
+`;
+
+const StyledFlex3 = styled(Flex)`
+  width: 100%;
+  justify-content: center;
+  margin-top: 400px;
+  @media screen and (min-width: 326px) {
+    margin-top: 420px;
+  }
+  @media screen and (min-width: 360px) {
+    margin-top: 480px;
+  }
+`;
+
+const StyledFlex4 = styled(Flex)`
+  width: 100%;
+  justify-content: center;
+  margin-top: 420px;
+  @media screen and (min-width: 338px) {
+    margin-top: 450px;
+  }
 `;
 
 const AboutAetherTablet: React.FC = () => {
@@ -61,12 +88,12 @@ const AboutAetherTablet: React.FC = () => {
                 AetherMeta is the future of online shopping. We seek to provide
                 an immersive metaverse platform that allows users to interact
                 with the next generation of luxury in a digital world. This
-                surreal, captivating one-of-a-kind experience is unique and
-                innovative; providing an ethereal experience to all users.
+                surreal, captivating experience is unique and innovative;
+                providing an ethereal experience to all users.
               </Text>
             </Flex>
           </StyledFlex>
-          <StyledFlex mt="500px">
+          <StyledFlex2>
             <Flex flexDirection="column" maxWidth="332px">
               <Text variant="h2Bold">What is a metaverse?</Text>
               <Text variant="body" mt="16px">
@@ -75,12 +102,12 @@ const AboutAetherTablet: React.FC = () => {
                 online setting. From an online shopping perspective, this
                 creates the ideal setting for the personalization and intimacy
                 of in-person shopping, but from the comfort of the users’ own
-                home. Aether Meta is harnessing the technology of the metaverse
+                homes. Aether Meta is harnessing the technology of the metaverse
                 to master this experience.
               </Text>
             </Flex>
-          </StyledFlex>
-          <StyledFlex mt="551px">
+          </StyledFlex2>
+          <StyledFlex3>
             <Flex flexDirection="column" maxWidth="310px">
               <Text variant="h2Bold">How do I join the community?</Text>
               <Text variant="body" mt="8px">
@@ -90,24 +117,30 @@ const AboutAetherTablet: React.FC = () => {
                 to interact with our incredible Aether Team, join our Discord
                 server right now and follow us on Twitter and Instagram.
               </Text>
-              <StyledButton startIcon={<DiscordIcon />}>
+              <Button
+                as="a"
+                startIcon={<DiscordIcon />}
+                href="https://discord.gg/K4DXfzxXeJ"
+                external
+                mt="20px"
+                style={{ borderRadius: 0 }}
+              >
                 <Text variant="label" color="invertedContrast">
                   AetherMeta Discord
                 </Text>
-              </StyledButton>
+              </Button>
             </Flex>
-          </StyledFlex>
-          <Flex flexDirection="column" maxWidth="552px">
+          </StyledFlex3>
+          <StyledFlex4 flexDirection="column" maxWidth="310px">
             <Text variant="h2Bold">Partnership Opportunities</Text>
             <Text variant="body" mt="16px">
-              Looking to join the growing list of luxury brands that make up
-              Aether Meta’s trailblazing partners in the metaverse? Unsure of
-              how to explore the Web3 and VR landscapes? Aether Meta offers a
-              strong understanding of these landscapes and can help you
-              establish your brand in the NFT and metaverse space. Contact us
-              today to discover our latest partnership opportunities.
+              Looking to join the growing list of brands that are trailblazing
+              in the metaverse? Unsure of how to explore the Web3 and VR
+              landscapes? Aether Meta provides a new world of commerce for your
+              brand. Contact us today to get your brand and products into the
+              metaverse.
             </Text>
-          </Flex>
+          </StyledFlex4>
         </FlexContainer>
       </ContainerInner>
     </Container>
