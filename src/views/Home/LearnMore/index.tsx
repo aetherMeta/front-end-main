@@ -41,6 +41,7 @@ const LearnMore: React.FC = () => {
               WELCOME TO
             </Text>
             <Text variant="h1Bold" display="inline">
+              {" "}
               AETHER
             </Text>
             <Text variant="h1Light" display="inline">
@@ -48,9 +49,9 @@ const LearnMore: React.FC = () => {
             </Text>
           </div>
           <Text variant="body" mt="16px">
-            Aether Meta is offering the unique opportunity to gain access to the
-            most marketplace in the metaverse; a stunning collection of brands,
-            art, and more.
+            A commerce platform that allows businesses and artists to showcase
+            amazing products in a way never before possible. Drive sales, build
+            experiences, and expand into the Metaverse.
           </Text>
         </Flex>
       </FlexContainer>

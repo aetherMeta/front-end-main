@@ -82,9 +82,10 @@ const Welcome: React.FC = () => {
       <FlexContainer>
         <StyledInline>
           <Text variant="h1Light" display="inline">
-            WELCOME TO{" "}
+            WELCOME TO
           </Text>
           <Text variant="h1Bold" display="inline">
+            {" "}
             AETHER
           </Text>
           <Text variant="h1Light" display="inline">
@@ -156,16 +157,16 @@ const Welcome: React.FC = () => {
             <StyledText variant="body">
               Join us in this place of wonder and secrets. Here you will find
               the most exclusive marketplace in the metaverse with a stunning
-              collection of luxury brands, art – and more. Enter our metaverse
-              and allow yourself to absorb the warmth of the sun, window-shop
-              the picturesque streets and get lost wandering the mountains and
+              collection of brands, art – and more. Enter our metaverse and
+              allow yourself to absorb the warmth of the sun, window-shop the
+              picturesque streets and get lost wandering the mountains and
               gardens. And of course, there’s the breathtakingly endless clouds
               and sky.
             </StyledText>
             <StyledText variant="body">
               With your help and our team’s capabilities, we can together
-              restore AetherMeta to an everlasting ecosystem of luxury and
-              creativity. All are welcome – find your way to the future.
+              restore AetherMeta to an everlasting ecosystem of creativity. All
+              are welcome – find your way to the future.
             </StyledText>
           </TextContainer2>
         </StyledFlex>

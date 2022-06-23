@@ -25,22 +25,22 @@ const Ready: React.FC = () => {
     <Container>
       <FlexContainer>
         <Text variant="h2Bold" mb="86px" maxWidth="742px">
-          AETHERMETA is at the nexus of Luxury, Web3 and VR.
+          AETHERMETA is at the nexus of Shopping, Web3 and VR.
         </Text>
         <Flex flexDirection="column" alignItems="center">
           <Text variant="h2" mb="12px">
             Are you ready?
           </Text>
           <Text variant="body" mb="12px" textAlign="center" maxWidth="645px">
-            Do you work in the world of fashion and luxury? AetherMeta is the
-            perfect partner to launch your initial foray into the next evolution
-            of the web. Talk to our team to find out how you can get onboard.
+            Do you work in the world of fashion? AetherMeta is the perfect
+            partner to launch your initial foray into the next evolution of the
+            web. Talk to our team to find out how you can get onboard.
           </Text>
         </Flex>
         <Flex flexDirection="column" mt="512px" alignItems="center">
           <StyledFlex justifyContent="center">
             <Flex flexDirection="column" maxWidth="360px">
-              <Text variant="h1Bold">Luxury Shopping</Text>
+              <Text variant="h1Bold">Shopping</Text>
               <Text variant="body">
                 Experience and products that define exclusivity and wealth.
               </Text>

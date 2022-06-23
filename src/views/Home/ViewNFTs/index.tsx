@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Flex, Text } from "@aethermeta/uikit";
+import { Flex, Text, Button, useModal } from "@aethermeta/uikit";
+import PartnershipModal, { Values } from "./PartnershipModal";
 
 const Container = styled.div`
   position: relative;
@@ -36,7 +37,15 @@ const StyledFlex = styled(Flex)`
   align-items: center;
 `;
 
+const onSubmit = (e, values: Values) => {
+  e.preventDefault();
+  console.log(values);
+};
+
 const ViewNFTs: React.FC = () => {
+  const [onPresent] = useModal(
+    <PartnershipModal onSubmit={(e, values: Values) => onSubmit(e, values)} />
+  );
   return (
     <Container>
       <StyledFlex height="100%">
@@ -47,6 +56,14 @@ const ViewNFTs: React.FC = () => {
           <Text variant="h1Bold" color="invertedContrast">
             TO NEW HEIGHTS
           </Text>
+          <Button
+            variant="primary"
+            width="152px"
+            style={{ borderRadius: 0 }}
+            onClick={onPresent}
+          >
+            Start free trial
+          </Button>
         </Flex>
       </StyledFlex>
       <StyledVideo muted autoPlay loop playsInline>
