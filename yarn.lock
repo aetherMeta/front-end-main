@@ -3,9 +3,9 @@
 
 
 "@aethermeta/uikit@^1.0.0":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@aethermeta/uikit/-/uikit-1.0.2.tgz#7d1655081b787043bd364f22c64073f35f748436"
-  integrity sha512-ofPIEtsLRivxqiamF4IC4RzkqEM7O+fKSUf7FvftOCbiHIbifX+dv29JV5ast8d4/WsThtw7TUx0FbjDYb1Ibg==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@aethermeta/uikit/-/uikit-1.0.3.tgz#b6efca4a583bee72992fb107f7c0654400de2ff6"
+  integrity sha512-/7CDv2oe6d7QK+V4rDnhtrzziCSKNBjdHlrK4nKNSwOj2ZfeleG33CVeFqZtSqOCBMzGRf08/iBXaXvIdAkKrQ==
   dependencies:
     "@aethermeta/uikit" "^1.0.0"
     "@rollup/plugin-url" "^6.1.0"
@@ -2076,18 +2076,6 @@
   integrity sha512-MZPUxrmFubI36XS1DI3qmI0YdN1gks62JtFZvxR67ljjSNCeK6U08Zx4msEWOXuofgqUt6zPHSi1H9fbjR/NRA==
   dependencies:
     "@sinonjs/commons" "^1.7.0"
-
-"@squirrelswap/sdk@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@squirrelswap/sdk/-/sdk-1.0.1.tgz#46e1ecbaed89974c34042b602bfa24baec5a6069"
-  integrity sha512-5sb0dffa9Fi3tEss2Kd8C0FDYMnIkqkCeJ+sqyqD92mn8bIYm01wmR/AbIBf/tn8kvHkKrdZ03nPWoDA15mTyA==
-  dependencies:
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
 
 "@styled-system/background@^5.1.2":
   version "5.1.2"
@@ -5370,7 +5358,7 @@ decamelize@^1.1.0, decamelize@^1.2.0:
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=
 
-decimal.js-light@^2.4.1, decimal.js-light@^2.5.0:
+decimal.js-light@^2.4.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/decimal.js-light/-/decimal.js-light-2.5.1.tgz#134fd32508f19e208f4fb2f8dac0d2626a867934"
   integrity sha512-qIMFpTMZmny+MMIitAB6D7iVPEorVw6YQRWkvarTkT4tBeSLLiHzcwj6q0MmYSFCiVpiqPJTJEYIrpcPzVEIvg==
@@ -8525,11 +8513,6 @@ js-yaml@^3.13.1:
   dependencies:
     argparse "^1.0.7"
     esprima "^4.0.0"
-
-jsbi@^3.1.1:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/jsbi/-/jsbi-3.2.5.tgz#b37bb90e0e5c2814c1c2a1bcd8c729888a2e37d6"
-  integrity sha512-aBE4n43IPvjaddScbvWRA2YlTzKEynHzu7MqOyTipdHucf/VxS63ViCjxYRg86M8Rxwbt/GfzHl1kKERkt45fQ==
 
 jsdom@^16.4.0:
   version "16.7.0"
@@ -13165,7 +13148,7 @@ timsort@^0.3.0:
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
-tiny-invariant@^1.0.2, tiny-invariant@^1.0.6, tiny-invariant@^1.1.0:
+tiny-invariant@^1.0.2, tiny-invariant@^1.0.6:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.2.0.tgz#a1141f86b672a9148c72e978a19a73b9b94a15a9"
   integrity sha512-1Uhn/aqw5C6RI4KejVeTg6mIS7IqxnLJ8Mv2tV5rTc0qWobay7pDUz6Wi392Cnc8ak1H0F2cjoRzb2/AW4+Fvg==
@@ -13221,11 +13204,6 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
-
-toformat@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/toformat/-/toformat-2.0.0.tgz#7a043fd2dfbe9021a4e36e508835ba32056739d8"
-  integrity sha512-03SWBVop6nU8bpyZCx7SodpYznbZF5R4ljwNLBcTQzKOD9xuihRo/psX58llS1BMFhhAI08H3luot5GoXJz2pQ==
 
 toggle-selection@^1.0.6:
   version "1.0.6"

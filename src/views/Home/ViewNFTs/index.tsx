@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex, Text } from "@aethermeta/uikit";
+import { Flex, Text, Button, useModal } from "@aethermeta/uikit";
+import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
+import PartnershipModal, { Values } from "./PartnershipModal";
 
 const Container = styled.div`
   position: relative;
@@ -37,6 +39,15 @@ const StyledFlex = styled(Flex)`
 `;
 
 const ViewNFTs: React.FC = () => {
+  const [onPresent] = useModal(
+    <PartnershipModal onSubmit={(e, values: Values) => onSubmit(e, values)} />
+  );
+
+  const onSubmit = async (e, values: Values) => {
+    e.preventDefault();
+    await postPartnershipEmail(values);
+  };
+
   return (
     <Container>
       <StyledFlex height="100%">
@@ -47,6 +58,14 @@ const ViewNFTs: React.FC = () => {
           <Text variant="h1Bold" color="invertedContrast">
             TO NEW HEIGHTS
           </Text>
+          <Button
+            variant="primary"
+            width="152px"
+            style={{ borderRadius: 0 }}
+            onClick={onPresent}
+          >
+            Start free trial
+          </Button>
         </Flex>
       </StyledFlex>
       <StyledVideo muted autoPlay loop playsInline>

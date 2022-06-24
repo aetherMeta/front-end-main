@@ -26,22 +26,22 @@ const ReadyTablet: React.FC = () => {
     <Container>
       <FlexContainer>
         <Text variant="h2Bold" mb="38px" maxWidth="742px">
-          AETHERMETA is at the nexus of Luxury, Web3 and VR.
+          AETHERMETA is at the nexus of Shopping, Web3 and VR.
         </Text>
         <Flex flexDirection="column" alignItems="center">
           <Text variant="h2" mb="12px">
             Are you ready?
           </Text>
           <Text variant="body" mb="38px" textAlign="center" maxWidth="645px">
-            Do you work in the world of fashion and luxury? AetherMeta is the
-            perfect partner to launch your initial foray into the next evolution
-            of the web. Talk to our team to find out how you can get onboard.
+            Do you work in the world of fashion? AetherMeta is the perfect
+            partner to launch your initial foray into the next evolution of the
+            web. Talk to our team to find out how you can get onboard.
           </Text>
         </Flex>
         <StyledBackground />
         <Flex flexDirection="column" mt="38px">
           <Flex flexDirection="column" maxWidth="332px">
-            <Text variant="h4Bold">Luxury Shopping</Text>
+            <Text variant="h4Bold">Shopping</Text>
             <Text variant="bodySmall" mt="6px">
               Experience and products that define exclusivity and wealth.
             </Text>
