@@ -19,8 +19,7 @@ const StyledFlex = styled(Flex)`
   flex-warp: wrap;
   margin-left: 46px;
   position: relative;
-  top: -3em;
-  left: -4em;
+ 
   min-width: 19.375rem;
   max-width: 19.375rem;
   
@@ -89,7 +88,7 @@ const FeatureContainer = styled(Grid)`
   margin: 1em;
   width: 100%;
   justify-content: space-around;
-  left: -2rem;
+  
 `;
 
 

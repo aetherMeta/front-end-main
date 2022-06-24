@@ -38,10 +38,7 @@ const Enquiry = styled(Flex)`
 `;
 
 const Center = styled(Text)`
-  font-size: 34px;
-  line-height: 41px;
   text-align: center;
-
 `
 
 const Submit = styled(Button)`
@@ -50,7 +47,7 @@ const Submit = styled(Button)`
 const Enquires: React.FC = () => {
     return (
         <Container>
-            <Center variant="h4Bold">
+            <Center variant="h3Bold">
                 Get in touch with out sales team for more details on how you can onboard to the newest marketing touchpoint for generation Z.
             </Center>
             <EnquiryContainer>
