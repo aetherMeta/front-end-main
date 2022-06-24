@@ -1,11 +1,16 @@
 import client from "apis/backend/client";
-import { PostPartnershipEmailRequest } from "./interface";
+import {
+  PostPartnershipEmailRequest,
+  PostPartnershipEmailResponse,
+} from "./interface";
 
 const postPartnershipEmail = async (
   data: PostPartnershipEmailRequest
-): Promise<any> => {
-  const response = await client.post<any>("contact/partnership", data);
-  console.log(response);
+): Promise<PostPartnershipEmailResponse> => {
+  const response = await client.post<PostPartnershipEmailResponse>(
+    "contact/partnership",
+    data
+  );
   return response.data;
 };
 
