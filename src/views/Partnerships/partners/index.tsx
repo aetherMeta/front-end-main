@@ -19,8 +19,10 @@ const StyledFlex = styled(Flex)`
   flex-warp: wrap;
   margin-left: 46px;
   position: relative;
-  top: -3em;
-  min-width: 310px;
+ 
+  min-width: 19.375rem;
+  max-width: 19.375rem;
+  
   
   ${({ theme }) => theme.mediaQueries.lg} {
     margin-top: 46px;
@@ -76,14 +78,17 @@ const FlexContainer = styled(Flex)`
   margin: 7em;
   position: relative;
   left: 5em;
+  ${({ theme }) => theme.mediaQueries.md} {
+    left: 0em;
+  }
 `;
 
 const FeatureContainer = styled(Grid)`
   grid-template-columns: auto auto auto auto;
-  margin: 2em;
+  margin: 1em;
   width: 100%;
-  justify-content: space-between;
-
+  justify-content: space-around;
+  
 `;
 
 

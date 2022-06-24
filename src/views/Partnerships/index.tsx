@@ -11,6 +11,7 @@ const PartnershipsBackground = styled(Page)`
   background-size: 100%;
   background-image: url(/images/partnershipBackground.svg), linear-gradient(white, 15%, ${({ theme }) => theme.colors.background});
   background-repeat: no-repeat;
+  overflow-x: hidden;
 `
 
 const Partnerships: React.FC = () => {
