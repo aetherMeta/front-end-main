@@ -11,9 +11,7 @@ const FlexContainer = styled(Flex) `
 `
 
 const FlexContainer2 = styled(Flex) `
-    flex-direction: column;
-    justify-content: space-around;
-    
+    flex-direction: column; 
 `
 
 const StyledMoon = styled.div`
@@ -24,11 +22,23 @@ const StyledMoon = styled.div`
 `
 
 const ContactButton = styled(Button)`
+    max-width: 45%;
+    margin: 1rem;
+`
+
+const ContactButton2 = styled(Button)`
     max-width: 50%;
+    margin: 1rem;
+`
+
+const ContactButton3 = styled(Button)`
+    max-width: 55%;
+    margin: 1rem;
 `
 
 const JoinUs = styled(Text)`
     max-width: 29rem;
+    margin: 1rem;
 `
 
 const Social: React.FC = () => {
@@ -51,12 +61,12 @@ const Social: React.FC = () => {
                     <JoinUs variant="body">
                         For a more private conversation on forming a brand partnership or career enquiry, email us.
                     </JoinUs>
-                    <ContactButton variant="primary" startIcon={<MailIcon />}>
+                    <ContactButton2 variant="primary" startIcon={<MailIcon />}>
                         Partnership Enquires
-                    </ContactButton>
-                    <ContactButton variant="primary" startIcon={<MailIcon />}>
+                    </ContactButton2>
+                    <ContactButton3 variant="primary" startIcon={<MailIcon />}>
                         Join the AetherMeta team
-                    </ContactButton>
+                    </ContactButton3>
                 </FlexContainer2>
                 <StyledMoon />
             </FlexContainer>
