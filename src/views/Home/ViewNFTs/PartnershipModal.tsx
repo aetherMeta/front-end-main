@@ -21,11 +21,19 @@ const initialValues = {
   description: "",
 };
 
+const initialErrors = {
+  name: false,
+  company: false,
+  email: false,
+  description: false,
+};
+
 const PartnershipModal: React.FC<PartnershipModalProps> = ({
   onSubmit,
   onDismiss,
 }) => {
   const [values, setValues] = useState(initialValues);
+  const [errors, setErrors] = useState(initialErrors);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,9 +44,36 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
     });
   };
 
+  const validate = (): boolean => {
+    let isValid = true;
+    if (values.name === initialValues.name) {
+      errors.name = true;
+      isValid = false;
+    }
+    if (values.company === initialValues.company) {
+      errors.company = true;
+      isValid = false;
+    }
+    if (values.email === initialValues.email) {
+      errors.email = true;
+      isValid = false;
+    }
+    if (values.description === initialValues.description) {
+      errors.description = true;
+      isValid = false;
+    }
+    return isValid;
+  };
+
+  const handleSubmit = async (e) => {
+    if (validate) {
+      await onSubmit(e, values);
+    }
+  };
+
   return (
     <Modal title="Partnership" onDismiss={onDismiss}>
-      <form onSubmit={(e) => onSubmit(e, values)}>
+      <form onSubmit={handleSubmit}>
         <Label>Name</Label>
         <Input
           type="text"

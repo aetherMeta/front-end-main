@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Flex, Text, Button, useModal } from "@aethermeta/uikit";
+import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
 import PartnershipModal, { Values } from "./PartnershipModal";
 
 const Container = styled.div`
@@ -37,15 +38,16 @@ const StyledFlex = styled(Flex)`
   align-items: center;
 `;
 
-const onSubmit = (e, values: Values) => {
-  e.preventDefault();
-  console.log(values);
-};
-
 const ViewNFTs: React.FC = () => {
   const [onPresent] = useModal(
     <PartnershipModal onSubmit={(e, values: Values) => onSubmit(e, values)} />
   );
+
+  const onSubmit = async (e, values: Values) => {
+    e.preventDefault();
+    await postPartnershipEmail(values);
+  };
+
   return (
     <Container>
       <StyledFlex height="100%">
