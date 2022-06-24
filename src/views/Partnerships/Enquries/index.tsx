@@ -39,46 +39,36 @@ const Enquiry = styled(Flex)`
 
 const Center = styled(Text)`
   text-align: center;
-`
+`;
 
 const Submit = styled(Button)`
   padding: 0;
-`
+`;
 const Enquires: React.FC = () => {
-    return (
-        <Container>
-            <Center variant="h3Bold">
-                Get in touch with out sales team for more details on how you can onboard to the newest marketing touchpoint for generation Z.
-            </Center>
-            <EnquiryContainer>
-              <EnquiryContainer2>
-                  <Enquiry>
-                    <Text variant="h3Bold">
-                        Enquiries
-                    </Text>
-                  </Enquiry>
-                  <Label color="black">
-                    Company
-                  </Label>
-                  <Input type="text" placeholder="Company Name"/> <br />
-                  <Label color="black">
-                    Email
-                  </Label>
-                  <Input type="email" placeholder="Business Email Address"/> <br />
-                  <Label color="black">
-                    Description
-                  </Label>
-                  <TextArea placeholder="Describe your Business"/>
-                  
-                  <Enquiry>
-                    <Submit variant="text">Submit</Submit>
-                  </Enquiry>
-                  
-                </EnquiryContainer2>
-            </EnquiryContainer>
-                
-        </Container>
-    );
-}
+  return (
+    <Container>
+      <Center variant="h3Bold">
+        Get in touch with out sales team for more details on how you can onboard
+        to the newest marketing touchpoint for generation Z.
+      </Center>
+      <EnquiryContainer>
+        <EnquiryContainer2>
+          <Enquiry>
+            <Text variant="h3Bold">Enquiries</Text>
+          </Enquiry>
+          <Label color="black">Company</Label>
+          <Input type="text" placeholder="Company Name" /> <br />
+          <Label color="black">Email</Label>
+          <Input type="email" placeholder="Business Email Address" /> <br />
+          <Label color="black">Description</Label>
+          <TextArea placeholder="Describe your Business" />
+          <Enquiry>
+            <Submit variant="text">Submit</Submit>
+          </Enquiry>
+        </EnquiryContainer2>
+      </EnquiryContainer>
+    </Container>
+  );
+};
 
 export default Enquires;
