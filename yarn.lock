@@ -3,9 +3,9 @@
 
 
 "@aethermeta/uikit@^1.0.0":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@aethermeta/uikit/-/uikit-1.0.2.tgz#7d1655081b787043bd364f22c64073f35f748436"
-  integrity sha512-ofPIEtsLRivxqiamF4IC4RzkqEM7O+fKSUf7FvftOCbiHIbifX+dv29JV5ast8d4/WsThtw7TUx0FbjDYb1Ibg==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@aethermeta/uikit/-/uikit-1.0.3.tgz#b6efca4a583bee72992fb107f7c0654400de2ff6"
+  integrity sha512-/7CDv2oe6d7QK+V4rDnhtrzziCSKNBjdHlrK4nKNSwOj2ZfeleG33CVeFqZtSqOCBMzGRf08/iBXaXvIdAkKrQ==
   dependencies:
     "@aethermeta/uikit" "^1.0.0"
     "@rollup/plugin-url" "^6.1.0"
