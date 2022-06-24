@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Modal, Label, Input, TextArea } from "@aethermeta/uikit";
+import React, { useState, useCallback } from "react";
+import { Button, Modal, Label, Input, TextArea, Text } from "@aethermeta/uikit";
 import useToast from "hooks/useToast";
 
 export interface Values {
@@ -7,6 +7,13 @@ export interface Values {
   company: string;
   email: string;
   description: string;
+}
+
+export interface Errors {
+  name: boolean;
+  company: boolean;
+  email: boolean;
+  description: boolean;
 }
 
 interface PartnershipModalProps {
@@ -34,9 +41,16 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
 }) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrors);
+  const [pending, setPending] = useState(false);
+  const { toastSuccess, toastError } = useToast();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    setErrors({
+      ...errors,
+      [name]: false,
+    });
 
     setValues({
       ...values,
@@ -44,64 +58,84 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
     });
   };
 
-  const validate = (): boolean => {
+  const validate = useCallback((): boolean => {
     let isValid = true;
-    if (values.name === initialValues.name) {
-      errors.name = true;
-      isValid = false;
+    const modifyErrors = initialErrors;
+    for (const [key, value] of Object.entries(values)) {
+      if (value === initialValues[key]) {
+        isValid = false;
+        modifyErrors[key] = true;
+      }
     }
-    if (values.company === initialValues.company) {
-      errors.company = true;
-      isValid = false;
-    }
-    if (values.email === initialValues.email) {
-      errors.email = true;
-      isValid = false;
-    }
-    if (values.description === initialValues.description) {
-      errors.description = true;
-      isValid = false;
-    }
+    setErrors((prevState) => {
+      return { ...prevState, ...modifyErrors };
+    });
     return isValid;
-  };
+  }, [values]);
 
-  const handleSubmit = async (e) => {
-    if (validate) {
-      await onSubmit(e, values);
-    }
-  };
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      if (validate()) {
+        setPending(true);
+        try {
+          await onSubmit(e, values);
+          toastSuccess("Success", "Your application has been submitted!");
+          onDismiss();
+        } catch (error) {
+          toastError("Error", "Something went wrong!");
+          console.error(error);
+        } finally {
+          setPending(false);
+        }
+      }
+    },
+    [onDismiss, onSubmit, toastError, toastSuccess, validate, values]
+  );
 
   return (
     <Modal title="Partnership" onDismiss={onDismiss}>
       <form onSubmit={handleSubmit}>
-        <Label>Name</Label>
+        <Label>Name (*)</Label>
         <Input
           type="text"
           placeholder="Your Name"
           name="name"
           onChange={handleInputChange}
         />
-        <Label>Company</Label>
+        <Text variant="bodySmall" color="failure" height="20px">{`${
+          errors.name ? "Name field cannot be empty" : ""
+        }`}</Text>
+        <Label>Company (*)</Label>
         <Input
           type="text"
           placeholder="Company Name"
           name="company"
           onChange={handleInputChange}
         />
-        <Label>Email</Label>
+        <Text variant="bodySmall" color="failure" height="20px">{`${
+          errors.company ? "Company field cannot be empty" : ""
+        }`}</Text>
+        <Label>Email (*)</Label>
         <Input
           type="email"
           placeholder="Business Email Address"
           name="email"
           onChange={handleInputChange}
         />
-        <Label>Description</Label>
+        <Text variant="bodySmall" color="failure" height="20px">{`${
+          errors.email ? "Email field cannot be empty" : ""
+        }`}</Text>
+        <Label>Description (*)</Label>
         <TextArea
           placeholder="Describe your Business"
           name="description"
           onChange={handleInputChange}
         />
-        <Button variant="text" type="submit" p="0">
+        <Text variant="bodySmall" color="failure" height="20px">{`${
+          errors.description ? "Describe field cannot be empty" : ""
+        }`}</Text>
+        <Button variant="text" type="submit" p="0" disabled={pending}>
           Submit
         </Button>
       </form>

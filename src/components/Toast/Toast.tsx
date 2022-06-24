@@ -1,11 +1,19 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
-import { Button } from "@aethermeta/uikit";
-import { ToastProps } from "./types";
+import { Alert, alertVariants } from "@aethermeta/uikit";
+import { ToastProps, types } from "./types";
+
+const alertTypeMap = {
+  [types.INFO]: alertVariants.INFO,
+  [types.SUCCESS]: alertVariants.SUCCESS,
+  [types.DANGER]: alertVariants.DANGER,
+  [types.WARNING]: alertVariants.WARNING,
+};
 
 const StyledToast = styled.div`
-  right: 16px;
+  left: 16px;
+  bottom: 16px;
   position: fixed;
   max-width: calc(100% - 32px);
   transition: all 250ms ease-in;
@@ -26,7 +34,7 @@ const Toast: React.FC<ToastProps> = ({
   const timer = useRef<number>();
   const ref = useRef(null);
   const removeHandler = useRef(onRemove);
-  const { id, title, description } = toast;
+  const { id, title, description, type } = toast;
 
   const handleRemove = useCallback(
     () => removeHandler.current(id),
@@ -68,9 +76,13 @@ const Toast: React.FC<ToastProps> = ({
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <Button title={title} onClick={handleRemove}>
+        <Alert
+          title={title}
+          variant={alertTypeMap[type]}
+          onClick={handleRemove}
+        >
           {description}
-        </Button>
+        </Alert>
       </StyledToast>
     </CSSTransition>
   );

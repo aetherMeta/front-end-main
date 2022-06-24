@@ -103,6 +103,7 @@ const AboutAether: React.FC = () => {
                 target="_blank"
                 mt="16px"
                 width="134px"
+                style={{ borderRadius: 0 }}
               >
                 Explore now
               </Button>
@@ -173,6 +174,18 @@ const AboutAether: React.FC = () => {
                 Contact us today to get your brand and products into the
                 metaverse.
               </Text>
+              <Button
+                variant="text"
+                as="a"
+                startIcon={<ArrowForwardIcon color="primary" />}
+                href="/partnerships"
+                width="117px"
+                padding="0"
+              >
+                <Text variant="link" color="primary">
+                  Learn More
+                </Text>
+              </Button>
             </Flex>
           </StyledFlex>
         </FlexContainer>
