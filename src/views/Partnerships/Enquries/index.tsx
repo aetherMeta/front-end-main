@@ -30,23 +30,24 @@ const EnquiryContainer2 = styled(Flex)`
   justify-content: flex-start;
   align-content: flex-start;
   min-width: 40rem;
-` 
+`;
 
 const Enquiry = styled(Flex)`
   justify-content: flex-start;
+  padding: 0;
 `;
 
-const Center = styled(Text) `
-  font-size: 34px;
-  line-height: 41px;
+const Center = styled(Text)`
   text-align: center;
-  color: ${({theme})  => theme.colors.priamryDark};
 `
 
+const Submit = styled(Button)`
+  padding: 0;
+`
 const Enquires: React.FC = () => {
     return (
         <Container>
-            <Center variant="h4Bold">
+            <Center variant="h3Bold">
                 Get in touch with out sales team for more details on how you can onboard to the newest marketing touchpoint for generation Z.
             </Center>
             <EnquiryContainer>
@@ -56,21 +57,21 @@ const Enquires: React.FC = () => {
                         Enquiries
                     </Text>
                   </Enquiry>
-                  <Label>
+                  <Label color="black">
                     Company
                   </Label>
                   <Input type="text" placeholder="Company Name"/> <br />
-                  <Label>
+                  <Label color="black">
                     Email
                   </Label>
                   <Input type="email" placeholder="Business Email Address"/> <br />
-                  <Label>
+                  <Label color="black">
                     Description
                   </Label>
                   <TextArea placeholder="Describe your Business"/>
                   
                   <Enquiry>
-                    <Button variant="text">Submit</Button>
+                    <Submit variant="text">Submit</Submit>
                   </Enquiry>
                   
                 </EnquiryContainer2>
