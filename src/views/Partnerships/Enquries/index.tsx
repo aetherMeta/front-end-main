@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { Flex, Text, Input, Button, Label, TextArea } from "@aethermeta/uikit";
 
@@ -45,6 +45,79 @@ const Submit = styled(Button)`
   padding: 0;
 `
 const Enquires: React.FC = () => {
+
+  const initialValues = {
+    name: "",
+    company: "",
+    email: "",
+    description: "",
+  };
+  
+  const initialErrors = {
+    name: false,
+    company: false,
+    email: false,
+    description: false,
+  };
+  
+  const PartnershipModal: React.FC<PartnershipModalProps> = ({
+    onSubmit,
+    onDismiss,
+  }) => {
+    const [values, setValues] = useState(initialValues);
+    const [errors, setErrors] = useState(initialErrors);
+    const [pending, setPending] = useState(false);
+    const { toastSuccess, toastError } = useToast();
+  
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+  
+      setErrors({
+        ...errors,
+        [name]: false,
+      });
+  
+      setValues({
+        ...values,
+        [name]: value,
+      });
+    };
+  
+    const validate = useCallback((): boolean => {
+      let isValid = true;
+      const modifyErrors = initialErrors;
+      for (const [key, value] of Object.entries(values)) {
+        if (value === initialValues[key]) {
+          isValid = false;
+          modifyErrors[key] = true;
+        }
+      }
+      setErrors((prevState) => {
+        return { ...prevState, ...modifyErrors };
+      });
+      return isValid;
+    }, [values]);
+  
+    const handleSubmit = useCallback(
+      async (e) => {
+        e.preventDefault();
+        if (validate()) {
+          setPending(true);
+          try {
+            await onSubmit(e, values);
+            toastSuccess("Success", "Your application has been submitted!");
+            onDismiss();
+          } catch (error) {
+            toastError("Error", "Something went wrong!");
+            console.error(error);
+          } finally {
+            setPending(false);
+          }
+        }
+      },
+      [onDismiss, onSubmit, toastError, toastSuccess, validate, values]
+    );
+  
     return (
         <Container>
             <Center variant="h3Bold">
