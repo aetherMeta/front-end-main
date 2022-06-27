@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { Flex, Text, Input, Button, Label, TextArea } from "@aethermeta/uikit";
+import useToast from "hooks/useToast";
 
 const Container = styled.div`
   padding 5em 20px;
@@ -44,26 +45,43 @@ const Center = styled(Text)`
 const Submit = styled(Button)`
   padding: 0;
 `
-const Enquires: React.FC = () => {
 
-  const initialValues = {
-    name: "",
-    company: "",
-    email: "",
-    description: "",
-  };
-  
-  const initialErrors = {
-    name: false,
-    company: false,
-    email: false,
-    description: false,
-  };
-  
-  const PartnershipModal: React.FC<PartnershipModalProps> = ({
-    onSubmit,
-    onDismiss,
-  }) => {
+export interface Values {
+  name: string;
+  company: string;
+  email: string;
+  description: string;
+}
+
+export interface Errors {
+  name: boolean;
+  company: boolean;
+  email: boolean;
+  description: boolean;
+}
+
+interface PartnershipModalProps {
+  onSubmit: (e, values: Values) => void;
+  onDismiss?: () => void;
+}
+
+const initialValues = {
+  name: "",
+  company: "",
+  email: "",
+  description: "",
+};
+const initialErrors = {
+  name: false,
+  company: false,
+  email: false,
+  description: false,
+};
+
+const Enquires: React.FC<PartnershipModalProps> =  ({
+  onSubmit,
+  onDismiss,
+}) => {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState(initialErrors);
     const [pending, setPending] = useState(false);
@@ -86,12 +104,13 @@ const Enquires: React.FC = () => {
     const validate = useCallback((): boolean => {
       let isValid = true;
       const modifyErrors = initialErrors;
-      for (const [key, value] of Object.entries(values)) {
+      Object.entries(values).forEach(entry => {
+        const [key, value] = entry;
         if (value === initialValues[key]) {
           isValid = false;
           modifyErrors[key] = true;
         }
-      }
+      });
       setErrors((prevState) => {
         return { ...prevState, ...modifyErrors };
       });
@@ -152,6 +171,6 @@ const Enquires: React.FC = () => {
                 
         </Container>
     );
-}
+  }
 
 export default Enquires;
