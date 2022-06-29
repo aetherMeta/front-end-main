@@ -31,9 +31,11 @@ const StyledVideo = styled.video`
 const StyledFlex = styled(Flex)`
   position: absolute;
   right: 0;
+  bottom: 0;
   z-index: 1;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  margin-bottom: 64px;
 `;
 
 const ViewNFTs: React.FC = () => {
