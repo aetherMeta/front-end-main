@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { Flex, Text, Input, Button, Label, TextArea } from "@aethermeta/uikit";
+import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
 import useToast from "hooks/useToast";
 
 const Container = styled.div`
@@ -60,11 +61,6 @@ export interface Errors {
   description: boolean;
 }
 
-interface PartnershipModalProps {
-  onSubmit: (e, values: Values) => void;
-  onDismiss?: () => void;
-}
-
 const initialValues = {
   name: "",
   company: "",
@@ -78,10 +74,7 @@ const initialErrors = {
   description: false,
 };
 
-const Enquires: React.FC<PartnershipModalProps> =  ({
-  onSubmit,
-  onDismiss,
-}) => {
+const Enquires: React.FC =  () => {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState(initialErrors);
     const [pending, setPending] = useState(false);
@@ -123,9 +116,12 @@ const Enquires: React.FC<PartnershipModalProps> =  ({
         if (validate()) {
           setPending(true);
           try {
-            await onSubmit(e, values);
+            const onSubmit = async (v: Values) => {
+              e.preventDefault();
+              await postPartnershipEmail(v);
+            };
+            await onSubmit(values);
             toastSuccess("Success", "Your application has been submitted!");
-            onDismiss();
           } catch (error) {
             toastError("Error", "Something went wrong!");
             console.error(error);
@@ -134,7 +130,7 @@ const Enquires: React.FC<PartnershipModalProps> =  ({
           }
         }
       },
-      [onDismiss, onSubmit, toastError, toastSuccess, validate, values]
+      [toastError, toastSuccess, validate, values]
     );
   
     return (
