@@ -10,6 +10,7 @@ import {
   IconButton,
 } from "@aethermeta/uikit";
 import useToast from "hooks/useToast";
+import { useUser } from "store/user/hooks";
 
 export interface Values {
   name: string;
@@ -48,7 +49,15 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
   onSubmit,
   onDismiss,
 }) => {
-  const [values, setValues] = useState(initialValues);
+  const { data: userData, userDataLoaded } = useUser();
+  const [values, setValues] = useState(
+    userDataLoaded
+      ? {
+          ...initialValues,
+          name: `${userData.firstName} ${userData.lastName}`,
+        }
+      : initialValues
+  );
   const [errors, setErrors] = useState(initialErrors);
   const [pending, setPending] = useState(false);
   const { toastSuccess, toastError } = useToast();
@@ -115,6 +124,7 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
           type="text"
           placeholder="Your Name"
           name="name"
+          value={values.name}
           onChange={handleInputChange}
         />
         <Text variant="bodySmall" color="failure" height="20px">{`${
