@@ -15,6 +15,10 @@ const config = [
   //   label: "Contact",
   //   href: "/contact",
   // },
+  {
+    label: "Partnerships",
+    href: "/partnerships"
+  }
 ];
 
 export const socials = [

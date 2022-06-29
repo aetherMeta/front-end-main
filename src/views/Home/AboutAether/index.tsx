@@ -64,11 +64,11 @@ const AboutAether: React.FC = () => {
             <Flex flexDirection="column" maxWidth="310px">
               <Text variant="h2Bold">What is AetherMeta?</Text>
               <Text variant="body" mt="16px">
-                AetherMeta is the future of online shopping. We seek to provide
-                an immersive metaverse platform that allows users to interact
-                with the next generation of luxury in a digital world. This
-                surreal, captivating experience is unique and innovative;
-                providing an ethereal experience to all users.
+                AetherMeta is the future of online shopping. No longer is online
+                shopping confined to a 2D world, now you can have your own
+                immersive store for your customers. Customize your store, and
+                bring your products into the metaverse. Sell both “digital” and
+                “phygital” items all linked to the blockchain.
               </Text>
               <Button
                 variant="text"
@@ -90,11 +90,11 @@ const AboutAether: React.FC = () => {
               <Text variant="body" mt="16px">
                 A metaverse is an immersive 3D virtual world that can be
                 accessed by users to create strong social connections in an
-                online setting. From an online shopping perspective, this
-                creates the ideal setting for the personalization and intimacy
-                of in-person shopping, but from the comfort of the users’ own
-                homes. Aether Meta is harnessing the technology of the metaverse
-                to master this experience.
+                online setting. For online shopping, this creates the ideal
+                setting for the personalization and intimacy of in-person
+                shopping, but from the comfort of the users’ own homes. Aether
+                Meta is harnessing the technology of the metaverse to master
+                this experience.
               </Text>
               <Button
                 as="a"
@@ -103,6 +103,7 @@ const AboutAether: React.FC = () => {
                 target="_blank"
                 mt="16px"
                 width="134px"
+                style={{ borderRadius: 0 }}
               >
                 Explore now
               </Button>
@@ -113,10 +114,10 @@ const AboutAether: React.FC = () => {
               <Text variant="h2Bold">How do I join the community?</Text>
               <Text variant="body" mt="16px">
                 Hoping to join our growing community and be in the know about
-                our various luxury drops and project developments? To get
-                information on all the amazing upcoming releases and to be able
-                to interact with our incredible Aether Team, join our Discord
-                server right now and follow us on Twitter and Instagram.
+                our vendor drops and project developments? To get information on
+                all the amazing upcoming releases and to be able to interact
+                with our incredible Aether Team, join our Discord server right
+                now and follow us on Twitter and Instagram.
               </Text>
               <div>
                 <Button
@@ -173,6 +174,18 @@ const AboutAether: React.FC = () => {
                 Contact us today to get your brand and products into the
                 metaverse.
               </Text>
+              <Button
+                variant="text"
+                as="a"
+                startIcon={<ArrowForwardIcon color="primary" />}
+                href="/partnerships"
+                width="117px"
+                padding="0"
+              >
+                <Text variant="link" color="primary">
+                  Learn More
+                </Text>
+              </Button>
             </Flex>
           </StyledFlex>
         </FlexContainer>
