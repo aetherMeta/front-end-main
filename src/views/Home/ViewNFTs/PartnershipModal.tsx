@@ -1,5 +1,14 @@
 import React, { useState, useCallback } from "react";
-import { Button, Modal, Label, Input, TextArea, Text } from "@aethermeta/uikit";
+import {
+  Button,
+  Modal,
+  Label,
+  Input,
+  TextArea,
+  Text,
+  Spinner,
+  IconButton,
+} from "@aethermeta/uikit";
 import useToast from "hooks/useToast";
 
 export interface Values {
@@ -60,7 +69,12 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
 
   const validate = useCallback((): boolean => {
     let isValid = true;
-    const modifyErrors = initialErrors;
+    const modifyErrors = {
+      name: false,
+      company: false,
+      email: false,
+      description: false,
+    };
     for (const [key, value] of Object.entries(values)) {
       if (value === initialValues[key]) {
         isValid = false;
@@ -135,9 +149,15 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
         <Text variant="bodySmall" color="failure" height="20px">{`${
           errors.description ? "Describe field cannot be empty" : ""
         }`}</Text>
-        <Button variant="text" type="submit" p="0" disabled={pending}>
-          Submit
-        </Button>
+        {pending ? (
+          <IconButton isLoading variant="text">
+            <Spinner size={48} />
+          </IconButton>
+        ) : (
+          <Button variant="text" type="submit" p="0">
+            Submit
+          </Button>
+        )}
       </form>
     </Modal>
   );
