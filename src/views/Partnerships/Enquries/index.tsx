@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
-import { Flex, Text, Input, Button, Label, TextArea } from "@aethermeta/uikit";
+import { Flex, Text, Input, Button, Label, TextArea, Spinner, IconButton } from "@aethermeta/uikit";
 import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
 import useToast from "hooks/useToast";
 
@@ -41,10 +41,6 @@ const Enquiry = styled(Flex)`
 
 const Center = styled(Text)`
   text-align: center;
-`
-
-const Submit = styled(Button)`
-  padding: 0;
 `
 
 export interface Values {
@@ -145,23 +141,38 @@ const Enquires: React.FC =  () => {
                         Enquiries
                     </Text>
                   </Enquiry>
-                  <Label color="black">
-                    Company
-                  </Label>
-                  <Input type="text" placeholder="Company Name"/> <br />
-                  <Label color="black">
-                    Email
-                  </Label>
-                  <Input type="email" placeholder="Business Email Address"/> <br />
-                  <Label color="black">
-                    Description
-                  </Label>
-                  <TextArea placeholder="Describe your Business"/>
-                  
-                  <Enquiry>
-                    <Submit variant="text">Submit</Submit>
-                  </Enquiry>
-                  
+                  <form onSubmit={handleSubmit}>
+                    <Label color="black">
+                      Company
+                    </Label>
+                    <Input type="text" placeholder="Company Name" name="company" onChange={handleInputChange}/> <br />
+                    <Text variant="bodySmall" color="failure" height="20px">{`${
+                      errors.company ? "Company field cannot be empty" : ""
+                    }`}</Text>
+                    <Label color="black">
+                      Email
+                    </Label>
+                    <Input type="email" placeholder="Business Email Address" name="email" onChange={handleInputChange}/> <br />
+                    <Text variant="bodySmall" color="failure" height="20px">{`${
+                      errors.email ? "Email field cannot be empty" : ""
+                    }`}</Text>
+                    <Label color="black">
+                      Description
+                    </Label>
+                    <TextArea placeholder="Describe your Business" name="description" onChange={handleInputChange}/>
+                    <Text variant="bodySmall" color="failure" height="20px">{`${
+                      errors.description ? "Describe field cannot be empty" : ""
+                    }`}</Text>
+                    {pending ? (
+                      <IconButton isLoading variant="text">
+                        <Spinner size={48} />
+                      </IconButton>
+                    ) : (
+                      <Button variant="text" type="submit" p="0">
+                        Submit
+                      </Button>
+                    )}
+                  </form>
                 </EnquiryContainer2>
             </EnquiryContainer>
                 
