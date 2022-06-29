@@ -58,7 +58,7 @@ export interface Errors {
 }
 
 const initialValues = {
-  name: "",
+  name: "name",
   company: "",
   email: "",
   description: "",
@@ -95,7 +95,7 @@ const Enquires: React.FC =  () => {
       const modifyErrors = initialErrors;
       Object.entries(values).forEach(entry => {
         const [key, value] = entry;
-        if (value === initialValues[key]) {
+        if (value === initialValues[key] && key !== 'name') {
           isValid = false;
           modifyErrors[key] = true;
         }
