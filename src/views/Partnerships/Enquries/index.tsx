@@ -37,6 +37,7 @@ const EnquiryContainer2 = styled(Flex)`
 const Enquiry = styled(Flex)`
   justify-content: flex-start;
   padding: 0;
+  margin-bottom: 2rem;
 `;
 
 const Center = styled(Text)`
@@ -58,7 +59,7 @@ export interface Errors {
 }
 
 const initialValues = {
-  name: "name",
+  name: "",
   company: "",
   email: "",
   description: "",
@@ -95,7 +96,7 @@ const Enquires: React.FC =  () => {
       const modifyErrors = initialErrors;
       Object.entries(values).forEach(entry => {
         const [key, value] = entry;
-        if (value === initialValues[key] && key !== 'name') {
+        if (value === initialValues[key]) {
           isValid = false;
           modifyErrors[key] = true;
         }
@@ -142,6 +143,17 @@ const Enquires: React.FC =  () => {
                     </Text>
                   </Enquiry>
                   <form onSubmit={handleSubmit}>
+                  <Label>Name</Label>
+                    <Input
+                      type="text"
+                      placeholder="Your Name"
+                      name="name"
+                      onChange={handleInputChange}
+                    />
+                    <Text variant="bodySmall" color="failure" height="20px">{`${
+                      errors.name ? "Name field cannot be empty" : ""
+                    }`}</Text>
+                    
                     <Label color="black">
                       Company
                     </Label>
