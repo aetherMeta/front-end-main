@@ -1,5 +1,6 @@
 import React from "react";
 import Page from "components/Layout/Page";
+import Partners from "components/Partners/Partners";
 import { useMatchBreakpoints } from "@aethermeta/uikit";
 import ViewNFTs from "./ViewNFTs";
 import LearnMore from "./LearnMore";
@@ -13,6 +14,7 @@ const Home: React.FC = () => {
       <ViewNFTs />
       <LearnMore />
       {isTablet || isMobile ? <AboutAetherTablet /> : <AboutAether />}
+      <Partners />
     </Page>
   );
 };

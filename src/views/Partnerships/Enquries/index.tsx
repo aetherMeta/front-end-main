@@ -42,7 +42,7 @@ const Enquiry = styled(Flex)`
 
 const Center = styled(Text)`
   text-align: center;
-`
+`;
 
 export interface Values {
   name: string;
@@ -191,5 +191,4 @@ const Enquires: React.FC =  () => {
         </Container>
     );
   }
-
 export default Enquires;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex, Text, Button, DiscordIcon, MailIcon } from "@aethermeta/uikit";
+import { Flex, Text, Button, DiscordIcon } from "@aethermeta/uikit";
 
 const Container = styled.div`
   padding-top: 96px;
@@ -32,10 +32,37 @@ const StyledFlex = styled(Flex)`
   justify-content: center;
 `;
 
-const StyledButton = styled(Button)`
-  width: 236px;
-  border-radius: 0;
-  margin-top: 20px;
+const StyledFlex2 = styled(Flex)`
+  width: 100%;
+  justify-content: center;
+  margin-top: 460px;
+  @media screen and (min-width: 354px) {
+    margin-top: 520px;
+  }
+  @media screen and (min-width: 360px) {
+    margin-top: 546px;
+  }
+`;
+
+const StyledFlex3 = styled(Flex)`
+  width: 100%;
+  justify-content: center;
+  margin-top: 400px;
+  @media screen and (min-width: 326px) {
+    margin-top: 420px;
+  }
+  @media screen and (min-width: 360px) {
+    margin-top: 480px;
+  }
+`;
+
+const StyledFlex4 = styled(Flex)`
+  width: 100%;
+  justify-content: center;
+  margin-top: 420px;
+  @media screen and (min-width: 338px) {
+    margin-top: 450px;
+  }
 `;
 
 const AboutAetherTablet: React.FC = () => {
@@ -56,56 +83,64 @@ const AboutAetherTablet: React.FC = () => {
           </StyledTitle>
           <StyledFlex mt="394px">
             <Flex flexDirection="column" maxWidth="332px">
-              <Text variant="h2Bold">What is an NFT?</Text>
-              <Text variant="body" mt="16px">
-                NFTs are the latest evolution of Web3 and crypto techonology.
-                With NFTs (non-fungible-tokens) digital assets become unique.
-                Even though a digital file can be copied and spread across the
-                internet, by purchasing an NFT your digital asset becomes the
-                bona-fide original. Your ownership gets preserved on the
-                blockchain, easily verified by anyone.
-              </Text>
-            </Flex>
-          </StyledFlex>
-          <StyledFlex mt="500px">
-            <Flex flexDirection="column" maxWidth="332px">
               <Text variant="h2Bold">What is AetherMeta?</Text>
               <Text variant="body" mt="16px">
-                AetherMeta is a virtual NFT marketplace, elevating the online
-                luxury shopping experience. AetherMeta is developed by veterans
-                of the fashion and luxury goods industry. With NFTS and VR, we
-                aim to deepen the relationship between brands and luxury
-                enthusiasts.
+                AetherMeta is the future of online shopping. No longer is online
+                shopping confined to a 2D world, now you can have your own
+                immersive store for your customers. Customize your store, and
+                bring your products into the metaverse. Sell both “digital” and
+                “phygital” items all linked to the blockchain.
               </Text>
             </Flex>
           </StyledFlex>
-          <StyledFlex mt="551px">
-            <Flex flexDirection="column" maxWidth="310px">
-              <Text variant="h2Bold">How do I join?</Text>
-              <Text variant="body" mt="8px">
-                Join the conversation with our fans and support team on our
-                public Discord channel. We&apos;ll announce details of how to
-                get VIP and Founder memberships shortly.
+          <StyledFlex2>
+            <Flex flexDirection="column" maxWidth="332px">
+              <Text variant="h2Bold">What is a metaverse?</Text>
+              <Text variant="body" mt="16px">
+                A metaverse is an immersive 3D virtual world that can be
+                accessed by users to create strong social connections in an
+                online setting. For online shopping, this creates the ideal
+                setting for the personalization and intimacy of in-person
+                shopping, but from the comfort of the users’ own homes. Aether
+                Meta is harnessing the technology of the metaverse to master
+                this experience.
               </Text>
-              <StyledButton startIcon={<DiscordIcon />}>
+            </Flex>
+          </StyledFlex2>
+          <StyledFlex3>
+            <Flex flexDirection="column" maxWidth="310px">
+              <Text variant="h2Bold">How do I join the community?</Text>
+              <Text variant="body" mt="8px">
+                Hoping to join our growing community and be in the know about
+                our vendor drops and project developments? To get information on
+                all the amazing upcoming releases and to be able to interact
+                with our incredible Aether Team, join our Discord server right
+                now and follow us on Twitter and Instagram.
+              </Text>
+              <Button
+                as="a"
+                startIcon={<DiscordIcon />}
+                href="https://discord.gg/K4DXfzxXeJ"
+                external
+                mt="20px"
+                style={{ borderRadius: 0 }}
+              >
                 <Text variant="label" color="invertedContrast">
                   AetherMeta Discord
                 </Text>
-              </StyledButton>
-              <Flex flexDirection="column" mt="40px">
-                <Text variant="h3Bold">Partnership Opportunities</Text>
-                <Text variant="body" mt="8px">
-                  If you are looking to join other luxury brands in the
-                  metaverse, send us an email.
-                </Text>
-              </Flex>
-              <StyledButton startIcon={<MailIcon />}>
-                <Text variant="label" color="invertedContrast">
-                  Partnership Enquiries
-                </Text>
-              </StyledButton>
+              </Button>
             </Flex>
-          </StyledFlex>
+          </StyledFlex3>
+          <StyledFlex4 flexDirection="column" maxWidth="310px">
+            <Text variant="h2Bold">Partnership Opportunities</Text>
+            <Text variant="body" mt="16px">
+              Looking to join the growing list of brands that are trailblazing
+              in the metaverse? Unsure of how to explore the Web3 and VR
+              landscapes? Aether Meta provides a new world of commerce for your
+              brand. Contact us today to get your brand and products into the
+              metaverse.
+            </Text>
+          </StyledFlex4>
         </FlexContainer>
       </ContainerInner>
     </Container>
