@@ -29,6 +29,18 @@ const StyledOppoTaco = styled.div`
   height: 30px;
 `;
 
+const StyledSkewzed = styled.div`
+  background: url(/images/skwezed.png);
+  width: 101px;
+  height: 68px;
+`;
+
+const StyledLitto = styled.div`
+  background: url(/images/litto.png);
+  width: 101px;
+  height: 50px;
+`;
+
 const PartnerContainer = styled(Flex)`
   justify-content: flex-start;
   margin-top: 46px;
@@ -40,7 +52,7 @@ const scroll = keyframes`
   margin-left: 0px;
 }
 100% {
-  margin-left: -762px;
+  margin-left: -1073px;
 }
 `;
 
@@ -67,11 +79,15 @@ const Partners: React.FC = () => {
           <StyledJenniferLe />
           <StyledRiotHill />
           <StyledOppoTaco />
+          <StyledSkewzed />
+          <StyledLitto />
           {(isTablet || isMobile) && (
             <>
               <StyledJenniferLe />
               <StyledRiotHill />
               <StyledOppoTaco />
+              <StyledSkewzed />
+              <StyledLitto />
             </>
           )}
         </PartnerBox>
