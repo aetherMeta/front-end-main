@@ -52,7 +52,7 @@ const Social: React.FC = () => {
                     <JoinUs variant="body">
                         We&rsquo;re on Discord. Join the conversation.
                     </JoinUs>
-                    <ContactButton variant="primary" startIcon={<DiscordIcon />}>
+                    <ContactButton variant="primary" startIcon={<DiscordIcon />} style={{borderRadius: 0}}>
                         AetherMeta Discord
                     </ContactButton>
                     <JoinUs variant="h3Bold">
@@ -61,10 +61,10 @@ const Social: React.FC = () => {
                     <JoinUs variant="body">
                         For a more private conversation on forming a brand partnership or career enquiry, email us.
                     </JoinUs>
-                    <ContactButton2 variant="primary" startIcon={<MailIcon />}>
+                    <ContactButton2 variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0}}>
                         Partnership Enquires
                     </ContactButton2>
-                    <ContactButton3 variant="primary" startIcon={<MailIcon />}>
+                    <ContactButton3 variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0}}>
                         Join the AetherMeta team
                     </ContactButton3>
                 </FlexContainer2>
