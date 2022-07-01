@@ -1,18 +1,23 @@
 import React from "react";
-import { Button, Flex } from "@aethermeta/uikit";
+import { Button, Flex, useMatchBreakpoints } from "@aethermeta/uikit";
 
 export interface GlobalMenuProps {
   maxWidth?: boolean;
 }
 
 const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
+  const { isTablet, isMobile } = useMatchBreakpoints();
   return (
     <Flex width={maxWidth ? "100%" : "auto"}>
       <Button
         scale="md"
         as="a"
         variant="secondary"
-        href="https://aethercagoose.web.app/"
+        href={
+          isTablet || isMobile
+            ? "https://aetherswatchesmobile.web.app/"
+            : "https://aetherwatches-6545f.web.app/"
+        }
         ml={maxWidth ? "0px" : "8px"}
         mr={maxWidth ? "0px" : "16px"}
         mb={maxWidth ? "24px" : "0px"}
