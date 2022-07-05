@@ -21,16 +21,6 @@ const StyledMoon = styled.div`
     width: 40rem;
 `
 
-const ContactButton2 = styled(Button)`
-    max-width: 50%;
-    margin: 1rem;
-`
-
-const ContactButton3 = styled(Button)`
-    max-width: 55%;
-    margin: 1rem;
-`
-
 const JoinUs = styled(Text)`
     max-width: 29rem;
     margin: 1rem;
@@ -47,7 +37,7 @@ const Social: React.FC = () => {
                     <JoinUs variant="body">
                         We&rsquo;re on Discord. Join the conversation.
                     </JoinUs>
-                    <Button as="a" variant="primary" startIcon={<DiscordIcon />} style={{borderRadius: 0, maxWidth: "45%", margin: "1rem"}} href="https://discord.gg/K4DXfzxXeJ">
+                    <Button as="a" target="_blank" variant="primary" startIcon={<DiscordIcon />} style={{borderRadius: 0, maxWidth: "45%", margin: "1rem"}} href="https://discord.gg/K4DXfzxXeJ">
                         AetherMeta Discord
                     </Button>
                     <JoinUs variant="h3Bold">
@@ -56,12 +46,12 @@ const Social: React.FC = () => {
                     <JoinUs variant="body">
                         For a more private conversation on forming a brand partnership or career enquiry, email us.
                     </JoinUs>
-                    <ContactButton2 variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "50%", margin: "1rem"}}>
+                    <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "50%", margin: "1rem"}} href="/partnerships">
                         Partnership Enquires
-                    </ContactButton2>
-                    <ContactButton3 variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "55%", margin: "1rem"}}>
+                    </Button>
+                    <Button variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "55%", margin: "1rem"}}>
                         Join the AetherMeta team
-                    </ContactButton3>
+                    </Button>
                 </FlexContainer2>
                 <StyledMoon />
             </FlexContainer>
