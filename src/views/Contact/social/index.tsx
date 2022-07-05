@@ -21,11 +21,6 @@ const StyledMoon = styled.div`
     width: 40rem;
 `
 
-const ContactButton = styled(Button)`
-    max-width: 45%;
-    margin: 1rem;
-`
-
 const ContactButton2 = styled(Button)`
     max-width: 50%;
     margin: 1rem;
@@ -52,19 +47,19 @@ const Social: React.FC = () => {
                     <JoinUs variant="body">
                         We&rsquo;re on Discord. Join the conversation.
                     </JoinUs>
-                    <ContactButton variant="primary" startIcon={<DiscordIcon />} style={{borderRadius: 0}}>
+                    <Button as="a" variant="primary" startIcon={<DiscordIcon />} style={{borderRadius: 0, maxWidth: "45%", margin: "1rem"}} href="https://discord.gg/K4DXfzxXeJ">
                         AetherMeta Discord
-                    </ContactButton>
+                    </Button>
                     <JoinUs variant="h3Bold">
                         Join us
                     </JoinUs>
                     <JoinUs variant="body">
                         For a more private conversation on forming a brand partnership or career enquiry, email us.
                     </JoinUs>
-                    <ContactButton2 variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0}}>
+                    <ContactButton2 variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "50%", margin: "1rem"}}>
                         Partnership Enquires
                     </ContactButton2>
-                    <ContactButton3 variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0}}>
+                    <ContactButton3 variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "55%", margin: "1rem"}}>
                         Join the AetherMeta team
                     </ContactButton3>
                 </FlexContainer2>
