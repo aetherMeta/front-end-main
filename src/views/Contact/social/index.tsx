@@ -51,10 +51,18 @@ const Social: React.FC = () => {
                     <JoinUs variant="body">
                         For a more private conversation on forming a brand partnership or career enquiry, email us.
                     </JoinUs>
-                    <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "50%", margin: "1rem"}} href="/partnerships">
+                    <Button as="a" 
+                        variant="primary" 
+                        startIcon={<MailIcon />} 
+                        style={{borderRadius: 0, maxWidth: "50%", margin: "1rem"}} 
+                        href="/partnerships">
                         Partnership Enquires
                     </Button>
-                    <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "55%", margin: "1rem"}} onClick={onPresent}>
+                    <Button as="a" 
+                        variant="primary" 
+                        startIcon={<MailIcon />} 
+                        style={{borderRadius: 0, maxWidth: "55%", margin: "1rem"}} 
+                        onClick={onPresent}>
                         Join the AetherMeta team
                     </Button>
                 </Flex>
