@@ -1,17 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Flex, Text, MailIcon, DiscordIcon, Button } from "@aethermeta/uikit";
+import Discord from "../discord";
 
 const Container = styled.div`
     padding 50px 0px 50px 56px;  
-`
-
-const FlexContainer = styled(Flex) `
-    justify-content: space-between;
-`
-
-const FlexContainer2 = styled(Flex) `
-    flex-direction: column; 
 `
 
 const StyledMoon = styled.div`
@@ -29,15 +22,15 @@ const JoinUs = styled(Text)`
 const Social: React.FC = () => {
     return (
         <Container>
-            <FlexContainer>
-                <FlexContainer2>
+            <Flex justifyContent="space-between">
+                <Flex flexDirection="column">
                     <JoinUs variant="h2Bold">
                             GET IN TOUCH
                     </JoinUs>
                     <JoinUs variant="body">
                         We&rsquo;re on Discord. Join the conversation.
                     </JoinUs>
-                    <Button as="a" target="_blank" variant="primary" startIcon={<DiscordIcon />} style={{borderRadius: 0, maxWidth: "45%", margin: "1rem"}} href="https://discord.gg/K4DXfzxXeJ">
+                    <Button as="a" target="_blank" variant="primary" startIcon={<DiscordIcon />} style={{borderRadius: 0, maxWidth: "45%", margin: "1rem"}} href={Discord}>
                         AetherMeta Discord
                     </Button>
                     <JoinUs variant="h3Bold">
@@ -49,12 +42,12 @@ const Social: React.FC = () => {
                     <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "50%", margin: "1rem"}} href="/partnerships">
                         Partnership Enquires
                     </Button>
-                    <Button variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "55%", margin: "1rem"}}>
+                    <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "55%", margin: "1rem"}} href="mailto:info@aethermeta.io">
                         Join the AetherMeta team
                     </Button>
-                </FlexContainer2>
+                </Flex>
                 <StyledMoon />
-            </FlexContainer>
+            </Flex>
         </Container>
     );
 };

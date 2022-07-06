@@ -1,14 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Flex, Text, MailIcon, DiscordIcon, Button } from "@aethermeta/uikit";
+import Discord from "../discord";
 
 const Container = styled.div`
     padding 50px 0px 50px 0px;  
-`
-
-const FlexContainer = styled(Flex) `
-    justify-content: space-between;
-    flex-direction: column;
 `
 
 const StyledMoon = styled.div`
@@ -23,21 +19,6 @@ const MoonContainer = styled(Flex)`
     justify-content: center;
 `
 
-const ContactButton = styled(Button)`
-    max-width: 60%;
-    margin: 1rem;
-`
-
-const ContactButton2 = styled(Button)`
-    max-width: 65%;
-    margin: 1rem;
-`
-
-const ContactButton3 = styled(Button)`
-    max-width: 70%;
-    margin: 1rem;
-`
-
 const JoinUs = styled(Text)`
     max-width: 29rem;
     margin: 1rem;
@@ -46,33 +27,32 @@ const JoinUs = styled(Text)`
 const SocialTablet: React.FC = () => {
     return (
         <Container>
-            <FlexContainer>
-
+            <Flex justifyContent="space-between" flexDirection="column">
                 <JoinUs variant="h2Bold">
                         GET IN TOUCH
                 </JoinUs>
                 <JoinUs variant="body">
                     We&rsquo;re on Discord. Join the conversation.
                 </JoinUs>
-                <ContactButton variant="primary" startIcon={<DiscordIcon />} style={{borderRadius: 0}}>
-                    AetherMeta Discord
-                </ContactButton>
+                <Button as="a" target="_blank" variant="primary" startIcon={<DiscordIcon />} style={{borderRadius: 0, maxWidth: "60%", margin: "1rem"}} href={Discord}>
+                        AetherMeta Discord
+                </Button>
                 <JoinUs variant="h2Bold">
                     Join us
                 </JoinUs>
                 <JoinUs variant="body">
                     For a more private conversation on forming a brand partnership or career enquiry, email us.
                 </JoinUs>
-                <ContactButton2 variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0}}>
-                    Partnership Enquires
-                </ContactButton2>
-                <ContactButton3 variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0}}>
-                    Join the AetherMeta team
-                </ContactButton3>
+                <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "65%", margin: "1rem"}} href="/partnerships">
+                        Partnership Enquires
+                </Button>
+                <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "70%", margin: "1rem"}} href="mailto:info@aethermeta.io">
+                        Join the AetherMeta team
+                </Button>
                 <MoonContainer>
                     <StyledMoon />
                 </MoonContainer>
-            </FlexContainer>
+            </Flex>
         </Container>
     );
 };
