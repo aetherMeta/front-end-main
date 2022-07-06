@@ -4,16 +4,18 @@ import { State, UserState } from "store/types";
 import { useAppDispatch } from "store";
 import useRefresh from "hooks/useRefresh";
 import { dispatchUserPublicDataAsync } from "store/user";
+import useAccessToken from "../../hooks/useAccessToken";
 
 export const useDispatchUserPublicData = () => {
   const dispatch = useAppDispatch();
   const { slowRefresh } = useRefresh();
+  const { accessToken } = useAccessToken();
   useEffect(() => {
     const dispatchUserPublicData = async () => {
       dispatch(dispatchUserPublicDataAsync());
     };
     dispatchUserPublicData();
-  }, [dispatch, slowRefresh]);
+  }, [dispatch, slowRefresh, accessToken]);
 };
 
 export const useUser = (): UserState => {

@@ -7,6 +7,7 @@ import store from "store";
 import { RefreshContextProvider } from "contexts/RefreshContext";
 import { ToastsProvider } from "contexts/ToastsContext";
 import { getLibrary } from "utils/web3React";
+import { AccessTokenProvider } from "./contexts/AccessTokenContext";
 
 const ThemeProviderWrapper = (props) => {
   return <ThemeProvider theme={light} {...props} />;
@@ -19,7 +20,9 @@ const Providers: React.FC = ({ children }) => {
         <ToastsProvider>
           <ThemeProviderWrapper>
             <RefreshContextProvider>
-              <ModalProvider>{children}</ModalProvider>
+              <AccessTokenProvider>
+                <ModalProvider>{children}</ModalProvider>
+              </AccessTokenProvider>
             </RefreshContextProvider>
           </ThemeProviderWrapper>
         </ToastsProvider>

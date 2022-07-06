@@ -12,6 +12,7 @@ import Menu from "./components/Menu";
 import GlobalStyle from "./style/Global";
 import history from "./routerHistory";
 import "./App.css";
+import Debug from "./views/Debug";
 
 const App: React.FC = () => {
   return (
@@ -31,6 +32,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/partnerships" exact>
             <Partnerships />
+          </Route>
+          <Route path="/debug" exact>
+            <Debug />
           </Route>
           <Route>
             <NotFound />
