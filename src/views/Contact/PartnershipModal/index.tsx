@@ -75,12 +75,13 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
       email: false,
       description: false,
     };
-    for (const [key, value] of Object.entries(values)) {
-      if (value === initialValues[key]) {
+    Object.entries(values).forEach(entry => {
+    const [key, value] = entry;
+    if (value === initialValues[key]) {
         isValid = false;
         modifyErrors[key] = true;
-      }
     }
+    });
     setErrors((prevState) => {
       return { ...prevState, ...modifyErrors };
     });
