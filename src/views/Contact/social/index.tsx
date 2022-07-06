@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex, Text, MailIcon, DiscordIcon, Button } from "@aethermeta/uikit";
+import { Flex, Text, MailIcon, DiscordIcon, Button, useModal } from "@aethermeta/uikit";
 import Discord from "../discord";
 import PartnershipModal from "../PartnershipModal"
 
