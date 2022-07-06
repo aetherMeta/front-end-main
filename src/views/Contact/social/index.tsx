@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Flex, Text, MailIcon, DiscordIcon, Button } from "@aethermeta/uikit";
 import Discord from "../discord";
+import PartnershipModal from "../PartnershipModal"
 
 const Container = styled.div`
     padding 50px 0px 50px 56px;  
@@ -20,6 +21,15 @@ const JoinUs = styled(Text)`
 `
 
 const Social: React.FC = () => {
+    const [onPresent] = useModal(
+        <PartnershipModal onSubmit={(e, values: Values) => onSubmit(e, values)} />
+      );
+    
+      const onSubmit = async (e, values: Values) => {
+        e.preventDefault();
+        await postPartnershipEmail(values);
+      };
+
     return (
         <Container>
             <Flex justifyContent="space-between">
@@ -42,7 +52,7 @@ const Social: React.FC = () => {
                     <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "50%", margin: "1rem"}} href="/partnerships">
                         Partnership Enquires
                     </Button>
-                    <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "55%", margin: "1rem"}} href="mailto:info@aethermeta.io">
+                    <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "55%", margin: "1rem"}} href="mailto:info@aethermeta.io" onClick={onPresent}>
                         Join the AetherMeta team
                     </Button>
                 </Flex>
