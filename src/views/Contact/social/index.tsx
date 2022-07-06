@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Flex, Text, MailIcon, DiscordIcon, Button, useModal } from "@aethermeta/uikit";
 import Discord from "../discord";
-import PartnershipModal from "../PartnershipModal"
+import PartnershipModal, { Values } from "../PartnershipModal"
 
 const Container = styled.div`
     padding 50px 0px 50px 56px;  
