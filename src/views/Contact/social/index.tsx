@@ -58,7 +58,7 @@ const Social: React.FC = () => {
                         href="/partnerships">
                         Partnership Enquires
                     </Button>
-                    <Button as="a" 
+                    <Button 
                         variant="primary" 
                         startIcon={<MailIcon />} 
                         style={{borderRadius: 0, maxWidth: "55%", margin: "1rem"}} 
