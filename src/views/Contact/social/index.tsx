@@ -27,10 +27,10 @@ const Social: React.FC = () => {
         <PartnershipModal onSubmit={(e, values: Values) => onSubmit(e, values)} />
       );
     
-      const onSubmit = async (e, values: Values) => {
+    const onSubmit = async (e, values: Values) => {
         e.preventDefault();
-        await postPartnershipEmail(values);
-      };
+    await postPartnershipEmail(values);
+    };
 
     return (
         <Container>
