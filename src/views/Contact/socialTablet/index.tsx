@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Flex, Text, MailIcon, DiscordIcon, Button } from "@aethermeta/uikit";
+import { Flex, Text, MailIcon, DiscordIcon, Button, useModal } from "@aethermeta/uikit";
+import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
 import Discord from "../discord";
+import PartnershipModal, { Values } from "../PartnershipModal";
 
 const Container = styled.div`
     padding 50px 0px 50px 0px;  
@@ -25,6 +27,16 @@ const JoinUs = styled(Text)`
 `
 
 const SocialTablet: React.FC = () => {
+
+    const [onPresent] = useModal(
+        <PartnershipModal onSubmit={(e, values: Values) => onSubmit(e, values)} />
+      );
+    
+    const onSubmit = async (e, values: Values) => {
+        e.preventDefault();
+    await postPartnershipEmail(values);
+    };
+
     return (
         <Container>
             <Flex justifyContent="space-between" flexDirection="column">
@@ -46,7 +58,12 @@ const SocialTablet: React.FC = () => {
                 <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "65%", margin: "1rem"}} href="/partnerships">
                         Partnership Enquires
                 </Button>
-                <Button as="a" variant="primary" startIcon={<MailIcon />} style={{borderRadius: 0, maxWidth: "70%", margin: "1rem"}} href="mailto:info@aethermeta.io">
+                <Button 
+                    as="a" 
+                    variant="primary" 
+                    startIcon={<MailIcon />} 
+                    style={{borderRadius: 0, maxWidth: "70%", margin: "1rem"}} 
+                    onClick={onPresent}>
                         Join the AetherMeta team
                 </Button>
                 <MoonContainer>
