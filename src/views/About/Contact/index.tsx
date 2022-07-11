@@ -12,11 +12,6 @@ const FlexContainer = styled(Flex)`
   align-items: center;
 `;
 
-const StyledButton = styled(Button)`
-  border-radius: 0;
-  background-color: transparent;
-`;
-
 const StyledFlex = styled(Flex)`
   gap: 16px;
   flex-direction: column;
@@ -48,12 +43,18 @@ const Contact: React.FC = () => {
           our team:
         </Text>
         <StyledFlex>
-          <StyledButton variant="tertiary" startIcon={<MailIcon />}>
+          <Button
+            variant="tertiary"
+            startIcon={<MailIcon />}
+            href="/partnerships"
+            as="a"
+            style={{ borderRadius: 0, backgroundColor: "transparent" }}
+          >
             Partnership Enquiries
-          </StyledButton>
-          <StyledButton variant="tertiary" startIcon={<MailIcon />}>
+          </Button>
+          {/* <StyledButton variant="tertiary" startIcon={<MailIcon />}>
             Join the AetherMeta team
-          </StyledButton>
+          </StyledButton> */}
         </StyledFlex>
       </FlexContainer>
     </Container>

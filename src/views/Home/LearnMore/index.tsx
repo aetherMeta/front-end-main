@@ -14,6 +14,7 @@ const StyledEllipse = styled.div`
   background-repeat: no-repeat;
   ${({ theme }) => theme.mediaQueries.sm} {
     background: url(/images/learnMore.svg);
+    background-repeat: no-repeat;
     height: 634px;
     width: 580px;
   }
@@ -40,6 +41,7 @@ const LearnMore: React.FC = () => {
               WELCOME TO
             </Text>
             <Text variant="h1Bold" display="inline">
+              {" "}
               AETHER
             </Text>
             <Text variant="h1Light" display="inline">
@@ -47,9 +49,9 @@ const LearnMore: React.FC = () => {
             </Text>
           </div>
           <Text variant="body" mt="16px">
-            If you can get in, you will walk into the most exclusive marketplace
-            in the metaverse: a stunning collection of luxury brands, art – and
-            more.
+            A commerce platform that allows businesses and artists to showcase
+            amazing products in a way never before possible. Drive sales, build
+            experiences, and expand into the Metaverse.
           </Text>
         </Flex>
       </FlexContainer>

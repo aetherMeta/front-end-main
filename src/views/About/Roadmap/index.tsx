@@ -92,11 +92,11 @@ const Roadmap: React.FC = () => {
       <FlexContainer>
         <Flex flexDirection="column" maxWidth="420px">
           <Text variant="h2Bold" mb="16px">
-            Join us at the new edge of luxury
+            Join us at the new edge of shopping
           </Text>
           <Text variant="body">
             Join the AetherMeta to get access to limited edition NFTs from some
-            of the largest luxury brands in the business.{" "}
+            of the largest brands in the business.{" "}
           </Text>
         </Flex>
         <StyledFlex flexDirection="column">
@@ -119,14 +119,14 @@ const Roadmap: React.FC = () => {
               </Text>
               <StyledText variant="h4Bold">Avatars</StyledText>
               <Text variant="body">
-                Create and adorn your Avatar with the latest luxury goods and
+                Create and adorn your Avatar with the latest goods and
                 high-fashion looks from AetherMeta.
               </Text>
               <StyledText variant="h4Bold">Life in the metaverse</StyledText>
               <Text variant="body">
                 Our island will expand, with new buildings, community areas and
                 worlds to explore. Leave the Earth behind and experience a life
-                of luxury in the skies.
+                in the skies.
               </Text>
             </StyledFlex3>
           </StyledFlex2>

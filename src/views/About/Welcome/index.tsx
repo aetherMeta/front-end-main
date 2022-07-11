@@ -76,15 +76,16 @@ const WelcomeSymbol = styled.div`
   }
 `;
 
-const LearnMore: React.FC = () => {
+const Welcome: React.FC = () => {
   return (
     <Container>
       <FlexContainer>
         <StyledInline>
           <Text variant="h1Light" display="inline">
-            WELCOME TO{" "}
+            WELCOME TO
           </Text>
           <Text variant="h1Bold" display="inline">
+            {" "}
             AETHER
           </Text>
           <Text variant="h1Light" display="inline">
@@ -114,6 +115,16 @@ const LearnMore: React.FC = () => {
               galaxies and slows time to a crawl.
             </StyledText>
             <StyledText variant="body">
+              The travelers then partnered with the most enlightened earthbound
+              artists, artisans and craftsman in order to enhance their flying
+              city with the greatest parts of human culture. This cultural
+              exchange allowed their floating cities to flourish, blending their
+              incredible technology with the best parts of human creativity.
+              This powerful exchange and enlightenment helped increase the
+              amount of energy in the Orb and create wondrous opportunities for
+              the denizens of the floating cities.
+            </StyledText>
+            <StyledText variant="body">
               Eons passed and the travelers moved on, seeking out new planets.
               They abandoned the Aether Orb, leaving it listless in the sky.
               Without the travelers, the Orb’s power slowly faded, becoming a
@@ -137,18 +148,25 @@ const LearnMore: React.FC = () => {
               guests will receive exclusive invitations as well.
             </StyledText>
             <StyledText variant="body">
+              Due to the exclusiveness of the Aether Orb technology and the
+              hidden nature of the floating AetherMeta city, the secret to
+              accessing this breathtaking landscape is stored within highly
+              advanced Wayfinders. These Wayfinders will soon become available
+              for acquisition by those seeking to explore AetherMeta.
+            </StyledText>
+            <StyledText variant="body">
               Join us in this place of wonder and secrets. Here you will find
               the most exclusive marketplace in the metaverse with a stunning
-              collection of luxury brands, art – and more. Enter our metaverse
-              and allow yourself to absorb the warmth of the sun, window-shop
-              the picturesque streets and get lost wandering the mountains and
+              collection of brands, art – and more. Enter our metaverse and
+              allow yourself to absorb the warmth of the sun, window-shop the
+              picturesque streets and get lost wandering the mountains and
               gardens. And of course, there’s the breathtakingly endless clouds
               and sky.
             </StyledText>
             <StyledText variant="body">
               With your help and our team’s capabilities, we can together
-              restore AetherMeta to an everlasting ecosystem of luxury and
-              creativity. All are welcome – you just have to find a way up here.
+              restore AetherMeta to an everlasting ecosystem of creativity. All
+              are welcome – find your way to the future.
             </StyledText>
           </TextContainer2>
         </StyledFlex>
@@ -168,4 +186,4 @@ const LearnMore: React.FC = () => {
   );
 };
 
-export default LearnMore;
+export default Welcome;
