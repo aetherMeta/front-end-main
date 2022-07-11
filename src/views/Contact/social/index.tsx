@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Flex, Text, MailIcon, DiscordIcon, Button, useModal } from "@aethermeta/uikit";
 import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
 import Discord from "../discord";
-import PartnershipModal, { Values } from "../PartnershipModal";
+import PartnershipModal, { Values } from "../../../components/partnershipModel";
 
 
 const Container = styled.div`
