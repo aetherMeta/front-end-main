@@ -82,24 +82,6 @@ export interface CreatePrimarySaleDto {
     'uri': string;
     /**
      * 
-     * @type {number}
-     * @memberof CreatePrimarySaleDto
-     */
-    'tokenV': number;
-    /**
-     * 
-     * @type {object}
-     * @memberof CreatePrimarySaleDto
-     */
-    'tokenR': object;
-    /**
-     * 
-     * @type {object}
-     * @memberof CreatePrimarySaleDto
-     */
-    'tokenS': object;
-    /**
-     * 
      * @type {string}
      * @memberof CreatePrimarySaleDto
      */

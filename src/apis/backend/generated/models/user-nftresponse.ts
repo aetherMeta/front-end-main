@@ -13,7 +13,7 @@
  */
 
 
-import { GetAssetResponse } from './get-asset-response';
+import { AssetDto } from './asset-dto';
 import { UserNFTResponseCollection } from './user-nftresponse-collection';
 
 /**
@@ -42,10 +42,10 @@ export interface UserNFTResponse {
     'collection'?: UserNFTResponseCollection | null;
     /**
      * 
-     * @type {GetAssetResponse}
+     * @type {AssetDto}
      * @memberof UserNFTResponse
      */
-    'asset': GetAssetResponse;
+    'asset': AssetDto;
     /**
      * 
      * @type {string}

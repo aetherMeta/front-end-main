@@ -17,38 +17,32 @@
 /**
  * 
  * @export
- * @interface GetAssetResponse
+ * @interface TokenDto
  */
-export interface GetAssetResponse {
+export interface TokenDto {
     /**
      * 
      * @type {string}
-     * @memberof GetAssetResponse
+     * @memberof TokenDto
      */
-    'id': string;
+    'uri': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TokenDto
+     */
+    'v': number;
     /**
      * 
      * @type {string}
-     * @memberof GetAssetResponse
+     * @memberof TokenDto
      */
-    'url': string;
+    'r': string;
     /**
      * 
      * @type {string}
-     * @memberof GetAssetResponse
+     * @memberof TokenDto
      */
-    'type': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GetAssetResponse
-     */
-    'description': string;
-    /**
-     * 
-     * @type {object}
-     * @memberof GetAssetResponse
-     */
-    'data': object;
+    's': string;
 }
 

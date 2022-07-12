@@ -17,32 +17,32 @@
 /**
  * 
  * @export
- * @interface CollectionResponse
+ * @interface ComissionDto
  */
-export interface CollectionResponse {
+export interface ComissionDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof ComissionDto
+     */
+    'comissionBPS': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ComissionDto
+     */
+    'v': number;
     /**
      * 
      * @type {string}
-     * @memberof CollectionResponse
+     * @memberof ComissionDto
      */
-    'id': string;
+    'r': string;
     /**
      * 
      * @type {string}
-     * @memberof CollectionResponse
+     * @memberof ComissionDto
      */
-    'address': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CollectionResponse
-     */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CollectionResponse
-     */
-    'description': string;
+    's': string;
 }
 

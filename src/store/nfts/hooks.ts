@@ -13,7 +13,7 @@ export const useDispatchNftPublicData = () => {
   const user = useUser();
   useEffect(() => {
     const dispatchNftPublicData = async () => {
-      dispatch(dispatchNftPublicDataAsync());
+      dispatch(dispatchNftPublicDataAsync(user.data.address));
     };
     dispatchNftPublicData();
   }, [dispatch, slowRefresh, user.data.address]);

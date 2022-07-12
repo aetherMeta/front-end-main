@@ -21,9 +21,9 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { GetUserResponseDto } from '../models';
-// @ts-ignore
 import { PatchUserRequestDto } from '../models';
+// @ts-ignore
+import { UserResponseDto } from '../models';
 /**
  * UserApi - axios parameter creator
  * @export
@@ -120,7 +120,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userControllerGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUserResponseDto>> {
+        async userControllerGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponseDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerGet(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -131,7 +131,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userControllerPatch(patchUserRequestDto: PatchUserRequestDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetUserResponseDto>> {
+        async userControllerPatch(patchUserRequestDto: PatchUserRequestDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponseDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerPatch(patchUserRequestDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -151,7 +151,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerGet(options?: any): AxiosPromise<GetUserResponseDto> {
+        userControllerGet(options?: any): AxiosPromise<UserResponseDto> {
             return localVarFp.userControllerGet(options).then((request) => request(axios, basePath));
         },
         /**
@@ -161,7 +161,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerPatch(patchUserRequestDto: PatchUserRequestDto, options?: any): AxiosPromise<GetUserResponseDto> {
+        userControllerPatch(patchUserRequestDto: PatchUserRequestDto, options?: any): AxiosPromise<UserResponseDto> {
             return localVarFp.userControllerPatch(patchUserRequestDto, options).then((request) => request(axios, basePath));
         },
     };

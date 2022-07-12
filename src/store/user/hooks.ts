@@ -1,10 +1,13 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { State, UserState } from "store/types";
 import { useAppDispatch } from "store";
 import useRefresh from "hooks/useRefresh";
-import { dispatchUserPublicDataAsync } from "store/user";
+import { dispatchUserPublicDataAsync, setUserPublicData } from "store/user";
 import useAccessToken from "../../hooks/useAccessToken";
+import client from "../../apis/backend/client";
+import backend from "../../apis/backend";
+import { PatchUserRequestDto } from "../../apis/backend/generated";
 
 export const useDispatchUserPublicData = () => {
   const dispatch = useAppDispatch();
@@ -16,6 +19,25 @@ export const useDispatchUserPublicData = () => {
     };
     dispatchUserPublicData();
   }, [dispatch, slowRefresh, accessToken]);
+};
+
+export const useUpdateUser = () => {
+  const dispatch = useAppDispatch();
+  return useCallback(
+    async (dto: PatchUserRequestDto) => {
+      try {
+        if (client.defaults.headers.common.Authorization) {
+          const { data: userData } = await backend.user.userControllerPatch(
+            dto
+          );
+          dispatch(setUserPublicData(userData));
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    [dispatch]
+  );
 };
 
 export const useUser = (): UserState => {

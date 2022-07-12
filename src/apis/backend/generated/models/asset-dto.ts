@@ -17,20 +17,38 @@
 /**
  * 
  * @export
- * @interface GetCollectionResponse
+ * @interface AssetDto
  */
-export interface GetCollectionResponse {
+export interface AssetDto {
     /**
      * 
      * @type {string}
-     * @memberof GetCollectionResponse
+     * @memberof AssetDto
      */
     'id': string;
     /**
      * 
      * @type {string}
-     * @memberof GetCollectionResponse
+     * @memberof AssetDto
      */
-    'name': string;
+    'url': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AssetDto
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AssetDto
+     */
+    'description': string;
+    /**
+     * 
+     * @type {object}
+     * @memberof AssetDto
+     */
+    'data': object;
 }
 

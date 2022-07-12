@@ -15,115 +15,121 @@
 
 import { AssetDto } from './asset-dto';
 import { ComissionDto } from './comission-dto';
-import { NFTResponse } from './nftresponse';
+import { SecondarySaleResponseNft } from './secondary-sale-response-nft';
 import { TokenDto } from './token-dto';
 
 /**
  * 
  * @export
- * @interface PrimaryAuctionResponse
+ * @interface PrimarySaleResponse
  */
-export interface PrimaryAuctionResponse {
+export interface PrimarySaleResponse {
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'amount': string;
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'price': string;
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'nonce': string;
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'r': string;
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     's': string;
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'royaltyValue': string;
     /**
      * 
      * @type {TokenDto}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'token': TokenDto;
     /**
      * 
      * @type {ComissionDto}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'comission': ComissionDto;
     /**
      * 
-     * @type {NFTResponse}
-     * @memberof PrimaryAuctionResponse
+     * @type {SecondarySaleResponseNft}
+     * @memberof PrimarySaleResponse
      */
-    'nft': NFTResponse;
+    'nft'?: SecondarySaleResponseNft | null;
     /**
      * 
      * @type {AssetDto}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'asset': AssetDto;
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'id': string;
     /**
      * 
      * @type {number}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'chainId': number;
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
-    'currency': string;
+    'expiresAt': string;
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
+     */
+    'createdAt': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PrimarySaleResponse
      */
     'sellerAddress': string;
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
-    'expiresAt': string;
+    'currency': string;
     /**
      * 
      * @type {number}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'v': number;
     /**
      * 
      * @type {string}
-     * @memberof PrimaryAuctionResponse
+     * @memberof PrimarySaleResponse
      */
     'royaltyRecipient': string;
 }

@@ -25,13 +25,13 @@ export interface PatchUserRequestDto {
      * @type {string}
      * @memberof PatchUserRequestDto
      */
-    'username': string;
+    'username'?: string;
     /**
      * 
      * @type {string}
      * @memberof PatchUserRequestDto
      */
-    'pendingEmail': string;
+    'pendingEmail'?: string;
     /**
      * 
      * @type {string}

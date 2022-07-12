@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useWeb3React } from "@web3-react/core";
 import { NftState, Nft } from "store/types";
 import backend from "../../apis/backend";
 
@@ -9,12 +8,10 @@ const initialState: NftState = {
 };
 
 // Thunks
-export const dispatchNftPublicDataAsync = () => async (dispatch) => {
-  const { account } = useWeb3React();
-
+export const dispatchNftPublicDataAsync = (address) => async (dispatch) => {
   try {
     const { data: nftData } = await backend.nfts.nftsControllerFindUserNft(
-      account
+      address
     );
     dispatch(setNftPublicData(nftData));
   } catch (e) {

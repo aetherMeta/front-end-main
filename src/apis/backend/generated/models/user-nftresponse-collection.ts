@@ -13,12 +13,12 @@
  */
 
 
-import { GetCollectionResponse } from './get-collection-response';
+import { CollectionResponse } from './collection-response';
 
 /**
  * @type UserNFTResponseCollection
  * @export
  */
-export type UserNFTResponseCollection = GetCollectionResponse;
+export type UserNFTResponseCollection = CollectionResponse;
 
 

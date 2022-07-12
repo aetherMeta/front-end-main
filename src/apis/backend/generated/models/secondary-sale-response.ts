@@ -14,90 +14,90 @@
 
 
 import { ComissionDto } from './comission-dto';
-import { NFTResponse } from './nftresponse';
+import { SecondarySaleResponseNft } from './secondary-sale-response-nft';
 
 /**
  * 
  * @export
- * @interface SecondaryAuctionResponse
+ * @interface SecondarySaleResponse
  */
-export interface SecondaryAuctionResponse {
+export interface SecondarySaleResponse {
     /**
      * 
      * @type {string}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
     'amount': string;
     /**
      * 
      * @type {string}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
     'price': string;
     /**
      * 
      * @type {string}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
     'nonce': string;
     /**
      * 
      * @type {string}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
     'r': string;
     /**
      * 
      * @type {string}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
     's': string;
     /**
      * 
      * @type {ComissionDto}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
     'comission': ComissionDto;
     /**
      * 
-     * @type {NFTResponse}
-     * @memberof SecondaryAuctionResponse
+     * @type {SecondarySaleResponseNft}
+     * @memberof SecondarySaleResponse
      */
-    'nft': NFTResponse;
+    'nft'?: SecondarySaleResponseNft | null;
     /**
      * 
      * @type {string}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
     'id': string;
     /**
      * 
-     * @type {number}
-     * @memberof SecondaryAuctionResponse
+     * @type {string}
+     * @memberof SecondarySaleResponse
      */
-    'chainId': number;
+    'expiresAt': string;
     /**
      * 
      * @type {string}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
-    'currency': string;
+    'createdAt': string;
     /**
      * 
      * @type {string}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
     'sellerAddress': string;
     /**
      * 
      * @type {string}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
-    'expiresAt': string;
+    'currency': string;
     /**
      * 
      * @type {number}
-     * @memberof SecondaryAuctionResponse
+     * @memberof SecondarySaleResponse
      */
     'v': number;
 }

@@ -21,7 +21,7 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { GetNFTResponse } from '../models';
+import { NFTResponse } from '../models';
 // @ts-ignore
 import { PatchNFTRequestBodyDto } from '../models';
 // @ts-ignore
@@ -231,7 +231,7 @@ export const NFTsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async nftsControllerCreate(postNFTRequestBodyDto: PostNFTRequestBodyDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetNFTResponse>> {
+        async nftsControllerCreate(postNFTRequestBodyDto: PostNFTRequestBodyDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NFTResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.nftsControllerCreate(postNFTRequestBodyDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -243,7 +243,7 @@ export const NFTsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async nftsControllerFindOne(chainId: number, address: string, tokenId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetNFTResponse>> {
+        async nftsControllerFindOne(chainId: number, address: string, tokenId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NFTResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.nftsControllerFindOne(chainId, address, tokenId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -272,7 +272,7 @@ export const NFTsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async nftsControllerUpdateNFT(patchNFTRequestBodyDto: PatchNFTRequestBodyDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetNFTResponse>> {
+        async nftsControllerUpdateNFT(patchNFTRequestBodyDto: PatchNFTRequestBodyDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NFTResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.nftsControllerUpdateNFT(patchNFTRequestBodyDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -292,7 +292,7 @@ export const NFTsApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nftsControllerCreate(postNFTRequestBodyDto: PostNFTRequestBodyDto, options?: any): AxiosPromise<GetNFTResponse> {
+        nftsControllerCreate(postNFTRequestBodyDto: PostNFTRequestBodyDto, options?: any): AxiosPromise<NFTResponse> {
             return localVarFp.nftsControllerCreate(postNFTRequestBodyDto, options).then((request) => request(axios, basePath));
         },
         /**
@@ -303,7 +303,7 @@ export const NFTsApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nftsControllerFindOne(chainId: number, address: string, tokenId: number, options?: any): AxiosPromise<GetNFTResponse> {
+        nftsControllerFindOne(chainId: number, address: string, tokenId: number, options?: any): AxiosPromise<NFTResponse> {
             return localVarFp.nftsControllerFindOne(chainId, address, tokenId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -329,7 +329,7 @@ export const NFTsApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        nftsControllerUpdateNFT(patchNFTRequestBodyDto: PatchNFTRequestBodyDto, options?: any): AxiosPromise<GetNFTResponse> {
+        nftsControllerUpdateNFT(patchNFTRequestBodyDto: PatchNFTRequestBodyDto, options?: any): AxiosPromise<NFTResponse> {
             return localVarFp.nftsControllerUpdateNFT(patchNFTRequestBodyDto, options).then((request) => request(axios, basePath));
         },
     };

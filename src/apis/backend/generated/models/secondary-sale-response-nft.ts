@@ -13,14 +13,14 @@
  */
 
 
-import { GetAssetResponse } from './get-asset-response';
-import { GetNFTResponse } from './get-nftresponse';
+import { AssetDto } from './asset-dto';
+import { NFTResponse } from './nftresponse';
 import { UserNFTResponseCollection } from './user-nftresponse-collection';
 
 /**
- * @type GetSecondarySaleResponseNft
+ * @type SecondarySaleResponseNft
  * @export
  */
-export type GetSecondarySaleResponseNft = GetNFTResponse;
+export type SecondarySaleResponseNft = NFTResponse;
 
 

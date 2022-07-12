@@ -17,64 +17,64 @@
 /**
  * 
  * @export
- * @interface GetUserResponseDto
+ * @interface UserResponseDto
  */
-export interface GetUserResponseDto {
+export interface UserResponseDto {
     /**
      * 
      * @type {string}
-     * @memberof GetUserResponseDto
+     * @memberof UserResponseDto
      */
-    'role': GetUserResponseDtoRoleEnum;
+    'role': UserResponseDtoRoleEnum;
     /**
      * 
      * @type {string}
-     * @memberof GetUserResponseDto
+     * @memberof UserResponseDto
      */
     'pendingEmail': string;
     /**
      * 
      * @type {string}
-     * @memberof GetUserResponseDto
+     * @memberof UserResponseDto
      */
     'email': string;
     /**
      * 
      * @type {string}
-     * @memberof GetUserResponseDto
+     * @memberof UserResponseDto
      */
     'username': string;
     /**
      * 
      * @type {string}
-     * @memberof GetUserResponseDto
+     * @memberof UserResponseDto
      */
     'address': string;
     /**
      * 
      * @type {string}
-     * @memberof GetUserResponseDto
+     * @memberof UserResponseDto
      */
     'firstName': string | null;
     /**
      * 
      * @type {string}
-     * @memberof GetUserResponseDto
+     * @memberof UserResponseDto
      */
     'lastName': string | null;
     /**
      * 
      * @type {string}
-     * @memberof GetUserResponseDto
+     * @memberof UserResponseDto
      */
     'twitterHandle': string;
 }
 
-export const GetUserResponseDtoRoleEnum = {
+export const UserResponseDtoRoleEnum = {
     Admin: 'ADMIN',
     User: 'USER'
 } as const;
 
-export type GetUserResponseDtoRoleEnum = typeof GetUserResponseDtoRoleEnum[keyof typeof GetUserResponseDtoRoleEnum];
+export type UserResponseDtoRoleEnum = typeof UserResponseDtoRoleEnum[keyof typeof UserResponseDtoRoleEnum];
 
 

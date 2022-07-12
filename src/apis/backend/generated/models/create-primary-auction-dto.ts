@@ -88,24 +88,6 @@ export interface CreatePrimaryAuctionDto {
     'uri': string;
     /**
      * 
-     * @type {number}
-     * @memberof CreatePrimaryAuctionDto
-     */
-    'tokenV': number;
-    /**
-     * 
-     * @type {object}
-     * @memberof CreatePrimaryAuctionDto
-     */
-    'tokenR': object;
-    /**
-     * 
-     * @type {object}
-     * @memberof CreatePrimaryAuctionDto
-     */
-    'tokenS': object;
-    /**
-     * 
      * @type {object}
      * @memberof CreatePrimaryAuctionDto
      */

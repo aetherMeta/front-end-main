@@ -13,61 +13,61 @@
  */
 
 
-import { GetAssetResponse } from './get-asset-response';
+import { AssetDto } from './asset-dto';
 import { UserNFTResponseCollection } from './user-nftresponse-collection';
 
 /**
  * 
  * @export
- * @interface GetNFTResponse
+ * @interface NFTResponse
  */
-export interface GetNFTResponse {
+export interface NFTResponse {
     /**
      * 
      * @type {string}
-     * @memberof GetNFTResponse
+     * @memberof NFTResponse
      */
     'tokenId': string;
     /**
      * 
      * @type {string}
-     * @memberof GetNFTResponse
+     * @memberof NFTResponse
      */
     'total': string;
     /**
      * 
      * @type {UserNFTResponseCollection}
-     * @memberof GetNFTResponse
+     * @memberof NFTResponse
      */
     'collection'?: UserNFTResponseCollection | null;
     /**
      * 
-     * @type {GetAssetResponse}
-     * @memberof GetNFTResponse
+     * @type {AssetDto}
+     * @memberof NFTResponse
      */
-    'asset': GetAssetResponse;
+    'asset': AssetDto;
     /**
      * 
      * @type {number}
-     * @memberof GetNFTResponse
+     * @memberof NFTResponse
      */
     'chainId': number;
     /**
      * 
      * @type {string}
-     * @memberof GetNFTResponse
+     * @memberof NFTResponse
      */
     'address': string;
     /**
      * 
      * @type {string}
-     * @memberof GetNFTResponse
+     * @memberof NFTResponse
      */
     'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof GetNFTResponse
+     * @memberof NFTResponse
      */
     'description'?: string;
 }
