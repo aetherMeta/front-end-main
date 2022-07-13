@@ -14,13 +14,15 @@ import destroyAccessToken from "../apis/backend/cookies/accessToken/destroyAcces
 
 const contextDefaultValue = {
   accessToken: undefined,
+  accessTokenAddress: undefined,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setAccessToken: () => {},
 };
 
 const AccessTokenContext = createContext<{
   accessToken: undefined | string | null;
-  setAccessToken: (accessToken: string | null) => void;
+  accessTokenAddress: undefined | string | null;
+  setAccessToken: (accessToken: string | null, address: string | null) => void;
 }>(contextDefaultValue);
 
 /**
@@ -35,6 +37,8 @@ export const AccessTokenProvider: VFC<ProviderProps> = ({
   children,
 }: ProviderProps) => {
   const [accessToken, setAccessTokenState] = useState(undefined);
+  const [accessTokenAddress, setAccessTokenAddress] = useState(undefined);
+
   const { account } = useWeb3React();
 
   // clear access token cookie on account switch
@@ -57,8 +61,9 @@ export const AccessTokenProvider: VFC<ProviderProps> = ({
       : undefined;
   }, [accessToken]);
 
-  const setAccessToken = (_accessToken) => {
+  const setAccessToken = (_accessToken, _address) => {
     setAccessTokenState(_accessToken);
+    setAccessTokenAddress(_address);
   };
 
   // Check if current token has expired
@@ -68,7 +73,7 @@ export const AccessTokenProvider: VFC<ProviderProps> = ({
     const checkAccessTokenExpiry = () => {
       const latestAccessToken = getAccessToken();
       if (accessToken && !latestAccessToken) {
-        setAccessToken(latestAccessToken);
+        setAccessToken(latestAccessToken, null);
       }
     };
 
@@ -79,7 +84,9 @@ export const AccessTokenProvider: VFC<ProviderProps> = ({
   }, [accessToken]);
 
   return (
-    <AccessTokenContext.Provider value={{ accessToken, setAccessToken }}>
+    <AccessTokenContext.Provider
+      value={{ accessToken, accessTokenAddress, setAccessToken }}
+    >
       {children}
     </AccessTokenContext.Provider>
   );

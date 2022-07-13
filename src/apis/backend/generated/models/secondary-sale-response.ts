@@ -57,7 +57,7 @@ export interface SecondarySaleResponse {
      * @type {ComissionDto}
      * @memberof SecondarySaleResponse
      */
-    'comission': ComissionDto;
+    'commission': ComissionDto;
     /**
      * 
      * @type {SecondarySaleResponseNft}

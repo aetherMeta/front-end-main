@@ -39,6 +39,7 @@ models/post-nftrequest-body-dto.ts
 models/primary-auction-response.ts
 models/primary-bid-response.ts
 models/primary-sale-response.ts
+models/royalty-dto.ts
 models/secondary-auction-response.ts
 models/secondary-bid-response.ts
 models/secondary-sale-response-nft.ts

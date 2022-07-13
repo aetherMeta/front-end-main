@@ -5,9 +5,11 @@ import hasExpired from "./hasExpired";
 import { AccessTokenPayload } from "./interface";
 
 // get token from cookie
-const getAccessToken = (): string | null => {
+const getAccessToken = (): { accessToken: string; address: string } | null => {
   const cookies = parseCookies();
-  const accessToken = cookies[ACCESS_TOKEN_COOKIE_NAME];
+
+  if (!cookies[ACCESS_TOKEN_COOKIE_NAME]) return null;
+  const [accessToken, address] = JSON.parse(cookies[ACCESS_TOKEN_COOKIE_NAME]);
 
   if (!accessToken) {
     return null;
@@ -20,7 +22,7 @@ const getAccessToken = (): string | null => {
       return null;
     }
 
-    return accessToken;
+    return { accessToken, address };
   } catch (err) {
     return null;
   }

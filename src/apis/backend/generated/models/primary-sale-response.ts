@@ -15,6 +15,7 @@
 
 import { AssetDto } from './asset-dto';
 import { ComissionDto } from './comission-dto';
+import { RoyaltyDto } from './royalty-dto';
 import { SecondarySaleResponseNft } from './secondary-sale-response-nft';
 import { TokenDto } from './token-dto';
 
@@ -56,10 +57,10 @@ export interface PrimarySaleResponse {
     's': string;
     /**
      * 
-     * @type {string}
+     * @type {RoyaltyDto}
      * @memberof PrimarySaleResponse
      */
-    'royaltyValue': string;
+    'royalty': RoyaltyDto;
     /**
      * 
      * @type {TokenDto}
@@ -71,7 +72,7 @@ export interface PrimarySaleResponse {
      * @type {ComissionDto}
      * @memberof PrimarySaleResponse
      */
-    'comission': ComissionDto;
+    'commission': ComissionDto;
     /**
      * 
      * @type {SecondarySaleResponseNft}
@@ -126,11 +127,5 @@ export interface PrimarySaleResponse {
      * @memberof PrimarySaleResponse
      */
     'v': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PrimarySaleResponse
-     */
-    'royaltyRecipient': string;
 }
 

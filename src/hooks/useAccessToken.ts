@@ -32,9 +32,11 @@ const useAccessToken = (): Returns => {
    */
 
   const loadAccessTokenFromCookie = async () => {
-    const accessTokenFromCookie = getAccessTokenCookie();
-    if (!accessTokenFromCookie) return;
-    accessTokenContext.setAccessToken(accessTokenFromCookie);
+    const cookie = getAccessTokenCookie();
+    if (!cookie) return;
+
+    const { accessToken: accessTokenFromCookie, address } = cookie;
+    accessTokenContext.setAccessToken(accessTokenFromCookie, address);
 
     // Set Authorization header
     client.defaults.headers.common.Authorization = accessTokenFromCookie
@@ -91,7 +93,7 @@ const useAccessToken = (): Returns => {
         });
 
         // store token in cookie
-        setAccessTokenCookie(jwt);
+        setAccessTokenCookie(jwt, activeAccount);
 
         // Set Authorization header
         client.defaults.headers.common.Authorization = jwt
@@ -99,7 +101,7 @@ const useAccessToken = (): Returns => {
           : undefined;
 
         // set token in state
-        accessTokenContext.setAccessToken(jwt);
+        accessTokenContext.setAccessToken(jwt, activeAccount);
 
         return true;
       } catch (err: any) {
@@ -118,7 +120,8 @@ const useAccessToken = (): Returns => {
   return {
     loading:
       accessTokenContext.accessToken === undefined ||
-      accessTokenContext.accessToken === null,
+      accessTokenContext.accessToken === null ||
+      accessTokenContext.accessTokenAddress !== account,
     accessToken: accessTokenContext.accessToken || null,
     reload: loadAccessTokenFromCookie,
     requestSignature,

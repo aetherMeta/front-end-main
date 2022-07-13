@@ -16,7 +16,7 @@ export const primaryBuy = async (
 ) => {
   const {
     amount,
-    comission,
+    commission,
     currency,
     id,
     nonce,
@@ -26,8 +26,7 @@ export const primaryBuy = async (
     sellerAddress,
     token,
     v,
-    royaltyRecipient,
-    royaltyValue,
+    royalty: { recipient, value },
   } = sale;
   const mintAsk = [
     ASK_TYPE.PrimarySale,
@@ -36,7 +35,7 @@ export const primaryBuy = async (
     amount,
     price,
     nonce,
-    [royaltyRecipient, royaltyValue],
+    [recipient, value],
     v,
     Buffer.from(r.substring(2), "hex"),
     Buffer.from(s.substring(2), "hex"),
@@ -46,10 +45,10 @@ export const primaryBuy = async (
     mintAsk,
     [
       id,
-      comission.comissionBPS,
-      comission.v,
-      Buffer.from(comission.r.substring(2), "hex"),
-      Buffer.from(comission.s.substring(2), "hex"),
+      commission.commissionBPS,
+      commission.v,
+      Buffer.from(commission.r.substring(2), "hex"),
+      Buffer.from(commission.s.substring(2), "hex"),
     ],
     [
       id,

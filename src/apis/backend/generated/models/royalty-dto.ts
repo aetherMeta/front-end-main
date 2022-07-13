@@ -17,32 +17,20 @@
 /**
  * 
  * @export
- * @interface ComissionDto
+ * @interface RoyaltyDto
  */
-export interface ComissionDto {
-    /**
-     * 
-     * @type {number}
-     * @memberof ComissionDto
-     */
-    'commissionBPS': number;
-    /**
-     * 
-     * @type {number}
-     * @memberof ComissionDto
-     */
-    'v': number;
+export interface RoyaltyDto {
     /**
      * 
      * @type {string}
-     * @memberof ComissionDto
+     * @memberof RoyaltyDto
      */
-    'r': string;
+    'recipient': string;
     /**
      * 
      * @type {string}
-     * @memberof ComissionDto
+     * @memberof RoyaltyDto
      */
-    's': string;
+    'value': string;
 }
 

@@ -22,6 +22,7 @@ export * from './post-nftrequest-body-dto';
 export * from './primary-auction-response';
 export * from './primary-bid-response';
 export * from './primary-sale-response';
+export * from './royalty-dto';
 export * from './secondary-auction-response';
 export * from './secondary-bid-response';
 export * from './secondary-sale-response';

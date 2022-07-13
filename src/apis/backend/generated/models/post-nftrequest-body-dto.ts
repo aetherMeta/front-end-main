@@ -34,10 +34,10 @@ export interface PostNFTRequestBodyDto {
     'chainId': number;
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof PostNFTRequestBodyDto
      */
-    'tokenId': number;
+    'tokenId': string;
     /**
      * 
      * @type {number}
