@@ -1,21 +1,9 @@
 import {
   PrimarySaleResponse,
   SecondarySaleResponse,
-  UserResponseDtoRoleEnum,
   UserNFTResponse,
   UserResponseDto,
 } from "../apis/backend/generated";
-
-// export interface User {
-//   pendingEmail: string;
-//   email: string;
-//   username: string;
-//   address: string;
-//   firstName?: string;
-//   lastName?: string;
-//   role: UserResponseDtoRoleEnum;
-//   twitterHandle: string;
-// }
 
 export type User = UserResponseDto;
 export type Nft = UserNFTResponse;
