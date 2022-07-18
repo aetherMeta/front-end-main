@@ -25,6 +25,8 @@ import { ChallengeRequestBodyDto } from '../models';
 // @ts-ignore
 import { ChallengeResponseDto } from '../models';
 // @ts-ignore
+import { FreeJwtDto } from '../models';
+// @ts-ignore
 import { VerifyBodyDto } from '../models';
 // @ts-ignore
 import { VerifyResponseDto } from '../models';
@@ -73,10 +75,13 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
         /**
          * DEBUG: Generates a JWT of a user without authentication
          * @summary 
+         * @param {FreeJwtDto} freeJwtDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authControllerTest: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        authControllerTest: async (freeJwtDto: FreeJwtDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'freeJwtDto' is not null or undefined
+            assertParamExists('authControllerTest', 'freeJwtDto', freeJwtDto)
             const localVarPath = `/auth/free-jwt`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -91,9 +96,12 @@ export const AuthenticationApiAxiosParamCreator = function (configuration?: Conf
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(freeJwtDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -160,11 +168,12 @@ export const AuthenticationApiFp = function(configuration?: Configuration) {
         /**
          * DEBUG: Generates a JWT of a user without authentication
          * @summary 
+         * @param {FreeJwtDto} freeJwtDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authControllerTest(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authControllerTest(options);
+        async authControllerTest(freeJwtDto: FreeJwtDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authControllerTest(freeJwtDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -201,11 +210,12 @@ export const AuthenticationApiFactory = function (configuration?: Configuration,
         /**
          * DEBUG: Generates a JWT of a user without authentication
          * @summary 
+         * @param {FreeJwtDto} freeJwtDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authControllerTest(options?: any): AxiosPromise<void> {
-            return localVarFp.authControllerTest(options).then((request) => request(axios, basePath));
+        authControllerTest(freeJwtDto: FreeJwtDto, options?: any): AxiosPromise<void> {
+            return localVarFp.authControllerTest(freeJwtDto, options).then((request) => request(axios, basePath));
         },
         /**
          * Verifies a challenge
@@ -242,12 +252,13 @@ export class AuthenticationApi extends BaseAPI {
     /**
      * DEBUG: Generates a JWT of a user without authentication
      * @summary 
+     * @param {FreeJwtDto} freeJwtDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthenticationApi
      */
-    public authControllerTest(options?: AxiosRequestConfig) {
-        return AuthenticationApiFp(this.configuration).authControllerTest(options).then((request) => request(this.axios, this.basePath));
+    public authControllerTest(freeJwtDto: FreeJwtDto, options?: AxiosRequestConfig) {
+        return AuthenticationApiFp(this.configuration).authControllerTest(freeJwtDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

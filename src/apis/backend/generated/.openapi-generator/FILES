@@ -7,6 +7,7 @@ api/collections-api.ts
 api/contact-api.ts
 api/nfts-api.ts
 api/sales-api.ts
+api/shopping-cart-api.ts
 api/socials-api.ts
 api/user-api.ts
 base.ts
@@ -28,8 +29,10 @@ models/create-primary-sale-dto.ts
 models/create-secondary-auction-dto.ts
 models/create-secondary-bid-dto.ts
 models/create-secondary-sale-dto.ts
+models/create-shopping-cart-item-dto.ts
 models/filter-query.ts
 models/filter-value.ts
+models/free-jwt-dto.ts
 models/get-secondary-sale-query.ts
 models/index.ts
 models/nftresponse.ts
@@ -44,6 +47,8 @@ models/secondary-auction-response.ts
 models/secondary-bid-response.ts
 models/secondary-sale-response-nft.ts
 models/secondary-sale-response.ts
+models/shopping-cart-item-response.ts
+models/shopping-cart-response.ts
 models/token-dto.ts
 models/update-auction-dto.ts
 models/update-collection-dto.ts
@@ -53,3 +58,4 @@ models/user-nftresponse.ts
 models/user-response-dto.ts
 models/verify-body-dto.ts
 models/verify-response-dto.ts
+models/whitelist-user-request-dto.ts

@@ -64,6 +64,12 @@ export interface UserResponseDto {
     'lastName': string | null;
     /**
      * 
+     * @type {boolean}
+     * @memberof UserResponseDto
+     */
+    'metaverseAccess': boolean;
+    /**
+     * 
      * @type {string}
      * @memberof UserResponseDto
      */

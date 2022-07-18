@@ -14,13 +14,23 @@
 
 
 
-export * from './api/auction-api';
-export * from './api/authentication-api';
-export * from './api/collections-api';
-export * from './api/contact-api';
-export * from './api/nfts-api';
-export * from './api/sales-api';
-export * from './api/shopping-cart-api';
-export * from './api/socials-api';
-export * from './api/user-api';
+/**
+ * 
+ * @export
+ * @interface WhitelistUserRequestDto
+ */
+export interface WhitelistUserRequestDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof WhitelistUserRequestDto
+     */
+    'address': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof WhitelistUserRequestDto
+     */
+    'metaverseAccess': boolean;
+}
 

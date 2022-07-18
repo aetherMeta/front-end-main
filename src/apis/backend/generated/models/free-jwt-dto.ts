@@ -14,13 +14,17 @@
 
 
 
-export * from './api/auction-api';
-export * from './api/authentication-api';
-export * from './api/collections-api';
-export * from './api/contact-api';
-export * from './api/nfts-api';
-export * from './api/sales-api';
-export * from './api/shopping-cart-api';
-export * from './api/socials-api';
-export * from './api/user-api';
+/**
+ * 
+ * @export
+ * @interface FreeJwtDto
+ */
+export interface FreeJwtDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof FreeJwtDto
+     */
+    'address': string;
+}
 
