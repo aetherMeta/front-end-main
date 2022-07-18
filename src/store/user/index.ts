@@ -13,6 +13,7 @@ const initialState: UserState = {
     lastName: "",
     role: "USER",
     twitterHandle: "",
+    metaverseAccess: false,
   },
   userDataLoaded: false,
 };
