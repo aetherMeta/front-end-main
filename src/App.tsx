@@ -13,6 +13,7 @@ import GlobalStyle from "./style/Global";
 import history from "./routerHistory";
 import "./App.css";
 import Debug from "./views/Debug";
+import Metaverse from "./views/Metaverse";
 
 const App: React.FC = () => {
   return (
@@ -33,9 +34,17 @@ const App: React.FC = () => {
           <Route path="/partnerships" exact>
             <Partnerships />
           </Route>
-          <Route path="/debug" exact>
-            <Debug />
+
+          <Route path="/metaverse" exact>
+            <Metaverse />
           </Route>
+          {process.env.NODE_ENV !== "production" ? (
+            <Route path="/debug" exact>
+              <Debug />
+            </Route>
+          ) : (
+            <></>
+          )}
           <Route>
             <NotFound />
           </Route>
