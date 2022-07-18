@@ -4,6 +4,7 @@ import Partners from "components/Partners/Partners";
 import { useMatchBreakpoints } from "@aethermeta/uikit";
 import { useDispatchUserPublicData } from "store/user/hooks";
 import ViewNFTs from "./ViewNFTs";
+import ViewNFTsTablet from "./ViewNFTsTablet";
 import LearnMore from "./LearnMore";
 import AboutAether from "./AboutAether";
 import AboutAetherTablet from "./AboutAetherTablet";
@@ -13,7 +14,7 @@ const Home: React.FC = () => {
   useDispatchUserPublicData();
   return (
     <Page>
-      <ViewNFTs />
+      {isTablet || isMobile ? <ViewNFTsTablet /> : <ViewNFTs />}
       <LearnMore />
       {isTablet || isMobile ? <AboutAetherTablet /> : <AboutAether />}
       <Partners />

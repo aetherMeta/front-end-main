@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { useMatchBreakpoints } from "@aethermeta/uikit";
 import React from "react";
 import { useDispatchUserPublicData, useUser } from "store/user/hooks";
 import styled from "styled-components";
@@ -10,20 +11,23 @@ const Iframe = styled("iframe")`
 `;
 
 const Metaverse: React.FC = () => {
-  const { data: userData } = useUser();
-
   useDispatchUserPublicData();
+
+  const { data: userData } = useUser();
+  const { isTablet, isMobile } = useMatchBreakpoints();
+  const src =
+    isTablet || isMobile
+      ? "https://portal.furioos.com/embed/CSkanHieeeuv8Lkyh?whiteLabel=true&amp;hideTitle=true&amp;hidePlayButton=true"
+      : "https://portal.furioos.com/embed/x7XjGbcyETC4caudo?whiteLabel=true&amp;hideTitle=true&amp;hidePlayButton=true";
 
   if (userData.metaverseAccess) {
     return (
-      <>
-        <Iframe
-          title="metaverse"
-          src="https://portal.furioos.com/embed/x7XjGbcyETC4caudo?whiteLabel=true&amp;hideTitle=true&amp;hidePlayButton=true"
-          id="furioos-sdk-iframe"
-          allow="autoplay; fullscreen"
-        />
-      </>
+      <Iframe
+        title="metaverse"
+        src={src}
+        id="furioos-sdk-iframe"
+        allow="autoplay; fullscreen"
+      />
     );
   }
 

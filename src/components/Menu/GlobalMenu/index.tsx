@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Flex, useModal } from "@aethermeta/uikit";
 import { ConnectorNames } from "utils/web3React";
+import { Button, Flex, useModal } from "@aethermeta/uikit";
 import { useUser } from "../../../store/user/hooks";
 import PartnershipModal, {
   Values,
