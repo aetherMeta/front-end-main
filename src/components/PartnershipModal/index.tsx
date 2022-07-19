@@ -11,6 +11,11 @@ import {
 } from "@aethermeta/uikit";
 import useToast from "hooks/useToast";
 import { useUser } from "store/user/hooks";
+import styled from "styled-components";
+
+const StyledModal = styled(Modal)`
+  min-width: 500px;
+`;
 
 export interface Values {
   name: string;
@@ -54,7 +59,10 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
     userDataLoaded
       ? {
           ...initialValues,
-          name: `${userData.firstName} ${userData.lastName}`,
+          name:
+            userData.firstName && userData.lastName
+              ? `${userData.firstName} ${userData.lastName}`
+              : "",
         }
       : initialValues
   );
@@ -84,12 +92,13 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
       email: false,
       description: false,
     };
-    for (const [key, value] of Object.entries(values)) {
+    Object.entries(values).forEach((entry) => {
+      const [key, value] = entry;
       if (value === initialValues[key]) {
         isValid = false;
         modifyErrors[key] = true;
       }
-    }
+    });
     setErrors((prevState) => {
       return { ...prevState, ...modifyErrors };
     });
@@ -117,40 +126,41 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
   );
 
   return (
-    <Modal title="Partnership" onDismiss={onDismiss}>
+    <StyledModal title="Partnership" onDismiss={onDismiss}>
       <form onSubmit={handleSubmit}>
-        <Label>Name (*)</Label>
+        <Label>Name</Label>
         <Input
           type="text"
           placeholder="Your Name"
           name="name"
-          value={values.name}
           onChange={handleInputChange}
         />
         <Text variant="bodySmall" color="failure" height="20px">{`${
           errors.name ? "Name field cannot be empty" : ""
         }`}</Text>
-        <Label>Company (*)</Label>
+        <Label color="black">Company</Label>
         <Input
           type="text"
           placeholder="Company Name"
           name="company"
           onChange={handleInputChange}
-        />
+        />{" "}
+        <br />
         <Text variant="bodySmall" color="failure" height="20px">{`${
           errors.company ? "Company field cannot be empty" : ""
         }`}</Text>
-        <Label>Email (*)</Label>
+        <Label color="black">Email</Label>
         <Input
           type="email"
           placeholder="Business Email Address"
           name="email"
           onChange={handleInputChange}
-        />
+        />{" "}
+        <br />
         <Text variant="bodySmall" color="failure" height="20px">{`${
           errors.email ? "Email field cannot be empty" : ""
         }`}</Text>
-        <Label>Description (*)</Label>
+        <Label color="black">Description</Label>
         <TextArea
           placeholder="Describe your Business"
           name="description"
@@ -169,7 +179,7 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
           </Button>
         )}
       </form>
-    </Modal>
+    </StyledModal>
   );
 };
 

@@ -1,12 +1,11 @@
 import React from "react";
 import { ConnectorNames } from "utils/web3React";
 import { Button, Flex, useModal } from "@aethermeta/uikit";
-import { useUser } from "../../../store/user/hooks";
-import PartnershipModal, {
-  Values,
-} from "../../../views/Home/ViewNFTs/PartnershipModal";
-import postPartnershipEmail from "../../../apis/backend/email/postPartnershipEmail";
-import useAuth from "../../../hooks/useAuth";
+import PartnershipModal, { Values } from "components/PartnershipModal";
+import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
+
+import { useUser } from "store/user/hooks";
+import useAuth from "hooks/useAuth";
 
 export interface GlobalMenuProps {
   maxWidth?: boolean;

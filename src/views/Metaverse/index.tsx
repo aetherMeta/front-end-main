@@ -7,7 +7,7 @@ import NotFound from "../NotFound";
 
 const Iframe = styled("iframe")`
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 117px);
 `;
 
 const Metaverse: React.FC = () => {
@@ -18,8 +18,7 @@ const Metaverse: React.FC = () => {
   const src =
     isTablet || isMobile
       ? "https://portal.furioos.com/embed/CSkanHieeeuv8Lkyh?whiteLabel=true&amp;hideTitle=true&amp;hidePlayButton=true"
-      : "https://portal.furioos.com/embed/x7XjGbcyETC4caudo?whiteLabel=true&amp;hideTitle=true&amp;hidePlayButton=true";
-
+      : "https://portal.furioos.com/embed/7by4w5YHB4btewmXs?whiteLabel=true&amp;hideTitle=true&amp;hidePlayButton=true";
   if (userData.metaverseAccess) {
     return (
       <Iframe

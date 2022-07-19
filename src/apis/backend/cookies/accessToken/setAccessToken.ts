@@ -10,6 +10,7 @@ const setAccessToken = (accessToken: string, address: string): void => {
     {
       maxAge: 60 * 60, // 1 hour
       path: "/",
+      sameSite: "strict",
     }
   );
 };
