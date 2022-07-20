@@ -5,10 +5,10 @@ import { ResetCSS } from "@aethermeta/uikit";
 import { ToastListener } from "./contexts/ToastsContext";
 import NotFound from "./views/NotFound";
 import About from "./views/About";
-import Soon from "./views/Soon";
 import Home from "./views/Home";
 import Contact from "./views/Contact";
 import Partnerships from "./views/Partnerships";
+import Shop from "./views/Shop";
 import Menu from "./components/Menu";
 import GlobalStyle from "./style/Global";
 import history from "./routerHistory";
@@ -27,11 +27,8 @@ const App: React.FC = () => {
           <Route path="/about" exact>
             <About />
           </Route>
-          <Route path="/contact" exact>
-            <Contact />
-          </Route>
-          <Route path="/soon" exact>
-            <Soon />
+          <Route path="/shop" exact>
+            <Shop />
           </Route>
           <Route path="/partnerships" exact>
             <Partnerships />
