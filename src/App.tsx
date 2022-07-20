@@ -6,6 +6,7 @@ import { ToastListener } from "./contexts/ToastsContext";
 import NotFound from "./views/NotFound";
 import About from "./views/About";
 import Home from "./views/Home";
+import Contact from "./views/Contact";
 import Partnerships from "./views/Partnerships";
 import Shop from "./views/Shop";
 import Menu from "./components/Menu";

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Flex, Text, Button, useModal } from "@aethermeta/uikit";
 import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
-import PartnershipModal, { Values } from "./PartnershipModal";
+import PartnershipModal, { Values } from "../../../components/partnershipModel";
 
 const Container = styled.div`
   position: relative;
