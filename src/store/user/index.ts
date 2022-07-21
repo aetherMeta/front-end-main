@@ -14,6 +14,7 @@ const initialState: UserState = {
     role: "USER",
     twitterHandle: "",
     metaverseAccess: false,
+    metaverseAllowanceExceeded: true,
   },
   userDataLoaded: false,
 };

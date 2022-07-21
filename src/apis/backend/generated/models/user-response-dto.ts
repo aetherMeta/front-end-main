@@ -22,6 +22,12 @@
 export interface UserResponseDto {
     /**
      * 
+     * @type {boolean}
+     * @memberof UserResponseDto
+     */
+    'metaverseAllowanceExceeded': boolean;
+    /**
+     * 
      * @type {string}
      * @memberof UserResponseDto
      */

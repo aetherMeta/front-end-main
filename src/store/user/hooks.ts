@@ -40,6 +40,21 @@ export const useUpdateUser = () => {
   );
 };
 
+export const useUpdateMetaverseUsage = () => {
+  const dispatch = useAppDispatch();
+  return useCallback(async () => {
+    try {
+      if (client.defaults.headers.common.Authorization) {
+        const { data: userData } =
+          await backend.user.userControllerMetaverseUpdate();
+        dispatch(setUserPublicData(userData));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [dispatch]);
+};
+
 export const useUser = (): UserState => {
   const user = useSelector((state: State) => state.user);
   return user;

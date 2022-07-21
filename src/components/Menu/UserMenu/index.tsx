@@ -8,7 +8,7 @@ import {
 } from "@aethermeta/uikit";
 import useAuth from "hooks/useAuth";
 import ConnectWalletButton from "components/ConnectWalletButton";
-import { useUser } from "../../../store/user/hooks";
+import { useDispatchUserPublicData, useUser } from "../../../store/user/hooks";
 
 export interface UserMenuProps {
   maxWidth?: boolean;
@@ -16,6 +16,8 @@ export interface UserMenuProps {
 
 const UserMenu: React.FunctionComponent<UserMenuProps> = ({ maxWidth }) => {
   const { account } = useWeb3React();
+  useDispatchUserPublicData();
+
   const {
     data: { address },
   } = useUser();
