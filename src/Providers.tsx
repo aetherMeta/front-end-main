@@ -1,7 +1,7 @@
 import React from "react";
 import { Web3ReactProvider } from "@web3-react/core";
 import { Provider } from "react-redux";
-import { light, ModalProvider } from "@aethermeta/uikit";
+import { light, ModalProvider, PanelProvider } from "@aethermeta/uikit";
 import { ThemeProvider } from "styled-components";
 import store from "store";
 import { RefreshContextProvider } from "contexts/RefreshContext";
@@ -21,7 +21,9 @@ const Providers: React.FC = ({ children }) => {
           <ThemeProviderWrapper>
             <RefreshContextProvider>
               <AccessTokenProvider>
-                <ModalProvider>{children}</ModalProvider>
+                <ModalProvider>
+                  <PanelProvider>{children}</PanelProvider>
+                </ModalProvider>
               </AccessTokenProvider>
             </RefreshContextProvider>
           </ThemeProviderWrapper>
