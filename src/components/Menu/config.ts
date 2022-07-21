@@ -1,7 +1,7 @@
 const config = [
   {
     label: "Collections",
-    href: "/soon",
+    href: "/collections",
   },
   // {
   //   label: "Products",

@@ -8,6 +8,7 @@ import About from "./views/About";
 import Soon from "./views/Soon";
 import Home from "./views/Home";
 import Partnerships from "./views/Partnerships";
+import Collections from "./views/Collections"
 import Menu from "./components/Menu";
 import GlobalStyle from "./style/Global";
 import history from "./routerHistory";
@@ -31,6 +32,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/partnerships" exact>
             <Partnerships />
+          </Route>
+          <Route path="/collections" exact>
+            <Collections />
           </Route>
           <Route>
             <NotFound />
