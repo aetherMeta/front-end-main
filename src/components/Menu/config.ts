@@ -1,7 +1,7 @@
 const config = [
   {
     label: "Collections",
-    href: "/soon",
+    href: "/shop",
   },
   // {
   //   label: "Products",
@@ -17,8 +17,8 @@ const config = [
   },
   {
     label: "Partnerships",
-    href: "/partnerships"
-  }
+    href: "/partnerships",
+  },
 ];
 
 export const socials = [

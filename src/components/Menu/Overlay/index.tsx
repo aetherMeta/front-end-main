@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Link } from "@aethermeta/uikit";
 import config, { socials } from "../config";
-// import UserMenu from "../UserMenu";
+import UserMenu from "../UserMenu";
 import GlobalSettings from "../GlobalMenu";
 
 const Overlay = () => {
@@ -18,7 +18,7 @@ const Overlay = () => {
       </Flex>
       <Flex flexDirection="column" alignItems="center">
         <GlobalSettings maxWidth />
-        {/* <UserMenu maxWidth /> */}
+        <UserMenu maxWidth />
         <Flex
           alignItems="center"
           justifyContent="space-around"
