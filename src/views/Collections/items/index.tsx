@@ -13,20 +13,20 @@ const Items: React.FC = () => {
                 collections
             </Text>
             <Flex style={{justifyContent: "space-around"}}>
-                <ButtonMenu activeIndex={index} onItemClick={handleClick}>
-                   <ButtonMenuItem>
+                <ButtonMenu activeIndex={index} onItemClick={handleClick} scale="sm" variant="white">
+                   <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px", borderColor: "#D4DDDC"}}>
                         Haute couture clothing
                     </ButtonMenuItem>
-                    <ButtonMenuItem>
+                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px", borderColor: "#D4DDDC"}}>
                         Accessories
                     </ButtonMenuItem> 
-                    <ButtonMenuItem>
+                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px", borderColor: "#D4DDDC"}}>
                         Watches and Jewelry 
                     </ButtonMenuItem> 
-                    <ButtonMenuItem>
+                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px", borderColor: "#D4DDDC"}}>
                         Homes and estates
                     </ButtonMenuItem> 
-                    <ButtonMenuItem>
+                    <ButtonMenuItem style={{marginLeft: "1rem"}}>
                         automobile
                     </ButtonMenuItem>  
                 </ButtonMenu>
