@@ -56,7 +56,6 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
     }
   }
 
-  console.log(agreement());
   const { isTablet, isMobile } = useMatchBreakpoints();
 
   return (
