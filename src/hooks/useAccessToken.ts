@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 import { useWeb3React } from "@web3-react/core";
-import { useCallback, useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import AccessTokenContext from "../contexts/AccessTokenContext";
 import setAccessTokenCookie from "../apis/backend/cookies/accessToken/setAccessToken";
 import getAccessTokenCookie from "../apis/backend/cookies/accessToken/getAccessToken";
@@ -111,11 +111,22 @@ const useAccessToken = (): Returns => {
         } else {
           toastError("Unable to login");
         }
+
         return false;
       }
     },
     [accessTokenContext, account, library, toastError]
   );
+
+  const [signing, setSigning] = useState(false);
+
+  useEffect(() => {
+    if (account && signing) {
+      setSigning(true);
+      requestSignature().then(() => setSigning(false));
+    }
+    // loadAccessTokenFromCookie();
+  }, [account, requestSignature, signing]);
 
   return {
     loading:

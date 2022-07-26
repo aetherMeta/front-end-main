@@ -93,6 +93,18 @@ export interface PrimarySaleResponse {
     'id': string;
     /**
      * 
+     * @type {string}
+     * @memberof PrimarySaleResponse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PrimarySaleResponse
+     */
+    'description': string;
+    /**
+     * 
      * @type {number}
      * @memberof PrimarySaleResponse
      */
