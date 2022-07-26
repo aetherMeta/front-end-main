@@ -12,6 +12,7 @@ import useToast from "./useToast";
 type Returns = {
   loading: boolean;
   accessToken: string | null;
+  accessTokenAddress: string | null;
   reload: () => void;
   requestSignature: (
     account?: string,
@@ -133,6 +134,7 @@ const useAccessToken = (): Returns => {
       accessTokenContext.accessToken === undefined ||
       accessTokenContext.accessToken === null ||
       accessTokenContext.accessTokenAddress !== account,
+    accessTokenAddress: accessTokenContext.accessTokenAddress,
     accessToken: accessTokenContext.accessToken || null,
     reload: loadAccessTokenFromCookie,
     requestSignature,
