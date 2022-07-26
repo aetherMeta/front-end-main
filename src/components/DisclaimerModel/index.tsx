@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Flex,
   Text,
@@ -7,18 +7,21 @@ import {
   Modal,
   useMatchBreakpoints,
 } from "@aethermeta/uikit";
+import usePersistentState from "hooks/usePersistentState";
 
 interface DisclaimerModalProps {
   onDismiss?: () => void;
 }
 
 const Disclaimer: React.FC<DisclaimerModalProps> = ({ onDismiss }) => {
-  const [agree, setAgree] = useState(false);
+  const [agree, setAgree] = usePersistentState(false, 'agree');
   const { isTablet, isMobile } = useMatchBreakpoints();
+
 
   const handleInputChange = () => {
     // eslint-disable-next-line no-unused-expressions
     agree ? setAgree(false) : setAgree(true);
+  
   };
 
   return (
