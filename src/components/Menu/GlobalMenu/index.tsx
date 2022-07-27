@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Disclaimer from "components/DisclaimerModel";
 import { Button, Flex, useModal, useMatchBreakpoints } from "@aethermeta/uikit";
 import { ConnectorNames } from "utils/web3React";
-import usePersistentState from "hooks/usePersistentState";
 import PartnershipModal, { Values } from "components/PartnershipModal";
 import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
 
