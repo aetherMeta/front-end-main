@@ -16,6 +16,20 @@
     react-transition-group "^4.4.1"
     styled-system "^5.1.5"
 
+"@aethermeta/uikit@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@aethermeta/uikit/-/uikit-1.0.7.tgz#4201196c04b40e7b12d99113c1335549a3bb8689"
+  integrity sha512-BgKIM6SN2Fc1R3Dh5zZvO9iDpaCndels/AXx9VfB201OhMIeogF3NVVp5BFRfvdoETiBLmrNEBjzXKk1HOyizQ==
+  dependencies:
+    "@aethermeta/uikit" "^1.0.0"
+    "@rollup/plugin-url" "^6.1.0"
+    "@types/lodash" "^4.14.162"
+    "@types/styled-system" "^5.1.10"
+    lodash "^4.17.20"
+    lottie-web "^5.8.1"
+    react-transition-group "^4.4.1"
+    styled-system "^5.1.5"
+
 "@ampproject/remapping@^2.1.0":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.1.2.tgz#4edca94973ded9630d20101cd8559cedb8d8bd34"
