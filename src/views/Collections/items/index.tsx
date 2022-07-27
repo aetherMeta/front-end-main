@@ -9,7 +9,7 @@ const Items: React.FC = () => {
     return(
         <>
         <Flex style={{flexDirection: "column"}}>
-            <Text variant="h2Bold" style={{}}>
+            <Text variant="h2Bold" style={{marginLeft: "1rem"}}>
                 collections
             </Text>
             <Flex style={{justifyContent: "space-around"}}>
