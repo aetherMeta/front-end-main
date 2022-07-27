@@ -93,6 +93,18 @@ export interface PrimaryAuctionResponse {
     'id': string;
     /**
      * 
+     * @type {string}
+     * @memberof PrimaryAuctionResponse
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PrimaryAuctionResponse
+     */
+    'description': string;
+    /**
+     * 
      * @type {number}
      * @memberof PrimaryAuctionResponse
      */

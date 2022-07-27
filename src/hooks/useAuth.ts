@@ -12,7 +12,8 @@ import useAccessToken from "./useAccessToken";
 const useAuth = () => {
   const { activate, deactivate } = useWeb3React();
   const {
-    loading,
+    accessToken,
+    accessTokenAddress,
     requestSignature,
     logout: accessTokenLogout,
   } = useAccessToken();
@@ -39,7 +40,11 @@ const useAuth = () => {
             }
           }
         });
-        if (loading) {
+        if (
+          accessToken === undefined ||
+          accessToken === null ||
+          accessTokenAddress !== (await connector.getAccount())
+        ) {
           await requestSignature(
             await connector.getAccount(),
             getLibrary(await connector.getProvider())
@@ -49,7 +54,7 @@ const useAuth = () => {
         toastError("Unable to find connector", "The connector config is wrong");
       }
     },
-    [activate, loading, requestSignature, toastError]
+    [accessToken, accessTokenAddress, activate, requestSignature, toastError]
   );
 
   const logout = useCallback(() => {
