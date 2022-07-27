@@ -69,7 +69,7 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
         mr={maxWidth ? "0px" : "16px"}
         mb={maxWidth ? "24px" : "0px"}
         width={maxWidth ? "100%" : "auto"}
-        // {...buttonProps}
+        
       > 
       Enter Metaverse
       </Button>
@@ -90,7 +90,7 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
         mr={maxWidth ? "0px" : "16px"}
         mb={maxWidth ? "24px" : "0px"}
         width={maxWidth ? "100%" : "auto"}
-        // {...buttonProps}
+        {...buttonProps}
         > 
       Enter Metaverse
       </Button>
