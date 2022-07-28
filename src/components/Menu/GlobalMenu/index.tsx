@@ -76,40 +76,21 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
       )}
 
       {agreement() && (
-        <Button
-        scale="md"
-        variant="secondary"
-        as="a"
-        href={
-          isTablet || isMobile
-            ? "https://aetherswatchesmobile.web.app/"
-            : "https://aetherwatches-6545f.web.app/"
-        }
-        target="_blank"
-        ml={maxWidth ? "0px" : "8px"}
-        mr={maxWidth ? "0px" : "16px"}
-        mb={maxWidth ? "24px" : "0px"}
-        width={maxWidth ? "100%" : "auto"}
-        {...buttonProps}
-        > 
-      Enter Metaverse
-      </Button>
+        <Link to={userDataLoaded && userData.metaverseAccess && "/metaverse"}>
+          <Button
+            scale="md"
+            as="a"
+            variant="secondary"
+            ml={maxWidth ? "0px" : "8px"}
+            mr={maxWidth ? "0px" : "16px"}
+            mb={maxWidth ? "24px" : "0px"}
+            width={maxWidth ? "100%" : "auto"}
+            {...buttonProps}
+          >
+            Enter Metaverse
+          </Button>
+        </Link>
       )}
-      
-      <Link to={userDataLoaded && userData.metaverseAccess && "/metaverse"}>
-        <Button
-          scale="md"
-          as="a"
-          variant="secondary"
-          ml={maxWidth ? "0px" : "8px"}
-          mr={maxWidth ? "0px" : "16px"}
-          mb={maxWidth ? "24px" : "0px"}
-          width={maxWidth ? "100%" : "auto"}
-          {...buttonProps}
-        >
-          Enter Metaverse
-        </Button>
-      </Link>
     </Flex>
   );
 };
