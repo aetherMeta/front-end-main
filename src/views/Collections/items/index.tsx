@@ -1,7 +1,21 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Flex, Text, Grid, ButtonMenu, ButtonMenuItem, Image } from "@aethermeta/uikit";
+import { 
+    Flex,
+    Text,
+    Grid,
+    ButtonMenu,
+    ButtonMenuItem, 
+    Image,
+    Pagination,
+    Select } from "@aethermeta/uikit";
 
+
+const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 5.75rem;
+`;
 
 const Items: React.FC = () => {
     const [index, setIndex] = useState(0);
@@ -176,8 +190,6 @@ const Items: React.FC = () => {
                         2
                     </Text>
                 </div>
-
-           
             </Grid>
                 
         </Flex>
