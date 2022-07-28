@@ -5,6 +5,7 @@ api/auction-api.ts
 api/authentication-api.ts
 api/collections-api.ts
 api/contact-api.ts
+api/ipfs-api.ts
 api/nfts-api.ts
 api/sales-api.ts
 api/shopping-cart-api.ts

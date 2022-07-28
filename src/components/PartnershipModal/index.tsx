@@ -34,6 +34,7 @@ export interface Errors {
 interface PartnershipModalProps {
   onSubmit: (e, values: Values) => void;
   onDismiss?: () => void;
+  fromMetaverse?: boolean;
 }
 
 const initialValues = {
@@ -53,6 +54,7 @@ const initialErrors = {
 const PartnershipModal: React.FC<PartnershipModalProps> = ({
   onSubmit,
   onDismiss,
+  fromMetaverse = false,
 }) => {
   const { data: userData, userDataLoaded } = useUser();
   const [values, setValues] = useState(
@@ -127,6 +129,13 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
 
   return (
     <StyledModal title="Partnership" onDismiss={onDismiss}>
+      {fromMetaverse && (
+        <>
+          <Text mb="12px">
+            Please contact us to get access to the metaverse!
+          </Text>
+        </>
+      )}
       <form onSubmit={handleSubmit}>
         <Label>Name</Label>
         <Input

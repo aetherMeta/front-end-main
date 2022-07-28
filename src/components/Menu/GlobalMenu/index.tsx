@@ -17,7 +17,10 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
   const { login } = useAuth();
 
   const [onPresent] = useModal(
-    <PartnershipModal onSubmit={(e, values: Values) => onSubmit(e, values)} />
+    <PartnershipModal
+      onSubmit={(e, values: Values) => onSubmit(e, values)}
+      fromMetaverse
+    />
   );
 
   const onSubmit = async (e, values: Values) => {
