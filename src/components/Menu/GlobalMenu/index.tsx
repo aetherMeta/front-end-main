@@ -29,23 +29,6 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
     await postPartnershipEmail(values);
   };
 
-  let buttonProps = {};
-
-  if (userDataLoaded) {
-    buttonProps = userData.metaverseAccess
-      ? {
-          href: "/metaverse",
-        }
-      : {
-          onClick: onPresent,
-        };
-  } else {
-    buttonProps = {
-      onClick: () => login(ConnectorNames.Injected),
-    };
-  }
-
- 
   const agreement = () => {
     try {
       const valueFromLS = localStorage.getItem('agree')
@@ -56,26 +39,31 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
     }
   }
 
-  const { isTablet, isMobile } = useMatchBreakpoints();
+  const isAgreed = () => {
+    if(agreement) {
+      return({href: "/metaverse"});
+    }
+    return({onclick: onPresent1});
+   
+  }
+
+  let buttonProps = {};
+
+  if (userDataLoaded) { // Checks if user is logged in
+    buttonProps = userData.metaverseAccess // boolean; checks if user is whitelisted
+      ? isAgreed()
+      : {
+          onClick: onPresent, // Opens form if not whitelisted
+        };
+  } else {
+    buttonProps = {
+      onClick: () => login(ConnectorNames.Injected), // login user
+    };
+  }
+
 
   return (
     <Flex width={maxWidth ? "100%" : "auto"}>
-      {!agreement() && (
-        <Button
-        scale="md"
-        variant="secondary"
-        onClick={onPresent1}
-        ml={maxWidth ? "0px" : "8px"}
-        mr={maxWidth ? "0px" : "16px"}
-        mb={maxWidth ? "24px" : "0px"}
-        width={maxWidth ? "100%" : "auto"}
-        
-      > 
-      Enter Metaverse
-      </Button>
-      )}
-
-      {agreement() && (
         <Link to={userDataLoaded && userData.metaverseAccess && "/metaverse"}>
           <Button
             scale="md"
@@ -90,7 +78,6 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
             Enter Metaverse
           </Button>
         </Link>
-      )}
     </Flex>
   );
 };
