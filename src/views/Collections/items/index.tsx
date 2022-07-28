@@ -19,14 +19,35 @@ const PaginationContainer = styled.div`
 
 const Items: React.FC = () => {
     const [index, setIndex] = useState(0);
+    const [isOpen, setIsOpen] = useState(false);
+    const [value, setValue] = useState("Most recent");
+
+    const handleToggle = () => setIsOpen(!isOpen);
+
+    const handleSelect = (newValue) => {
+        setValue(newValue);
+        setIsOpen(false);
+    };
+
     const handleClick = (newIndex) => setIndex(newIndex);
     return(
         <>
-        <Flex style={{flexDirection: "column"}}>
-            <Text variant="h2Bold" style={{marginLeft: "1rem"}}>
-                collections
-            </Text>
-            <Flex style={{justifyContent: "space-around"}}>
+        <Flex style={{flexDirection: "column", margin:"3rem 3.5rem 1rem"}}>
+            <Flex style={{justifyContent: "space-between", margin:"0rem 2.5rem 1rem 0rem"}}>
+                <Text variant="h1Bold" style={{marginLeft: "1rem"}}>
+                    COLLECTIONS
+                </Text>
+                <Select
+                    value={value}
+                    options={["Most recent", "Most popular ", "Latest release"]}
+                    handleSelect={(newValue) => handleSelect(newValue)}
+                    isOpen={isOpen}
+                    handleToggle={handleToggle}
+                    width="11.25rem"
+                />
+            </Flex>
+                
+            <Flex style={{justifyContent: "space-around", alignSelf:"flex-start", marginBottom:"3.5rem"}}>
                 <ButtonMenu activeIndex={index} onItemClick={handleClick} scale="sm" variant="white">
                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px", borderColor: "#D4DDDC"}}>
                         Haute couture clothing
@@ -191,7 +212,15 @@ const Items: React.FC = () => {
                     </Text>
                 </div>
             </Grid>
-                
+            <PaginationContainer>
+                <Pagination
+                currentPage={currentPage}
+                totalCount={items.length}
+                pageSize={pageSize}
+                onPageChange={(page) => setCurrentPage(page)}
+                />
+            </PaginationContainer>
+
         </Flex>
             
         </>
