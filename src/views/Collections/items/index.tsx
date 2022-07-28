@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 import { 
     Flex,
@@ -30,6 +30,15 @@ const Items: React.FC = () => {
     };
 
     const handleClick = (newIndex) => setIndex(newIndex);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const pageSize = 12;
+    const shopItemsData = useMemo(() => {
+      const firstPageIndex = (currentPage - 1) * pageSize;
+      const lastPageIndex = firstPageIndex + pageSize;
+      return items.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage, items]);
+
     return(
         <>
         <Flex style={{flexDirection: "column", margin:"3rem 3.5rem 1rem"}}>
