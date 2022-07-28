@@ -18,6 +18,7 @@ export * from './api/auction-api';
 export * from './api/authentication-api';
 export * from './api/collections-api';
 export * from './api/contact-api';
+export * from './api/ipfs-api';
 export * from './api/nfts-api';
 export * from './api/sales-api';
 export * from './api/shopping-cart-api';

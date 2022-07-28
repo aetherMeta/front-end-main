@@ -10,6 +10,7 @@ import {
 import { omitBy } from "lodash";
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
+import useIpfsUpload from "views/Debug/hooks/useIpfs";
 import useAccessToken from "../../hooks/useAccessToken";
 import ConnectWalletButton from "../../components/ConnectWalletButton";
 import useAuth from "../../hooks/useAuth";
@@ -24,6 +25,7 @@ const Debug: React.FC = () => {
   const { logout } = useAuth();
   const { data: nftData } = useNfts();
   const { data: userData } = useUser();
+  const { onSubmit: submitIpfs } = useIpfsUpload();
 
   useDispatchUserPublicData();
   useDispatchSalePublicData();
@@ -41,7 +43,7 @@ const Debug: React.FC = () => {
     pendingEmail: "",
   };
 
-  const initiaPrimarySaleFormValues = {
+  const initialPrimarySaleFormValues = {
     askType: ASK_TYPES.PRIMARY_SALE,
     r: "",
     s: "",
@@ -52,7 +54,7 @@ const Debug: React.FC = () => {
     v: 0,
     royaltyRecipient: "0xB57773cbBC058439De4a9075447233C364B5680B", // Dev testnet operator
     royaltyValue: 100,
-    uri: "ipfs://QmZAu7ssGxMjD5u7D2KYpFp75PRweBQAjZqfxYc7xQeRzD/2.json",
+    uri: "ipfs://QmXZ9nV13j4CxZisv6vQPTLUEKRhBAoMwZ8b3qieCLzECn",
     tokenV: 0,
     tokenR: "",
     tokenS: "",
@@ -62,8 +64,16 @@ const Debug: React.FC = () => {
 
   const [userValues, setUserValues] = useState(initialUserFormValues);
   const [primarySale, setPrimarySaleValues] = useState(
-    initiaPrimarySaleFormValues
+    initialPrimarySaleFormValues
   );
+
+  const [ipfsValues, setIpfsValues] = useState({
+    name: "",
+    description: "",
+    _attributes: "",
+    attributes: null,
+    file: {},
+  });
 
   const [saleInput, setSaleInput] = useState(Array(100).fill(1));
 
@@ -87,6 +97,24 @@ const Debug: React.FC = () => {
 
     setPrimarySaleValues({
       ...primarySale,
+      [name]: value,
+    });
+  };
+
+  const handleIpfsInputChange = (e) => {
+    const old = { ...ipfsValues };
+
+    const { name, value } = e.target;
+    if (name === "_attributes") {
+      try {
+        const _value = JSON.parse(value);
+        old.attributes = _value.map((v) => JSON.stringify(v));
+      } catch (err) {
+        // Do nothing
+      }
+    }
+    setIpfsValues({
+      ...old,
       [name]: value,
     });
   };
@@ -202,6 +230,46 @@ const Debug: React.FC = () => {
         </Flex>
 
         <Button onClick={submitSale}>Create Sale</Button>
+      </Flex>
+      <Flex>
+        <Label>Upload IPFS</Label>
+        <Input
+          type="text"
+          placeholder="name"
+          name="name"
+          value={ipfsValues.name}
+          onChange={handleIpfsInputChange}
+        />
+        <Input
+          type="text"
+          placeholder="description"
+          name="description"
+          value={ipfsValues.description}
+          onChange={handleIpfsInputChange}
+        />
+        <Input
+          type="file"
+          placeholder="file"
+          name="file"
+          // value={ipfsValues.file}
+          onChange={handleIpfsInputChange}
+        />
+
+        <Input
+          type="textarea"
+          placeholder="attributes"
+          name="_attributes"
+          value={ipfsValues._attributes}
+          onChange={handleIpfsInputChange}
+        />
+
+        <Button
+          onClick={() => {
+            submitIpfs(ipfsValues);
+          }}
+        >
+          Upload ipfs
+        </Button>
       </Flex>
 
       <Flex flexDirection="column">

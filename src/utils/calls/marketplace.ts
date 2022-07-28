@@ -1,3 +1,4 @@
+import { ethers } from "ethers";
 import { ASK_TYPE } from "../../apis/backend/constants";
 import { PrimarySaleResponse } from "../../apis/backend/generated";
 
@@ -49,7 +50,10 @@ export const primaryBuy = async (
       Buffer.from(token.r.substring(2), "hex"),
       Buffer.from(token.s.substring(2), "hex"),
     ],
-    purchaseAmount
+    purchaseAmount,
+    {
+      value: currency === ethers.constants.AddressZero ? price : "0",
+    }
   );
   const receipt = await tx.wait();
   return receipt.status;

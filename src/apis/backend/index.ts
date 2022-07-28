@@ -4,6 +4,7 @@ import {
   AuthenticationApi,
   CollectionsApi,
   ContactApi,
+  IpfsApi,
   NFTsApi,
   SalesApi,
   SocialsApi,
@@ -39,4 +40,5 @@ export default {
     client
   ),
   user: new UserApi(null, process.env.REACT_APP_PUBLIC_API_BASE_URL, client),
+  ipfs: new IpfsApi(null, process.env.REACT_APP_PUBLIC_API_BASE_URL, client),
 };
