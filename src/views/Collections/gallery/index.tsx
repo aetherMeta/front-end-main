@@ -8,7 +8,7 @@ import {
     ButtonMenuItem, 
     Pagination,
     Select } from "@aethermeta/uikit";
-import Gallery from "views/Collections/GalleryItems";
+import Gallery from "views/Collections/galleryItems";
 import { Item } from "../types";
 
 
@@ -22,7 +22,7 @@ interface GalleryProps {
     items: Item[];
 }
 
-const Items: React.FC<GalleryProps> = ({items}) => {
+const ItemsMobile: React.FC<GalleryProps> = ({items}) => {
     const [index, setIndex] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
     const [value, setValue] = useState("Most recent");
@@ -46,7 +46,7 @@ const Items: React.FC<GalleryProps> = ({items}) => {
 
     return(
         <>
-        <Flex style={{flexDirection: "column", margin:"3rem 3.5rem 1rem"}}>
+        <Flex style={{flexDirection: "column", margin:"3rem 0rem 1rem"}}>
             <Flex style={{justifyContent: "space-between", margin:"0rem 2.5rem 1rem 0rem"}}>
                 <Text variant="h1Bold" style={{marginLeft: "1rem"}}>
                     COLLECTIONS
@@ -80,7 +80,7 @@ const Items: React.FC<GalleryProps> = ({items}) => {
                     </ButtonMenuItem>  
                 </ButtonMenu>
             </Flex>
-            <Grid style={{gridTemplateColumns: "auto auto auto auto", gridTemplateRows: "auto auto auto auto"}} >
+            <Grid style={{gridTemplateColumns: "25% 25% 25% 25%"}} >
                 {shopItemsData.map((item) => (
                     <Gallery item={item} />
                 ))}
@@ -101,4 +101,4 @@ const Items: React.FC<GalleryProps> = ({items}) => {
     );
 }
 
-export default Items;
+export default ItemsMobile;
