@@ -63,19 +63,19 @@ const ItemsMobile: React.FC<GalleryProps> = ({items}) => {
                 
             <Flex style={{justifyContent: "space-around", alignSelf:"flex-start", marginBottom:"3.5rem"}}>
                 <ButtonMenu activeIndex={index} onItemClick={handleClick} scale="sm" variant="white">
-                   <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px", borderColor: "#D4DDDC"}}>
+                   <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px"}}>
                         Haute couture clothing
                     </ButtonMenuItem>
-                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px", borderColor: "#D4DDDC"}}>
+                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px"}}>
                         Accessories
                     </ButtonMenuItem> 
-                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px", borderColor: "#D4DDDC"}}>
+                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px"}}>
                         Watches and Jewelry 
                     </ButtonMenuItem> 
-                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px", borderColor: "#D4DDDC"}}>
+                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px"}}>
                         Homes and estates
                     </ButtonMenuItem> 
-                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px", borderColor: "#D4DDDC"}}>
+                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px"}}>
                         automobile
                     </ButtonMenuItem>  
                 </ButtonMenu>
