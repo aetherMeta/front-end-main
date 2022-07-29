@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Page from "components/Layout/Page";
 import { useMatchBreakpoints } from "@aethermeta/uikit";
-import Items from "./Gallery";
+import Items from "./gallery";
 import testItems from "./testItems";
 
 const CollectionBackground1 = styled(Page)`
   background-size: 100%;
-  background-image: url(/images/collectionBackground.svg);
+  background-image: url(/images/collectionBackground.svg), url(/images/collectionBackground2.svg);
   background-repeat: no-repeat;
 `
 
