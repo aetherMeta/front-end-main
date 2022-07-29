@@ -6,7 +6,6 @@ import {
     Grid,
     ButtonMenu,
     ButtonMenuItem, 
-    Image,
     Pagination,
     Select } from "@aethermeta/uikit";
 import Gallery from "views/Collections/gallery";
