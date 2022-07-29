@@ -4,20 +4,28 @@ import {
   NoEthereumProviderError,
   UserRejectedRequestError as UserRejectedRequestErrorInjected,
 } from "@web3-react/injected-connector";
-import { connectorsByName, ConnectorNames } from "utils/web3React";
+import { connectorsByName, ConnectorNames, getLibrary } from "utils/web3React";
 import { connectorLocalStorageKey } from "constants/wallet";
 import useToast from "hooks/useToast";
+import useAccessToken from "./useAccessToken";
 
 const useAuth = () => {
   const { activate, deactivate } = useWeb3React();
+  const {
+    accessToken,
+    accessTokenAddress,
+    requestSignature,
+    logout: accessTokenLogout,
+  } = useAccessToken();
+
   const { toastError } = useToast();
   const login = useCallback(
-    (connectorID: ConnectorNames) => {
+    async (connectorID: ConnectorNames) => {
       const connector = connectorsByName[connectorID];
       if (typeof connector !== "function" || connector) {
-        activate(connector, async (error: Error) => {
+        await activate(connector, async (error: Error) => {
           if (error instanceof UnsupportedChainIdError) {
-            activate(connector);
+            await activate(connector);
           } else {
             window.localStorage.removeItem(connectorLocalStorageKey);
             if (error instanceof NoEthereumProviderError) {
@@ -32,16 +40,27 @@ const useAuth = () => {
             }
           }
         });
+        if (
+          accessToken === undefined ||
+          accessToken === null ||
+          accessTokenAddress !== (await connector.getAccount())
+        ) {
+          await requestSignature(
+            await connector.getAccount(),
+            getLibrary(await connector.getProvider())
+          );
+        }
       } else {
         toastError("Unable to find connector", "The connector config is wrong");
       }
     },
-    [activate, toastError]
+    [accessToken, accessTokenAddress, activate, requestSignature, toastError]
   );
 
   const logout = useCallback(() => {
     deactivate();
-  }, [deactivate]);
+    accessTokenLogout();
+  }, [deactivate, accessTokenLogout]);
 
   return { login, logout };
 };

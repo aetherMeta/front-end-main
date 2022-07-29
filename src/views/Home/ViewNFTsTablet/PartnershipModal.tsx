@@ -55,7 +55,6 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
     setErrors({
       ...errors,
       [name]: false,

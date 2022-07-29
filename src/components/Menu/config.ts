@@ -3,6 +3,10 @@ const config = [
     label: "Collections",
     href: "/collections",
   },
+  {
+    label: "Shop",
+    href: "/shop",
+  },
   // {
   //   label: "Products",
   //   href: "/products",
@@ -11,14 +15,14 @@ const config = [
     label: "About",
     href: "/about",
   },
-  // {
-  //   label: "Contact",
-  //   href: "/contact",
-  // },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
   {
     label: "Partnerships",
-    href: "/partnerships"
-  }
+    href: "/partnerships",
+  },
 ];
 
 export const socials = [
