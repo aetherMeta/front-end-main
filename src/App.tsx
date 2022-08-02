@@ -7,6 +7,7 @@ import NotFound from "./views/NotFound";
 import About from "./views/About";
 import Home from "./views/Home";
 import Partnerships from "./views/Partnerships";
+import Collections from "./views/Collections"
 import Shop from "./views/Shop";
 import Menu from "./components/Menu";
 import GlobalStyle from "./style/Global";
@@ -33,6 +34,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/partnerships" exact>
             <Partnerships />
+          </Route>
+          <Route path="/collections" exact>
+            <Collections />
           </Route>
 
           <Route path="/metaverse" exact>
