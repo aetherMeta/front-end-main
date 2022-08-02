@@ -1,6 +1,10 @@
 const config = [
   {
     label: "Collections",
+    href: "/collections",
+  },
+  {
+    label: "Shop",
     href: "/shop",
   },
   // {

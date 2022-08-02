@@ -5,15 +5,18 @@ import { ResetCSS } from "@aethermeta/uikit";
 import { ToastListener } from "./contexts/ToastsContext";
 import NotFound from "./views/NotFound";
 import About from "./views/About";
-import Home from "./views/Home";
 import Contact from "./views/Contact";
+import Home from "./views/Home";
 import Partnerships from "./views/Partnerships";
 import Product from "./views/Product";
+import Collections from "./views/Collections";
 import Shop from "./views/Shop";
 import Menu from "./components/Menu";
 import GlobalStyle from "./style/Global";
 import history from "./routerHistory";
 import "./App.css";
+import Debug from "./views/Debug";
+import Metaverse from "./views/Metaverse";
 
 const App: React.FC = () => {
   return (
@@ -40,6 +43,19 @@ const App: React.FC = () => {
           <Route path="/product" exact>
             <Product />
           </Route>
+          <Route path="/collections" exact>
+            <Collections />
+          </Route>
+          <Route path="/metaverse" exact>
+            <Metaverse />
+          </Route>
+          {process.env.NODE_ENV !== "production" ? (
+            <Route path="/debug" exact>
+              <Debug />
+            </Route>
+          ) : (
+            <></>
+          )}
           <Route>
             <NotFound />
           </Route>
