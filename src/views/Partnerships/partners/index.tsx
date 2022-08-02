@@ -13,17 +13,15 @@ const Container = styled.div`
   }
 `;
 
-
 const StyledFlex = styled(Flex)`
   margin-top: 38px;
   flex-warp: wrap;
   margin-left: 46px;
   position: relative;
- 
+
   min-width: 19.375rem;
   max-width: 19.375rem;
-  
-  
+
   ${({ theme }) => theme.mediaQueries.lg} {
     margin-top: 46px;
   }
@@ -69,7 +67,6 @@ const Icon4 = styled.div`
   min-height: 10em;
 `;
 
-
 const FlexContainer = styled(Flex)`
   height: 100%;
   justify-content: space-around;
@@ -88,85 +85,74 @@ const FeatureContainer = styled(Grid)`
   margin: 1em;
   width: 100%;
   justify-content: space-around;
-  
 `;
-
 
 const DescriptionContainer = styled(Flex)`
   flex-direction: column;
-  margin: 1em;  
-`
+  margin: 1em;
+`;
 
 const Feature = styled(Text)`
   margin-bottom: 1em;
-`
-
+`;
 
 const Partners: React.FC = () => {
-    return (
-        <Container>
-            <Text variant="h1Light" display="inline">
-                PARTNERSHIPS
-            </Text>
-            <br />
-            <br />
-            <Text variant="body">
-                There many reasons to become part of our Metaverse.
-            </Text>
-            <Text variant="body">
-                Some simple advantages are:
-            </Text>
-            <FlexContainer flexDirection="column">
-                <Diagram />
-                <StyledFlex>
-                    <Text variant="h4Bold">
-                        Measure product engagement and product reasearch
-                    </Text>
-                </StyledFlex> 
-            </FlexContainer>
-            <FeatureContainer>
-            
-                <Icon1 />
-                <Icon2 />
-                <Icon3 />
-                <Icon4 />
-              
-                <DescriptionContainer>
-                  <Feature variant="h4Bold">
-                      Aether provides instant access to the NFT market
-                  </Feature>
-                  <Text variant="body">
-                      with little overhead or development costs.
-                  </Text>
-                </DescriptionContainer>
-               
-                <DescriptionContainer>
-                  <Feature variant="h4Bold">
-                      Instant product feasibility feedback from consumers,
-                  </Feature>
-                  <Text variant="body">
-                      suppliers and distributors.
-                  </Text>
-                </DescriptionContainer>
-                <DescriptionContainer>
-                 <Feature variant="h4Bold">
-                      High-fedelity designs
-                  </Feature>
-                  <Text variant="body">
-                      Unlike the competition we deliver high-fedelity designs that closely resemble you physical products.
-                  </Text>
-                </DescriptionContainer> 
-                <DescriptionContainer>
-                  <Feature variant="h4Bold">
-                      Tailored brand experience
-                  </Feature>
-                  <Text variant="body">
-                      Our team can tailor the experience to crea a new, enhanced brand experience that energizes your target audience and creates unique talking points for marketing opportunites.
-                  </Text>
-                </DescriptionContainer> 
-            </FeatureContainer>
-        </Container>
-    );
+  return (
+    <Container>
+      <Text variant="h1Light" display="inline">
+        PARTNERSHIPS
+      </Text>
+      <br />
+      <br />
+      <Text variant="body">
+        There many reasons to become part of our Metaverse.
+      </Text>
+      <Text variant="body">Some simple advantages are:</Text>
+      <FlexContainer flexDirection="column">
+        <Diagram />
+        <StyledFlex>
+          <Text variant="h4Bold">
+            Measure product engagement and product reasearch
+          </Text>
+        </StyledFlex>
+      </FlexContainer>
+      <FeatureContainer>
+        <Icon1 />
+        <Icon2 />
+        <Icon3 />
+        <Icon4 />
+
+        <DescriptionContainer>
+          <Feature variant="h4Bold">
+            Aether provides instant access to the NFT market
+          </Feature>
+          <Text variant="body">with little overhead or development costs.</Text>
+        </DescriptionContainer>
+
+        <DescriptionContainer>
+          <Feature variant="h4Bold">
+            Instant product feasibility feedback from consumers,
+          </Feature>
+          <Text variant="body">suppliers and distributors.</Text>
+        </DescriptionContainer>
+        <DescriptionContainer>
+          <Feature variant="h4Bold">High-fedelity designs</Feature>
+          <Text variant="body">
+            Unlike the competition we deliver high-fedelity designs that closely
+            resemble you physical products.
+          </Text>
+        </DescriptionContainer>
+        <DescriptionContainer>
+          <Feature variant="h4Bold">Tailored brand experience</Feature>
+          <Text variant="body">
+            Our team can tailor the experience to crea a new, enhanced brand
+            experience that energizes your target audience and creates unique
+            talking points for marketing opportunites.
+          </Text>
+        </DescriptionContainer>
+      </FeatureContainer>
+    </Container>
+  );
 };
 
 export default Partners;
