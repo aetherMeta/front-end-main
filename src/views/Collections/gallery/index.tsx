@@ -18,6 +18,10 @@ const PaginationContainer = styled.div`
   margin-top: 5.75rem;
 `;
 
+const ButtonMenuItemFilter = styled(ButtonMenuItem)`
+    border-radius: 16px;
+`
+
 interface GalleryProps {
     items: Item[];
 }
@@ -44,11 +48,11 @@ const ItemsMobile: React.FC<GalleryProps> = ({items}) => {
       return items.slice(firstPageIndex, lastPageIndex);
     }, [currentPage, items]);
 
+    
     return(
-        <>
-        <Flex style={{flexDirection: "column", margin:"3rem 0rem 1rem"}}>
-            <Flex style={{justifyContent: "space-between", margin:"0rem 2.5rem 1rem 0rem"}}>
-                <Text variant="h1Bold" style={{marginLeft: "1rem"}}>
+        <Flex flexDirection="column" m="3rem 0rem 1rem">
+            <Flex justifyContent="space-between" m="0rem 2.5rem 1rem 0rem">
+                <Text variant="h1Bold" ml="1rem">
                     COLLECTIONS
                 </Text>
                 <Select
@@ -61,26 +65,26 @@ const ItemsMobile: React.FC<GalleryProps> = ({items}) => {
                 />
             </Flex>
                 
-            <Flex style={{justifyContent: "space-around", alignSelf:"flex-start", marginBottom:"3.5rem"}}>
+            <Flex justifyContent="space-around" alignSelf="flex-start" mb="3.5rem">
                 <ButtonMenu activeIndex={index} onItemClick={handleClick} scale="sm" variant="white">
-                   <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px"}}>
+                   <ButtonMenuItemFilter  marginLeft="1rem" style={{borderRadius: "16px"}}>
                         Haute couture clothing
-                    </ButtonMenuItem>
-                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px"}}>
+                    </ButtonMenuItemFilter>
+                    <ButtonMenuItemFilter  marginLeft="1rem" style={{borderRadius: "16px"}}>
                         Accessories
-                    </ButtonMenuItem> 
-                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px"}}>
-                        Watches and Jewelry 
-                    </ButtonMenuItem> 
-                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px"}}>
+                    </ButtonMenuItemFilter> 
+                    <ButtonMenuItemFilter  marginLeft="1rem" style={{borderRadius: "16px"}}>
+                        Watches & Jewelry 
+                    </ButtonMenuItemFilter> 
+                    <ButtonMenuItemFilter  marginLeft="1rem" style={{borderRadius: "16px"}}>
                         Homes and estates
-                    </ButtonMenuItem> 
-                    <ButtonMenuItem style={{marginLeft: "1rem", borderRadius: "16px"}}>
+                    </ButtonMenuItemFilter> 
+                    <ButtonMenuItemFilter  marginLeft="1rem" style={{borderRadius: "16px"}}>
                         automobile
-                    </ButtonMenuItem>  
+                    </ButtonMenuItemFilter>  
                 </ButtonMenu>
             </Flex>
-            <Grid style={{gridTemplateColumns: "25% 25% 25% 25%"}} >
+            <Grid gridTemplateColumns="25% 25% 25% 25%">
                 {shopItemsData.map((item) => (
                     <Gallery item={item} />
                 ))}
@@ -94,10 +98,7 @@ const ItemsMobile: React.FC<GalleryProps> = ({items}) => {
                 />
             </PaginationContainer>
 
-        </Flex>
-            
-        </>
-        
+        </Flex>     
     );
 }
 

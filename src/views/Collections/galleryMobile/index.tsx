@@ -25,6 +25,12 @@ const GalleryGrid = styled(Grid)`
     }
 `
 
+const ButtonMenuItemFilter = styled(ButtonMenuItem)`
+  border-radius: 16px;
+  height: 2.5rem;
+  width: 14rem;
+`
+
 interface GalleryProps {
   items: Item[];
 }
@@ -44,14 +50,12 @@ const Items: React.FC<GalleryProps> = ({ items }) => {
 
   return (
     <>
-      <Flex style={{ flexDirection: "column", margin: "3rem 0rem 1rem"}}>
+      <Flex flexDirection="column" m="3rem 0rem 1rem">
         <Text
           variant="h1Bold"
-          style={{
-            marginTop: "1rem",
-            marginRight: "1rem",
-            marginBottom: "1rem",
-          }}
+          mt="1rem"
+          mr="1rem"
+          mb="1rem"
         >
           COLLECTIONS
         </Text>
@@ -68,57 +72,31 @@ const Items: React.FC<GalleryProps> = ({ items }) => {
             scale="sm"
             variant="white"
           >
-            <ButtonMenuItem
-              style={{
-                marginRight: "1rem",
-                borderRadius: "16px",
-                borderColor: "#D4DDDC",
-                width:"20rem",
-                height:"2.5rem",
-              }}
+            <ButtonMenuItemFilter
+              mr="1rem"
             >
               Haute couture clothing
-            </ButtonMenuItem>
-            <ButtonMenuItem
-              style={{
-                marginRight: "1rem",
-                borderRadius: "16px",
-                borderColor: "#D4DDDC",
-                height:"2.5rem",
-              }}
+            </ButtonMenuItemFilter>
+            <ButtonMenuItemFilter
+              mr="1rem"
             >
               Accessories
-            </ButtonMenuItem>
-            <ButtonMenuItem
-              style={{
-                marginRight: "1rem",
-                borderRadius: "16px",
-                borderColor: "#D4DDDC",
-                height:"2.5rem",
-              }}
+            </ButtonMenuItemFilter>
+            <ButtonMenuItemFilter
+              mr="1rem"
             >
               Watches & Jewelry
-            </ButtonMenuItem>
-            <ButtonMenuItem
-              style={{
-                marginRight: "1rem",
-                borderRadius: "16px",
-                borderColor: "#D4DDDC",
-                height:"2.5rem",
-              }}
+            </ButtonMenuItemFilter>
+            <ButtonMenuItemFilter
+              mr="1rem"
             >
-              Homes & estates
-            </ButtonMenuItem>
-            <ButtonMenuItem
-              style={{
-                marginRight: "1rem",
-                borderRadius: "16px",
-                borderColor: "#D4DDDC",
-                height:"2.5rem",
-              }}
+              Homes and estates
+            </ButtonMenuItemFilter>
+            <ButtonMenuItemFilter
+              mr="1rem"
             >
               automobile
-            </ButtonMenuItem>
+            </ButtonMenuItemFilter>
           </ButtonMenu>
         </div>
       </Flex>
