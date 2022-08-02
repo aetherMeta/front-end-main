@@ -19,8 +19,12 @@ const Disclaimer: React.FC<DisclaimerModalProps> = ({ onDismiss }) => {
 
 
   const handleInputChange = () => {
-    // eslint-disable-next-line no-unused-expressions
-    agree ? setAgree(false) : setAgree(true);
+    if(agree) {
+      setAgree(false);
+    } 
+    else{
+      setAgree(true);
+    } 
   
   };
 
@@ -40,13 +44,11 @@ const Disclaimer: React.FC<DisclaimerModalProps> = ({ onDismiss }) => {
         association with the trademark holder of their product brand.
       </Text>
       <Flex
-        style={{
-          marginTop: "1rem",
-          marginBottom: "1rem",
-          alignItems: "center",
-        }}
+        mt="1rem"
+        mb="1rem"
+        alignItems="center"
       >
-        <Text style={{ marginRight: "1rem" }}>I agree</Text>
+        <Text mr="1rem">I agree</Text>
         <Checkbox onClick={handleInputChange} />
       </Flex>
 
