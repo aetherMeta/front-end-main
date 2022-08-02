@@ -8,7 +8,7 @@ interface GalleryProps{
 
 const GalleryItems: React.FC<GalleryProps> = ({item}) => {
     return(
-        <Flex style={{margin:"1rem", flexDirection:"column"}}>
+        <Flex m="1rem" flexDirection="column">
             <Image src={item.image} width={310} height={237} />
             <Text variant="h4Bold">
                 {item.name}
