@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Page from "components/Layout/Page";
 import { useMatchBreakpoints } from "@aethermeta/uikit";
-import Items from "./gallery";
+import Items from "./Gallery";
 import testItems from "./testItems";
-import ItemsMobile from "./galleryMobile";
-
+import ItemsMobile from "./GalleryMobile";
 
 const Container = styled.div`
   padding 80px 22px 80px;
@@ -22,15 +21,18 @@ const Container = styled.div`
 `;
 
 const Collections: React.FC = () => {
-    const { isTablet, isMobile } = useMatchBreakpoints();
-    return (
-      <Page>
-        <Container>
-          {isTablet || isMobile ? <ItemsMobile items={testItems}/> : <Items items={testItems}/>} 
-        </Container>
-        
-      </Page>   
-      );
-    };
-    
+  const { isTablet, isMobile } = useMatchBreakpoints();
+  return (
+    <Page>
+      <Container>
+        {isTablet || isMobile ? (
+          <ItemsMobile items={testItems} />
+        ) : (
+          <Items items={testItems} />
+        )}
+      </Container>
+    </Page>
+  );
+};
+
 export default Collections;

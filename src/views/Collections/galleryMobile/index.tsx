@@ -8,7 +8,7 @@ import {
   ButtonMenuItem,
   Pagination,
 } from "@aethermeta/uikit";
-import Gallery from "views/Collections/galleryItems";
+import GalleryItems from "../GalleryItems";
 import { Item } from "../types";
 
 const PaginationContainer = styled.div`
@@ -18,18 +18,18 @@ const PaginationContainer = styled.div`
 `;
 
 const GalleryGrid = styled(Grid)`
-    grid-template-columns: auto;
-    justify-content: center;
-    ${({ theme }) => theme.mediaQueries.md} {
-        grid-template-columns: 50% 50%;
-    }
-`
+  grid-template-columns: auto;
+  justify-content: center;
+  ${({ theme }) => theme.mediaQueries.md} {
+    grid-template-columns: 50% 50%;
+  }
+`;
 
 const ButtonMenuItemFilter = styled(ButtonMenuItem)`
   border-radius: 16px;
   height: 2.5rem;
   width: 14rem;
-`
+`;
 
 interface GalleryProps {
   items: Item[];
@@ -51,12 +51,7 @@ const Items: React.FC<GalleryProps> = ({ items }) => {
   return (
     <>
       <Flex flexDirection="column" m="3rem 0rem 1rem">
-        <Text
-          variant="h1Bold"
-          mt="1rem"
-          mr="1rem"
-          mb="1rem"
-        >
+        <Text variant="h1Bold" mt="1rem" mr="1rem" mb="1rem">
           COLLECTIONS
         </Text>
         <div
@@ -66,43 +61,29 @@ const Items: React.FC<GalleryProps> = ({ items }) => {
             scrollbarWidth: "none",
           }}
         >
-          <ButtonMenu
+          {/* <ButtonMenu
             activeIndex={index}
             onItemClick={handleClick}
             scale="sm"
             variant="white"
           >
-            <ButtonMenuItemFilter
-              mr="1rem"
-            >
+            <ButtonMenuItemFilter mr="1rem">
               Haute couture clothing
             </ButtonMenuItemFilter>
-            <ButtonMenuItemFilter
-              mr="1rem"
-            >
-              Accessories
-            </ButtonMenuItemFilter>
-            <ButtonMenuItemFilter
-              mr="1rem"
-            >
+            <ButtonMenuItemFilter mr="1rem">Accessories</ButtonMenuItemFilter>
+            <ButtonMenuItemFilter mr="1rem">
               Watches & Jewelry
             </ButtonMenuItemFilter>
-            <ButtonMenuItemFilter
-              mr="1rem"
-            >
+            <ButtonMenuItemFilter mr="1rem">
               Homes and estates
             </ButtonMenuItemFilter>
-            <ButtonMenuItemFilter
-              mr="1rem"
-            >
-              automobile
-            </ButtonMenuItemFilter>
-          </ButtonMenu>
+            <ButtonMenuItemFilter mr="1rem">automobile</ButtonMenuItemFilter>
+          </ButtonMenu> */}
         </div>
       </Flex>
       <GalleryGrid>
         {shopItemsData.map((item) => (
-          <Gallery item={item} />
+          <GalleryItems item={item} />
         ))}
       </GalleryGrid>
       <PaginationContainer>

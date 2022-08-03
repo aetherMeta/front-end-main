@@ -14,7 +14,8 @@ export const dispatchSalePublicDataAsync = () => async (dispatch) => {
       await backend.sales.primarySaleControllerFindAll();
     const { data: secondarySaleData } =
       await backend.sales.secondarySaleControllerFindAll();
-
+    console.log(primarySaleData);
+    console.log(secondarySaleData);
     dispatch(
       setSalePublicData([
         ...primarySaleData.map((o) => ({

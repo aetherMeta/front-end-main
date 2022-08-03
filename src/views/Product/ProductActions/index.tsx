@@ -107,7 +107,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
           View in metaverse
         </Button>
       </Flex>
-      <Flex
+      {/* <Flex
         style={{ gap: "0.75rem" }}
         justifyContent="center"
         alignItems="center"
@@ -115,7 +115,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
       >
         <StyledText variant="bodySmall">Ending in</StyledText>
         <BodyHeavy variant="h4Bold">{countdown}</BodyHeavy>
-      </Flex>
+      </Flex> */}
     </Container>
   );
 };

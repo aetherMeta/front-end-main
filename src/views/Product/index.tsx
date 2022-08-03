@@ -2,6 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useMatchBreakpoints, Flex } from "@aethermeta/uikit";
+import { useSales } from "store/sales/hooks";
 import Page from "components/Layout/Page";
 import ProductImages from "./ProductImages";
 import ProductActions from "./ProductActions";
@@ -40,6 +41,8 @@ const StyledFlex = styled(Flex)`
 
 const Product: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();
+  const { data: salesData, createPrimarySale } = useSales();
+  console.log(salesData);
   const isSmallScreen = isTablet || isMobile;
   const images = [
     "https://picsum.photos/200/300",
