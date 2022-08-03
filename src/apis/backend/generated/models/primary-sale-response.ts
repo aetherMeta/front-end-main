@@ -14,6 +14,7 @@
 
 
 import { AssetDto } from './asset-dto';
+import { AttributeDto } from './attribute-dto';
 import { ComissionDto } from './comission-dto';
 import { RoyaltyDto } from './royalty-dto';
 import { SecondarySaleResponseNft } from './secondary-sale-response-nft';
@@ -31,6 +32,12 @@ export interface PrimarySaleResponse {
      * @memberof PrimarySaleResponse
      */
     'amount': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PrimarySaleResponse
+     */
+    'amountSold': string;
     /**
      * 
      * @type {string}
@@ -87,6 +94,12 @@ export interface PrimarySaleResponse {
     'asset': AssetDto;
     /**
      * 
+     * @type {AttributeDto}
+     * @memberof PrimarySaleResponse
+     */
+    'attributes': AttributeDto;
+    /**
+     * 
      * @type {string}
      * @memberof PrimarySaleResponse
      */
@@ -133,6 +146,12 @@ export interface PrimarySaleResponse {
      * @memberof PrimarySaleResponse
      */
     'currency': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PrimarySaleResponse
+     */
+    'completedAt': string | null;
     /**
      * 
      * @type {number}
