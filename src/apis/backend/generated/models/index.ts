@@ -1,4 +1,5 @@
 export * from './asset-dto';
+export * from './attribute-dto';
 export * from './challenge-request-body-dto';
 export * from './challenge-response-dto';
 export * from './collection-response';
@@ -36,7 +37,7 @@ export * from './update-auction-dto';
 export * from './update-collection-dto';
 export * from './update-sale-dto';
 export * from './user-nftresponse';
-export * from './user-nftresponse-collection';
+export * from './user-nftresponse-collections';
 export * from './user-response-dto';
 export * from './verify-body-dto';
 export * from './verify-response-dto';

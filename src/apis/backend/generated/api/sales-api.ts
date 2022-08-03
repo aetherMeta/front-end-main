@@ -83,14 +83,16 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @param {string} [cursor] 
          * @param {number} [skip] 
+         * @param {number} [take] 
          * @param {FilterValue} [createdAt] 
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
+         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        primarySaleControllerFindAll: async (cursor?: string, skip?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        primarySaleControllerFindAll: async (cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/sales/primary`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -111,6 +113,10 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
                 localVarQueryParameter['skip'] = skip;
             }
 
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+
             if (createdAt !== undefined) {
                 localVarQueryParameter['createdAt'] = createdAt;
             }
@@ -125,6 +131,10 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
 
             if (price !== undefined) {
                 localVarQueryParameter['price'] = price;
+            }
+
+            if (expiresAt !== undefined) {
+                localVarQueryParameter['expiresAt'] = expiresAt;
             }
 
 
@@ -257,14 +267,16 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
          * 
          * @param {string} [cursor] 
          * @param {number} [skip] 
+         * @param {number} [take] 
          * @param {FilterValue} [createdAt] 
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
+         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        secondarySaleControllerFindAll: async (cursor?: string, skip?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        secondarySaleControllerFindAll: async (cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/sales/secondary`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -285,6 +297,10 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
                 localVarQueryParameter['skip'] = skip;
             }
 
+            if (take !== undefined) {
+                localVarQueryParameter['take'] = take;
+            }
+
             if (createdAt !== undefined) {
                 localVarQueryParameter['createdAt'] = createdAt;
             }
@@ -299,6 +315,10 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
 
             if (price !== undefined) {
                 localVarQueryParameter['price'] = price;
+            }
+
+            if (expiresAt !== undefined) {
+                localVarQueryParameter['expiresAt'] = expiresAt;
             }
 
 
@@ -412,15 +432,17 @@ export const SalesApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} [cursor] 
          * @param {number} [skip] 
+         * @param {number} [take] 
          * @param {FilterValue} [createdAt] 
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
+         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async primarySaleControllerFindAll(cursor?: string, skip?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PrimarySaleResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.primarySaleControllerFindAll(cursor, skip, createdAt, updatedAt, name, price, options);
+        async primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PrimarySaleResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -458,15 +480,17 @@ export const SalesApiFp = function(configuration?: Configuration) {
          * 
          * @param {string} [cursor] 
          * @param {number} [skip] 
+         * @param {number} [take] 
          * @param {FilterValue} [createdAt] 
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
+         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async secondarySaleControllerFindAll(cursor?: string, skip?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<SecondarySaleResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.secondarySaleControllerFindAll(cursor, skip, createdAt, updatedAt, name, price, options);
+        async secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<SecondarySaleResponse>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -513,15 +537,17 @@ export const SalesApiFactory = function (configuration?: Configuration, basePath
          * 
          * @param {string} [cursor] 
          * @param {number} [skip] 
+         * @param {number} [take] 
          * @param {FilterValue} [createdAt] 
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
+         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        primarySaleControllerFindAll(cursor?: string, skip?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: any): AxiosPromise<Array<PrimarySaleResponse>> {
-            return localVarFp.primarySaleControllerFindAll(cursor, skip, createdAt, updatedAt, name, price, options).then((request) => request(axios, basePath));
+        primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: any): AxiosPromise<Array<PrimarySaleResponse>> {
+            return localVarFp.primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -555,15 +581,17 @@ export const SalesApiFactory = function (configuration?: Configuration, basePath
          * 
          * @param {string} [cursor] 
          * @param {number} [skip] 
+         * @param {number} [take] 
          * @param {FilterValue} [createdAt] 
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
+         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        secondarySaleControllerFindAll(cursor?: string, skip?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: any): AxiosPromise<Array<SecondarySaleResponse>> {
-            return localVarFp.secondarySaleControllerFindAll(cursor, skip, createdAt, updatedAt, name, price, options).then((request) => request(axios, basePath));
+        secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: any): AxiosPromise<Array<SecondarySaleResponse>> {
+            return localVarFp.secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -609,16 +637,18 @@ export class SalesApi extends BaseAPI {
      * 
      * @param {string} [cursor] 
      * @param {number} [skip] 
+     * @param {number} [take] 
      * @param {FilterValue} [createdAt] 
      * @param {FilterValue} [updatedAt] 
      * @param {FilterValue} [name] 
      * @param {FilterValue} [price] 
+     * @param {FilterValue} [expiresAt] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SalesApi
      */
-    public primarySaleControllerFindAll(cursor?: string, skip?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig) {
-        return SalesApiFp(this.configuration).primarySaleControllerFindAll(cursor, skip, createdAt, updatedAt, name, price, options).then((request) => request(this.axios, this.basePath));
+    public primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: AxiosRequestConfig) {
+        return SalesApiFp(this.configuration).primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -659,16 +689,18 @@ export class SalesApi extends BaseAPI {
      * 
      * @param {string} [cursor] 
      * @param {number} [skip] 
+     * @param {number} [take] 
      * @param {FilterValue} [createdAt] 
      * @param {FilterValue} [updatedAt] 
      * @param {FilterValue} [name] 
      * @param {FilterValue} [price] 
+     * @param {FilterValue} [expiresAt] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SalesApi
      */
-    public secondarySaleControllerFindAll(cursor?: string, skip?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig) {
-        return SalesApiFp(this.configuration).secondarySaleControllerFindAll(cursor, skip, createdAt, updatedAt, name, price, options).then((request) => request(this.axios, this.basePath));
+    public secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: AxiosRequestConfig) {
+        return SalesApiFp(this.configuration).secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

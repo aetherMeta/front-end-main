@@ -33,6 +33,12 @@ export interface SecondarySaleResponse {
      * @type {string}
      * @memberof SecondarySaleResponse
      */
+    'amountSold': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SecondarySaleResponse
+     */
     'price': string;
     /**
      * 
@@ -94,6 +100,12 @@ export interface SecondarySaleResponse {
      * @memberof SecondarySaleResponse
      */
     'currency': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SecondarySaleResponse
+     */
+    'completedAt': string | null;
     /**
      * 
      * @type {number}

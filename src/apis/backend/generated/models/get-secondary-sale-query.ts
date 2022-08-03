@@ -47,6 +47,12 @@ export interface GetSecondarySaleQuery {
     'skip'?: number;
     /**
      * 
+     * @type {number}
+     * @memberof GetSecondarySaleQuery
+     */
+    'take'?: number;
+    /**
+     * 
      * @type {FilterQuery}
      * @memberof GetSecondarySaleQuery
      */
