@@ -70,12 +70,6 @@ export interface CreateSecondarySaleDto {
     'tokenId': string;
     /**
      * 
-     * @type {string}
-     * @memberof CreateSecondarySaleDto
-     */
-    'expiresAt': string;
-    /**
-     * 
      * @type {number}
      * @memberof CreateSecondarySaleDto
      */

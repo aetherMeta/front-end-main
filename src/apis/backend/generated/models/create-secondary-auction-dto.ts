@@ -67,12 +67,6 @@ export interface CreateSecondaryAuctionDto {
      * @type {string}
      * @memberof CreateSecondaryAuctionDto
      */
-    'expiresAt': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateSecondaryAuctionDto
-     */
     'tokenId': string;
     /**
      * 

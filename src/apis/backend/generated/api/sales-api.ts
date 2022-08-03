@@ -27,13 +27,13 @@ import { CreateSecondarySaleDto } from '../models';
 // @ts-ignore
 import { FilterValue } from '../models';
 // @ts-ignore
-import { GetSecondarySaleQuery } from '../models';
+import { PrimarySaleControllerFindAll200Response } from '../models';
 // @ts-ignore
 import { PrimarySaleResponse } from '../models';
 // @ts-ignore
-import { SecondarySaleResponse } from '../models';
+import { SecondarySaleControllerFindAll200Response } from '../models';
 // @ts-ignore
-import { UpdateSaleDto } from '../models';
+import { SecondarySaleResponse } from '../models';
 /**
  * SalesApi - axios parameter creator
  * @export
@@ -88,11 +88,10 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
-         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        primarySaleControllerFindAll: async (cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        primarySaleControllerFindAll: async (cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/sales/primary`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -133,10 +132,6 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
                 localVarQueryParameter['price'] = price;
             }
 
-            if (expiresAt !== undefined) {
-                localVarQueryParameter['expiresAt'] = expiresAt;
-            }
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -175,49 +170,6 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateSaleDto} updateSaleDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        primarySaleControllerUpdate: async (id: string, updateSaleDto: UpdateSaleDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('primarySaleControllerUpdate', 'id', id)
-            // verify required parameter 'updateSaleDto' is not null or undefined
-            assertParamExists('primarySaleControllerUpdate', 'updateSaleDto', updateSaleDto)
-            const localVarPath = `/sales/primary/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication jwt required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateSaleDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -272,11 +224,10 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
-         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        secondarySaleControllerFindAll: async (cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        secondarySaleControllerFindAll: async (cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/sales/secondary`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -315,10 +266,6 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
 
             if (price !== undefined) {
                 localVarQueryParameter['price'] = price;
-            }
-
-            if (expiresAt !== undefined) {
-                localVarQueryParameter['expiresAt'] = expiresAt;
             }
 
 
@@ -365,49 +312,6 @@ export const SalesApiAxiosParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateSaleDto} updateSaleDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        secondarySaleControllerUpdate: async (id: string, updateSaleDto: UpdateSaleDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('secondarySaleControllerUpdate', 'id', id)
-            // verify required parameter 'updateSaleDto' is not null or undefined
-            assertParamExists('secondarySaleControllerUpdate', 'updateSaleDto', updateSaleDto)
-            const localVarPath = `/sales/secondary/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication jwt required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateSaleDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -437,12 +341,11 @@ export const SalesApiFp = function(configuration?: Configuration) {
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
-         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<PrimarySaleResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options);
+        async primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PrimarySaleControllerFindAll200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -453,17 +356,6 @@ export const SalesApiFp = function(configuration?: Configuration) {
          */
         async primarySaleControllerFindOne(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PrimarySaleResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.primarySaleControllerFindOne(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateSaleDto} updateSaleDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async primarySaleControllerUpdate(id: string, updateSaleDto: UpdateSaleDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PrimarySaleResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.primarySaleControllerUpdate(id, updateSaleDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -485,12 +377,11 @@ export const SalesApiFp = function(configuration?: Configuration) {
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
-         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<SecondarySaleResponse>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options);
+        async secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecondarySaleControllerFindAll200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -501,17 +392,6 @@ export const SalesApiFp = function(configuration?: Configuration) {
          */
         async secondarySaleControllerFindOne(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecondarySaleResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.secondarySaleControllerFindOne(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateSaleDto} updateSaleDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async secondarySaleControllerUpdate(id: string, updateSaleDto: UpdateSaleDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetSecondarySaleQuery>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.secondarySaleControllerUpdate(id, updateSaleDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -542,12 +422,11 @@ export const SalesApiFactory = function (configuration?: Configuration, basePath
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
-         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: any): AxiosPromise<Array<PrimarySaleResponse>> {
-            return localVarFp.primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options).then((request) => request(axios, basePath));
+        primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: any): AxiosPromise<PrimarySaleControllerFindAll200Response> {
+            return localVarFp.primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -557,16 +436,6 @@ export const SalesApiFactory = function (configuration?: Configuration, basePath
          */
         primarySaleControllerFindOne(id: string, options?: any): AxiosPromise<PrimarySaleResponse> {
             return localVarFp.primarySaleControllerFindOne(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateSaleDto} updateSaleDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        primarySaleControllerUpdate(id: string, updateSaleDto: UpdateSaleDto, options?: any): AxiosPromise<PrimarySaleResponse> {
-            return localVarFp.primarySaleControllerUpdate(id, updateSaleDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -586,12 +455,11 @@ export const SalesApiFactory = function (configuration?: Configuration, basePath
          * @param {FilterValue} [updatedAt] 
          * @param {FilterValue} [name] 
          * @param {FilterValue} [price] 
-         * @param {FilterValue} [expiresAt] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: any): AxiosPromise<Array<SecondarySaleResponse>> {
-            return localVarFp.secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options).then((request) => request(axios, basePath));
+        secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: any): AxiosPromise<SecondarySaleControllerFindAll200Response> {
+            return localVarFp.secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -601,16 +469,6 @@ export const SalesApiFactory = function (configuration?: Configuration, basePath
          */
         secondarySaleControllerFindOne(id: string, options?: any): AxiosPromise<SecondarySaleResponse> {
             return localVarFp.secondarySaleControllerFindOne(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateSaleDto} updateSaleDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        secondarySaleControllerUpdate(id: string, updateSaleDto: UpdateSaleDto, options?: any): AxiosPromise<GetSecondarySaleQuery> {
-            return localVarFp.secondarySaleControllerUpdate(id, updateSaleDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -642,13 +500,12 @@ export class SalesApi extends BaseAPI {
      * @param {FilterValue} [updatedAt] 
      * @param {FilterValue} [name] 
      * @param {FilterValue} [price] 
-     * @param {FilterValue} [expiresAt] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SalesApi
      */
-    public primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: AxiosRequestConfig) {
-        return SalesApiFp(this.configuration).primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options).then((request) => request(this.axios, this.basePath));
+    public primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig) {
+        return SalesApiFp(this.configuration).primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -660,18 +517,6 @@ export class SalesApi extends BaseAPI {
      */
     public primarySaleControllerFindOne(id: string, options?: AxiosRequestConfig) {
         return SalesApiFp(this.configuration).primarySaleControllerFindOne(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {UpdateSaleDto} updateSaleDto 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SalesApi
-     */
-    public primarySaleControllerUpdate(id: string, updateSaleDto: UpdateSaleDto, options?: AxiosRequestConfig) {
-        return SalesApiFp(this.configuration).primarySaleControllerUpdate(id, updateSaleDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -694,13 +539,12 @@ export class SalesApi extends BaseAPI {
      * @param {FilterValue} [updatedAt] 
      * @param {FilterValue} [name] 
      * @param {FilterValue} [price] 
-     * @param {FilterValue} [expiresAt] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SalesApi
      */
-    public secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, expiresAt?: FilterValue, options?: AxiosRequestConfig) {
-        return SalesApiFp(this.configuration).secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, expiresAt, options).then((request) => request(this.axios, this.basePath));
+    public secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig) {
+        return SalesApiFp(this.configuration).secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -712,17 +556,5 @@ export class SalesApi extends BaseAPI {
      */
     public secondarySaleControllerFindOne(id: string, options?: AxiosRequestConfig) {
         return SalesApiFp(this.configuration).secondarySaleControllerFindOne(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {UpdateSaleDto} updateSaleDto 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SalesApi
-     */
-    public secondarySaleControllerUpdate(id: string, updateSaleDto: UpdateSaleDto, options?: AxiosRequestConfig) {
-        return SalesApiFp(this.configuration).secondarySaleControllerUpdate(id, updateSaleDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
