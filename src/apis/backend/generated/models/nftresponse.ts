@@ -14,7 +14,7 @@
 
 
 import { AssetDto } from './asset-dto';
-import { UserNFTResponseCollection } from './user-nftresponse-collection';
+import { UserNFTResponseCollections } from './user-nftresponse-collections';
 
 /**
  * 
@@ -36,10 +36,10 @@ export interface NFTResponse {
     'total': string;
     /**
      * 
-     * @type {UserNFTResponseCollection}
+     * @type {UserNFTResponseCollections}
      * @memberof NFTResponse
      */
-    'collection'?: UserNFTResponseCollection | null;
+    'collections'?: UserNFTResponseCollections | null;
     /**
      * 
      * @type {AssetDto}

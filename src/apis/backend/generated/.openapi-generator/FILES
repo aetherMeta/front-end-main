@@ -17,6 +17,7 @@ configuration.ts
 git_push.sh
 index.ts
 models/asset-dto.ts
+models/attribute-dto.ts
 models/challenge-request-body-dto.ts
 models/challenge-response-dto.ts
 models/collection-response.ts
@@ -54,7 +55,7 @@ models/token-dto.ts
 models/update-auction-dto.ts
 models/update-collection-dto.ts
 models/update-sale-dto.ts
-models/user-nftresponse-collection.ts
+models/user-nftresponse-collections.ts
 models/user-nftresponse.ts
 models/user-response-dto.ts
 models/verify-body-dto.ts

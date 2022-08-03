@@ -13,14 +13,24 @@
  */
 
 
-import { AssetDto } from './asset-dto';
-import { NFTResponse } from './nftresponse';
-import { UserNFTResponseCollections } from './user-nftresponse-collections';
 
 /**
- * @type SecondarySaleResponseNft
+ * 
  * @export
+ * @interface AttributeDto
  */
-export type SecondarySaleResponseNft = NFTResponse;
-
+export interface AttributeDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof AttributeDto
+     */
+    'trait': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AttributeDto
+     */
+    'value': string;
+}
 

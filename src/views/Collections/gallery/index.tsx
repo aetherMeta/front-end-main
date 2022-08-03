@@ -8,7 +8,7 @@ import {
     ButtonMenuItem, 
     Pagination,
     Select } from "@aethermeta/uikit";
-import Gallery from "views/Collections/galleryItems";
+import Gallery from "views/Collections/GalleryItems";
 import { Item } from "../types";
 
 

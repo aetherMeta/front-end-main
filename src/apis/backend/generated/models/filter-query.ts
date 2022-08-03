@@ -45,5 +45,11 @@ export interface FilterQuery {
      * @memberof FilterQuery
      */
     'price'?: FilterValue;
+    /**
+     * 
+     * @type {FilterValue}
+     * @memberof FilterQuery
+     */
+    'expiresAt'?: FilterValue;
 }
 
