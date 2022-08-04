@@ -18,11 +18,11 @@ export const dispatchSalePublicDataAsync = () => async (dispatch) => {
     console.log(secondarySaleData);
     dispatch(
       setSalePublicData([
-        ...primarySaleData.map((o) => ({
+        ...primarySaleData.data.map((o) => ({
           ...o,
           askType: ASK_TYPE.PrimarySale,
         })),
-        ...secondarySaleData.map((o) => ({
+        ...secondarySaleData.data.map((o) => ({
           ...o,
           askType: ASK_TYPE.SecondarySale,
         })),

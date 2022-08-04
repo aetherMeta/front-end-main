@@ -27,11 +27,9 @@ import { CreateSecondarySaleDto } from '../models';
 // @ts-ignore
 import { FilterValue } from '../models';
 // @ts-ignore
-import { PrimarySaleControllerFindAll200Response } from '../models';
+import { PaginatedResponse } from '../models';
 // @ts-ignore
 import { PrimarySaleResponse } from '../models';
-// @ts-ignore
-import { SecondarySaleControllerFindAll200Response } from '../models';
 // @ts-ignore
 import { SecondarySaleResponse } from '../models';
 /**
@@ -344,7 +342,7 @@ export const SalesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PrimarySaleControllerFindAll200Response>> {
+        async primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -380,7 +378,7 @@ export const SalesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecondarySaleControllerFindAll200Response>> {
+        async secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -425,7 +423,7 @@ export const SalesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: any): AxiosPromise<PrimarySaleControllerFindAll200Response> {
+        primarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: any): AxiosPromise<PaginatedResponse> {
             return localVarFp.primarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, options).then((request) => request(axios, basePath));
         },
         /**
@@ -458,7 +456,7 @@ export const SalesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: any): AxiosPromise<SecondarySaleControllerFindAll200Response> {
+        secondarySaleControllerFindAll(cursor?: string, skip?: number, take?: number, createdAt?: FilterValue, updatedAt?: FilterValue, name?: FilterValue, price?: FilterValue, options?: any): AxiosPromise<PaginatedResponse> {
             return localVarFp.secondarySaleControllerFindAll(cursor, skip, take, createdAt, updatedAt, name, price, options).then((request) => request(axios, basePath));
         },
         /**
