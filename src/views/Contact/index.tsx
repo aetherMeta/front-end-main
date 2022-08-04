@@ -6,12 +6,7 @@ import SocialTablet from "./socialTablet";
 
 const Contact: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();
-  return (
-    <Page>
-      {isTablet || isMobile ? <SocialTablet /> : <Social />}
-      
-    </Page>
-  );
+  return <Page>{isTablet || isMobile ? <SocialTablet /> : <Social />}</Page>;
 };
 
 export default Contact;

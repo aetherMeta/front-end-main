@@ -13,41 +13,34 @@ import useToast from "hooks/useToast";
 
 export interface Values {
   name: string;
-  company: string;
   email: string;
   description: string;
 }
 
 export interface Errors {
   name: boolean;
-  company: boolean;
   email: boolean;
   description: boolean;
 }
 
-interface PartnershipModalProps {
+interface ContactModalProps {
   onSubmit: (e, values: Values) => void;
   onDismiss?: () => void;
 }
 
 const initialValues = {
   name: "",
-  company: "",
   email: "",
   description: "",
 };
 
 const initialErrors = {
   name: false,
-  company: false,
   email: false,
   description: false,
 };
 
-const PartnershipModal: React.FC<PartnershipModalProps> = ({
-  onSubmit,
-  onDismiss,
-}) => {
+const ContactModal: React.FC<ContactModalProps> = ({ onSubmit, onDismiss }) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrors);
   const [pending, setPending] = useState(false);
@@ -69,18 +62,14 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
 
   const validate = useCallback((): boolean => {
     let isValid = true;
-    const modifyErrors = {
-      name: false,
-      company: false,
-      email: false,
-      description: false,
-    };
-    for (const [key, value] of Object.entries(values)) {
+    const modifyErrors = initialErrors;
+    Object.entries(values).forEach((entry) => {
+      const [key, value] = entry;
       if (value === initialValues[key]) {
         isValid = false;
         modifyErrors[key] = true;
       }
-    }
+    });
     setErrors((prevState) => {
       return { ...prevState, ...modifyErrors };
     });
@@ -108,7 +97,7 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
   );
 
   return (
-    <Modal title="Partnership" onDismiss={onDismiss}>
+    <Modal title="Contact" onDismiss={onDismiss}>
       <form onSubmit={handleSubmit}>
         <Label>Name (*)</Label>
         <Input
@@ -120,20 +109,10 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
         <Text variant="bodySmall" color="failure" height="20px">{`${
           errors.name ? "Name field cannot be empty" : ""
         }`}</Text>
-        <Label>Company (*)</Label>
-        <Input
-          type="text"
-          placeholder="Company Name"
-          name="company"
-          onChange={handleInputChange}
-        />
-        <Text variant="bodySmall" color="failure" height="20px">{`${
-          errors.company ? "Company field cannot be empty" : ""
-        }`}</Text>
         <Label>Email (*)</Label>
         <Input
           type="email"
-          placeholder="Business Email Address"
+          placeholder="Email Address"
           name="email"
           onChange={handleInputChange}
         />
@@ -142,7 +121,7 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
         }`}</Text>
         <Label>Description (*)</Label>
         <TextArea
-          placeholder="Describe your Business"
+          placeholder="What is your Question?"
           name="description"
           onChange={handleInputChange}
         />
@@ -163,4 +142,4 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
   );
 };
 
-export default PartnershipModal;
+export default ContactModal;
