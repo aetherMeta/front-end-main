@@ -81,7 +81,6 @@ const ContactModal: React.FC<ContactModalProps> = ({ onSubmit, onDismiss }) => {
       e.preventDefault();
       if (validate()) {
         setPending(true);
-        console.log("Validated");
         try {
           await onSubmit(e, values);
           toastSuccess("Success", "Your application has been submitted!");
