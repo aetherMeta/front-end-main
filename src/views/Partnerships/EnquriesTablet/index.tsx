@@ -91,7 +91,11 @@ const initialErrors = {
   companyAddress: false,
   companyWebsite: false,
 };
-
+const optionalFields = [
+  "companyTwitter",
+  "companyInstagram",
+  "additionalMessage",
+];
 const EnquiresTablet: React.FC = () => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrors);
@@ -117,6 +121,7 @@ const EnquiresTablet: React.FC = () => {
     const modifyErrors = initialErrors;
     Object.entries(values).forEach((entry) => {
       const [key, value] = entry;
+      if (optionalFields.includes(key)) return;
       if (value === initialValues[key]) {
         isValid = false;
         modifyErrors[key] = true;

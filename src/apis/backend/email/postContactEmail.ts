@@ -5,7 +5,7 @@ const postContactEmail = async (
   data: PostContactEmailRequest
 ): Promise<PostContactEmailResponse> => {
   const response = await client.post<PostContactEmailResponse>(
-    "contact/Contact",
+    "contact/message",
     data
   );
   return response.data;
