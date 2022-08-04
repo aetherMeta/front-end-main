@@ -79,12 +79,6 @@ export interface CreatePrimaryAuctionDto {
      * @type {string}
      * @memberof CreatePrimaryAuctionDto
      */
-    'expiresAt': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreatePrimaryAuctionDto
-     */
     'uri': string;
     /**
      * 

@@ -82,12 +82,6 @@ export interface CreatePrimarySaleDto {
     'uri': string;
     /**
      * 
-     * @type {string}
-     * @memberof CreatePrimarySaleDto
-     */
-    'expiresAt': string;
-    /**
-     * 
      * @type {number}
      * @memberof CreatePrimarySaleDto
      */
