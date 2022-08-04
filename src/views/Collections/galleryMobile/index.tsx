@@ -35,7 +35,7 @@ interface GalleryProps {
   items: Item[];
 }
 
-const Items: React.FC<GalleryProps> = ({ items }) => {
+const GalleryMobile: React.FC<GalleryProps> = ({ items }) => {
   const [index, setIndex] = useState(0);
 
   const handleClick = (newIndex) => setIndex(newIndex);
@@ -98,4 +98,4 @@ const Items: React.FC<GalleryProps> = ({ items }) => {
   );
 };
 
-export default Items;
+export default GalleryMobile;

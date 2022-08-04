@@ -26,7 +26,7 @@ interface GalleryProps {
   items: Item[];
 }
 
-const ItemsMobile: React.FC<GalleryProps> = ({ items }) => {
+const Gallery: React.FC<GalleryProps> = ({ items }) => {
   const [index, setIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("Most recent");
@@ -120,4 +120,4 @@ const ItemsMobile: React.FC<GalleryProps> = ({ items }) => {
   );
 };
 
-export default ItemsMobile;
+export default Gallery;
