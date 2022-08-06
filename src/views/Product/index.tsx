@@ -13,7 +13,7 @@ import {
   config,
   description,
   chartTitle,
-  chartContent,
+  contents,
   testItems,
 } from "./TestConfig/config";
 
@@ -41,8 +41,7 @@ const StyledFlex = styled(Flex)`
 
 const Product: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();
-  const { data: salesData, createPrimarySale } = useSales();
-  console.log(salesData);
+  const { saleState, saleData } = useSales();
   const isSmallScreen = isTablet || isMobile;
   const images = [
     "https://picsum.photos/200/300",
@@ -53,18 +52,25 @@ const Product: React.FC = () => {
     <StyledPage>
       <Container>
         <StyledFlex>
-          <ProductImages images={images} />
+          <ProductImages saleState={saleState} saleData={saleData} />
           <Flex flexDirection="column">
             <ProductActions
-              {...config[0]}
+              saleState={saleState}
+              saleData={saleData}
               handleViewMetaverse={() => console.log("handleViewMetaverse")}
               handlePurchase={() => console.log("handlePurchase")}
             />
-            <ProductDescriptions {...description[0]} />
+            <ProductDescriptions saleState={saleState} saleData={saleData} />
           </Flex>
         </StyledFlex>
         <Flex justifyContent="center" width="100%">
-          <Chart header="History" contents={chartContent} titles={chartTitle} />
+          <Chart
+            header="History"
+            saleState={saleState}
+            saleData={saleData}
+            titles={chartTitle}
+            contents={contents}
+          />
         </Flex>
       </Container>
       <MoreCollection items={testItems} collectionName="I am Jennifer Le" />

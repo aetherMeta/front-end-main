@@ -21,7 +21,7 @@ export const description = [
   },
 ];
 
-export const chartTitle = ["Minted", "Price", "From", "To", "Date"];
+export const chartTitle = ["Price", "From", "To", "Date"];
 
 export const chartContent = [
   ["Sale", "2.34", "Oncyber", "kkt", "2 months ago"],
@@ -29,6 +29,8 @@ export const chartContent = [
   ["Transfer", "5.23", "Robotbot", "BoredPoorGuy", "2 months ago"],
   ["Sale", "2.34", "Oncyber", "kkt", "2 months ago"],
 ];
+
+export const contents = ["paymentAmount", "seller", "buyer", "buyTimestamp"];
 
 export const testItems = [
   {

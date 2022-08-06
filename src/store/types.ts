@@ -1,13 +1,12 @@
 import {
   PrimarySaleResponse,
-  SecondarySaleResponse,
   UserNFTResponse,
   UserResponseDto,
 } from "../apis/backend/generated";
 
 export type User = UserResponseDto;
 export type Nft = UserNFTResponse;
-export type Sale = PrimarySaleResponse | SecondarySaleResponse;
+export type Sale = PrimarySaleResponse;
 
 export interface UserState {
   data: User;
@@ -20,7 +19,10 @@ export interface NftState {
 }
 
 export interface SaleState {
-  data: Sale[];
+  data: { [key: string]: Sale };
+  total: number;
+  isLoading: boolean;
+  isLoaded: boolean;
 }
 
 // Store state

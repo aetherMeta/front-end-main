@@ -8,9 +8,11 @@ import {
   DotGroup,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
+import { SaleState, Sale } from "store/types";
 
 interface ProductImagesProps {
-  images: string[];
+  saleState: SaleState;
+  saleData: Sale;
 }
 
 const StyledCarouselProvider = styled(CarouselProvider)`
@@ -41,16 +43,20 @@ const StyledDotGroup = styled(DotGroup)`
   }
 `;
 
-const ProductImages: React.FC<ProductImagesProps> = ({ images }) => {
+const ProductImages: React.FC<ProductImagesProps> = ({
+  saleState,
+  saleData,
+}) => {
+  if (saleState.isLoading || !saleState.isLoaded) return <></>;
   return (
     <>
       <StyledCarouselProvider
         naturalSlideWidth={640}
         naturalSlideHeight={600}
-        totalSlides={images.length}
+        totalSlides={[saleData.asset.url].length}
       >
         <Slider>
-          {images.map((image, index) => (
+          {[saleData.asset.url].map((image, index) => (
             <Slide index={index}>
               <StyledImage
                 src={image}

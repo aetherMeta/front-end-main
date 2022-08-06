@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Flex, ButtonMenu, ButtonMenuItem, Text } from "@aethermeta/uikit";
+import { SaleState, Sale } from "store/types";
 
 interface ProductDescriptionsProps {
-  description: string;
-  nftDetails: string;
-  productDetails: string;
+  saleState: SaleState;
+  saleData: Sale;
 }
 
 const Container = styled(Flex)`
@@ -14,13 +14,12 @@ const Container = styled(Flex)`
 `;
 
 const ProductDescriptions: React.FC<ProductDescriptionsProps> = ({
-  description,
-  nftDetails,
-  productDetails,
+  saleState,
+  saleData,
 }) => {
   const [index, setIndex] = useState(0);
-
   const handleClick = (newIndex: number) => setIndex(newIndex);
+  if (saleState.isLoading || !saleState.isLoaded) return <></>;
   return (
     <Container>
       <Flex flexDirection="column">
@@ -34,9 +33,15 @@ const ProductDescriptions: React.FC<ProductDescriptionsProps> = ({
           <ButtonMenuItem>NFT Details</ButtonMenuItem>
           <ButtonMenuItem>Product Details</ButtonMenuItem>
         </ButtonMenu>
-        {index === 0 && <Text variant="body">{description}</Text>}
-        {index === 1 && <Text variant="body">{nftDetails}</Text>}
-        {index === 2 && <Text variant="body">{productDetails}</Text>}
+        {index === 0 && <Text variant="body">{saleData.description}</Text>}
+        {index === 1 && (
+          <Flex>
+            {saleData.attributes.map((attribute) => (
+              <Text variant="body">{attribute.value}</Text>
+            ))}
+          </Flex>
+        )}
+        {index === 2 && <Text variant="body">{saleData.asset.type}</Text>}
       </Flex>
     </Container>
   );

@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Flex, Text, Button } from "@aethermeta/uikit";
-import moment from "moment";
+import { useParams } from "react-router-dom";
+import { ethers } from "ethers";
 import { dmy } from "utils/date";
+import { truncateWalletAddress } from "utils/addressHelpers";
+import { SaleState, Sale } from "store/types";
 
 interface ProductActionsProps {
-  name: string;
-  creator: string;
-  collection: string;
-  price: string;
-  total: number;
-  sold: number;
+  saleState: SaleState;
+  saleData: Sale;
   handlePurchase: () => void;
   handleViewMetaverse: () => void;
-  startTime: Date;
 }
 
 const Container = styled(Flex)`
@@ -43,47 +41,32 @@ const BodyHeavy = styled(Text)`
 `;
 
 const ProductActions: React.FC<ProductActionsProps> = ({
-  name,
-  creator,
-  collection,
-  price,
-  total,
-  sold,
+  saleState,
+  saleData,
   handlePurchase,
   handleViewMetaverse,
-  startTime,
 }) => {
-  const [countdown, setCountdown] = useState("00:00:00s");
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const currentTime = new Date().getTime();
-      const endTime = startTime.getTime() + 86400000; // start time + 24 hours
-      const duration = moment.duration(endTime - currentTime, "milliseconds");
-      setCountdown(
-        `${duration.hours()} : ${duration.minutes()} : ${duration.seconds()}s`
-      );
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [startTime, setCountdown]);
+  if (saleState.isLoading || !saleState.isLoaded) return <></>;
   return (
     <Container>
-      <Text variant="h3Bold">{name}</Text>
+      <Text variant="h3Bold">{saleData.name}</Text>
       <StyledFlex mt="2rem">
         <Flex flexDirection="column">
           <StyledText variant="bodySmall">Created by</StyledText>
-          <Text variant="bodySmall">{creator}</Text>
+          <Text variant="bodySmall">
+            {truncateWalletAddress(saleData.sellerAddress)}
+          </Text>
         </Flex>
-        <Flex flexDirection="column">
-          <StyledText variant="bodySmall">Collection</StyledText>
-          <Text variant="bodySmall">{collection}</Text>
-        </Flex>
+        {saleData.asset.data && (
+          <Flex flexDirection="column">
+            <StyledText variant="bodySmall">Collection</StyledText>
+            <Text variant="bodySmall">{saleData.asset.data}</Text>
+          </Flex>
+        )}
       </StyledFlex>
       <StyledFlex2 mt="1.5rem">
         <StyledText variant="bodySmall">Created on</StyledText>
-        <Text variant="bodySmall">{dmy(startTime)}</Text>
+        <Text variant="bodySmall">{dmy(new Date(saleData.createdAt))}</Text>
       </StyledFlex2>
       <StyledFlex mt="2.375rem">
         <Flex flexDirection="column">
@@ -92,11 +75,13 @@ const ProductActions: React.FC<ProductActionsProps> = ({
             variant="h4Bold"
             mt="0.75rem"
             color="primary"
-          >{`${price} ETH`}</Text>
+          >{`${ethers.utils.formatEther(saleData.price)} ETH`}</Text>
         </Flex>
         <Flex flexDirection="column">
           <Text variant="bodySmall">Remaining</Text>
-          <Text variant="h4Bold" mt="0.75rem">{`${sold}/${total}`}</Text>
+          <Text variant="h4Bold" mt="0.75rem">{`${
+            parseInt(saleData.amount) - parseInt(saleData.amountSold)
+          }/${saleData.amount}`}</Text>
         </Flex>
       </StyledFlex>
       <Flex style={{ gap: "0.375rem" }} mt="2rem">

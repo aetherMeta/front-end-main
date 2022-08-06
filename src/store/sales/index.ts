@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { SaleState, Sale } from "store/types";
 import backend from "../../apis/backend";
-import { ASK_TYPE } from "../../apis/backend/constants";
 
 const initialState: SaleState = {
-  data: [],
+  data: {},
+  total: 0,
+  isLoading: false,
+  isLoaded: false,
 };
 
 // Thunks
@@ -12,21 +14,11 @@ export const dispatchSalePublicDataAsync = () => async (dispatch) => {
   try {
     const { data: primarySaleData } =
       await backend.sales.primarySaleControllerFindAll();
-    const { data: secondarySaleData } =
-      await backend.sales.secondarySaleControllerFindAll();
-    console.log(primarySaleData);
-    console.log(secondarySaleData);
     dispatch(
-      setSalePublicData([
-        ...primarySaleData.data.map((o) => ({
-          ...o,
-          askType: ASK_TYPE.PrimarySale,
-        })),
-        ...secondarySaleData.data.map((o) => ({
-          ...o,
-          askType: ASK_TYPE.SecondarySale,
-        })),
-      ])
+      setSalePublicData({
+        data: primarySaleData.data,
+        total: primarySaleData.total,
+      })
     );
   } catch (e) {
     console.error(e);
@@ -37,9 +29,19 @@ export const saleSlice = createSlice({
   name: "sales",
   initialState,
   reducers: {
+    setLoading: (state) => {
+      state.isLoading = true;
+    },
     setSalePublicData: (state, action) => {
-      const saleData: Sale[] = action.payload;
-      state.data = { ...saleData };
+      const { payload } = action;
+      const primarySaleData = payload.data.reduce(
+        (a, v) => ({ ...a, [v.id]: v }),
+        {}
+      );
+      state.data = primarySaleData;
+      state.total = payload.total;
+      state.isLoading = false;
+      state.isLoaded = true;
     },
   },
 });

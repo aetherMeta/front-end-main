@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Sale, State } from "store/types";
+import { useParams } from "react-router-dom";
+import { SaleState, State, Sale } from "store/types";
 import { useAppDispatch } from "store";
 import useRefresh from "hooks/useRefresh";
 import { dispatchSalePublicDataAsync } from "store/sales";
@@ -15,7 +16,8 @@ import {
 } from "../../apis/backend/generated";
 
 type Returns = {
-  data: Sale[];
+  saleState: SaleState;
+  saleData: Sale;
   createPrimarySale: (
     dto: CreatePrimarySaleDto
   ) => Promise<AxiosResponse<PrimarySaleResponse>>;
@@ -47,8 +49,12 @@ const createSecondarySale = async (dto: CreateSecondarySaleDto) => {
 
 export const useSales = (): Returns => {
   const sales = useSelector((state: State) => state.sales);
+  const salesData = sales.data;
+  const params: { productHash } = useParams();
+  const saleData = salesData[params.productHash];
   return {
-    data: Object.assign([], sales.data),
+    saleState: Object.assign([], sales),
+    saleData,
     createPrimarySale,
     createSecondarySale,
   };

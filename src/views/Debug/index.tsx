@@ -31,7 +31,7 @@ const Debug: React.FC = () => {
   useDispatchSalePublicData();
   useDispatchNftPublicData();
 
-  const { data: salesData, createPrimarySale } = useSales();
+  const { saleState, createPrimarySale } = useSales();
   const updateUser = useUpdateUser();
 
   const { onBuy } = usePrimaryBuy();
@@ -189,7 +189,9 @@ const Debug: React.FC = () => {
       </Flex>
       <Flex>
         <Label>Sales</Label>
-        <Button onClick={() => console.log(salesData)}>Log Sales Data</Button>
+        <Button onClick={() => console.log(saleState.data)}>
+          Log Sales Data
+        </Button>
 
         <Flex>
           <Input
@@ -273,11 +275,11 @@ const Debug: React.FC = () => {
       </Flex>
 
       <Flex flexDirection="column">
-        {salesData?.map((sale, i) => (
+        {Object.keys(saleState.data).map((saleKey, i) => (
           <>
             <Text>SALE ENTRY: {i}</Text>
 
-            {Object.entries(sale).map(([k, v]) => (
+            {Object.entries(saleState[saleKey]).map(([k, v]) => (
               <Text>
                 {k.toString()}: {JSON.stringify(v)}
               </Text>
@@ -287,7 +289,7 @@ const Debug: React.FC = () => {
               onChange={(e) => setSaleAmount(i, e.target.value)}
               value={saleInput[i]}
             />
-            <Button onClick={() => onBuy(sale, saleInput[i])}>
+            <Button onClick={() => onBuy(saleState[saleKey], saleInput[i])}>
               BUY SALE {i}
             </Button>
           </>

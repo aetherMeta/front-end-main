@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { useParams } from "react-router-dom";
 import { splitSignature } from "ethers/lib/utils";
 import { signTypedData } from "../../utils/signingHelpers";
 
