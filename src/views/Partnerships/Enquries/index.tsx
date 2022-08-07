@@ -9,6 +9,8 @@ import {
   TextArea,
   Spinner,
   IconButton,
+  Link,
+  Checkbox,
 } from "@aethermeta/uikit";
 import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
 import useToast from "hooks/useToast";
@@ -51,6 +53,14 @@ const Enquiry = styled(Flex)`
 
 const Center = styled(Text)`
   text-align: center;
+`;
+
+const InlineLink = styled(Link)`
+  display: inline-block;
+`;
+
+const InlineText = styled(Text)`
+  display: inline-block;
 `;
 
 export interface Values {
@@ -109,6 +119,7 @@ const Enquires: React.FC = () => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrors);
   const [pending, setPending] = useState(false);
+  const [checked, setChecked] = useState(false);
   const { toastSuccess, toastError } = useToast();
 
   const handleInputChange = (e) => {
@@ -168,13 +179,13 @@ const Enquires: React.FC = () => {
   return (
     <Container>
       <Center variant="h3Bold">
-        Get in touch with out sales team for more details on how you can onboard
-        to the newest marketing touchpoint for generation Z.
+        Get in touch with out team for more details on how you can onboard to
+        the newest immersive shopping platform.
       </Center>
       <EnquiryContainer>
         <EnquiryContainer2>
           <Enquiry>
-            <Text variant="h3Bold">Enquiries</Text>
+            <Text variant="h3Bold">Join Us</Text>
           </Enquiry>
           <form onSubmit={handleSubmit}>
             <Label>Name (*)</Label>
@@ -268,12 +279,44 @@ const Enquires: React.FC = () => {
               name="additionalMessage"
               onChange={handleInputChange}
             />
+            <Flex my="16px">
+              <Checkbox onChange={(e) => setChecked(e.target.checked)} />
+              <Flex justifyContent="center" alignItems="center" ml="6px">
+                <InlineText variant="bodySmall">I agree with</InlineText>
+                <InlineLink
+                  variant="bodySmall"
+                  mx="6px"
+                  href="/privacy"
+                  target="_blank"
+                >
+                  Privacy policy
+                </InlineLink>
+                <InlineText variant="bodySmall">|</InlineText>
+                <InlineLink
+                  variant="bodySmall"
+                  mx="6px"
+                  href="/seller"
+                  target="_blank"
+                >
+                  Seller policy
+                </InlineLink>
+                <InlineText variant="bodySmall">|</InlineText>
+                <InlineLink
+                  variant="bodySmall"
+                  mx="6px"
+                  href="/termsofuse"
+                  target="_blank"
+                >
+                  Terms of use
+                </InlineLink>
+              </Flex>
+            </Flex>
             {pending ? (
               <IconButton isLoading variant="text">
                 <Spinner size={48} />
               </IconButton>
             ) : (
-              <Button variant="text" type="submit" p="0">
+              <Button variant="text" type="submit" p="0" disabled={!checked}>
                 Submit
               </Button>
             )}

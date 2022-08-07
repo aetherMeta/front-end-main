@@ -159,8 +159,8 @@ const EnquiresTablet: React.FC = () => {
   return (
     <Container>
       <Center variant="h4Bold">
-        Get in touch with out sales team fore more details on how you can
-        onboard to the newest marketing touchpoint for generation Z.
+        Get in touch with out team for more details on how you can onboard to
+        the newest immersive shopping platform.
       </Center>
       <EnquiryContainer>
         <EnquiryContainer2>

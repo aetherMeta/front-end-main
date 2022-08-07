@@ -7,7 +7,6 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
-
 const StyledFlex = styled(Flex)`
   flex-direction: column
   min-width: 50em;
@@ -63,13 +62,11 @@ const Icon4 = styled.div`
   min-height: 10em;
 `;
 
-
 const FlexContainer = styled(Flex)`
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
   margin: 7em;
-  
 `;
 
 const FeatureContainer = styled(Grid)`
@@ -79,84 +76,73 @@ const FeatureContainer = styled(Grid)`
   justify-content: space-between;
 `;
 
-
 const DescriptionContainer = styled(Flex)`
   flex-direction: column;
   margin-right: 1em;
-`
+`;
 
 const Feature = styled(Text)`
   margin-bottom: 1em;
-`
-
+`;
 
 const PartnersTablet: React.FC = () => {
-    return (
-        <Container>
-            <Text variant="h1Light" display="inline">
-                PARTNERSHIPS
-            </Text>
-            <br />
-            <br />
-            <Text variant="body">
-                There many reasons to become part of our Metaverse.
-            </Text>
-            <Text variant="body">
-                Some simple advantages are:
-            </Text>
-            <FlexContainer>
-                <StyledFlex>
-                    <Text variant="h4Bold">
-                        Measure product engagement and product reasearch
-                    </Text>
-                </StyledFlex> 
-                <Diagram />
-            </FlexContainer>
-            <FeatureContainer>
+  return (
+    <Container>
+      <Text variant="h1Light" display="inline">
+        PARTNERSHIPS
+      </Text>
+      <br />
+      <br />
+      <Text variant="body">
+        There many reasons to become part of our Metaverse.
+      </Text>
+      <Text variant="body">Some simple advantages are:</Text>
+      <FlexContainer>
+        <StyledFlex>
+          <Text variant="h4Bold">
+            Measure product engagement and product reasearch
+          </Text>
+        </StyledFlex>
+        <Diagram />
+      </FlexContainer>
+      <FeatureContainer>
+        <DescriptionContainer>
+          <Icon1 />
+          <Feature variant="h4Bold">
+            Aether provides instant access to the NFT market
+          </Feature>
+          <Text variant="body">with little overhead or development costs.</Text>
+        </DescriptionContainer>
 
-                <DescriptionContainer>
-                    <Icon1 />
-                  <Feature variant="h4Bold">
-                      Aether provides instant access to the NFT market
-                  </Feature>
-                  <Text variant="body">
-                      with little overhead or development costs.
-                  </Text>
-                </DescriptionContainer>
-               
-                <DescriptionContainer>
-                    <Icon2 />
-                  <Feature variant="h4Bold">
-                      Instant product feasibility feedback from consumers,
-                  </Feature>
-                  <Text variant="body">
-                      suppliers and distributors.
-                  </Text>
-                </DescriptionContainer>
-            
-                <DescriptionContainer>
-                    <Icon3 />
-                 <Feature variant="h4Bold">
-                      High-fedelity designs
-                  </Feature>
-                  <Text variant="body">
-                      Unlike the competition we deliver high-fedelity designs that closely resemble you physical products.
-                  </Text>
-                </DescriptionContainer>
-                  
-                <DescriptionContainer>
-                    <Icon4 />
-                  <Feature variant="h4Bold">
-                      Tailored brand experience
-                  </Feature>
-                  <Text variant="body">
-                      Our team can tailor the experience to crea a new, enhanced brand experience that energizes your target audience and creates unique talking points for marketing opportunites.
-                  </Text>
-                </DescriptionContainer>
-                
-            </FeatureContainer>
-        </Container>
-    );
+        <DescriptionContainer>
+          <Icon2 />
+          <Feature variant="h4Bold">
+            Instant product feasibility feedback from consumers,
+          </Feature>
+          <Text variant="body">suppliers and distributors.</Text>
+        </DescriptionContainer>
+
+        <DescriptionContainer>
+          <Icon3 />
+          <Feature variant="h4Bold">High-fidelity designs</Feature>
+          <Text variant="body">
+            Unlike the competition we deliver high-fidelity designs that closely
+            resemble your physical product.
+          </Text>
+        </DescriptionContainer>
+
+        <DescriptionContainer>
+          <Icon4 />
+          <Feature variant="h4Bold">Tailored brand experience</Feature>
+          <Text variant="body">
+            Our team can tailor the experience to create a new, enhanced brand
+            experience that energizes your target audience and creates unique
+            talking points for marketing opportunities.
+          </Text>
+        </DescriptionContainer>
+      </FeatureContainer>
+    </Container>
+  );
 };
 
 export default PartnersTablet;

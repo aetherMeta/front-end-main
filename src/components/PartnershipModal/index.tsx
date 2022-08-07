@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import styled from "styled-components";
 import {
   Button,
   Modal,
@@ -8,8 +9,19 @@ import {
   Text,
   Spinner,
   IconButton,
+  Link,
+  Checkbox,
+  Flex,
 } from "@aethermeta/uikit";
 import useToast from "hooks/useToast";
+
+const InlineLink = styled(Link)`
+  display: inline-block;
+`;
+
+const InlineText = styled(Text)`
+  display: inline-block;
+`;
 
 export interface Values {
   contactName: string;
@@ -69,6 +81,7 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrors);
   const [pending, setPending] = useState(false);
+  const [checked, setChecked] = useState(false);
   const { toastSuccess, toastError } = useToast();
 
   const handleInputChange = (e) => {
@@ -210,12 +223,44 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
           name="additionalMessage"
           onChange={handleInputChange}
         />
+        <Flex my="16px">
+          <Checkbox onChange={(e) => setChecked(e.target.checked)} />
+          <Flex justifyContent="center" alignItems="center" ml="6px">
+            <InlineText variant="bodySmall">I agree with</InlineText>
+            <InlineLink
+              variant="bodySmall"
+              mx="6px"
+              href="/privacy"
+              target="_blank"
+            >
+              Privacy policy
+            </InlineLink>
+            <InlineText variant="bodySmall">|</InlineText>
+            <InlineLink
+              variant="bodySmall"
+              mx="6px"
+              href="/seller"
+              target="_blank"
+            >
+              Seller policy
+            </InlineLink>
+            <InlineText variant="bodySmall">|</InlineText>
+            <InlineLink
+              variant="bodySmall"
+              mx="6px"
+              href="/termsofuse"
+              target="_blank"
+            >
+              Terms of use
+            </InlineLink>
+          </Flex>
+        </Flex>
         {pending ? (
           <IconButton isLoading variant="text">
             <Spinner size={48} />
           </IconButton>
         ) : (
-          <Button variant="text" type="submit" p="0">
+          <Button variant="text" type="submit" p="0" disabled={!checked}>
             Submit
           </Button>
         )}
