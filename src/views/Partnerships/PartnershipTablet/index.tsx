@@ -3,36 +3,31 @@ import styled from "styled-components";
 import { Flex, Text, Grid } from "@aethermeta/uikit";
 
 const Container = styled.div`
-  padding 5em 20px 80px;
-  
- 
-  ${({ theme }) => theme.mediaQueries.xxl} {
-    padding 5em 180px;
-    
-    background-size: 1706px;
-  }
+  padding 0px 20px 80px;  
+  background-color: ${({ theme }) => theme.colors.background};
 `;
 
 const StyledFlex = styled(Flex)`
-  margin-top: 38px;
-  flex-warp: wrap;
-  margin-left: 46px;
-  position: relative;
-
-  min-width: 19.375rem;
-  max-width: 19.375rem;
-
-  ${({ theme }) => theme.mediaQueries.lg} {
-    margin-top: 46px;
-  }
+  flex-direction: column
+  min-width: 50em;
 `;
 
 const Diagram = styled.div`
   background: url(/images/diagram.svg);
   background-repeat: no-repeat;
-  background-size: 38em;
-  min-width: 40em;
-  min-height: 25em;
+  background-size: contain;
+  height: 40vh;
+  width: 60vh;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    height: 60vh;
+    width: 80vh;
+  }
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    height: 80vh;
+    width: 100vh;
+  }
 `;
 
 const Icon1 = styled.div`
@@ -68,35 +63,29 @@ const Icon4 = styled.div`
 `;
 
 const FlexContainer = styled(Flex)`
-  height: 100%;
   justify-content: space-around;
   align-items: center;
-  flex-direction: row;
+  flex-direction: column;
   margin: 7em;
-  position: relative;
-  left: 5em;
-  ${({ theme }) => theme.mediaQueries.md} {
-    left: 0em;
-  }
 `;
 
 const FeatureContainer = styled(Grid)`
-  grid-template-columns: auto auto auto auto;
-  margin: 1em;
+  grid-template-columns: auto;
+  margin: 2em;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const DescriptionContainer = styled(Flex)`
   flex-direction: column;
-  margin: 1em;
+  margin-right: 1em;
 `;
 
 const Feature = styled(Text)`
   margin-bottom: 1em;
 `;
 
-const Partners: React.FC = () => {
+const PartnershipTablet: React.FC = () => {
   return (
     <Container>
       <Text variant="h1Light" display="inline">
@@ -108,21 +97,17 @@ const Partners: React.FC = () => {
         There many reasons to become part of our Metaverse.
       </Text>
       <Text variant="body">Some simple advantages are:</Text>
-      <FlexContainer flexDirection="column">
-        <Diagram />
+      <FlexContainer>
         <StyledFlex>
           <Text variant="h4Bold">
             Measure product engagement and product reasearch
           </Text>
         </StyledFlex>
+        <Diagram />
       </FlexContainer>
       <FeatureContainer>
-        <Icon1 />
-        <Icon2 />
-        <Icon3 />
-        <Icon4 />
-
         <DescriptionContainer>
+          <Icon1 />
           <Feature variant="h4Bold">
             Aether provides instant access to the NFT market
           </Feature>
@@ -130,19 +115,24 @@ const Partners: React.FC = () => {
         </DescriptionContainer>
 
         <DescriptionContainer>
+          <Icon2 />
           <Feature variant="h4Bold">
             Instant product feasibility feedback from consumers,
           </Feature>
           <Text variant="body">suppliers and distributors.</Text>
         </DescriptionContainer>
+
         <DescriptionContainer>
+          <Icon3 />
           <Feature variant="h4Bold">High-fidelity designs</Feature>
           <Text variant="body">
             Unlike the competition we deliver high-fidelity designs that closely
             resemble your physical product.
           </Text>
         </DescriptionContainer>
+
         <DescriptionContainer>
+          <Icon4 />
           <Feature variant="h4Bold">Tailored brand experience</Feature>
           <Text variant="body">
             Our team can tailor the experience to create a new, enhanced brand
@@ -155,4 +145,4 @@ const Partners: React.FC = () => {
   );
 };
 
-export default Partners;
+export default PartnershipTablet;
