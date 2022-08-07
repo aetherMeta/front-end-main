@@ -2,9 +2,9 @@ import React from "react";
 import Page from "components/Layout/Page";
 import { useMatchBreakpoints } from "@aethermeta/uikit";
 import styled from "styled-components";
-import Partners from "./Partners";
+import Partnership from "./Partnership";
 import Enquires from "./Enquries";
-import PartnersTablet from "./PartnersTablet";
+import PartnershipTablet from "./PartnershipTablet";
 import EnquiresTablet from "./EnquriesTablet";
 
 const PartnershipsBackground = styled(Page)`
@@ -19,7 +19,7 @@ const Partnerships: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();
   return (
     <PartnershipsBackground>
-      {isTablet || isMobile ? <PartnersTablet /> : <Partners />}
+      {isTablet || isMobile ? <PartnershipTablet /> : <Partnership />}
       {isTablet || isMobile ? <EnquiresTablet /> : <Enquires />}
     </PartnershipsBackground>
   );
