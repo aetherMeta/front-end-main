@@ -9,7 +9,9 @@ interface GalleryProps{
 const GalleryItems: React.FC<GalleryProps> = ({item}) => {
     return(
         <Flex m="1rem" flexDirection="column">
-            <Image src={item.image} width={310} height={237} />
+            <a href="/collectionDetails">
+                <Image src={item.image} width={310} height={237}/>
+            </a>
             <Text variant="h4Bold">
                 {item.name}
             </Text>

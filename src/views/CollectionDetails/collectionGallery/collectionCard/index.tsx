@@ -5,7 +5,7 @@ import { Flex, Text } from "@aethermeta/uikit";
 import { dmy } from "utils/date";
 import { Item } from "constants/items";
 
-interface ShopCardProps {
+interface CollectionCardProps {
   item: Item;
 }
 
@@ -15,6 +15,7 @@ const Card = styled.div`
   padding: 0.75rem 0.75rem 2rem;
   border-radius: 1.625rem;
   background-color: ${({ theme }) => theme.colors.white};
+  
 `;
 const Image = styled.div<{ image: string }>`
   height: 16.5rem;
@@ -35,7 +36,7 @@ const Divider = styled.div`
   opacity: 0.3;
 `;
 
-const ShopCard: React.FC<ShopCardProps> = ({ item }) => {
+const CollectionCard: React.FC<CollectionCardProps> = ({ item }) => {
   const [countdown, setCountdown] = useState("00:00:00s");
   useEffect(() => {
     const interval = setInterval(() => {
@@ -81,4 +82,4 @@ const ShopCard: React.FC<ShopCardProps> = ({ item }) => {
   );
 };
 
-export default ShopCard;
+export default CollectionCard;

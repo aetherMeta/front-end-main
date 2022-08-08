@@ -8,7 +8,7 @@ import {
   ButtonMenuItem,
   Pagination,
 } from "@aethermeta/uikit";
-import Gallery from "views/Collections/galleryItems";
+import GalleryItems from "views/Collections/galleryItems";
 import { Item } from "../types";
 
 const PaginationContainer = styled.div`
@@ -102,7 +102,7 @@ const Items: React.FC<GalleryProps> = ({ items }) => {
       </Flex>
       <GalleryGrid>
         {shopItemsData.map((item) => (
-          <Gallery item={item} />
+          <GalleryItems item={item} />
         ))}
       </GalleryGrid>
       <PaginationContainer>
