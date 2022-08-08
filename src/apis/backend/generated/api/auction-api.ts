@@ -36,8 +36,6 @@ import { PrimaryBidResponse } from '../models';
 import { SecondaryAuctionResponse } from '../models';
 // @ts-ignore
 import { SecondaryBidResponse } from '../models';
-// @ts-ignore
-import { UpdateAuctionDto } from '../models';
 /**
  * AuctionApi - axios parameter creator
  * @export
@@ -223,49 +221,6 @@ export const AuctionApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @param {string} id 
-         * @param {UpdateAuctionDto} updateAuctionDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        primaryAuctionControllerUpdate: async (id: string, updateAuctionDto: UpdateAuctionDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('primaryAuctionControllerUpdate', 'id', id)
-            // verify required parameter 'updateAuctionDto' is not null or undefined
-            assertParamExists('primaryAuctionControllerUpdate', 'updateAuctionDto', updateAuctionDto)
-            const localVarPath = `/auctions/primary/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication jwt required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateAuctionDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
          * @param {string} auctionId 
          * @param {CreateSecondaryBidDto} createSecondaryBidDto 
          * @param {*} [options] Override http request option.
@@ -441,49 +396,6 @@ export const AuctionApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateAuctionDto} updateAuctionDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        secondaryAuctionControllerUpdate: async (id: string, updateAuctionDto: UpdateAuctionDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('secondaryAuctionControllerUpdate', 'id', id)
-            // verify required parameter 'updateAuctionDto' is not null or undefined
-            assertParamExists('secondaryAuctionControllerUpdate', 'updateAuctionDto', updateAuctionDto)
-            const localVarPath = `/auctions/secondary/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication jwt required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateAuctionDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -546,17 +458,6 @@ export const AuctionApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @param {string} id 
-         * @param {UpdateAuctionDto} updateAuctionDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async primaryAuctionControllerUpdate(id: string, updateAuctionDto: UpdateAuctionDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PrimaryAuctionResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.primaryAuctionControllerUpdate(id, updateAuctionDto, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @param {string} auctionId 
          * @param {CreateSecondaryBidDto} createSecondaryBidDto 
          * @param {*} [options] Override http request option.
@@ -603,17 +504,6 @@ export const AuctionApiFp = function(configuration?: Configuration) {
          */
         async secondaryAuctionControllerFindOne(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecondaryAuctionResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.secondaryAuctionControllerFindOne(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateAuctionDto} updateAuctionDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async secondaryAuctionControllerUpdate(id: string, updateAuctionDto: UpdateAuctionDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SecondaryAuctionResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.secondaryAuctionControllerUpdate(id, updateAuctionDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -673,16 +563,6 @@ export const AuctionApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @param {string} id 
-         * @param {UpdateAuctionDto} updateAuctionDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        primaryAuctionControllerUpdate(id: string, updateAuctionDto: UpdateAuctionDto, options?: any): AxiosPromise<PrimaryAuctionResponse> {
-            return localVarFp.primaryAuctionControllerUpdate(id, updateAuctionDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @param {string} auctionId 
          * @param {CreateSecondaryBidDto} createSecondaryBidDto 
          * @param {*} [options] Override http request option.
@@ -725,16 +605,6 @@ export const AuctionApiFactory = function (configuration?: Configuration, basePa
          */
         secondaryAuctionControllerFindOne(id: string, options?: any): AxiosPromise<SecondaryAuctionResponse> {
             return localVarFp.secondaryAuctionControllerFindOne(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @param {string} id 
-         * @param {UpdateAuctionDto} updateAuctionDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        secondaryAuctionControllerUpdate(id: string, updateAuctionDto: UpdateAuctionDto, options?: any): AxiosPromise<SecondaryAuctionResponse> {
-            return localVarFp.secondaryAuctionControllerUpdate(id, updateAuctionDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -803,18 +673,6 @@ export class AuctionApi extends BaseAPI {
 
     /**
      * 
-     * @param {string} id 
-     * @param {UpdateAuctionDto} updateAuctionDto 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuctionApi
-     */
-    public primaryAuctionControllerUpdate(id: string, updateAuctionDto: UpdateAuctionDto, options?: AxiosRequestConfig) {
-        return AuctionApiFp(this.configuration).primaryAuctionControllerUpdate(id, updateAuctionDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @param {string} auctionId 
      * @param {CreateSecondaryBidDto} createSecondaryBidDto 
      * @param {*} [options] Override http request option.
@@ -866,17 +724,5 @@ export class AuctionApi extends BaseAPI {
      */
     public secondaryAuctionControllerFindOne(id: string, options?: AxiosRequestConfig) {
         return AuctionApiFp(this.configuration).secondaryAuctionControllerFindOne(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @param {string} id 
-     * @param {UpdateAuctionDto} updateAuctionDto 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof AuctionApi
-     */
-    public secondaryAuctionControllerUpdate(id: string, updateAuctionDto: UpdateAuctionDto, options?: AxiosRequestConfig) {
-        return AuctionApiFp(this.configuration).secondaryAuctionControllerUpdate(id, updateAuctionDto, options).then((request) => request(this.axios, this.basePath));
     }
 }

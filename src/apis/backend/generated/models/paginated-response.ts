@@ -17,14 +17,20 @@
 /**
  * 
  * @export
- * @interface UpdateAuctionDto
+ * @interface PaginatedResponse
  */
-export interface UpdateAuctionDto {
+export interface PaginatedResponse {
     /**
      * 
-     * @type {string}
-     * @memberof UpdateAuctionDto
+     * @type {Array<object>}
+     * @memberof PaginatedResponse
      */
-    'expiresAt': string;
+    'data': Array<object>;
+    /**
+     * 
+     * @type {number}
+     * @memberof PaginatedResponse
+     */
+    'total': number;
 }
 

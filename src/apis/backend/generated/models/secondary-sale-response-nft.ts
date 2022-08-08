@@ -15,7 +15,7 @@
 
 import { AssetDto } from './asset-dto';
 import { NFTResponse } from './nftresponse';
-import { UserNFTResponseCollection } from './user-nftresponse-collection';
+import { UserNFTResponseCollections } from './user-nftresponse-collections';
 
 /**
  * @type SecondarySaleResponseNft

@@ -17,6 +17,7 @@ configuration.ts
 git_push.sh
 index.ts
 models/asset-dto.ts
+models/attribute-dto.ts
 models/challenge-request-body-dto.ts
 models/challenge-response-dto.ts
 models/collection-response.ts
@@ -31,12 +32,11 @@ models/create-secondary-auction-dto.ts
 models/create-secondary-bid-dto.ts
 models/create-secondary-sale-dto.ts
 models/create-shopping-cart-item-dto.ts
-models/filter-query.ts
 models/filter-value.ts
 models/free-jwt-dto.ts
-models/get-secondary-sale-query.ts
 models/index.ts
 models/nftresponse.ts
+models/paginated-response.ts
 models/patch-nftrequest-body-dto.ts
 models/patch-user-request-dto.ts
 models/post-nftrequest-body-dto.ts
@@ -51,10 +51,8 @@ models/secondary-sale-response.ts
 models/shopping-cart-item-response.ts
 models/shopping-cart-response.ts
 models/token-dto.ts
-models/update-auction-dto.ts
 models/update-collection-dto.ts
-models/update-sale-dto.ts
-models/user-nftresponse-collection.ts
+models/user-nftresponse-collections.ts
 models/user-nftresponse.ts
 models/user-response-dto.ts
 models/verify-body-dto.ts

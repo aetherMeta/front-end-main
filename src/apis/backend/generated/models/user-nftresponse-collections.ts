@@ -16,9 +16,9 @@
 import { CollectionResponse } from './collection-response';
 
 /**
- * @type UserNFTResponseCollection
+ * @type UserNFTResponseCollections
  * @export
  */
-export type UserNFTResponseCollection = CollectionResponse;
+export type UserNFTResponseCollections = CollectionResponse;
 
 

@@ -17,14 +17,20 @@
 /**
  * 
  * @export
- * @interface UpdateSaleDto
+ * @interface AttributeDto
  */
-export interface UpdateSaleDto {
+export interface AttributeDto {
     /**
      * 
      * @type {string}
-     * @memberof UpdateSaleDto
+     * @memberof AttributeDto
      */
-    'expiresAt': string;
+    'trait': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AttributeDto
+     */
+    'value': string;
 }
 
