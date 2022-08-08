@@ -185,7 +185,7 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
             ? "Company description field cannot be empty"
             : ""
         }`}</Text>
-        <Label>Company Description (*)</Label>
+        <Label>Company Address (*)</Label>
         <Input
           placeholder="Company Address"
           name="companyAddress"

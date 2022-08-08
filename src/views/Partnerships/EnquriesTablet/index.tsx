@@ -214,7 +214,7 @@ const EnquiresTablet: React.FC = () => {
                 ? "Company description field cannot be empty"
                 : ""
             }`}</Text>
-            <Label>Company Description (*)</Label>
+            <Label>Company Address (*)</Label>
             <Input
               placeholder="Company Address"
               name="companyAddress"
