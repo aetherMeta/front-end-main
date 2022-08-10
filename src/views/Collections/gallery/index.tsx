@@ -8,7 +8,8 @@ import {
     ButtonMenuItem, 
     Pagination,
     Select } from "@aethermeta/uikit";
-import Gallery from "views/Collections/GalleryItems";
+
+import GalleryItems from "../galleryItems";
 import { Item } from "../types";
 
 
@@ -86,7 +87,7 @@ const ItemsMobile: React.FC<GalleryProps> = ({items}) => {
             </Flex>
             <Grid gridTemplateColumns="25% 25% 25% 25%">
                 {shopItemsData.map((item) => (
-                    <Gallery item={item} />
+                    <GalleryItems item={item} />
                 ))}
             </Grid>
             <PaginationContainer>
