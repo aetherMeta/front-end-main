@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { useMatchBreakpoints, Flex } from "@aethermeta/uikit";
 import Page from "components/Layout/Page";
+import { useUpdateSalesFilter } from "store/sales/hooks";
 import ShopFilters from "./ShopFilters";
 import ShopFiltersTablet from "./ShopFiltersTablet";
 import ShopHeader from "./ShopHeader";
@@ -27,14 +28,17 @@ const Container = styled.div`
 const Shop: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();
   const isSmallScreen = isTablet || isMobile;
+  const { handleFilter } = useUpdateSalesFilter();
+  const handleApply = (filters) => {
+    handleFilter(filters);
+
+    // Refetch?
+  };
   return (
     <Page>
       <Container>
         {!isSmallScreen && (
-          <ShopFilters
-            total={12564}
-            handleApply={() => console.log("handleApply")}
-          />
+          <ShopFilters total={12564} handleApply={handleApply} />
         )}
         <Flex flexDirection="column" width="100%">
           {isSmallScreen ? (

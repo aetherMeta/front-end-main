@@ -1,6 +1,11 @@
-import React, { useState, useMemo } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Pagination } from "@aethermeta/uikit";
+import {
+  useDispatchSalePublicData,
+  useSales,
+  useUpdateSalePage,
+} from "store/sales/hooks";
 import { Item } from "./types";
 import ShopCard from "./ShopCard";
 
@@ -23,26 +28,38 @@ const PaginationContainer = styled.div`
 `;
 
 const ShopItems: React.FC<ShopItemsProps> = ({ items }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 12;
-  const shopItemsData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * pageSize;
-    const lastPageIndex = firstPageIndex + pageSize;
-    return items.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, items]);
+  useDispatchSalePublicData();
+  const { data, pageSize, currentPage } = useSales();
+  const shopItemsData = data[currentPage];
+  const { updateSalePage } = useUpdateSalePage();
+  // const shopItemsData = useMemo(() => {
+  //   const firstPageIndex = (currentPage - 1) * pageSize;
+  //   const lastPageIndex = firstPageIndex + pageSize;
+  //   return items.slice(firstPageIndex, lastPageIndex);
+  // }, [currentPage, items]);
   return (
     <>
       <Grid>
-        {shopItemsData.map((item) => (
-          <ShopCard item={item} />
-        ))}
+        {shopItemsData &&
+          shopItemsData.map((item) => (
+            <ShopCard
+              key={item.id}
+              item={{
+                name: item.name,
+                highestBid: item.price,
+                image: "url(/images/shopImage.svg)",
+                startTime: new Date(),
+                mintTime: new Date(),
+              }}
+            />
+          ))}
       </Grid>
       <PaginationContainer>
         <Pagination
           currentPage={currentPage}
           totalCount={items.length}
           pageSize={pageSize}
-          onPageChange={(page) => setCurrentPage(page)}
+          onPageChange={updateSalePage}
         />
       </PaginationContainer>
     </>

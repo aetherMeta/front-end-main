@@ -1,13 +1,11 @@
-export type PostPartnershipEmailRequest = {
+export type PostContactUsRequest = {
   name: string;
-  company: string;
   email: string;
   description: string;
 };
 
-export type PostPartnershipEmailResponse = {
+export type PostContactUsResponse = {
   name: string;
-  company: string;
   email: string;
   description: string;
 };

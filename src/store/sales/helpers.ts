@@ -1,5 +1,4 @@
 import { ethers } from "ethers";
-import { useParams } from "react-router-dom";
 import { splitSignature } from "ethers/lib/utils";
 import { signTypedData } from "../../utils/signingHelpers";
 
@@ -23,7 +22,6 @@ export const generatePrimarySale = async (
     royaltyValue: number;
     uri: string;
     chainId: number;
-    expiresAt: string;
   }
 ) => {
   const {
@@ -36,7 +34,6 @@ export const generatePrimarySale = async (
     royaltyValue,
     uri,
     chainId,
-    expiresAt,
   } = data;
 
   const msg = {
@@ -63,7 +60,6 @@ export const generatePrimarySale = async (
     r: splitSig.r,
     s: splitSig.s,
     uri,
-    expiresAt: expiresAt.toString(),
     royaltyValue,
     royaltyRecipient,
     chainId,

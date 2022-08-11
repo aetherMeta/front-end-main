@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState } from "react";
 import Page from "components/Layout/Page";
-import { Button, Flex, Input, Label, Text } from "@aethermeta/uikit";
+import { Button, Flex, Input, Label, Text, TextArea } from "@aethermeta/uikit";
 import {
   useDispatchUserPublicData,
   useUpdateUser,
@@ -31,7 +31,7 @@ const Debug: React.FC = () => {
   useDispatchSalePublicData();
   useDispatchNftPublicData();
 
-  const { saleState, createPrimarySale } = useSales();
+  const { saleState, createPrimarySale, data: salesData } = useSales();
   const updateUser = useUpdateUser();
 
   const { onBuy } = usePrimaryBuy();
@@ -58,7 +58,6 @@ const Debug: React.FC = () => {
     tokenV: 0,
     tokenR: "",
     tokenS: "",
-    expiresAt: "",
     chainId: 4,
   };
 
@@ -71,8 +70,8 @@ const Debug: React.FC = () => {
     name: "",
     description: "",
     _attributes: "",
-    attributes: null,
-    file: {},
+    attributes: [],
+    file: new Blob(),
   });
 
   const [saleInput, setSaleInput] = useState(Array(100).fill(1));
@@ -113,13 +112,22 @@ const Debug: React.FC = () => {
         // Do nothing
       }
     }
+
     setIpfsValues({
       ...old,
       [name]: value,
     });
+
+    if (name === "file") {
+      setIpfsValues({
+        ...old,
+        [name]: e.target.files[0],
+      });
+    }
   };
 
   const submitSale = async () => {
+    console.log(primarySale.uri);
     const sale = await generatePrimarySale(
       await library.provider,
       account,
@@ -222,13 +230,6 @@ const Debug: React.FC = () => {
             value={primarySale.price}
             onChange={handlePrimarySaleInputChange}
           />
-          <Input
-            type="date"
-            placeholder="expiresAt"
-            name="expiresAt"
-            value={primarySale.expiresAt}
-            onChange={handlePrimarySaleInputChange}
-          />
         </Flex>
 
         <Button onClick={submitSale}>Create Sale</Button>
@@ -242,8 +243,7 @@ const Debug: React.FC = () => {
           value={ipfsValues.name}
           onChange={handleIpfsInputChange}
         />
-        <Input
-          type="text"
+        <TextArea
           placeholder="description"
           name="description"
           value={ipfsValues.description}
@@ -267,7 +267,12 @@ const Debug: React.FC = () => {
 
         <Button
           onClick={() => {
-            submitIpfs(ipfsValues);
+            submitIpfs({
+              name: ipfsValues.name,
+              attributes: ipfsValues.attributes,
+              file: ipfsValues.file as any,
+              description: ipfsValues.description,
+            });
           }}
         >
           Upload ipfs
@@ -275,11 +280,11 @@ const Debug: React.FC = () => {
       </Flex>
 
       <Flex flexDirection="column">
-        {Object.keys(saleState.data).map((saleKey, i) => (
+        {salesData[0]?.map((sale, i) => (
           <>
             <Text>SALE ENTRY: {i}</Text>
 
-            {Object.entries(saleState[saleKey]).map(([k, v]) => (
+            {Object.entries(sale).map(([k, v]) => (
               <Text>
                 {k.toString()}: {JSON.stringify(v)}
               </Text>
@@ -289,7 +294,7 @@ const Debug: React.FC = () => {
               onChange={(e) => setSaleAmount(i, e.target.value)}
               value={saleInput[i]}
             />
-            <Button onClick={() => onBuy(saleState[saleKey], saleInput[i])}>
+            <Button onClick={() => onBuy(sale, saleInput[i])}>
               BUY SALE {i}
             </Button>
           </>

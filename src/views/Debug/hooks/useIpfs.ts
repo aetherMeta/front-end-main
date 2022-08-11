@@ -1,5 +1,6 @@
+import { backend } from "apis/backend";
+import { IpfsUploadRequest } from "apis/backend/generated";
 import { useCallback } from "react";
-import backend from "apis/backend";
 
 export type Attribute = {
   // eslint-disable-next-line camelcase
@@ -14,18 +15,12 @@ export type IpfsUpload = {
   attributes: Array<Attribute>;
 };
 const useIpfsUpload = () => {
-  const handleSubmit = useCallback(
-    async ({ file, name, description, attributes }: IpfsUpload) => {
-      const retv = await backend.ipfs.ipfsControllerCreate(
-        file,
-        name,
-        description,
-        attributes
-      );
-      console.info(retv);
-    },
-    []
-  );
+  const handleSubmit = useCallback(async (formData: IpfsUploadRequest) => {
+    const retv = await backend.ipfs.ipfsControllerCreate({
+      formData,
+    });
+    console.info(retv);
+  }, []);
 
   return { onSubmit: handleSubmit };
 };

@@ -34,7 +34,8 @@ const StyledDotGroup = styled(DotGroup)`
     width: 0.625rem;
     height: 0.625rem;
     padding: 0;
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) =>
+      theme.colors.primary}; //Change back to lightgrwey
     &--selected {
       background-color: ${({ theme }) => theme.colors.primary};
     }

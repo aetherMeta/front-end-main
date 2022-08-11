@@ -107,7 +107,7 @@
     "husky": "^7.0.0",
     "prettier": "^2.3.0",
     "source-map-explorer": "^2.5.2",
-    "ts-node": "^9.1.1"
+    "ts-node": "^10.9.1"
   },
   "resolutions": {
     "@types/react": "17.0.2",

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Flex, Text, Button, useModal } from "@aethermeta/uikit";
-import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
+import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
 import PartnershipModal, { Values } from "./PartnershipModal";
 
 const Container = styled.div`
@@ -43,7 +43,7 @@ const ViewNFTsTablet: React.FC = () => {
 
   const onSubmit = async (e, values: Values) => {
     e.preventDefault();
-    await postPartnershipEmail(values);
+    await postContactUsEmail(values);
   };
 
   return (

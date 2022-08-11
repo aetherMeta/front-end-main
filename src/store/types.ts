@@ -1,4 +1,5 @@
 import {
+  FilterValues,
   PrimarySaleResponse,
   UserNFTResponse,
   UserResponseDto,
@@ -19,12 +20,20 @@ export interface NftState {
 }
 
 export interface SaleState {
-  data: { [key: string]: Sale };
+  data: { [key: number]: Sale[] };
+  filters: SaleFilters;
   total: number;
   isLoading: boolean;
   isLoaded: boolean;
+  currentPage: number;
+  pageSize: number;
 }
 
+export interface SaleFilters {
+  updatedAt?: FilterValues;
+  createdAt?: FilterValues;
+  price?: FilterValues;
+}
 // Store state
 export interface State {
   user: UserState;
