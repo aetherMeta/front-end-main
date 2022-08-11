@@ -56,6 +56,7 @@ export const useUpdateSalePage = () => {
   const updateSalePage = useCallback(
     async (page: number) => {
       dispatch(setSalePage(page));
+      dispatch(dispatchPrimarySalePublicDataAsync(page));
     },
     [dispatch]
   );

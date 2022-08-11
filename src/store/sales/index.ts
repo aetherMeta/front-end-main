@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { backend } from "apis/backend";
+import { ASK_TYPE } from "apis/backend/constants";
 import { SaleState, Sale } from "store/types";
 
 const initialState: SaleState = {
@@ -31,8 +32,7 @@ export const dispatchPrimarySalePublicDataAsync =
           [page]: [
             ...res.data.map((o) => ({
               ...o,
-              askType: 0,
-              // askType: ASK_TYPE.PrimarySale,
+              askType: ASK_TYPE.PrimarySale,
             })),
           ],
         })
@@ -78,7 +78,7 @@ export const saleSlice = createSlice({
     setSalePublicData: (state, action) => {
       const { payload } = action;
       const primarySaleData = payload.data.reduce(
-        (a, v) => ({ ...a, [v.id]: v }),
+        (acc, val) => ({ ...acc, [val.id]: val }),
         {}
       );
       state.data = primarySaleData;
