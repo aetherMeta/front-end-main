@@ -7,7 +7,8 @@ import NotFound from "./views/NotFound";
 import About from "./views/About";
 import Home from "./views/Home";
 import Partnerships from "./views/Partnerships";
-import Collections from "./views/Collections"
+import Collections from "./views/Collections";
+import CollectionDetails from "./views/CollectionDetails";
 import Shop from "./views/Shop";
 import Help from "./views/Help";
 import Menu from "./components/Menu";
@@ -39,8 +40,13 @@ const App: React.FC = () => {
           <Route path="/collections" exact>
             <Collections />
           </Route>
+
           <Route path="/help" exact>
             <Help />
+
+          <Route path="/collectionDetails" exact>
+            <CollectionDetails />
+
           </Route>
 
           <Route path="/metaverse" exact>

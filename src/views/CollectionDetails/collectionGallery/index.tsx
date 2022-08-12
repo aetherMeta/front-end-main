@@ -2,9 +2,9 @@ import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 import { Pagination } from "@aethermeta/uikit";
 import { Item } from "constants/items";
-import ShopCard from "./ShopCard";
+import CollectionCard from "./collectionCard";
 
-interface ShopItemsProps {
+interface CollectionGalleryProps {
   items: Item[];
 }
 
@@ -22,19 +22,19 @@ const PaginationContainer = styled.div`
   margin-top: 5.75rem;
 `;
 
-const ShopItems: React.FC<ShopItemsProps> = ({ items }) => {
+const CollectionGallery: React.FC<CollectionGalleryProps> = ({ items }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 12;
-  const shopItemsData = useMemo(() => {
+  const CollectionGalleryData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;
     return items.slice(firstPageIndex, lastPageIndex);
   }, [currentPage, items]);
   return (
     <>
-      <Grid>
-        {shopItemsData.map((item) => (
-          <ShopCard item={item} />
+      <Grid >
+        {CollectionGalleryData.map((item) => (
+          <CollectionCard item={item} />
         ))}
       </Grid>
       <PaginationContainer>
@@ -49,4 +49,4 @@ const ShopItems: React.FC<ShopItemsProps> = ({ items }) => {
   );
 };
 
-export default ShopItems;
+export default CollectionGallery;
