@@ -43,6 +43,7 @@ const App: React.FC = () => {
 
           <Route path="/help" exact>
             <Help />
+          </Route>
 
           <Route path="/collectionDetails" exact>
             <CollectionDetails />

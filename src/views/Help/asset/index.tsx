@@ -78,7 +78,7 @@ const Asset: React.FC = () => {
           <Text variant="body" mt="1.5rem">
             The Aether Meta Team has a very strong understanding of 3D Assets
             that will not only allow your brand to build an immersive Metaverse
-            Store, but also to render digital and phygital items in the
+            Store, but also to render digital and physical items in the
             Metaverse.
           </Text>
           <Text variant="body" mt="1.5rem">

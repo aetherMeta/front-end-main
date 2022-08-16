@@ -58,14 +58,14 @@ const Analytics: React.FC = () => {
       <br />
       <br />
       <Text variant="body">
-        There many reasons to become part of our Metaverse.
+        There are many reasons to become part of our Metaverse.
       </Text>
       <Text variant="body">Some simple advantages are:</Text>
       <FlexContainer flexDirection="column">
         <Diagram />
         <StyledFlex>
           <Text variant="h3Bold">What are Web3 Analytics?</Text>
-          <Text variant="body" >
+          <Text variant="body">
             Web3 Analytics are decentralized alternatives to Google Analytics
             which 70% of existing websites use. Web3 analytics will give users
             full control over their data, without it being shared with a large
