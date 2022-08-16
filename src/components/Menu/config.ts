@@ -16,6 +16,10 @@ const config = [
     href: "/about",
   },
   {
+    label: "Help",
+    href: "/help",
+  },
+  {
     label: "Contact",
     href: "/contact",
   },

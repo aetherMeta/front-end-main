@@ -8,7 +8,7 @@ import {
   ButtonMenuItem,
   Pagination,
 } from "@aethermeta/uikit";
-import GalleryItems from "views/Collections/galleryItems";
+import GalleryItems from "views/Collections/GalleryItems";
 import { Item } from "../types";
 
 const PaginationContainer = styled.div`
