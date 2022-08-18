@@ -9,6 +9,7 @@ import {
   Pagination,
   Select,
 } from "@aethermeta/uikit";
+
 import GalleryItems from "../GalleryItems";
 import { Item } from "../types";
 
@@ -65,11 +66,11 @@ const Gallery: React.FC<GalleryProps> = ({ items }) => {
       </Flex>
 
       <Flex justifyContent="space-around" alignSelf="flex-start" mb="3.5rem">
-        {/* <ButtonMenu
+        <ButtonMenu
           activeIndex={index}
           onItemClick={handleClick}
           scale="sm"
-          variant="white"
+          variant="subtle"
         >
           <ButtonMenuItemFilter
             marginLeft="1rem"
@@ -101,7 +102,7 @@ const Gallery: React.FC<GalleryProps> = ({ items }) => {
           >
             automobile
           </ButtonMenuItemFilter>
-        </ButtonMenu> */}
+        </ButtonMenu>
       </Flex>
       <Grid gridTemplateColumns="25% 25% 25% 25%">
         {shopItemsData.map((item) => (
