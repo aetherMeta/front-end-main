@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
-import styled from "styled-components";
 import { Pagination } from "@aethermeta/uikit";
+import styled from "styled-components";
 import { Item } from "constants/items";
 import CollectionCard from "./CollectionCard";
 
