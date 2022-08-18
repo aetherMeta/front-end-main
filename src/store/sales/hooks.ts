@@ -24,6 +24,8 @@ type Returns = {
   pageSize: number;
   currentPage: number;
   total: number;
+  isLoading: boolean;
+  isLoaded: boolean;
   createPrimarySale: (
     dto: CreatePrimarySaleDto
   ) => Promise<PrimarySaleResponse>;
@@ -100,6 +102,8 @@ export const useSales = (): Returns => {
     pageSize: sales.pageSize,
     currentPage: sales.currentPage,
     total: sales.total,
+    isLoading: sales.isLoading,
+    isLoaded: sales.isLoaded,
     createPrimarySale,
     createSecondarySale,
   };
