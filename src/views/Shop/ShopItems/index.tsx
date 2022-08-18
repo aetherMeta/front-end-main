@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { Pagination } from "@aethermeta/uikit";
-import {
-  useDispatchSalePublicData,
-  useSales,
-  useUpdateSalePage,
-} from "store/sales/hooks";
+import { PrimarySaleResponse } from "apis/backend/generated";
 import { Item } from "./types";
 import ShopCard from "./ShopCard";
 
 interface ShopItemsProps {
-  items: Item[];
+  shopItemsData: PrimarySaleResponse[];
+  pageSize: number;
+  currentPage: number;
+  total: number;
+  updateSalePage: (page: number) => Promise<void>;
 }
 
 const Grid = styled.div`
@@ -27,11 +27,13 @@ const PaginationContainer = styled.div`
   margin-top: 5.75rem;
 `;
 
-const ShopItems: React.FC<ShopItemsProps> = ({ items }) => {
-  useDispatchSalePublicData();
-  const { data, pageSize, currentPage } = useSales();
-  const shopItemsData = data[currentPage];
-  const { updateSalePage } = useUpdateSalePage();
+const ShopItems: React.FC<ShopItemsProps> = ({
+  shopItemsData,
+  pageSize,
+  currentPage,
+  total,
+  updateSalePage,
+}) => {
   // const shopItemsData = useMemo(() => {
   //   const firstPageIndex = (currentPage - 1) * pageSize;
   //   const lastPageIndex = firstPageIndex + pageSize;
@@ -57,7 +59,7 @@ const ShopItems: React.FC<ShopItemsProps> = ({ items }) => {
       <PaginationContainer>
         <Pagination
           currentPage={currentPage}
-          totalCount={items.length}
+          totalCount={total}
           pageSize={pageSize}
           onPageChange={updateSalePage}
         />

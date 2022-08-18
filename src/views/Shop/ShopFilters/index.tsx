@@ -146,7 +146,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
           </label>
         ))}
       </InputFlex>
-      <Text variant="label" mt="2rem">
+      {/* <Text variant="label" mt="2rem">
         SALES TYPE
       </Text>
       <InputFlex flexDirection="column">
@@ -223,7 +223,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
             </Flex>
           </label>
         ))}
-      </InputFlex>
+      </InputFlex> */}
       <Flex justifyContent="space-between" mt="1.5rem">
         <Button
           variant="text"

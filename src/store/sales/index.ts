@@ -19,6 +19,7 @@ export const dispatchPrimarySalePublicDataAsync =
     const { pageSize, filters } = getState().sales;
     // TODO find missing items,
     try {
+      dispatch(setLoading());
       const res = await backend.sales.primarySaleControllerFindAll({
         name: filters.name,
         skip: (page - 1) * pageSize,
@@ -37,6 +38,7 @@ export const dispatchPrimarySalePublicDataAsync =
           ],
         })
       );
+      dispatch(setSaleTotal({ total: res.total }));
     } catch (e) {
       console.error(e);
     }
@@ -93,6 +95,9 @@ export const saleSlice = createSlice({
       state.total = action.payload.total;
       state.isLoaded = true;
     },
+    setSaleTotal: (state, action) => {
+      state.total = action.payload.total;
+    },
     setSalePageSize: (state, action) => {
       state.data = {};
       state.pageSize = action.payload;
@@ -110,9 +115,11 @@ export const saleSlice = createSlice({
 // Actions
 export const {
   setPrimarySalesPublicData,
+  setSaleTotal,
   setSalePageSize,
   setSalePage,
   setSaleFilters,
+  setLoading,
 } = saleSlice.actions;
 
 export default saleSlice.reducer;
