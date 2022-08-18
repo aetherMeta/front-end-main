@@ -2,7 +2,6 @@ import React from "react";
 import Page from "components/Layout/Page";
 import { useMatchBreakpoints } from "@aethermeta/uikit";
 import styled from "styled-components";
-import Partners from "./Partners";
 import Enquires from "./Enquries";
 import PartnersTablet from "./PartnersTablet";
 import EnquiresTablet from "./EnquriesTablet";
