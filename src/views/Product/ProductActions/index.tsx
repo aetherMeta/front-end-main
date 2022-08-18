@@ -57,10 +57,10 @@ const ProductActions: React.FC<ProductActionsProps> = ({
             {truncateWalletAddress(saleData.sellerAddress)}
           </Text>
         </Flex>
-        {saleData.asset.data && (
+        {saleData.nft.asset.data && (
           <Flex flexDirection="column">
             <StyledText variant="bodySmall">Collection</StyledText>
-            <Text variant="bodySmall">{saleData.asset.data}</Text>
+            <Text variant="bodySmall">{saleData.nft.asset.data}</Text>
           </Flex>
         )}
       </StyledFlex>

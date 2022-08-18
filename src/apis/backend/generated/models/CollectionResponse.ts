@@ -4,8 +4,9 @@
 
 export type CollectionResponse = {
     id: string;
-    address: string;
     name: string;
     description: string;
+    createdAt: string;
+    updatedAt: string;
 };
 

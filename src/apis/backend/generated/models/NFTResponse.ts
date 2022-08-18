@@ -3,12 +3,14 @@
 /* eslint-disable */
 
 import type { AssetDto } from './AssetDto';
+import type { AttributeDto } from './AttributeDto';
 import type { CollectionResponse } from './CollectionResponse';
 
 export type NFTResponse = {
-    tokenId: string;
+    tokenId?: string | null;
     total: string;
-    collections?: CollectionResponse | null;
+    collections: CollectionResponse;
+    attributes: Array<AttributeDto>;
     asset: AssetDto;
     chainId: number;
     address: string;
