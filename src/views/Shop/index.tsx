@@ -1,13 +1,18 @@
 /* eslint-disable no-console */
 import React from "react";
 import styled from "styled-components";
-import { useMatchBreakpoints, Flex } from "@aethermeta/uikit";
+import { useMatchBreakpoints, Flex, Spinner } from "@aethermeta/uikit";
 import Page from "components/Layout/Page";
+import {
+  useUpdateSalesFilter,
+  useDispatchSalePublicData,
+  useSales,
+  useUpdateSalePage,
+} from "store/sales/hooks";
 import ShopFilters from "./ShopFilters";
 import ShopFiltersTablet from "./ShopFiltersTablet";
 import ShopHeader from "./ShopHeader";
 import ShopItems from "./ShopItems";
-import testItems from "./ShopItems/testItems";
 
 const Container = styled.div`
   display: flex;
@@ -27,27 +32,49 @@ const Container = styled.div`
 const Shop: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();
   const isSmallScreen = isTablet || isMobile;
+  const { handleFilter } = useUpdateSalesFilter();
+  useDispatchSalePublicData();
+  const { data, total, pageSize, currentPage, isLoading, isLoaded } =
+    useSales();
+  const shopItemsData = data[currentPage];
+  const { updateSalePage } = useUpdateSalePage();
+  const handleApply = (filters) => {
+    handleFilter(filters);
+
+    // Refetch?
+  };
+  console.log(isLoading);
+  console.log(isLoaded);
   return (
     <Page>
       <Container>
         {!isSmallScreen && (
-          <ShopFilters
-            total={12564}
-            handleApply={() => console.log("handleApply")}
-          />
+          <ShopFilters total={total} handleApply={handleApply} />
         )}
-        <Flex flexDirection="column" width="100%">
-          {isSmallScreen ? (
-            <ShopFiltersTablet
-              total={12564}
-              handleSort={() => console.log("handleSort Tablet")}
-              handleApply={() => console.log("handleApply Tablet")}
+        {isLoading || !isLoaded ? (
+          <Flex width="100%" justifyContent="center">
+            <Spinner size={108} />
+          </Flex>
+        ) : (
+          <Flex flexDirection="column" width="100%">
+            {isSmallScreen ? (
+              <ShopFiltersTablet
+                total={total}
+                handleSort={() => console.log("handleSort Tablet")}
+                handleApply={() => console.log("handleApply Tablet")}
+              />
+            ) : (
+              <ShopHeader results={total} />
+            )}
+            <ShopItems
+              shopItemsData={shopItemsData}
+              pageSize={pageSize}
+              currentPage={currentPage}
+              total={total}
+              updateSalePage={updateSalePage}
             />
-          ) : (
-            <ShopHeader results={45} />
-          )}
-          <ShopItems items={testItems} />
-        </Flex>
+          </Flex>
+        )}
       </Container>
     </Page>
   );

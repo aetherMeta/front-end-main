@@ -1,44 +1,30 @@
-import client from "apis/backend/client";
 import {
-  AuctionApi,
-  AuthenticationApi,
-  CollectionsApi,
-  ContactApi,
-  IpfsApi,
-  NFTsApi,
-  SalesApi,
-  SocialsApi,
-  UserApi,
+  AuctionService,
+  AuthenticationService,
+  CollectionsService,
+  ContactService,
+  IpfsService,
+  NfTsService,
+  OpenAPI,
+  SalesService,
+  ShoppingCartService,
+  SocialsService,
+  UserService,
 } from "./generated";
 
-export default {
-  auction: new AuctionApi(
-    null,
-    process.env.REACT_APP_PUBLIC_API_BASE_URL,
-    client
-  ),
-  authentication: new AuthenticationApi(
-    null,
-    process.env.REACT_APP_PUBLIC_API_BASE_URL,
-    client
-  ),
-  collections: new CollectionsApi(
-    null,
-    process.env.REACT_APP_PUBLIC_API_BASE_URL,
-    client
-  ),
-  contact: new ContactApi(
-    null,
-    process.env.REACT_APP_PUBLIC_API_BASE_URL,
-    client
-  ),
-  nfts: new NFTsApi(null, process.env.REACT_APP_PUBLIC_API_BASE_URL, client),
-  sales: new SalesApi(null, process.env.REACT_APP_PUBLIC_API_BASE_URL, client),
-  socials: new SocialsApi(
-    null,
-    process.env.REACT_APP_PUBLIC_API_BASE_URL,
-    client
-  ),
-  user: new UserApi(null, process.env.REACT_APP_PUBLIC_API_BASE_URL, client),
-  ipfs: new IpfsApi(null, process.env.REACT_APP_PUBLIC_API_BASE_URL, client),
+OpenAPI.BASE = process.env.REACT_APP_PUBLIC_API_BASE_URL;
+
+export const backend = {
+  auctions: AuctionService,
+  authentication: AuthenticationService,
+  collections: CollectionsService,
+  contact: ContactService,
+  ipfs: IpfsService,
+  nfts: NfTsService,
+  sales: SalesService,
+  shoppingCard: ShoppingCartService,
+  socials: SocialsService,
+  user: UserService,
 };
+
+export const client = OpenAPI;

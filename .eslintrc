@@ -28,8 +28,7 @@
     "radix": 0,
     "import/no-extraneous-dependencies": 0,
     "jsx-a11y/media-has-caption": 0,
-    // Exchange
-    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state", "memo"] }],
+    "no-param-reassign": 0,
     "react/require-default-props": 0,
     "react/default-props-match-prop-types": 0,
     "no-nested-ternary": 0,
@@ -37,6 +36,5 @@
     "react/no-unused-prop-types": 0,
     "react/jsx-no-bind": 0,
     "no-restricted-syntax": 0
-    // End temporary rules
   }
 }

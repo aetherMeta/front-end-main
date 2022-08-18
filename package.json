@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@aethermeta/uikit": "^1.0.7",
+    "@apollo/client": "^3.6.9",
     "@binance-chain/bsc-connector": "^1.0.0",
     "@ethersproject/experimental": "^5.0.1",
     "@reduxjs/toolkit": "^1.5.0",
@@ -67,6 +68,7 @@
     "node-fetch": "^2.6.1",
     "nookies": "^2.5.2",
     "numeral": "^2.0.6",
+    "pure-react-carousel": "^1.28.1",
     "qs": "^6.9.4",
     "react": "^17.0.1",
     "react-countup": "^4.3.3",
@@ -105,7 +107,7 @@
     "husky": "^7.0.0",
     "prettier": "^2.3.0",
     "source-map-explorer": "^2.5.2",
-    "ts-node": "^9.1.1"
+    "ts-node": "^10.9.1"
   },
   "resolutions": {
     "@types/react": "17.0.2",

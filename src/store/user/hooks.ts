@@ -3,10 +3,9 @@ import { useSelector } from "react-redux";
 import { State, UserState } from "store/types";
 import { useAppDispatch } from "store";
 import useRefresh from "hooks/useRefresh";
+import { backend, client } from "apis/backend";
 import { dispatchUserPublicDataAsync, setUserPublicData } from "store/user";
 import useAccessToken from "../../hooks/useAccessToken";
-import client from "../../apis/backend/client";
-import backend from "../../apis/backend";
 import { PatchUserRequestDto } from "../../apis/backend/generated";
 
 export const useDispatchUserPublicData = () => {
@@ -26,10 +25,10 @@ export const useUpdateUser = () => {
   return useCallback(
     async (dto: PatchUserRequestDto) => {
       try {
-        if (client.defaults.headers.common.Authorization) {
-          const { data: userData } = await backend.user.userControllerPatch(
-            dto
-          );
+        if (client.TOKEN) {
+          const userData = await backend.user.userControllerPatch({
+            requestBody: dto,
+          });
           dispatch(setUserPublicData(userData));
         }
       } catch (e) {
@@ -44,9 +43,8 @@ export const useUpdateMetaverseUsage = () => {
   const dispatch = useAppDispatch();
   return useCallback(async () => {
     try {
-      if (client.defaults.headers.common.Authorization) {
-        const { data: userData } =
-          await backend.user.userControllerMetaverseUpdate();
+      if (client.TOKEN) {
+        const userData = await backend.user.userControllerMetaverseUpdate();
         dispatch(setUserPublicData(userData));
       }
     } catch (e) {

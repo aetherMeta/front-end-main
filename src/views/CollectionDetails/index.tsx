@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import Page from "components/Layout/Page";
-import DetailHeader from "views/CollectionDetails/detailHeader";
-import SelectedItem from "views/CollectionDetails/selectedItem";
-import CollectionGallery from "views/CollectionDetails/collectionGallery";
+import DetailHeader from "views/CollectionDetails/DetailHeader";
+import SelectedItem from "views/CollectionDetails/SelectedItem";
+import CollectionGallery from "views/CollectionDetails/CollectionGallery";
 import testItems from "views/CollectionDetails/testItems";
 import { useMatchBreakpoints, Flex } from "@aethermeta/uikit";
-import DetailHeaderMobile from "./detailHeaderMobile";
+import DetailHeaderMobile from "./DetailHeaderMobile";
 
 const Container = styled.div`
   display: flex;
@@ -31,26 +31,23 @@ const CollectionDetails: React.FC = () => {
       <Container>
         {isSmallScreen ? (
           <Flex flexDirection="column">
-            <DetailHeaderMobile 
+            <DetailHeaderMobile
               total={45}
-              handleSort={() => console.log("handleSort Tablet")} />
+              handleSort={() => console.log("handleSort Tablet")}
+            />
             <CollectionGallery items={testItems} />
           </Flex>
-        ) : ( 
-        <>
-              <SelectedItem results={45}/>
-              <Flex flexDirection="column" width="100%">
-                <Flex alignSelf="flex-end">
-                    <DetailHeader/>
-                </Flex>
-                <CollectionGallery items={testItems} />
-                
+        ) : (
+          <>
+            <SelectedItem results={45} />
+            <Flex flexDirection="column" width="100%">
+              <Flex alignSelf="flex-end">
+                <DetailHeader />
               </Flex>
-
-              
-            
-        </>)
-        }
+              <CollectionGallery items={testItems} />
+            </Flex>
+          </>
+        )}
       </Container>
     </Page>
   );

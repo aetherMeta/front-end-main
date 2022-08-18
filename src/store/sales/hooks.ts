@@ -1,12 +1,15 @@
-import { useEffect } from "react";
+import { backend } from "apis/backend";
+import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Sale, State } from "store/types";
+import { useParams } from "react-router-dom";
+import { SaleState, State, Sale } from "store/types";
 import { useAppDispatch } from "store";
-import useRefresh from "hooks/useRefresh";
-import { dispatchSalePublicDataAsync } from "store/sales";
-import { AxiosResponse } from "axios";
-import { useWeb3React } from "@web3-react/core";
-import backend from "../../apis/backend";
+import {
+  dispatchPrimarySalePublicDataAsync,
+  setPrimarySalesPublicData,
+  setSaleFilters,
+  setSalePage,
+} from "store/sales";
 import {
   CreatePrimarySaleDto,
   CreateSecondarySaleDto,
@@ -15,40 +18,92 @@ import {
 } from "../../apis/backend/generated";
 
 type Returns = {
-  data: Sale[];
+  saleState: SaleState;
+  saleData: Sale;
+  data: Record<number, Sale[]>;
+  pageSize: number;
+  currentPage: number;
+  total: number;
+  isLoading: boolean;
+  isLoaded: boolean;
   createPrimarySale: (
     dto: CreatePrimarySaleDto
-  ) => Promise<AxiosResponse<PrimarySaleResponse>>;
+  ) => Promise<PrimarySaleResponse>;
   createSecondarySale: (
     dto: CreateSecondarySaleDto
-  ) => Promise<AxiosResponse<SecondarySaleResponse>>;
+  ) => Promise<SecondarySaleResponse>;
 };
 
 export const useDispatchSalePublicData = () => {
-  const { active } = useWeb3React();
   const dispatch = useAppDispatch();
-  const { slowRefresh } = useRefresh();
-
+  const sales = useSelector((state: State) => state.sales);
   useEffect(() => {
     const dispatchSalePublicData = async () => {
-      dispatch(dispatchSalePublicDataAsync());
+      dispatch(dispatchPrimarySalePublicDataAsync(sales.currentPage));
     };
     dispatchSalePublicData();
-  }, [dispatch, slowRefresh, active]);
+  }, [dispatch, sales.currentPage]);
+
+  useEffect(() => {
+    const dispatchFilterChange = async () => {
+      dispatch(setPrimarySalesPublicData({}));
+      dispatch(dispatchPrimarySalePublicDataAsync(1));
+    };
+    dispatchFilterChange();
+  }, [dispatch, sales.filters]);
+};
+
+export const useUpdateSalePage = () => {
+  const dispatch = useAppDispatch();
+  const updateSalePage = useCallback(
+    async (page: number) => {
+      dispatch(setSalePage(page));
+      dispatch(dispatchPrimarySalePublicDataAsync(page));
+    },
+    [dispatch]
+  );
+  return { updateSalePage };
+};
+
+export const useUpdateSalesFilter = () => {
+  const dispatch = useAppDispatch();
+  const updateFilter = useCallback(
+    async (filters) => {
+      dispatch(setSaleFilters(filters));
+    },
+    [dispatch]
+  );
+  return { handleFilter: updateFilter };
 };
 
 const createPrimarySale = async (dto: CreatePrimarySaleDto) => {
-  return backend.sales.primarySaleControllerCreate(dto);
+  return backend.sales.primarySaleControllerCreate({
+    requestBody: dto,
+  });
 };
 
 const createSecondarySale = async (dto: CreateSecondarySaleDto) => {
-  return backend.sales.secondarySaleControllerCreate(dto);
+  return backend.sales.secondarySaleControllerCreate({
+    requestBody: dto,
+  });
 };
 
 export const useSales = (): Returns => {
   const sales = useSelector((state: State) => state.sales);
+  const salesData = sales.data;
+  const params: { productHash } = useParams();
+  const saleData = Object.values(salesData)
+    .flat()
+    .filter((sale) => sale.id === params.productHash)[0];
   return {
+    saleState: Object.assign([], sales),
+    saleData,
     data: Object.assign([], sales.data),
+    pageSize: sales.pageSize,
+    currentPage: sales.currentPage,
+    total: sales.total,
+    isLoading: sales.isLoading,
+    isLoaded: sales.isLoaded,
     createPrimarySale,
     createSecondarySale,
   };

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { NftState, Nft } from "store/types";
-import backend from "../../apis/backend";
+import { backend } from "../../apis/backend";
 
 const initialState: NftState = {
   data: [],
@@ -10,9 +10,7 @@ const initialState: NftState = {
 // Thunks
 export const dispatchNftPublicDataAsync = (address) => async (dispatch) => {
   try {
-    const { data: nftData } = await backend.nfts.nftsControllerFindUserNft(
-      address
-    );
+    const nftData = await backend.nfts.nftsControllerFindUserNft({ address });
     dispatch(setNftPublicData(nftData));
   } catch (e) {
     console.error(e);

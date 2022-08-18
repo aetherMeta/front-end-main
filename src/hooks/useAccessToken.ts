@@ -1,13 +1,12 @@
 import { ethers } from "ethers";
 import { useWeb3React } from "@web3-react/core";
 import { useCallback, useContext, useEffect, useState } from "react";
-import AccessTokenContext from "../contexts/AccessTokenContext";
+import { backend, client } from "apis/backend";
 import setAccessTokenCookie from "../apis/backend/cookies/accessToken/setAccessToken";
 import getAccessTokenCookie from "../apis/backend/cookies/accessToken/getAccessToken";
-import backend from "../apis/backend";
-import client from "../apis/backend/client";
 import destroyAccessToken from "../apis/backend/cookies/accessToken/destroyAccessToken";
 import useToast from "./useToast";
+import AccessTokenContext from "../contexts/AccessTokenContext";
 
 type Returns = {
   loading: boolean;
@@ -40,14 +39,12 @@ const useAccessToken = (): Returns => {
     accessTokenContext.setAccessToken(accessTokenFromCookie, address);
 
     // Set Authorization header
-    client.defaults.headers.common.Authorization = accessTokenFromCookie
-      ? `Bearer ${accessTokenFromCookie}`
-      : undefined;
+    client.TOKEN = accessTokenFromCookie;
   };
 
   const logout = async () => {
-    client.defaults.headers.common.Authorization = undefined;
-    await destroyAccessToken();
+    client.TOKEN = undefined;
+    destroyAccessToken();
   };
 
   // load access token from cookie on mount
@@ -68,11 +65,10 @@ const useAccessToken = (): Returns => {
         console.error("Account not is not connected yet");
         return false;
       }
-      const {
-        data: { challenge },
-      } = await backend.authentication.authControllerChallenge({
-        address: activeAccount,
-      });
+      const { challenge } =
+        await backend.authentication.authControllerChallenge({
+          requestBody: { address: activeAccount },
+        });
 
       const currentLibrary = library || _library;
 
@@ -86,20 +82,18 @@ const useAccessToken = (): Returns => {
       try {
         const signature = await signer.signMessage(challenge);
 
-        const {
-          data: { jwt },
-        } = await backend.authentication.authControllerVerify({
-          challenge,
-          signature,
+        const { jwt } = await backend.authentication.authControllerVerify({
+          requestBody: {
+            challenge,
+            signature,
+          },
         });
 
         // store token in cookie
         setAccessTokenCookie(jwt, activeAccount);
 
         // Set Authorization header
-        client.defaults.headers.common.Authorization = jwt
-          ? `Bearer ${jwt}`
-          : undefined;
+        client.TOKEN = jwt;
 
         // set token in state
         accessTokenContext.setAccessToken(jwt, activeAccount);

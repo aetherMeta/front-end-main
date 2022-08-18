@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { backend, client } from "apis/backend";
+import { UserResponseDto } from "apis/backend/generated";
 import { User, UserState } from "store/types";
-import backend from "../../apis/backend";
-import client from "../../apis/backend/client";
 
 const initialState: UserState = {
   data: {
@@ -11,7 +11,7 @@ const initialState: UserState = {
     address: "",
     firstName: "",
     lastName: "",
-    role: "USER",
+    role: UserResponseDto.role.USER,
     twitterHandle: "",
     metaverseAccess: false,
     metaverseAllowanceExceeded: true,
@@ -22,8 +22,8 @@ const initialState: UserState = {
 // Thunks
 export const dispatchUserPublicDataAsync = () => async (dispatch) => {
   try {
-    if (client.defaults.headers.common.Authorization) {
-      const { data: userData } = await backend.user.userControllerGet();
+    if (client.TOKEN) {
+      const userData = await backend.user.userControllerGet();
       dispatch(setUserPublicData(userData));
     }
   } catch (e) {
