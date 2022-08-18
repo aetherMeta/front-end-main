@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Pagination } from "@aethermeta/uikit";
 import { PrimarySaleResponse } from "apis/backend/generated";
-import { Item } from "./types";
 import ShopCard from "./ShopCard";
 
 interface ShopItemsProps {

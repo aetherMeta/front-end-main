@@ -11,6 +11,7 @@ import Home from "./views/Home";
 import Partnerships from "./views/Partnerships";
 import Product from "./views/Product";
 import Collections from "./views/Collections";
+import CollectionDetails from "./views/CollectionDetails";
 import Shop from "./views/Shop";
 import Menu from "./components/Menu";
 import GlobalStyle from "./style/Global";
@@ -48,6 +49,10 @@ const App: React.FC = () => {
           <Route path="/collections" exact>
             <Collections />
           </Route>
+          <Route path="/collectionDetails" exact>
+            <CollectionDetails />
+          </Route>
+
           <Route path="/metaverse" exact>
             <Metaverse />
           </Route>
