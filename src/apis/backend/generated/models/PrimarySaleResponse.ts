@@ -2,14 +2,16 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { AssetDto } from './AssetDto';
-import type { AttributeDto } from './AttributeDto';
 import type { ComissionDto } from './ComissionDto';
 import type { NFTResponse } from './NFTResponse';
 import type { RoyaltyDto } from './RoyaltyDto';
 import type { TokenDto } from './TokenDto';
 
 export type PrimarySaleResponse = {
+    id: string;
+    name: string;
+    description: string;
+    chainId: number;
     amount: string;
     amountSold: string;
     price: string;
@@ -19,14 +21,7 @@ export type PrimarySaleResponse = {
     royalty: RoyaltyDto;
     token: TokenDto;
     commission: ComissionDto;
-    nft?: NFTResponse | null;
-    asset: AssetDto;
-    attributes: Array<AttributeDto>;
-    id: string;
-    name: string;
-    description: string;
-    chainId: number;
-    expiresAt: string;
+    nft: NFTResponse;
     createdAt: string;
     sellerAddress: string;
     currency: string;

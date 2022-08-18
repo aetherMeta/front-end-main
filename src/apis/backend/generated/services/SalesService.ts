@@ -1,16 +1,13 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CreatedAtFilter } from '../models/CreatedAtFilter';
 import type { CreatePrimarySaleDto } from '../models/CreatePrimarySaleDto';
 import type { CreateSecondarySaleDto } from '../models/CreateSecondarySaleDto';
+import type { DateFilterValues } from '../models/DateFilterValues';
 import type { FilterValues } from '../models/FilterValues';
-import type { NameFilter } from '../models/NameFilter';
 import type { PaginatedResponse } from '../models/PaginatedResponse';
-import type { PriceFilter } from '../models/PriceFilter';
 import type { PrimarySaleResponse } from '../models/PrimarySaleResponse';
 import type { SecondarySaleResponse } from '../models/SecondarySaleResponse';
-import type { UpdatedAtFilter } from '../models/UpdatedAtFilter';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
@@ -40,33 +37,42 @@ export class SalesService {
      * @throws ApiError
      */
     public static secondarySaleControllerFindAll({
+        sortField,
+        sortOrder,
         cursor,
         skip,
         take,
         createdAt,
-        updatedAt,
         name,
         price,
+        availability = 'ALL',
+        updatedAt,
     }: {
+        sortField?: 'createdAt' | 'updatedAt' | 'name' | 'price',
+        sortOrder?: 'asc' | 'desc',
         cursor?: string,
         skip?: number,
         take?: number,
-        createdAt?: CreatedAtFilter,
-        updatedAt?: UpdatedAtFilter,
-        name?: NameFilter,
-        price?: PriceFilter,
+        createdAt?: DateFilterValues,
+        name?: FilterValues,
+        price?: FilterValues,
+        availability?: 'AVAILABLE' | 'SOLD' | 'ALL',
+        updatedAt?: DateFilterValues,
     }): CancelablePromise<PaginatedResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/sales/secondary',
             query: {
+                'sortField': sortField,
+                'sortOrder': sortOrder,
                 'cursor': cursor,
                 'skip': skip,
                 'take': take,
                 'createdAt': createdAt,
-                'updatedAt': updatedAt,
                 'name': name,
                 'price': price,
+                'availability': availability,
+                'updatedAt': updatedAt,
             },
         });
     }
@@ -111,33 +117,42 @@ export class SalesService {
      * @throws ApiError
      */
     public static primarySaleControllerFindAll({
+        sortField,
+        sortOrder,
         cursor,
         skip,
         take,
         createdAt,
-        updatedAt,
         name,
         price,
+        availability = 'ALL',
+        updatedAt,
     }: {
+        sortField?: 'createdAt' | 'updatedAt' | 'name' | 'price',
+        sortOrder?: 'asc' | 'desc',
         cursor?: string,
         skip?: number,
         take?: number,
-        createdAt?: FilterValues,
-        updatedAt?: FilterValues,
+        createdAt?: DateFilterValues,
         name?: FilterValues,
         price?: FilterValues,
+        availability?: 'AVAILABLE' | 'SOLD' | 'ALL',
+        updatedAt?: DateFilterValues,
     }): CancelablePromise<PaginatedResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/sales/primary',
             query: {
+                'sortField': sortField,
+                'sortOrder': sortOrder,
                 'cursor': cursor,
                 'skip': skip,
                 'take': take,
                 'createdAt': createdAt,
-                'updatedAt': updatedAt,
                 'name': name,
                 'price': price,
+                'availability': availability,
+                'updatedAt': updatedAt,
             },
         });
     }

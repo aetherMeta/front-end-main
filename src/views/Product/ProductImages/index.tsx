@@ -54,10 +54,10 @@ const ProductImages: React.FC<ProductImagesProps> = ({
       <StyledCarouselProvider
         naturalSlideWidth={640}
         naturalSlideHeight={600}
-        totalSlides={[saleData.asset.url].length}
+        totalSlides={[saleData.nft.asset.url].length}
       >
         <Slider>
-          {[saleData.asset.url].map((image, index) => (
+          {[saleData.nft.asset.url].map((image, index) => (
             <Slide index={index}>
               <StyledImage
                 src={image}

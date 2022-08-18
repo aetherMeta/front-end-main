@@ -3,6 +3,8 @@
 /* eslint-disable */
 import type { CollectionResponse } from '../models/CollectionResponse';
 import type { CreateCollectionDto } from '../models/CreateCollectionDto';
+import type { DateFilterValues } from '../models/DateFilterValues';
+import type { FilterValues } from '../models/FilterValues';
 import type { UpdateCollectionDto } from '../models/UpdateCollectionDto';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -32,10 +34,38 @@ export class CollectionsService {
      * @returns CollectionResponse All collections
      * @throws ApiError
      */
-    public static collectionsControllerFindAll(): CancelablePromise<Array<CollectionResponse>> {
+    public static collectionsControllerFindAll({
+        sortField,
+        sortOrder,
+        cursor,
+        skip,
+        take,
+        createdAt,
+        updatedAt,
+        name,
+    }: {
+        sortField?: 'createdAt' | 'updatedAt' | 'name',
+        sortOrder?: 'asc' | 'desc',
+        cursor?: string,
+        skip?: number,
+        take?: number,
+        createdAt?: DateFilterValues,
+        updatedAt?: DateFilterValues,
+        name?: FilterValues,
+    }): CancelablePromise<Array<CollectionResponse>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/collections',
+            query: {
+                'sortField': sortField,
+                'sortOrder': sortOrder,
+                'cursor': cursor,
+                'skip': skip,
+                'take': take,
+                'createdAt': createdAt,
+                'updatedAt': updatedAt,
+                'name': name,
+            },
         });
     }
 

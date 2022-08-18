@@ -6,6 +6,10 @@ import type { ComissionDto } from './ComissionDto';
 import type { NFTResponse } from './NFTResponse';
 
 export type SecondarySaleResponse = {
+    id: string;
+    name: string;
+    description: string;
+    chainId: number;
     amount: string;
     amountSold: string;
     price: string;
@@ -14,7 +18,6 @@ export type SecondarySaleResponse = {
     's': string;
     commission: ComissionDto;
     nft?: NFTResponse | null;
-    id: string;
     expiresAt: string;
     createdAt: string;
     sellerAddress: string;

@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Page from "components/Layout/Page";
 import { useMatchBreakpoints } from "@aethermeta/uikit";
-import Gallery from "./Gallery";
 import testItems from "./testItems";
 import GalleryMobile from "./GalleryMobile";
+import Gallery from "./Gallery";
 
 const Container = styled.div`
   padding 80px 22px 80px;

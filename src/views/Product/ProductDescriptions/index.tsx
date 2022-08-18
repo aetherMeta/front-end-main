@@ -36,12 +36,12 @@ const ProductDescriptions: React.FC<ProductDescriptionsProps> = ({
         {index === 0 && <Text variant="body">{saleData.description}</Text>}
         {index === 1 && (
           <Flex>
-            {saleData.attributes.map((attribute) => (
+            {saleData.nft.attributes.map((attribute) => (
               <Text variant="body">{attribute.value}</Text>
             ))}
           </Flex>
         )}
-        {index === 2 && <Text variant="body">{saleData.asset.type}</Text>}
+        {index === 2 && <Text variant="body">{saleData.nft.asset.type}</Text>}
       </Flex>
     </Container>
   );
