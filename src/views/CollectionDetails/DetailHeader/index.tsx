@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Flex, Text, Select } from "@aethermeta/uikit";
 
-
 const DetailHeader: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("Most recent");
@@ -22,9 +21,7 @@ const DetailHeader: React.FC = () => {
       height="3.25rem"
     >
       <Flex alignItems="center">
-        <Text mr="1rem">
-          Sort by
-        </Text>
+        <Text mr="1rem">Sort by</Text>
         <Select
           value={value}
           options={["Most recent", "Most popular ", "Latest release"]}
