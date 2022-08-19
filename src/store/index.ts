@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import userReducer from "./user";
 import nftsReducer from "./nfts";
 import salesReducer from "./sales";
+import collectionsReducer from "./collections";
 
 const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
@@ -10,6 +11,7 @@ const store = configureStore({
     user: userReducer,
     nfts: nftsReducer,
     sales: salesReducer,
+    collections: collectionsReducer,
   },
 });
 

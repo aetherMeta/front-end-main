@@ -5,6 +5,7 @@ import type { CollectionResponse } from '../models/CollectionResponse';
 import type { CreateCollectionDto } from '../models/CreateCollectionDto';
 import type { DateFilterValues } from '../models/DateFilterValues';
 import type { FilterValues } from '../models/FilterValues';
+import type { PaginatedResponse } from '../models/PaginatedResponse';
 import type { UpdateCollectionDto } from '../models/UpdateCollectionDto';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -14,24 +15,59 @@ import { request as __request } from '../core/request';
 export class CollectionsService {
 
     /**
-     * @returns CollectionResponse Creates a collection
+     * @returns PaginatedResponse
      * @throws ApiError
      */
-    public static collectionsControllerCreate({
-        requestBody,
+    public static collectionsControllerCollectionNfts({
+        id,
+        sortField,
+        sortOrder,
+        cursor,
+        skip,
+        take,
     }: {
-        requestBody: CreateCollectionDto,
-    }): CancelablePromise<CollectionResponse> {
+        id: string,
+        sortField?: 'createdAt' | 'updatedAt' | 'name',
+        sortOrder?: 'asc' | 'desc',
+        cursor?: string,
+        skip?: number,
+        take?: number,
+    }): CancelablePromise<PaginatedResponse> {
         return __request(OpenAPI, {
-            method: 'POST',
-            url: '/collections',
-            body: requestBody,
-            mediaType: 'application/json',
+            method: 'GET',
+            url: '/collections/{id}/nfts',
+            path: {
+                'id': id,
+            },
+            query: {
+                'sortField': sortField,
+                'sortOrder': sortOrder,
+                'cursor': cursor,
+                'skip': skip,
+                'take': take,
+            },
         });
     }
 
     /**
-     * @returns CollectionResponse All collections
+     * @returns CollectionResponse Creates a collection
+     * @throws ApiError
+     */
+    public static collectionsControllerCreate({
+        formData,
+    }: {
+        formData: CreateCollectionDto,
+    }): CancelablePromise<CollectionResponse> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/collections',
+            formData: formData,
+            mediaType: 'multipart/form-data',
+        });
+    }
+
+    /**
+     * @returns PaginatedResponse
      * @throws ApiError
      */
     public static collectionsControllerFindAll({
@@ -52,7 +88,7 @@ export class CollectionsService {
         createdAt?: DateFilterValues,
         updatedAt?: DateFilterValues,
         name?: FilterValues,
-    }): CancelablePromise<Array<CollectionResponse>> {
+    }): CancelablePromise<PaginatedResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/collections',
@@ -93,10 +129,10 @@ export class CollectionsService {
      */
     public static collectionsControllerUpdate({
         id,
-        requestBody,
+        formData,
     }: {
         id: string,
-        requestBody: UpdateCollectionDto,
+        formData: UpdateCollectionDto,
     }): CancelablePromise<CollectionResponse> {
         return __request(OpenAPI, {
             method: 'PATCH',
@@ -104,8 +140,8 @@ export class CollectionsService {
             path: {
                 'id': id,
             },
-            body: requestBody,
-            mediaType: 'application/json',
+            formData: formData,
+            mediaType: 'multipart/form-data',
         });
     }
 

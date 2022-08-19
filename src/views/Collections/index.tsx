@@ -5,6 +5,7 @@ import { useMatchBreakpoints } from "@aethermeta/uikit";
 import testItems from "./testItems";
 import GalleryMobile from "./GalleryMobile";
 import Gallery from "./Gallery";
+import { useCollections } from "store/collections/hooks";
 
 const Container = styled.div`
   padding 80px 22px 80px;
@@ -21,14 +22,17 @@ const Container = styled.div`
 `;
 
 const Collections: React.FC = () => {
+  const { data, total, pageSize, currentPage, isLoading, isLoaded } =
+    useCollections();
+  const items = data[page];
   const { isTablet, isMobile } = useMatchBreakpoints();
   return (
     <Page>
       <Container>
         {isTablet || isMobile ? (
-          <GalleryMobile items={testItems} />
+          <GalleryMobile items={items} />
         ) : (
-          <Gallery items={testItems} />
+          <Gallery items={items} />
         )}
       </Container>
     </Page>
