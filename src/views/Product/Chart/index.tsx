@@ -41,7 +41,6 @@ const Chart: React.FC<ChartProps> = ({
   saleState,
   saleData,
   titles,
-  contents,
 }) => {
   const [primaryBuyHistory, setPrimaryBuyHistory] = useState(null);
   useEffect(() => {

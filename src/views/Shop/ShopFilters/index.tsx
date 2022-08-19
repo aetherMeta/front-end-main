@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  Flex,
-  Text,
-  Button,
-  RangeSlider,
-  Radio,
-  Checkbox,
-} from "@aethermeta/uikit";
+import { Flex, Text, Button, RangeSlider, Radio } from "@aethermeta/uikit";
 import { addComma } from "utils/number";
 import { ethers } from "ethers";
 import { SaleFilters } from "store/types";
-import { Availability, availabilities, sales, types, medias } from "../types";
+import { Availability, availabilities } from "../types";
 
 interface ShopFiltersProps {
   total?: number;
@@ -43,49 +36,49 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
   };
 
   // Sale
-  const [saleState, setSaleState] = useState(
-    new Array(Object.keys(sales).length).fill(false)
-  );
+  // const [saleState, setSaleState] = useState(
+  //   new Array(Object.keys(sales).length).fill(false)
+  // );
 
-  const handleSaleChange = (position) => {
-    const updatedCheckedState = saleState.map((item, index) =>
-      index === position ? !item : item
-    );
-    setSaleState(updatedCheckedState);
-  };
+  // const handleSaleChange = (position) => {
+  //   const updatedCheckedState = saleState.map((item, index) =>
+  //     index === position ? !item : item
+  //   );
+  //   setSaleState(updatedCheckedState);
+  // };
 
   // Goods
-  const [goodsState, setGoodsState] = useState(
-    new Array(Object.keys(types).length).fill(false)
-  );
+  // const [goodsState, setGoodsState] = useState(
+  //   new Array(Object.keys(types).length).fill(false)
+  // );
 
-  const handleGoodsChange = (position) => {
-    const updatedCheckedState = goodsState.map((item, index) =>
-      index === position ? !item : item
-    );
-    setGoodsState(updatedCheckedState);
-  };
+  // const handleGoodsChange = (position) => {
+  //   const updatedCheckedState = goodsState.map((item, index) =>
+  //     index === position ? !item : item
+  //   );
+  //   setGoodsState(updatedCheckedState);
+  // };
 
   // Medias
-  const [mediaState, setMediaState] = useState(
-    new Array(Object.keys(medias).length).fill(false)
-  );
+  // const [mediaState, setMediaState] = useState(
+  //   new Array(Object.keys(medias).length).fill(false)
+  // );
 
-  const handleMediaChange = (position) => {
-    const updatedCheckedState = mediaState.map((item, index) =>
-      index === position ? !item : item
-    );
-    setMediaState(updatedCheckedState);
-  };
+  // const handleMediaChange = (position) => {
+  //   const updatedCheckedState = mediaState.map((item, index) =>
+  //     index === position ? !item : item
+  //   );
+  //   setMediaState(updatedCheckedState);
+  // };
 
   // Clear
   const handleClear = () => {
     setPriceRangeStart(5);
     setPriceRangeEnd(15);
     setRadio(availabilities.all);
-    setSaleState(new Array(Object.keys(sales).length).fill(false));
-    setGoodsState(new Array(Object.keys(types).length).fill(false));
-    setMediaState(new Array(Object.keys(medias).length).fill(false));
+    // setSaleState(new Array(Object.keys(sales).length).fill(false));
+    // setGoodsState(new Array(Object.keys(types).length).fill(false));
+    // setMediaState(new Array(Object.keys(medias).length).fill(false));
   };
 
   return (

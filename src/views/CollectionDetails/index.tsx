@@ -33,7 +33,9 @@ const CollectionDetails: React.FC = () => {
           <Flex flexDirection="column">
             <DetailHeaderMobile
               total={45}
-              handleSort={() => console.log("handleSort Tablet")}
+              handleSort={() => {
+                return 0;
+              }}
             />
             <CollectionGallery items={testItems} />
           </Flex>

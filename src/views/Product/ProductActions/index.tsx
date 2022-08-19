@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Flex, Text, Button } from "@aethermeta/uikit";
-import { useParams } from "react-router-dom";
 import { ethers } from "ethers";
 import { dmy } from "utils/date";
 import { truncateWalletAddress } from "utils/addressHelpers";
@@ -34,10 +33,6 @@ const StyledFlex2 = styled(Flex)`
 
 const StyledText = styled(Text)`
   opacity: 0.6;
-`;
-
-const BodyHeavy = styled(Text)`
-  font-weight: 700;
 `;
 
 const ProductActions: React.FC<ProductActionsProps> = ({
@@ -85,10 +80,14 @@ const ProductActions: React.FC<ProductActionsProps> = ({
         </Flex>
       </StyledFlex>
       <Flex style={{ gap: "0.375rem" }} mt="2rem">
-        <Button variant="primary" width="100%">
+        <Button variant="primary" width="100%" onClick={() => handlePurchase()}>
           Purchase
         </Button>
-        <Button variant="secondary" width="100%">
+        <Button
+          variant="secondary"
+          width="100%"
+          onClick={() => handleViewMetaverse()}
+        >
           View in metaverse
         </Button>
       </Flex>
