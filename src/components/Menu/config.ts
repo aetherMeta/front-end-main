@@ -23,6 +23,10 @@ const config = [
     label: "Partnerships",
     href: "/partnerships",
   },
+  {
+    label: "Join",
+    href: "/join",
+  },
 ];
 
 export const socials = [

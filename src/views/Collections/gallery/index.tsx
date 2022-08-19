@@ -9,7 +9,7 @@ import {
     Pagination,
     Select } from "@aethermeta/uikit";
 
-import GalleryItems from "../galleryItems";
+import GalleryItems from "../GalleryItems";
 import { Item } from "../types";
 
 
