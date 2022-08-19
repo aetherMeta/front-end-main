@@ -9,11 +9,13 @@ import {
   Checkbox,
 } from "@aethermeta/uikit";
 import { addComma } from "utils/number";
+import { ethers } from "ethers";
+import { SaleFilters } from "store/types";
 import { Availability, availabilities, sales, types, medias } from "../types";
 
 interface ShopFiltersProps {
   total?: number;
-  handleApply: () => void;
+  handleApply: (filters: SaleFilters) => void;
   // TODO: use once hooked up to backend
   // handleApply: (filter: Filter) => void;
 }
@@ -29,8 +31,8 @@ const InputFlex = styled(Flex)`
 
 const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
   // ETH range
-  const [value1, setValue1] = useState(5);
-  const [value2, setValue2] = useState(15);
+  const [priceRangeStart, setPriceRangeStart] = useState(5);
+  const [priceRangeEnd, setPriceRangeEnd] = useState(15);
 
   // Availability
   const [radio, setRadio] = useState<Availability>(availabilities.all);
@@ -78,8 +80,8 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
 
   // Clear
   const handleClear = () => {
-    setValue1(5);
-    setValue2(15);
+    setPriceRangeStart(5);
+    setPriceRangeEnd(15);
     setRadio(availabilities.all);
     setSaleState(new Array(Object.keys(sales).length).fill(false));
     setGoodsState(new Array(Object.keys(types).length).fill(false));
@@ -102,19 +104,19 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
         name="slider"
         min={0}
         max={20}
-        value1={value1}
-        value2={value2}
-        onValue1Changed={setValue1}
-        onValue2Changed={setValue2}
+        value1={priceRangeStart}
+        value2={priceRangeEnd}
+        onValue1Changed={setPriceRangeStart}
+        onValue2Changed={setPriceRangeEnd}
         valueLabel="label"
         height="2.25rem"
       />
       <Flex justifyContent="space-between">
         <Text variant="bodySmall">{`${
-          Math.round(value1 * 100) / 100
+          Math.round(priceRangeStart * 100) / 100
         } ETH`}</Text>
         <Text variant="bodySmall">{`${
-          Math.round(value2 * 100) / 100
+          Math.round(priceRangeEnd * 100) / 100
         } ETH`}</Text>
       </Flex>
       <Text variant="label" mt="2rem">
@@ -144,7 +146,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
           </label>
         ))}
       </InputFlex>
-      <Text variant="label" mt="2rem">
+      {/* <Text variant="label" mt="2rem">
         SALES TYPE
       </Text>
       <InputFlex flexDirection="column">
@@ -221,13 +223,24 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
             </Flex>
           </label>
         ))}
-      </InputFlex>
+      </InputFlex> */}
       <Flex justifyContent="space-between" mt="1.5rem">
         <Button
           variant="text"
           width="3.375rem"
           padding="0"
-          onClick={handleApply}
+          onClick={() => {
+            handleApply({
+              price: {
+                gt: ethers.utils
+                  .parseUnits(priceRangeStart.toString())
+                  .toString(),
+                lt: ethers.utils
+                  .parseUnits(priceRangeEnd.toString())
+                  .toString(),
+              },
+            });
+          }}
         >
           <Text color="primary" variant="bodySmall">
             APPLY

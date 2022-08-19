@@ -8,7 +8,7 @@ import {
   Button,
   useModal,
 } from "@aethermeta/uikit";
-import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
+import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
 import PartnershipModal, { Values } from "components/PartnershipModal";
 import Discord from "../discord";
 
@@ -35,7 +35,7 @@ const Social: React.FC = () => {
 
   const onSubmit = async (e, values: Values) => {
     e.preventDefault();
-    await postPartnershipEmail(values);
+    await postContactUsEmail(values);
   };
 
   return (

@@ -1,11 +1,15 @@
-import React, { useState, useMemo } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Pagination } from "@aethermeta/uikit";
-import { Item } from "constants/items";
+import { PrimarySaleResponse } from "apis/backend/generated";
 import ShopCard from "./ShopCard";
 
 interface ShopItemsProps {
-  items: Item[];
+  shopItemsData: PrimarySaleResponse[];
+  pageSize: number;
+  currentPage: number;
+  total: number;
+  updateSalePage: (page: number) => Promise<void>;
 }
 
 const Grid = styled.div`
@@ -22,27 +26,41 @@ const PaginationContainer = styled.div`
   margin-top: 5.75rem;
 `;
 
-const ShopItems: React.FC<ShopItemsProps> = ({ items }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 12;
-  const shopItemsData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * pageSize;
-    const lastPageIndex = firstPageIndex + pageSize;
-    return items.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, items]);
+const ShopItems: React.FC<ShopItemsProps> = ({
+  shopItemsData,
+  pageSize,
+  currentPage,
+  total,
+  updateSalePage,
+}) => {
+  // const shopItemsData = useMemo(() => {
+  //   const firstPageIndex = (currentPage - 1) * pageSize;
+  //   const lastPageIndex = firstPageIndex + pageSize;
+  //   return items.slice(firstPageIndex, lastPageIndex);
+  // }, [currentPage, items]);
   return (
     <>
       <Grid>
-        {shopItemsData.map((item) => (
-          <ShopCard item={item} />
-        ))}
+        {shopItemsData &&
+          shopItemsData.map((item) => (
+            <ShopCard
+              key={item.id}
+              item={{
+                name: item.name,
+                highestBid: item.price,
+                image: "url(/images/shopImage.svg)",
+                startTime: new Date(),
+                mintTime: new Date(),
+              }}
+            />
+          ))}
       </Grid>
       <PaginationContainer>
         <Pagination
           currentPage={currentPage}
-          totalCount={items.length}
+          totalCount={total}
           pageSize={pageSize}
-          onPageChange={(page) => setCurrentPage(page)}
+          onPageChange={updateSalePage}
         />
       </PaginationContainer>
     </>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import moment from "moment";
+import { ethers } from "ethers";
 import { Flex, Text } from "@aethermeta/uikit";
 import { dmy } from "utils/date";
 import { Item } from "constants/items";
@@ -10,6 +11,8 @@ interface ShopCardProps {
 }
 
 const Card = styled.div`
+  display: flex;
+  flex-direction: column;
   max-width: 19.5rem;
   width: 100%;
   padding: 0.75rem 0.75rem 2rem;
@@ -58,25 +61,25 @@ const ShopCard: React.FC<ShopCardProps> = ({ item }) => {
       <Text variant="h4Bold" mb="0.875rem">
         {item.name}
       </Text>
-      <Flex>
-        <Text variant="body">Minted on</Text>
+      <Flex style={{ marginTop: "auto" }}>
+        <Text variant="body">Sale date: </Text>
         <BodyHeavy variant="body" ml="0.25rem">
           {dmy(item.mintTime)}
         </BodyHeavy>
       </Flex>
       <Divider />
       <Flex mb="0.375rem">
-        <Text variant="body">Current bid</Text>
-        <BodyHeavy variant="body" color="primary" ml="1.25rem">
-          {`${item.highestBid} ETH`}
+        <Text variant="body">Current price:{"\u00a0"}</Text>
+        <BodyHeavy variant="body" color="primary">
+          {`${ethers.utils.formatEther(item.highestBid)} ETH`}
         </BodyHeavy>
       </Flex>
-      <Flex>
+      {/* <Flex>
         <Text variant="body">Ending in</Text>
         <BodyHeavy variant="body" ml="2.25rem">
           {countdown}
         </BodyHeavy>
-      </Flex>
+      </Flex> */}
     </Card>
   );
 };

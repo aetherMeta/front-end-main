@@ -4,11 +4,11 @@ import {
   Flex,
   Text,
   Grid,
-  ButtonMenu,
-  ButtonMenuItem,
+  ButtonMenuPrimary,
+  ButtonMenuPrimaryItem,
   Pagination,
 } from "@aethermeta/uikit";
-import GalleryItems from "views/Collections/GalleryItems";
+import GalleryItems from "../GalleryItems";
 import { Item } from "../types";
 
 const PaginationContainer = styled.div`
@@ -25,7 +25,7 @@ const GalleryGrid = styled(Grid)`
   }
 `;
 
-const ButtonMenuItemFilter = styled(ButtonMenuItem)`
+const ButtonMenuPrimaryItemFilter = styled(ButtonMenuPrimaryItem)`
   border-radius: 16px;
   height: 2.5rem;
   width: 14rem;
@@ -35,7 +35,7 @@ interface GalleryProps {
   items: Item[];
 }
 
-const Items: React.FC<GalleryProps> = ({ items }) => {
+const GalleryMobile: React.FC<GalleryProps> = ({ items }) => {
   const [index, setIndex] = useState(0);
 
   const handleClick = (newIndex) => setIndex(newIndex);
@@ -61,24 +61,24 @@ const Items: React.FC<GalleryProps> = ({ items }) => {
             scrollbarWidth: "none",
           }}
         >
-          <ButtonMenu
+          {/* <ButtonMenuPrimary
             activeIndex={index}
             onItemClick={handleClick}
             scale="sm"
-            variant="white"
+            variant="subtle"
           >
-            <ButtonMenuItemFilter mr="1rem">
+            <ButtonMenuPrimaryItemFilter mr="1rem">
               Haute couture clothing
-            </ButtonMenuItemFilter>
-            <ButtonMenuItemFilter mr="1rem">Accessories</ButtonMenuItemFilter>
-            <ButtonMenuItemFilter mr="1rem">
+            </ButtonMenuPrimaryItemFilter>
+            <ButtonMenuPrimaryItemFilter mr="1rem">Accessories</ButtonMenuPrimaryItemFilter>
+            <ButtonMenuPrimaryItemFilter mr="1rem">
               Watches & Jewelry
-            </ButtonMenuItemFilter>
-            <ButtonMenuItemFilter mr="1rem">
+            </ButtonMenuPrimaryItemFilter>
+            <ButtonMenuPrimaryItemFilter mr="1rem">
               Homes and estates
-            </ButtonMenuItemFilter>
-            <ButtonMenuItemFilter mr="1rem">automobile</ButtonMenuItemFilter>
-          </ButtonMenu>
+            </ButtonMenuPrimaryItemFilter>
+            <ButtonMenuPrimaryItemFilter mr="1rem">automobile</ButtonMenuPrimaryItemFilter>
+          </ButtonMenuPrimary> */}
         </div>
       </Flex>
       <GalleryGrid>
@@ -98,4 +98,4 @@ const Items: React.FC<GalleryProps> = ({ items }) => {
   );
 };
 
-export default Items;
+export default GalleryMobile;

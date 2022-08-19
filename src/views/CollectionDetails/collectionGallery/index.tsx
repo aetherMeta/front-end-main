@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from "react";
-import styled from "styled-components";
 import { Pagination } from "@aethermeta/uikit";
+import styled from "styled-components";
 import { Item } from "constants/items";
-import CollectionCard from "./collectionCard";
+import CollectionCard from "./CollectionCard";
 
 interface CollectionGalleryProps {
   items: Item[];
@@ -32,7 +32,7 @@ const CollectionGallery: React.FC<CollectionGalleryProps> = ({ items }) => {
   }, [currentPage, items]);
   return (
     <>
-      <Grid >
+      <Grid>
         {CollectionGalleryData.map((item) => (
           <CollectionCard item={item} />
         ))}

@@ -1,33 +1,29 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { 
-  Flex, 
-  Text, 
-  Button, 
-  Image, 
+import {
+  Flex,
+  Text,
+  Button,
+  Image,
   AddIcon,
   Panel,
   usePanel,
   Radio,
-  Link, 
+  Link,
   ChevronLeftIcon,
 } from "@aethermeta/uikit";
 import { addComma } from "utils/number";
-import {
-  Sort,
-  sorts
-} from "../types";
+import { Sort, sorts } from "../types";
 
 interface DetailFiltersProps {
   total?: number;
   handleSort: () => void;
 }
 
-
 const Description = styled(Text)`
-    width: 237px;
-    margin-bottom: 2rem;
-`
+  width: 237px;
+  margin-bottom: 2rem;
+`;
 const StyledPanelButton = styled(Button)`
   border-radius: 3px;
   height: 42px;
@@ -43,10 +39,10 @@ interface PanelProps {
   onDismiss?: () => void;
 }
 
-const DetailHeaderMobile: React.FC<DetailFiltersProps> = ({ 
+const DetailHeaderMobile: React.FC<DetailFiltersProps> = ({
   total,
-  handleSort }) => {
- 
+  handleSort,
+}) => {
   const SortPanel: React.FC<PanelProps> = ({ title, onDismiss }) => {
     // Sort
     const [sort, setSort] = useState<Sort>(sorts.recent);
@@ -90,10 +86,7 @@ const DetailHeaderMobile: React.FC<DetailFiltersProps> = ({
   };
   const [onPresentSort] = usePanel(<SortPanel title="Sort by" />);
   return (
-    <Flex
-      flexDirection="column"
-      mt= "5rem"
-    >
+    <Flex flexDirection="column" mt="5rem">
       <Link href="/collections" mb="1rem" color="text">
         <ChevronLeftIcon />
         Back to collections
@@ -104,10 +97,11 @@ const DetailHeaderMobile: React.FC<DetailFiltersProps> = ({
         </Text>
         <Text variant="label">{`${addComma(total)} RESULTS`}</Text>
       </Flex>
-      <Image src="/images/mclarenLogo.svg" width={310} height={237} mb="1rem"/>
-             <Description>
-                First ever digital collectables are now on sale and you can unlock your first piece of the MCL35M for free!
-             </Description>
+      <Image src="/images/mclarenLogo.svg" width={310} height={237} mb="1rem" />
+      <Description>
+        First ever digital collectables are now on sale and you can unlock your
+        first piece of the MCL35M for free!
+      </Description>
       <Flex alignItems="center">
         <StyledPanelButton
           variant="panel"
@@ -124,7 +118,7 @@ const DetailHeaderMobile: React.FC<DetailFiltersProps> = ({
 };
 
 DetailHeaderMobile.defaultProps = {
-  total: 0
+  total: 0,
 };
 
 export default DetailHeaderMobile;

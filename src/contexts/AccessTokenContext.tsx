@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { useWeb3React } from "@web3-react/core";
 
-import client from "../apis/backend/client";
+import { client } from "apis/backend";
 import getAccessToken from "../apis/backend/cookies/accessToken/getAccessToken";
 import getAccessTokenPayload from "../apis/backend/cookies/accessToken/getAccessTokenPayload";
 import destroyAccessToken from "../apis/backend/cookies/accessToken/destroyAccessToken";
@@ -56,9 +56,7 @@ export const AccessTokenProvider: VFC<ProviderProps> = ({
 
   // set auth header on every access token update
   useEffect(() => {
-    client.defaults.headers.common.Authorization = accessToken
-      ? `Bearer ${accessToken}`
-      : undefined;
+    client.TOKEN = accessToken;
   }, [accessToken]);
 
   const setAccessToken = (_accessToken, _address) => {
