@@ -61,7 +61,7 @@ const GalleryMobile: React.FC<GalleryProps> = ({ items }) => {
             scrollbarWidth: "none",
           }}
         >
-          {/* <ButtonMenuPrimary
+          <ButtonMenuPrimary
             activeIndex={index}
             onItemClick={handleClick}
             scale="sm"
@@ -70,15 +70,19 @@ const GalleryMobile: React.FC<GalleryProps> = ({ items }) => {
             <ButtonMenuPrimaryItemFilter mr="1rem">
               Haute couture clothing
             </ButtonMenuPrimaryItemFilter>
-            <ButtonMenuPrimaryItemFilter mr="1rem">Accessories</ButtonMenuPrimaryItemFilter>
+            <ButtonMenuPrimaryItemFilter mr="1rem">
+              Accessories
+            </ButtonMenuPrimaryItemFilter>
             <ButtonMenuPrimaryItemFilter mr="1rem">
               Watches & Jewelry
             </ButtonMenuPrimaryItemFilter>
             <ButtonMenuPrimaryItemFilter mr="1rem">
               Homes and estates
             </ButtonMenuPrimaryItemFilter>
-            <ButtonMenuPrimaryItemFilter mr="1rem">automobile</ButtonMenuPrimaryItemFilter>
-          </ButtonMenuPrimary> */}
+            <ButtonMenuPrimaryItemFilter mr="1rem">
+              automobile
+            </ButtonMenuPrimaryItemFilter>
+          </ButtonMenuPrimary>
         </div>
       </Flex>
       <GalleryGrid>

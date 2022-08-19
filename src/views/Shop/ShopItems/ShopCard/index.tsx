@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import moment from "moment";
 import { ethers } from "ethers";
 import { Flex, Text } from "@aethermeta/uikit";
 import { dmy } from "utils/date";
@@ -39,22 +38,6 @@ const Divider = styled.div`
 `;
 
 const ShopCard: React.FC<ShopCardProps> = ({ item }) => {
-  const [countdown, setCountdown] = useState("00:00:00s");
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const currentTime = new Date().getTime();
-      const endTime = item.startTime.getTime() + 86400000; // start time + 24 hours
-      const duration = moment.duration(endTime - currentTime, "milliseconds");
-      setCountdown(
-        `${duration.hours()} : ${duration.minutes()} : ${duration.seconds()}s`
-      );
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [item, setCountdown]);
-
   return (
     <Card>
       <Image image={item.image} />

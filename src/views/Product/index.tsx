@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React from "react";
 import styled from "styled-components";
-import { useMatchBreakpoints, Flex } from "@aethermeta/uikit";
+import { Flex } from "@aethermeta/uikit";
 import { useSales } from "store/sales/hooks";
 import Page from "components/Layout/Page";
 import ProductImages from "./ProductImages";
@@ -9,13 +9,7 @@ import ProductActions from "./ProductActions";
 import ProductDescriptions from "./ProductDescriptions";
 import Chart from "./Chart";
 import MoreCollection from "./MoreCollection";
-import {
-  config,
-  description,
-  chartTitle,
-  contents,
-  testItems,
-} from "./TestConfig/config";
+import { chartTitle, contents, testItems } from "./TestConfig/config";
 
 const Container = styled.div`
   padding: 80px 22px 80px;
@@ -40,14 +34,7 @@ const StyledFlex = styled(Flex)`
 `;
 
 const Product: React.FC = () => {
-  const { isTablet, isMobile } = useMatchBreakpoints();
   const { saleState, saleData } = useSales();
-  const isSmallScreen = isTablet || isMobile;
-  const images = [
-    "https://picsum.photos/200/300",
-    "https://picsum.photos/seed/picsum/200/300",
-    "https://picsum.photos/id/870/200/300?grayscale&blur=2",
-  ];
   return (
     <StyledPage>
       <Container>
@@ -57,8 +44,12 @@ const Product: React.FC = () => {
             <ProductActions
               saleState={saleState}
               saleData={saleData}
-              handleViewMetaverse={() => console.log("handleViewMetaverse")}
-              handlePurchase={() => console.log("handlePurchase")}
+              handleViewMetaverse={() => {
+                return 0;
+              }}
+              handlePurchase={() => {
+                return 0;
+              }}
             />
             <ProductDescriptions saleState={saleState} saleData={saleData} />
           </Flex>
