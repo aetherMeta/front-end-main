@@ -2,14 +2,14 @@ import React from "react";
 import Page from "components/Layout/Page";
 import { useMatchBreakpoints } from "@aethermeta/uikit";
 import styled from "styled-components";
-import Analytics from "./analytic";
-import AnalyticsTablet from "./analyticTablet";
+import Analytics from "./Analytic";
+import AnalyticsTablet from "./AnalyticTablet";
 import Support from "./Support";
-import SupportTablet from "./supportTablet";
-import Asset from "./asset";
-import AssetTablet from "./assetTablet";
-import Enquires from "./enquires";
-import EnquiresTablet from "./enquriesTablet";
+import SupportTablet from "./SupportTablet";
+import Asset from "./Asset";
+import AssetTablet from "./AssetTablet";
+import Enquires from "./Enquires";
+import EnquiresTablet from "./EnquriesTablet";
 
 const Container = styled(Page)`
   background-color: ${({ theme }) => theme.colors.background};
