@@ -51,12 +51,12 @@ const Metaverse: React.FC = () => {
     // TODO: Move to helper
     const FURIOOS_CODES = {
       desktop: {
-        production: "wjHKfxLBktqfMdSSB",
-        local: "oqri3pd4qxo5YfAo7",
+        production: "6jXEjnac8EguCwxpC",
+        local: "jKfnDb7MHnrTpL9Dj",
       },
       mobile: {
-        production: "3JBwc4sAitNv8FitA",
-        local: "rnX5xCAHHESGHMNNL",
+        production: "6jXEjnac8EguCwxpC",
+        local: "jKfnDb7MHnrTpL9Dj",
       },
     };
 
