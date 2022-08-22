@@ -33,20 +33,28 @@ const ButtonMenuPrimaryItemFilter = styled(ButtonMenuPrimaryItem)`
 
 interface GalleryProps {
   items: Item[];
+  pageSize: number;
+  currentPage: number;
+  total: number;
+  updatePage: (page: number) => Promise<void>;
 }
 
-const GalleryMobile: React.FC<GalleryProps> = ({ items }) => {
+const GalleryMobile: React.FC<GalleryProps> = ({
+  items,
+  pageSize,
+  currentPage,
+  total,
+  updatePage,
+}) => {
   const [index, setIndex] = useState(0);
 
   const handleClick = (newIndex) => setIndex(newIndex);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 16;
   const shopItemsData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;
     return items.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, items]);
+  }, [currentPage, items, pageSize]);
 
   return (
     <>
@@ -95,7 +103,7 @@ const GalleryMobile: React.FC<GalleryProps> = ({ items }) => {
           currentPage={currentPage}
           totalCount={items.length}
           pageSize={pageSize}
-          onPageChange={(page) => setCurrentPage(page)}
+          onPageChange={(page: number) => updatePage(page)}
         />
       </PaginationContainer>
     </>

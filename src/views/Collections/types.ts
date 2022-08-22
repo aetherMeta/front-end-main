@@ -1,6 +1,5 @@
 export interface Item {
-    name: string;
-    number: string;
-    image: string;
-  }
-  
+  name: string;
+  nftCount: number;
+  imageUrl: string;
+}

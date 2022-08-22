@@ -73,7 +73,7 @@ export const useUpdateCollectionsFilter = () => {
 
 const createCollection = async (dto: CreateCollectionDto) => {
   return backend.collections.collectionsControllerCreate({
-    requestBody: dto,
+    formData: dto,
   });
 };
 
