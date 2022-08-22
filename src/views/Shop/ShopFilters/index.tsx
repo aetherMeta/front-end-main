@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Flex, Text, Button, RangeSlider, Radio } from "@aethermeta/uikit";
+import { Flex, Text, Button, RangeSlider } from "@aethermeta/uikit";
 import { addComma } from "utils/number";
 import { ethers } from "ethers";
 import { SaleFilters } from "store/types";
-import { Availability, availabilities } from "../types";
+// import { Availability, availabilities } from "../types";
 
 interface ShopFiltersProps {
   total?: number;
@@ -17,10 +17,10 @@ const StyledText = styled(Text)`
   font-weight: 700;
 `;
 
-const InputFlex = styled(Flex)`
-  margin-top: 1rem;
-  gap: 0.625rem;
-`;
+// const InputFlex = styled(Flex)`
+//   margin-top: 1rem;
+//   gap: 0.625rem;
+// `;
 
 const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
   // ETH range
@@ -75,7 +75,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
   const handleClear = () => {
     setPriceRangeStart(5);
     setPriceRangeEnd(15);
-    setRadio(availabilities.all);
+    // setRadio(availabilities.all);
     // setSaleState(new Array(Object.keys(sales).length).fill(false));
     // setGoodsState(new Array(Object.keys(types).length).fill(false));
     // setMediaState(new Array(Object.keys(medias).length).fill(false));
