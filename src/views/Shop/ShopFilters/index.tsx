@@ -28,12 +28,12 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
   const [priceRangeEnd, setPriceRangeEnd] = useState(15);
 
   // Availability
-  const [radio, setRadio] = useState<Availability>(availabilities.all);
+  // const [radio, setRadio] = useState<Availability>(availabilities.all);
 
-  const handleChange = (evt) => {
-    const { value } = evt.target;
-    setRadio(value);
-  };
+  // const handleChange = (evt) => {
+  //   const { value } = evt.target;
+  //   setRadio(value);
+  // };
 
   // Sale
   // const [saleState, setSaleState] = useState(
@@ -112,7 +112,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
           Math.round(priceRangeEnd * 100) / 100
         } ETH`}</Text>
       </Flex>
-      <Text variant="label" mt="2rem">
+      {/* <Text variant="label" mt="2rem">
         AVAILABILITY
       </Text>
       <InputFlex flexDirection="column">
@@ -138,7 +138,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
             </Flex>
           </label>
         ))}
-      </InputFlex>
+      </InputFlex> */}
       {/* <Text variant="label" mt="2rem">
         SALES TYPE
       </Text>
