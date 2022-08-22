@@ -75,7 +75,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
   const handleClear = () => {
     setPriceRangeStart(5);
     setPriceRangeEnd(15);
-    setRadio(availabilities.all);
+    // setRadio(availabilities.all);
     // setSaleState(new Array(Object.keys(sales).length).fill(false));
     // setGoodsState(new Array(Object.keys(types).length).fill(false));
     // setMediaState(new Array(Object.keys(medias).length).fill(false));
