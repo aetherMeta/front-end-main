@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ethers } from "ethers";
+import { useHistory } from "react-router-dom";
 import { Flex, Text } from "@aethermeta/uikit";
 import { dmy } from "utils/date";
 import { Item } from "constants/items";
@@ -17,6 +18,7 @@ const Card = styled.div`
   padding: 0.75rem 0.75rem 2rem;
   border-radius: 1.625rem;
   background-color: ${({ theme }) => theme.colors.white};
+  cursor: pointer;
 `;
 const Image = styled.div<{ image: string }>`
   height: 16.5rem;
@@ -38,8 +40,12 @@ const Divider = styled.div`
 `;
 
 const ShopCard: React.FC<ShopCardProps> = ({ item }) => {
+  const history = useHistory();
+  const handleClick = (id) => {
+    history.push(`/product/${id}`);
+  };
   return (
-    <Card>
+    <Card onClick={() => handleClick(item.id)}>
       <Image image={item.image} />
       <Text variant="h4Bold" mb="0.875rem">
         {item.name}

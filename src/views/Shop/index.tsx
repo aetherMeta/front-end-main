@@ -43,8 +43,6 @@ const Shop: React.FC = () => {
 
     // Refetch?
   };
-  console.log(isLoading);
-  console.log(isLoaded);
   return (
     <Page>
       <Container>

@@ -52,7 +52,12 @@ const Chart: React.FC<ChartProps> = ({
         setPrimaryBuyHistory(primaryBuyHistories);
       });
   }, [saleData, saleState]);
-  if (saleState.isLoading || !saleState.isLoaded || !primaryBuyHistory)
+  if (
+    saleState.isLoading ||
+    !saleState.isLoaded ||
+    !primaryBuyHistory ||
+    primaryBuyHistory.length === 0
+  )
     return <></>;
   return (
     <Container>
