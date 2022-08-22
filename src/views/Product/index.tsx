@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React from "react";
 import styled from "styled-components";
-import { Flex } from "@aethermeta/uikit";
+import { Flex, Spinner } from "@aethermeta/uikit";
 import { useSales } from "store/sales/hooks";
 import Page from "components/Layout/Page";
 import ProductImages from "./ProductImages";
@@ -34,36 +34,40 @@ const StyledFlex = styled(Flex)`
 `;
 
 const Product: React.FC = () => {
-  const { saleState, saleData } = useSales();
+  const { saleState, saleData, isLoading, isLoaded } = useSales();
+  console.log(saleState);
   return (
     <StyledPage>
-      <Container>
-        <StyledFlex>
-          <ProductImages saleState={saleState} saleData={saleData} />
-          <Flex flexDirection="column">
-            <ProductActions
+      {isLoading || !isLoaded ? (
+        <Flex width="100%" justifyContent="center">
+          <Spinner size={108} />
+        </Flex>
+      ) : (
+        <Container>
+          <StyledFlex>
+            <ProductImages saleState={saleState} saleData={saleData} />
+            <Flex flexDirection="column">
+              <ProductActions
+                saleState={saleState}
+                saleData={saleData}
+                handleViewMetaverse={() => {
+                  return 0;
+                }}
+              />
+              <ProductDescriptions saleState={saleState} saleData={saleData} />
+            </Flex>
+          </StyledFlex>
+          <Flex justifyContent="center" width="100%">
+            <Chart
+              header="History"
               saleState={saleState}
               saleData={saleData}
-              handleViewMetaverse={() => {
-                return 0;
-              }}
-              handlePurchase={() => {
-                return 0;
-              }}
+              titles={chartTitle}
+              contents={contents}
             />
-            <ProductDescriptions saleState={saleState} saleData={saleData} />
           </Flex>
-        </StyledFlex>
-        <Flex justifyContent="center" width="100%">
-          <Chart
-            header="History"
-            saleState={saleState}
-            saleData={saleData}
-            titles={chartTitle}
-            contents={contents}
-          />
-        </Flex>
-      </Container>
+        </Container>
+      )}
       <MoreCollection items={testItems} collectionName="I am Jennifer Le" />
     </StyledPage>
   );
