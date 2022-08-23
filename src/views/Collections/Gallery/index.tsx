@@ -67,7 +67,7 @@ const ItemsMobile: React.FC<GalleryProps> = ({items}) => {
             </Flex>
                 
             <Flex justifyContent="space-around" alignSelf="flex-start" mb="3.5rem">
-                <ButtonMenu activeIndex={index} onItemClick={handleClick} scale="sm" variant="white">
+                <ButtonMenu activeIndex={index} onItemClick={handleClick} scale="sm" variant="text">
                    <ButtonMenuItemFilter  marginLeft="1rem" style={{borderRadius: "16px"}}>
                         Haute couture clothing
                     </ButtonMenuItemFilter>

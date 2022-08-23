@@ -2,8 +2,8 @@ import React from "react";
 import Page from "components/Layout/Page";
 import { useMatchBreakpoints } from "@aethermeta/uikit";
 import styled from "styled-components";
-import Steps from "./steps";
-import StepsMobile from "./stepsMobile";
+import Steps from "./Steps";
+import StepsMobile from "./StepsMobile";
 
 const StepsContainer = styled(Page)`
   background-color: ${({ theme }) => theme.colors.background};
