@@ -46,6 +46,7 @@ const ShopItems: React.FC<ShopItemsProps> = ({
             <ShopCard
               key={item.id}
               item={{
+                id: item.id,
                 name: item.name,
                 highestBid: item.price,
                 image: "url(/images/shopImage.svg)",
