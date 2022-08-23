@@ -22,7 +22,6 @@ const UserMenu: React.FunctionComponent<UserMenuProps> = ({ maxWidth }) => {
     data: { address },
   } = useUser();
   const { logout } = useAuth();
-
   if (!account || !address) {
     return <ConnectWalletButton maxWidth={maxWidth} />;
   }

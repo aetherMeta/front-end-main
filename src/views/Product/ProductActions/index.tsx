@@ -1,15 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { useWeb3React } from "@web3-react/core";
 import { Flex, Text, Button } from "@aethermeta/uikit";
 import { ethers } from "ethers";
 import { dmy } from "utils/date";
 import { truncateWalletAddress } from "utils/addressHelpers";
 import { SaleState, Sale } from "store/types";
+import usePrimaryBuy from "hooks/usePrimaryBuy";
+import ConnectWalletButton from "components/ConnectWalletButton";
 
 interface ProductActionsProps {
   saleState: SaleState;
   saleData: Sale;
-  handlePurchase: () => void;
   handleViewMetaverse: () => void;
 }
 
@@ -38,9 +40,10 @@ const StyledText = styled(Text)`
 const ProductActions: React.FC<ProductActionsProps> = ({
   saleState,
   saleData,
-  handlePurchase,
   handleViewMetaverse,
 }) => {
+  const { onBuy } = usePrimaryBuy();
+  const { account } = useWeb3React();
   if (saleState.isLoading || !saleState.isLoaded) return <></>;
   return (
     <Container>
@@ -80,9 +83,17 @@ const ProductActions: React.FC<ProductActionsProps> = ({
         </Flex>
       </StyledFlex>
       <Flex style={{ gap: "0.375rem" }} mt="2rem">
-        <Button variant="primary" width="100%" onClick={() => handlePurchase()}>
-          Purchase
-        </Button>
+        {account ? (
+          <Button
+            variant="primary"
+            width="100%"
+            onClick={() => onBuy(saleData, 1)}
+          >
+            Purchase
+          </Button>
+        ) : (
+          <ConnectWalletButton maxWidth />
+        )}
         <Button
           variant="secondary"
           width="100%"
