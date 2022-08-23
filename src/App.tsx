@@ -13,6 +13,7 @@ import Product from "./views/Product";
 import Collections from "./views/Collections";
 import CollectionDetails from "./views/CollectionDetails";
 import Shop from "./views/Shop";
+import Join from "./views/Join"
 import Menu from "./components/Menu";
 import GlobalStyle from "./style/Global";
 import history from "./routerHistory";
@@ -52,6 +53,10 @@ const App: React.FC = () => {
           <Route path="/collectionDetails" exact>
             <CollectionDetails />
           </Route>
+          <Route path="/join" exact>
+            <Join />
+          </Route>
+          
 
           <Route path="/metaverse" exact>
             <Metaverse />
