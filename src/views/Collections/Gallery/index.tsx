@@ -117,49 +117,50 @@ const Gallery: React.FC<GalleryProps> = ({
           width="14.25rem"
         />
       </Flex>
-
-      <Flex justifyContent="space-around" alignSelf="flex-start" mb="3.5rem">
-        <ButtonMenu
-          activeIndex={index}
-          onItemClick={handleClick}
-          scale="sm"
-          variant="subtle"
-        >
-          <ButtonMenuItemFilter
-            marginLeft="1rem"
-            style={{ borderRadius: "16px" }}
-          >
-            Haute couture clothing
-          </ButtonMenuItemFilter>
-          <ButtonMenuItemFilter
-            marginLeft="1rem"
-            style={{ borderRadius: "16px" }}
-          >
-            Accessories
-          </ButtonMenuItemFilter>
-          <ButtonMenuItemFilter
-            marginLeft="1rem"
-            style={{ borderRadius: "16px" }}
-          >
-            Watches & Jewelry
-          </ButtonMenuItemFilter>
-          <ButtonMenuItemFilter
-            marginLeft="1rem"
-            style={{ borderRadius: "16px" }}
-          >
-            Homes and estates
-          </ButtonMenuItemFilter>
-          <ButtonMenuItemFilter
-            marginLeft="1rem"
-            style={{ borderRadius: "16px" }}
-          >
-            automobile
-          </ButtonMenuItemFilter>
-        </ButtonMenu>
-      </Flex>
+      {
+        // <Flex justifyContent="space-around" alignSelf="flex-start" mb="3.5rem">
+        //   <ButtonMenu
+        //     activeIndex={index}
+        //     onItemClick={handleClick}
+        //     scale="sm"
+        //     variant="subtle"
+        //   >
+        //     <ButtonMenuItemFilter
+        //       marginLeft="1rem"
+        //       style={{ borderRadius: "16px" }}
+        //     >
+        //       Haute couture clothing
+        //     </ButtonMenuItemFilter>
+        //     <ButtonMenuItemFilter
+        //       marginLeft="1rem"
+        //       style={{ borderRadius: "16px" }}
+        //     >
+        //       Accessories
+        //     </ButtonMenuItemFilter>
+        //     <ButtonMenuItemFilter
+        //       marginLeft="1rem"
+        //       style={{ borderRadius: "16px" }}
+        //     >
+        //       Watches & Jewelry
+        //     </ButtonMenuItemFilter>
+        //     <ButtonMenuItemFilter
+        //       marginLeft="1rem"
+        //       style={{ borderRadius: "16px" }}
+        //     >
+        //       Homes and estates
+        //     </ButtonMenuItemFilter>
+        //     <ButtonMenuItemFilter
+        //       marginLeft="1rem"
+        //       style={{ borderRadius: "16px" }}
+        //     >
+        //       automobile
+        //     </ButtonMenuItemFilter>
+        //   </ButtonMenu>
+        // </Flex>
+      }
       <Grid gridTemplateColumns="25% 25% 25% 25%">
         {shopItemsData.map((item) => (
-          <GalleryItems item={item} />
+          <GalleryItems key={item.id} item={item} />
         ))}
       </Grid>
       <PaginationContainer>

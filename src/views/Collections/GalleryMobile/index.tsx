@@ -62,36 +62,38 @@ const GalleryMobile: React.FC<GalleryProps> = ({
         <Text variant="h1Bold" mt="1rem" mr="1rem" mb="1rem">
           COLLECTIONS
         </Text>
-        <div
-          style={{
-            overflowX: "auto",
-            overflowY: "hidden",
-            scrollbarWidth: "none",
-          }}
-        >
-          <ButtonMenuPrimary
-            activeIndex={index}
-            onItemClick={handleClick}
-            scale="sm"
-            variant="subtle"
-          >
-            <ButtonMenuPrimaryItemFilter mr="1rem">
-              Haute couture clothing
-            </ButtonMenuPrimaryItemFilter>
-            <ButtonMenuPrimaryItemFilter mr="1rem">
-              Accessories
-            </ButtonMenuPrimaryItemFilter>
-            <ButtonMenuPrimaryItemFilter mr="1rem">
-              Watches & Jewelry
-            </ButtonMenuPrimaryItemFilter>
-            <ButtonMenuPrimaryItemFilter mr="1rem">
-              Homes and estates
-            </ButtonMenuPrimaryItemFilter>
-            <ButtonMenuPrimaryItemFilter mr="1rem">
-              automobile
-            </ButtonMenuPrimaryItemFilter>
-          </ButtonMenuPrimary>
-        </div>
+        {
+          // <div
+          //   style={{
+          //     overflowX: "auto",
+          //     overflowY: "hidden",
+          //     scrollbarWidth: "none",
+          //   }}
+          // >
+          //   <ButtonMenuPrimary
+          //     activeIndex={index}
+          //     onItemClick={handleClick}
+          //     scale="sm"
+          //     variant="subtle"
+          //   >
+          //     <ButtonMenuPrimaryItemFilter mr="1rem">
+          //       Haute couture clothing
+          //     </ButtonMenuPrimaryItemFilter>
+          //     <ButtonMenuPrimaryItemFilter mr="1rem">
+          //       Accessories
+          //     </ButtonMenuPrimaryItemFilter>
+          //     <ButtonMenuPrimaryItemFilter mr="1rem">
+          //       Watches & Jewelry
+          //     </ButtonMenuPrimaryItemFilter>
+          //     <ButtonMenuPrimaryItemFilter mr="1rem">
+          //       Homes and estates
+          //     </ButtonMenuPrimaryItemFilter>
+          //     <ButtonMenuPrimaryItemFilter mr="1rem">
+          //       automobile
+          //     </ButtonMenuPrimaryItemFilter>
+          //   </ButtonMenuPrimary>
+          // </div>
+        }
       </Flex>
       <GalleryGrid>
         {shopItemsData.map((item) => (
