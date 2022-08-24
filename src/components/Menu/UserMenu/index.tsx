@@ -28,7 +28,7 @@ const UserMenu: React.FunctionComponent<UserMenuProps> = ({ maxWidth }) => {
 
   return (
     <UIKitUserMenu account={account}>
-      <UserMenuItem as="button" onClick={logout}>
+      <UserMenuItem as="button" onClick={() => logout()}>
         <Flex alignItems="center" justifyContent="space-between" width="100%">
           Disconnect
           <LogoutIcon />

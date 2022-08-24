@@ -8,6 +8,9 @@ import {
 export type User = UserResponseDto;
 export type Nft = UserNFTResponse;
 export type Sale = PrimarySaleResponse;
+export type Availability = "AVAILABLE" | "SOLD" | "ALL";
+export type SortOrder = "asc" | "desc";
+export type SortField = "createdAt" | "updatedAt" | "name" | "price";
 
 export interface UserState {
   data: User;
@@ -33,6 +36,9 @@ export interface SaleFilters {
   updatedAt?: FilterValues;
   createdAt?: FilterValues;
   price?: FilterValues;
+  availability?: Availability;
+  sortOrder?: SortOrder;
+  sortField?: SortField;
 }
 // Store state
 export interface State {

@@ -34,7 +34,7 @@ const Shop: React.FC = () => {
   const isSmallScreen = isTablet || isMobile;
   const { handleFilter } = useUpdateSalesFilter();
   useDispatchSalePublicData();
-  const { data, total, pageSize, currentPage, isLoading, isLoaded } =
+  const { data, saleState, total, pageSize, currentPage, isLoading, isLoaded } =
     useSales();
   const shopItemsData = data[currentPage];
   const { updateSalePage } = useUpdateSalePage();
@@ -62,7 +62,11 @@ const Shop: React.FC = () => {
                 handleApply={() => console.log("handleApply Tablet")}
               />
             ) : (
-              <ShopHeader results={total} />
+              <ShopHeader
+                saleState={saleState}
+                results={total}
+                handleApply={handleApply}
+              />
             )}
             <ShopItems
               shopItemsData={shopItemsData}
