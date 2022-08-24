@@ -29,7 +29,7 @@ const CollectionGallery: React.FC<CollectionGalleryProps> = ({ items }) => {
               highestBid: item.price,
               image: "url(/images/shopImage.svg)",
               startTime: new Date(),
-              mintTime: new Date(),
+              mintTime: new Date(item.createdAt),
             }}
           />
         ))}

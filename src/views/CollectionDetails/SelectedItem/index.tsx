@@ -27,7 +27,13 @@ const SelectedItem: React.FC<ShopHeaderProps> = ({
       </Link>
       <Text variant="h2Bold">{name}</Text>
       <Text variant="label" mb="2rem">{`${addComma(results)} RESULTS`}</Text>
-      <Image src={imageUrl} width={310} height={237} mb="1rem" />
+      <Image
+        src={imageUrl}
+        width={310}
+        height={237}
+        mb="1rem"
+        imageStyle={{ borderRadius: "20px" }}
+      />
       <Description>{description}</Description>
     </Flex>
   );
