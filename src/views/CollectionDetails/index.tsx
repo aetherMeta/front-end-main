@@ -4,8 +4,12 @@ import Page from "components/Layout/Page";
 import DetailHeader from "views/CollectionDetails/DetailHeader";
 import SelectedItem from "views/CollectionDetails/SelectedItem";
 import CollectionGallery from "views/CollectionDetails/CollectionGallery";
-import testItems from "views/CollectionDetails/testItems";
-import { useMatchBreakpoints, Flex } from "@aethermeta/uikit";
+import { useMatchBreakpoints, Flex, Spinner } from "@aethermeta/uikit";
+import {
+  useCollectionDetails,
+  useDispatchCollectionDetailPublicData,
+  useUpdateCollectionDetailSort,
+} from "store/collectionDetails/hooks";
 import DetailHeaderMobile from "./DetailHeaderMobile";
 
 const Container = styled.div`
@@ -18,35 +22,65 @@ const Container = styled.div`
   background-position: right top;
   gap: 6.875rem;
   background-color: ${({ theme }) => theme.colors.background};
+  min-height : calc(-64px + 100vh);
   ${({ theme }) => theme.mediaQueries.lg} {
     padding 124px 70px 142px;
   }
 `;
 
 const CollectionDetails: React.FC = () => {
+  useDispatchCollectionDetailPublicData();
+  const {
+    data,
+    total,
+    isLoaded,
+    isLoading,
+    name,
+    description,
+    imageUrl,
+    sortOrder,
+    sortField,
+  } = useCollectionDetails();
+  const { updateCollectionDetailSort } = useUpdateCollectionDetailSort();
   const { isTablet, isMobile } = useMatchBreakpoints();
   const isSmallScreen = isTablet || isMobile;
   return (
     <Page>
       <Container>
-        {isSmallScreen ? (
+        {isLoading || !isLoaded ? (
+          <Flex width="100%" justifyContent="center">
+            <Spinner size={108} />
+          </Flex>
+        ) : isSmallScreen ? (
           <Flex flexDirection="column">
             <DetailHeaderMobile
-              total={45}
-              handleSort={() => {
-                return 0;
-              }}
+              total={total}
+              sortField={sortField}
+              sortOrder={sortOrder}
+              handleSort={updateCollectionDetailSort}
+              imageUrl={imageUrl}
+              description={description}
+              name={name}
             />
-            <CollectionGallery items={testItems} />
+            <CollectionGallery items={data} />
           </Flex>
         ) : (
           <>
-            <SelectedItem results={45} />
+            <SelectedItem
+              results={total}
+              imageUrl={imageUrl}
+              description={description}
+              name={name}
+            />
             <Flex flexDirection="column" width="100%">
               <Flex alignSelf="flex-end">
-                <DetailHeader />
+                <DetailHeader
+                  sortField={sortField}
+                  sortOrder={sortOrder}
+                  handleSort={updateCollectionDetailSort}
+                />
               </Flex>
-              <CollectionGallery items={testItems} />
+              <CollectionGallery items={data} />
             </Flex>
           </>
         )}

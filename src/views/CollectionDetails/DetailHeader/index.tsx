@@ -1,15 +1,65 @@
 import React, { useState } from "react";
 import { Flex, Text, Select } from "@aethermeta/uikit";
 
-const DetailHeader: React.FC = () => {
+interface DetailHeaderProps {
+  handleSort: (args: { sortField: string; sortOrder: string }) => void;
+  sortField: string;
+  sortOrder: string;
+}
+const DetailHeader: React.FC<DetailHeaderProps> = ({
+  handleSort,
+  sortField,
+  sortOrder,
+}: DetailHeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState("Most recent");
+
+  const sortValue = (): string => {
+    if (sortField === "createdAt") {
+      if (sortOrder === "asc") return "Oldest";
+      return "Newest";
+    }
+    if (sortField === "price") {
+      if (sortOrder === "asc") return "Price: Low to High";
+      return "Price: High to Low";
+    }
+    return "Newest";
+  };
 
   const handleToggle = () => setIsOpen(!isOpen);
-
-  const handleSelect = (newValue) => {
-    setValue(newValue);
+  const handleSelect = (newValue: string) => {
     setIsOpen(false);
+
+    switch (newValue) {
+      case "Newest":
+        handleSort({
+          sortField: "createdAt",
+          sortOrder: "desc",
+        });
+        break;
+      case "Oldest":
+        handleSort({
+          sortField: "createdAt",
+          sortOrder: "asc",
+        });
+        break;
+      case "Price: Low to High":
+        handleSort({
+          sortField: "price",
+          sortOrder: "asc",
+        });
+        break;
+      case "Price: High to Low":
+        handleSort({
+          sortField: "price",
+          sortOrder: "desc",
+        });
+        break;
+      default:
+        handleSort({
+          sortField: "createdAt",
+          sortOrder: "desc",
+        });
+    }
   };
   return (
     <Flex
@@ -23,20 +73,21 @@ const DetailHeader: React.FC = () => {
       <Flex alignItems="center">
         <Text mr="1rem">Sort by</Text>
         <Select
-          value={value}
-          options={["Most recent", "Most popular ", "Latest release"]}
+          value={sortValue()}
+          options={[
+            "Newest",
+            "Oldest",
+            "Price: Low to High",
+            "Price: High to Low",
+          ]}
           handleSelect={(newValue) => handleSelect(newValue)}
           isOpen={isOpen}
           handleToggle={handleToggle}
-          width="11.25rem"
+          width="14.25rem"
         />
       </Flex>
     </Flex>
   );
-};
-
-DetailHeader.defaultProps = {
-  results: 0,
 };
 
 export default DetailHeader;

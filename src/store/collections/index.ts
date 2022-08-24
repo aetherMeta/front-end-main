@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { backend } from "apis/backend";
-import { CollectionState, Collection } from "store/types";
+import { CollectionState } from "store/types";
 
 const initialState: CollectionState = {
   data: {},
@@ -10,16 +10,19 @@ const initialState: CollectionState = {
   isLoaded: false,
   currentPage: 1,
   pageSize: 12,
+  sortField: "createdAt",
+  sortOrder: "desc",
 };
 
 // Thunks
-export const dispatchPrimaryCollectionPublicDataAsync =
+export const dispatchCollectionPublicDataAsync =
   (page: number) => async (dispatch, getState) => {
-    const { pageSize, filters } = getState().collections;
-    // TODO find missing items,
+    const { sortOrder, sortField, pageSize, filters } = getState().collections;
     try {
       dispatch(setLoading());
       const res = await backend.collections.collectionsControllerFindAll({
+        sortOrder,
+        sortField,
         name: filters.name,
         skip: (page - 1) * pageSize,
         take: pageSize,
@@ -27,7 +30,7 @@ export const dispatchPrimaryCollectionPublicDataAsync =
         updatedAt: filters.updatedAt,
       });
       dispatch(
-        setPrimaryCollectionsPublicData({
+        setCollectionPublicData({
           [page]: [
             ...res.data.map((o) => ({
               ...o,
@@ -47,23 +50,23 @@ export const collectionSlice = createSlice({
     setLoading: (state) => {
       state.isLoading = true;
     },
+    setCollectionSort: (state, action) => {
+      const {
+        payload: { sortField, sortOrder },
+      } = action;
+      state.sortField = sortField;
+      state.sortOrder = sortOrder;
+    },
     setCollectionPublicData: (state, action) => {
       const { payload } = action;
-      const collectionData = payload.data.reduce(
-        (acc, val) => ({ ...acc, [val.id]: val }),
-        {}
-      );
-      state.data = collectionData;
+      state.data = { ...state.data, ...payload };
       state.total = payload.total;
       state.isLoading = false;
       state.isLoaded = true;
     },
-    setPrimaryCollectionsPublicData: (state, action) => {
-      const collectionData: Record<number, Collection[]> = action.payload;
-      state.data = { ...state.data, ...collectionData };
-      state.isLoading = false;
-      state.total = action.payload.total;
-      state.isLoaded = true;
+    resetCollectionData: (state) => {
+      state.data = {};
+      state.total = 0;
     },
     setCollectionTotal: (state, action) => {
       state.total = action.payload.total;
@@ -84,7 +87,9 @@ export const collectionSlice = createSlice({
 
 // Actions
 export const {
-  setPrimaryCollectionsPublicData,
+  setCollectionSort,
+  setCollectionPublicData,
+  resetCollectionData,
   setCollectionTotal,
   setCollectionPageSize,
   setCollectionPage,

@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from "react";
-import { Pagination } from "@aethermeta/uikit";
+import React from "react";
 import styled from "styled-components";
-import { Item } from "constants/items";
-import CollectionCard from "./CollectionCard";
+import { PrimarySaleResponse } from "apis/backend/generated";
+// import CollectionCard from "./CollectionCard";
+import ShopCard from "views/Shop/ShopItems/ShopCard";
 
 interface CollectionGalleryProps {
-  items: Item[];
+  items: PrimarySaleResponse[];
 }
 
 const Grid = styled.div`
@@ -16,35 +16,24 @@ const Grid = styled.div`
   justify-items: center;
 `;
 
-const PaginationContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 5.75rem;
-`;
-
 const CollectionGallery: React.FC<CollectionGalleryProps> = ({ items }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 12;
-  const CollectionGalleryData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * pageSize;
-    const lastPageIndex = firstPageIndex + pageSize;
-    return items.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, items]);
   return (
     <>
       <Grid>
-        {CollectionGalleryData.map((item) => (
-          <CollectionCard item={item} />
+        {items.map((item) => (
+          <ShopCard
+            key={item.id}
+            item={{
+              id: item.id,
+              name: item.name,
+              highestBid: item.price,
+              image: "url(/images/shopImage.svg)",
+              startTime: new Date(),
+              mintTime: new Date(),
+            }}
+          />
         ))}
       </Grid>
-      <PaginationContainer>
-        <Pagination
-          currentPage={currentPage}
-          totalCount={items.length}
-          pageSize={pageSize}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
-      </PaginationContainer>
     </>
   );
 };

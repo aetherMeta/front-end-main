@@ -42,7 +42,6 @@ const Metaverse: React.FC = () => {
   useEffect(() => {
     // CALL BACKEND
     // backend.call increase time = (SLOW_INTERVAL * currTime.current- slowRefresh)
-    console.log("refresh");
     currTime.current = slowRefresh;
     updateMetaverseUsage();
   }, [slowRefresh, updateMetaverseUsage]);

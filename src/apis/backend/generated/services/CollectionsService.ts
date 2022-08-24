@@ -5,6 +5,7 @@ import type { CollectionResponse } from '../models/CollectionResponse';
 import type { CreateCollectionDto } from '../models/CreateCollectionDto';
 import type { DateFilterValues } from '../models/DateFilterValues';
 import type { FilterValues } from '../models/FilterValues';
+import type { NFTResponse } from '../models/NFTResponse';
 import type { PaginatedResponse } from '../models/PaginatedResponse';
 import type { UpdateCollectionDto } from '../models/UpdateCollectionDto';
 
@@ -15,7 +16,7 @@ import { request as __request } from '../core/request';
 export class CollectionsService {
 
     /**
-     * @returns PaginatedResponse
+     * @returns NFTResponse A collection
      * @throws ApiError
      */
     public static collectionsControllerCollectionNfts({
@@ -32,7 +33,7 @@ export class CollectionsService {
         cursor?: string,
         skip?: number,
         take?: number,
-    }): CancelablePromise<PaginatedResponse> {
+    }): CancelablePromise<Array<NFTResponse>> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/collections/{id}/nfts',

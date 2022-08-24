@@ -43,12 +43,12 @@ const GalleryMobile: React.FC<GalleryProps> = ({
   items,
   pageSize,
   currentPage,
-  total,
   updatePage,
 }) => {
   const [index, setIndex] = useState(0);
 
-  const handleClick = (newIndex) => setIndex(newIndex);
+  const handleClick = (newIndex: React.SetStateAction<number>) =>
+    setIndex(newIndex);
 
   const shopItemsData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;

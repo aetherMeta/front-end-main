@@ -5,20 +5,24 @@ import { useParams } from "react-router-dom";
 import { CollectionState, State, Collection } from "store/types";
 import { useAppDispatch } from "store";
 import {
-  dispatchPrimaryCollectionPublicDataAsync,
-  setPrimaryCollectionsPublicData,
+  dispatchCollectionPublicDataAsync,
   setCollectionFilters,
   setCollectionPage,
+  resetCollectionData,
+  setCollectionSort,
 } from "store/collections";
 import {
   CollectionResponse,
   CreateCollectionDto,
 } from "apis/backend/generated";
+import { setLoading } from "store/sales";
 
 type Returns = {
   collectionState: CollectionState;
   collectionData: Collection;
   data: Record<number, Collection[]>;
+  sortField: string;
+  sortOrder: string;
   pageSize: number;
   currentPage: number;
   total: number;
@@ -32,20 +36,24 @@ export const useDispatchCollectionPublicData = () => {
   const collections = useSelector((state: State) => state.collections);
   useEffect(() => {
     const dispatchCollectionPublicData = async () => {
-      dispatch(
-        dispatchPrimaryCollectionPublicDataAsync(collections.currentPage)
-      );
+      dispatch(dispatchCollectionPublicDataAsync(collections.currentPage));
     };
     dispatchCollectionPublicData();
   }, [dispatch, collections.currentPage]);
 
   useEffect(() => {
     const dispatchFilterChange = async () => {
-      dispatch(setPrimaryCollectionsPublicData({}));
-      dispatch(dispatchPrimaryCollectionPublicDataAsync(1));
+      dispatch(setLoading());
+      dispatch(resetCollectionData());
+      dispatch(dispatchCollectionPublicDataAsync(1));
     };
     dispatchFilterChange();
-  }, [dispatch, collections.filters]);
+  }, [
+    dispatch,
+    collections.filters,
+    collections.sortField,
+    collections.sortOrder,
+  ]);
 };
 
 export const useUpdateCollectionPage = () => {
@@ -53,11 +61,22 @@ export const useUpdateCollectionPage = () => {
   const updateCollectionPage = useCallback(
     async (page: number) => {
       dispatch(setCollectionPage(page));
-      dispatch(dispatchPrimaryCollectionPublicDataAsync(page));
+      dispatch(dispatchCollectionPublicDataAsync(page));
     },
     [dispatch]
   );
   return { updateCollectionPage };
+};
+
+export const useUpdateCollectionSort = () => {
+  const dispatch = useAppDispatch();
+  const updateCollectionSort = useCallback(
+    async (update: { sortField: string; sortOrder: string }) => {
+      dispatch(setCollectionSort(update));
+    },
+    [dispatch]
+  );
+  return { updateCollectionSort };
 };
 
 export const useUpdateCollectionsFilter = () => {
@@ -89,6 +108,8 @@ export const useCollections = (): Returns => {
     collectionData,
     data: Object.assign([], collections.data),
     pageSize: collections.pageSize,
+    sortOrder: collections.sortOrder,
+    sortField: collections.sortField,
     currentPage: collections.currentPage,
     total: collections.total,
     isLoading: collections.isLoading,

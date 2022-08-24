@@ -9,7 +9,7 @@ export type CollectionResponse = {
     description: string;
     createdAt: string;
     updatedAt: string;
-    imageUrl: any;
+    imageUrl: string;
     nfts: Array<any>;
 };
 

@@ -8,22 +8,27 @@ const Description = styled(Text)`
 `;
 interface ShopHeaderProps {
   results?: number;
+  description: string;
+  name: string;
+  imageUrl: string;
 }
 
-const SelectedItem: React.FC<ShopHeaderProps> = ({ results }) => {
+const SelectedItem: React.FC<ShopHeaderProps> = ({
+  results,
+  description,
+  imageUrl,
+  name,
+}) => {
   return (
     <Flex flexDirection="column" mt="1rem">
       <Link href="/collections" mb="1rem" color="text">
         <ChevronLeftIcon />
         Back to collections
       </Link>
-      <Text variant="h2Bold">MCLAREN</Text>
+      <Text variant="h2Bold">{name}</Text>
       <Text variant="label" mb="2rem">{`${addComma(results)} RESULTS`}</Text>
-      <Image src="/images/mclarenLogo.svg" width={310} height={237} mb="1rem"/>
-      <Description>
-        First ever digital collectables are now on sale and you can unlock your
-        first piece of the MCL35M for free!
-      </Description>
+      <Image src={imageUrl} width={310} height={237} mb="1rem" />
+      <Description>{description}</Description>
     </Flex>
   );
 };
