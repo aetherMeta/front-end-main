@@ -101,15 +101,15 @@ export class SalesService {
      * @throws ApiError
      */
     public static primarySaleControllerCreate({
-        requestBody,
+        formData,
     }: {
-        requestBody: CreatePrimarySaleDto,
+        formData: CreatePrimarySaleDto,
     }): CancelablePromise<PrimarySaleResponse> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/sales/primary',
-            body: requestBody,
-            mediaType: 'application/json',
+            formData: formData,
+            mediaType: 'multipart/form-data',
         });
     }
 

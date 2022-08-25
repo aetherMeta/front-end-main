@@ -21,6 +21,7 @@ export const generatePrimarySale = async (
     royaltyRecipient: string;
     royaltyValue: number;
     uri: string;
+    files: any;
     chainId: number;
   }
 ) => {
@@ -33,6 +34,7 @@ export const generatePrimarySale = async (
     royaltyRecipient,
     royaltyValue,
     uri,
+    files,
     chainId,
   } = data;
 
@@ -63,5 +65,6 @@ export const generatePrimarySale = async (
     royaltyValue,
     royaltyRecipient,
     chainId,
+    files,
   };
 };

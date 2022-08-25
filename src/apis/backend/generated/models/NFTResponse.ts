@@ -12,6 +12,7 @@ export type NFTResponse = {
     collections: CollectionResponse;
     attributes: Array<AttributeDto>;
     asset: AssetDto;
+    nftImages: Array<AssetDto>;
     chainId: number;
     address: string;
     name?: string;
