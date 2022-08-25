@@ -11,6 +11,7 @@ import {
   Radio,
   Link,
   ChevronLeftIcon,
+  Box,
 } from "@aethermeta/uikit";
 import { addComma } from "utils/number";
 import { Sort, sorts } from "../types";
@@ -26,7 +27,7 @@ interface DetailFiltersProps {
 }
 
 const Description = styled(Text)`
-  width: 237px;
+  width: 310px;
   margin-bottom: 2rem;
 `;
 const StyledPanelButton = styled(Button)`
@@ -36,6 +37,7 @@ const StyledPanelButton = styled(Button)`
 
 const InputFlex = styled(Flex)`
   margin-top: 1rem;
+  height: 100%;
   gap: 0.625rem;
 `;
 
@@ -131,15 +133,17 @@ const DetailHeaderMobile: React.FC<DetailFiltersProps> = ({
               </Flex>
             </label>
           ))}
+          <Button
+            mt="auto"
+            mb="1rem"
+            size="lg"
+            onClick={() => {
+              handleApply();
+            }}
+          >
+            Apply
+          </Button>
         </InputFlex>
-        <Button
-          size="lg"
-          onClick={() => {
-            handleApply();
-          }}
-        >
-          Apply
-        </Button>
       </Panel>
     );
   };
@@ -150,12 +154,15 @@ const DetailHeaderMobile: React.FC<DetailFiltersProps> = ({
         <ChevronLeftIcon />
         Back to collections
       </Link>
-      <Flex justifyContent="space-between">
-        <Text variant="h2Bold" mb="1rem">
-          {name}
-        </Text>
-        <Text variant="label">{`${addComma(total)} RESULTS`}</Text>
-      </Flex>
+      <Text variant="h2Bold">{name}</Text>
+      <Text
+        style={{
+          textAlign: "right",
+          marginBottom: "1rem",
+          whiteSpace: "nowrap",
+        }}
+        variant="label"
+      >{`${addComma(total)} RESULTS`}</Text>
       <Image
         src={imageUrl}
         width={310}

@@ -16,6 +16,7 @@ const GalleryItems: React.FC<GalleryProps> = ({ item }) => {
           width={310}
           height={237}
           imageStyle={{ borderRadius: "20px" }}
+          mb="1rem"
         />
       </a>
       <Text variant="h4Bold">{item.name}</Text>

@@ -19,6 +19,10 @@ const PaginationContainer = styled.div`
   margin-top: 5.75rem;
 `;
 
+const StyledSelect = styled(Select)`
+  z-index: 20;
+`;
+
 const ButtonMenuItemFilter = styled(ButtonMenuItem)`
   border-radius: 16px;
 `;
@@ -108,7 +112,7 @@ const Gallery: React.FC<GalleryProps> = ({
         <Text variant="h1Bold" ml="1rem">
           COLLECTIONS
         </Text>
-        <Select
+        <StyledSelect
           value={sortValue()}
           options={["Newest", "Oldest", "Name: A to Z", "Name: Z to A"]}
           handleSelect={(newValue) => handleSelect(newValue)}

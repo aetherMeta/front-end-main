@@ -284,10 +284,10 @@ const ShopFiltersTablet: React.FC<ShopFiltersProps> = ({
               </Flex>
             </label>
           ))}
+          <Button size="lg" onClick={handleSort} mb="3rem">
+            Apply
+          </Button>
         </InputFlex>
-        <Button size="lg" onClick={handleSort}>
-          Apply
-        </Button>
       </Panel>
     );
   };
