@@ -3,7 +3,6 @@ import { Router, Route, Switch } from "react-router-dom";
 import { ResetCSS } from "@aethermeta/uikit";
 // import ResetCSS from "./utils/ResetCSS";
 import { useDispatchSalePublicData } from "store/sales/hooks";
-import useEagerConnect from "hooks/useEagerConnect";
 import { ToastListener } from "./contexts/ToastsContext";
 import NotFound from "./views/NotFound";
 import About from "./views/About";
@@ -22,7 +21,6 @@ import Debug from "./views/Debug";
 import Metaverse from "./views/Metaverse";
 
 const App: React.FC = () => {
-  // useEagerConnect();
   useDispatchSalePublicData();
   return (
     <Router history={history}>

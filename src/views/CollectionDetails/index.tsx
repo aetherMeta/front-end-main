@@ -12,7 +12,6 @@ import {
   Text,
   Link,
   ChevronLeftIcon,
-  Box,
 } from "@aethermeta/uikit";
 import {
   useCollectionDetails,

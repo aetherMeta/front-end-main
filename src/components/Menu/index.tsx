@@ -7,7 +7,6 @@ import Overlay from "./Overlay";
 
 const Menu = (props) => {
   const [showOverlay, setShowOverlay] = useState(false);
-  console.log(showOverlay);
   return (
     <UikitMenu
       userMenu={<UserMenu />}

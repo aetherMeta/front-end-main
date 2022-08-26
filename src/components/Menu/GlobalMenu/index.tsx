@@ -2,8 +2,6 @@ import React from "react";
 import Disclaimer from "components/DisclaimerModel";
 import { Button, Flex, useModal } from "@aethermeta/uikit";
 import { ConnectorNames } from "utils/web3React";
-import PartnershipModal, { Values } from "components/PartnershipModal";
-import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
 
 import { useUser } from "store/user/hooks";
 import useAuth from "hooks/useAuth";
@@ -18,18 +16,6 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
 
   const { data: userData, userDataLoaded } = useUser();
   const { login } = useAuth();
-
-  const [onPresent] = useModal(
-    <PartnershipModal
-      onSubmit={(e, values: Values) => onSubmit(e, values)}
-      fromMetaverse
-    />
-  );
-
-  const onSubmit = async (e, values: Values) => {
-    e.preventDefault();
-    await postContactUsEmail(values);
-  };
 
   const agreement = () => {
     try {

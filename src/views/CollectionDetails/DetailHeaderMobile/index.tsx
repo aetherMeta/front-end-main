@@ -11,7 +11,6 @@ import {
   Radio,
   Link,
   ChevronLeftIcon,
-  Box,
 } from "@aethermeta/uikit";
 import { addComma } from "utils/number";
 import { Sort, sorts } from "../types";

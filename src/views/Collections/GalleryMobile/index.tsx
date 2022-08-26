@@ -1,13 +1,6 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
-import {
-  Flex,
-  Text,
-  Grid,
-  ButtonMenuPrimary,
-  ButtonMenuPrimaryItem,
-  Pagination,
-} from "@aethermeta/uikit";
+import { Flex, Text, Grid, Pagination } from "@aethermeta/uikit";
 import GalleryItems from "../GalleryItems";
 import { Item } from "../types";
 
@@ -25,12 +18,6 @@ const GalleryGrid = styled(Grid)`
   }
 `;
 
-const ButtonMenuPrimaryItemFilter = styled(ButtonMenuPrimaryItem)`
-  border-radius: 16px;
-  height: 2.5rem;
-  width: 14rem;
-`;
-
 interface GalleryProps {
   items: Item[];
   pageSize: number;
@@ -45,11 +32,6 @@ const GalleryMobile: React.FC<GalleryProps> = ({
   currentPage,
   updatePage,
 }) => {
-  const [index, setIndex] = useState(0);
-
-  const handleClick = (newIndex: React.SetStateAction<number>) =>
-    setIndex(newIndex);
-
   const shopItemsData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;

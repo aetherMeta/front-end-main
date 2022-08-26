@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Flex, Text, Button, RangeSlider, Radio } from "@aethermeta/uikit";
-import { addComma } from "utils/number";
 import { ethers } from "ethers";
 import { SaleFilters } from "store/types";
 import { Availability, availabilities } from "../types";

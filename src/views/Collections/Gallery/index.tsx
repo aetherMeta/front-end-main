@@ -1,14 +1,6 @@
 import React, { useState, useMemo } from "react";
 import styled from "styled-components";
-import {
-  Flex,
-  Text,
-  Grid,
-  ButtonMenu,
-  ButtonMenuItem,
-  Pagination,
-  Select,
-} from "@aethermeta/uikit";
+import { Flex, Text, Grid, Pagination, Select } from "@aethermeta/uikit";
 
 import GalleryItems from "../GalleryItems";
 import { Item } from "../types";
@@ -21,10 +13,6 @@ const PaginationContainer = styled.div`
 
 const StyledSelect = styled(Select)`
   z-index: 20;
-`;
-
-const ButtonMenuItemFilter = styled(ButtonMenuItem)`
-  border-radius: 16px;
 `;
 
 interface GalleryProps {
@@ -47,7 +35,6 @@ const Gallery: React.FC<GalleryProps> = ({
   handleSort,
   updatePage,
 }) => {
-  const [index, setIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
   const sortValue = (): string => {
@@ -97,8 +84,6 @@ const Gallery: React.FC<GalleryProps> = ({
         });
     }
   };
-
-  const handleClick = (newIndex) => setIndex(newIndex);
 
   const shopItemsData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;

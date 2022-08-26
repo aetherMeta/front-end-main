@@ -8,8 +8,7 @@ import ProductImages from "./ProductImages";
 import ProductActions from "./ProductActions";
 import ProductDescriptions from "./ProductDescriptions";
 import Chart from "./Chart";
-import MoreCollection from "./MoreCollection";
-import { chartTitle, contents, testItems } from "./TestConfig/config";
+import { chartTitle, contents } from "./TestConfig/config";
 
 const Container = styled.div`
   padding: 80px 22px 80px;
