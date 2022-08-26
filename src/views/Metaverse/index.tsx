@@ -8,8 +8,16 @@ import {
 import styled from "styled-components";
 import { Player } from "furioos-sdk";
 import useRefresh from "hooks/useRefresh";
-import { useMatchBreakpoints, Text, Input, Button } from "@aethermeta/uikit";
+import {
+  useMatchBreakpoints,
+  Text,
+  Input,
+  Button,
+  useModal,
+} from "@aethermeta/uikit";
 import Page from "views/Page";
+import PartnershipModal, { Values } from "components/PartnershipModal";
+import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
 // import NotFound from "../NotFound";
 
 const Notice = styled.div`
@@ -43,6 +51,7 @@ const Metaverse: React.FC = () => {
   const updateMetaverseUsage = useUpdateMetaverseUsage();
   const currTime = useRef(slowRefresh);
   const [passCode, setPassCode] = useState("");
+  const [furioosEnabled, setFurioosEnabled] = useState(false);
 
   useEffect(() => {
     // CALL BACKEND
@@ -70,20 +79,34 @@ const Metaverse: React.FC = () => {
       ];
 
     if (
-      (metaverseWhitelistAccess && !metaverseAllowanceExceeded) ||
-      passCode === "5832"
+      !furioosEnabled &&
+      ((metaverseWhitelistAccess && !metaverseAllowanceExceeded) ||
+        passCode === "5832")
     ) {
+      setFurioosEnabled(true);
       // eslint-disable-next-line no-new
       new Player(furioosCode, "furioos-window", options);
     }
   }, [
     isMobile,
     isTablet,
+    furioosEnabled,
+    setFurioosEnabled,
     metaverseWhitelistAccess,
     metaverseAllowanceExceeded,
     passCode,
   ]);
 
+  const [onPresent] = useModal(
+    <PartnershipModal
+      onSubmit={(e, values: Values) => onSubmit(e, values)}
+      fromMetaverse
+    />
+  );
+  const onSubmit = async (e, values: Values) => {
+    e.preventDefault();
+    await postContactUsEmail(values);
+  };
   const PassCode = (
     <Page>
       <Text maxWidth="600px" textAlign="center" mb="20px">
@@ -99,7 +122,7 @@ const Metaverse: React.FC = () => {
           setPassCode(e.target.value);
         }}
       />
-      <Button scale="md" variant="primary">
+      <Button scale="md" variant="primary" onClick={onPresent}>
         Click here to request access
       </Button>
     </Page>
@@ -118,7 +141,7 @@ const Metaverse: React.FC = () => {
       )}
 
       {passCode === "5832" ||
-      (metaverseWhitelistAccess && metaverseAllowanceExceeded) ? (
+      (metaverseWhitelistAccess && !metaverseAllowanceExceeded) ? (
         <Furioos id="furioos-window" />
       ) : (
         PassCode

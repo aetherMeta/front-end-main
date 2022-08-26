@@ -66,7 +66,12 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
 
   return (
     <Flex width={maxWidth ? "100%" : "auto"}>
-      <Link to={userDataLoaded && userData.metaverseAccess ? "/metaverse" : ""}>
+      <Link
+        to={
+          "/metaverse"
+          // userDataLoaded && userData.metaverseAccess ? "/metaverse" : ""
+        }
+      >
         <Button
           scale="md"
           as="a"
