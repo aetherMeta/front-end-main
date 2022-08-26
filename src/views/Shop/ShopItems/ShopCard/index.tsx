@@ -27,6 +27,7 @@ const Image = styled.div<{ image: string }>`
   border-top-right-radius: 1.625rem;
   border-top-left-radius: 1.625rem;
   margin-bottom: 2.25rem;
+  background-size: cover;
 `;
 
 const BodyHeavy = styled(Text)`
