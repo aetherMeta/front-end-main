@@ -90,7 +90,7 @@ export const useUpdateSalesSort = () => {
 
 const createPrimarySale = async (dto: CreatePrimarySaleDto) => {
   return backend.sales.primarySaleControllerCreate({
-    requestBody: dto,
+    formData: dto,
   });
 };
 

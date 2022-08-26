@@ -55,7 +55,8 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
     buttonProps = userData.metaverseAccess // boolean; checks if user is whitelisted
       ? isAgreed()
       : {
-          onClick: onPresent, // Opens form if not whitelisted and user agreed to disclaimer
+          // onClick: onPresent, // Opens form if not whitelisted and user agreed to disclaimer
+          onClick: isAgreed(),
         };
   } else {
     buttonProps = {
@@ -66,7 +67,10 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
   return (
     <Flex width={maxWidth ? "100%" : "auto"}>
       <Link
-        to={userDataLoaded && userData.metaverseAccess && "/metaverse"}
+        to={
+          "/metaverse"
+          // userDataLoaded && userData.metaverseAccess ? "/metaverse" : ""
+        }
         style={{ width: "100%" }}
       >
         <Button
