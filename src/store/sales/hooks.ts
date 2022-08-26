@@ -8,6 +8,7 @@ import {
   dispatchPrimarySalePublicDataAsync,
   setPrimarySalesPublicData,
   setSaleFilters,
+  setSaleSort,
   setSalePage,
 } from "store/sales";
 import {
@@ -50,7 +51,7 @@ export const useDispatchSalePublicData = () => {
       dispatch(dispatchPrimarySalePublicDataAsync(1));
     };
     dispatchFilterChange();
-  }, [dispatch, sales.filters]);
+  }, [dispatch, sales.filters, sales.sortOrder, sales.sortField]);
 };
 
 export const useUpdateSalePage = () => {
@@ -76,9 +77,20 @@ export const useUpdateSalesFilter = () => {
   return { handleFilter: updateFilter };
 };
 
+export const useUpdateSalesSort = () => {
+  const dispatch = useAppDispatch();
+  const updateSort = useCallback(
+    async (sortField: string, sortOrder: string) => {
+      dispatch(setSaleSort({ sortField, sortOrder }));
+    },
+    [dispatch]
+  );
+  return { handleSort: updateSort };
+};
+
 const createPrimarySale = async (dto: CreatePrimarySaleDto) => {
   return backend.sales.primarySaleControllerCreate({
-    requestBody: dto,
+    formData: dto,
   });
 };
 

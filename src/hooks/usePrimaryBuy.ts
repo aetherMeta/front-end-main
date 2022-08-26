@@ -7,8 +7,9 @@ const usePrimaryBuy = () => {
 
   const handleBuy = useCallback(
     async (sale, amount) => {
-      const txHash = await primaryBuy(marketplaceContract, sale, amount);
-      console.info(txHash);
+      const receipt = await primaryBuy(marketplaceContract, sale, amount);
+      console.info(receipt);
+      return receipt;
     },
     [marketplaceContract]
   );

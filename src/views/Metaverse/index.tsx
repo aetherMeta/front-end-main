@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   useDispatchUserPublicData,
   useUpdateMetaverseUsage,
@@ -8,8 +8,17 @@ import {
 import styled from "styled-components";
 import { Player } from "furioos-sdk";
 import useRefresh from "hooks/useRefresh";
-import { useMatchBreakpoints, Text } from "@aethermeta/uikit";
-import NotFound from "../NotFound";
+import {
+  useMatchBreakpoints,
+  Text,
+  Input,
+  Button,
+  useModal,
+} from "@aethermeta/uikit";
+import Page from "views/Page";
+import PartnershipModal, { Values } from "components/PartnershipModal";
+import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
+// import NotFound from "../NotFound";
 
 const Notice = styled.div`
   padding-top: 40px;
@@ -34,15 +43,19 @@ const Metaverse: React.FC = () => {
   const { slowRefresh } = useRefresh();
   const { isTablet, isMobile } = useMatchBreakpoints();
   const {
-    data: { metaverseAccess, metaverseAllowanceExceeded },
+    data: {
+      metaverseAccess: metaverseWhitelistAccess,
+      metaverseAllowanceExceeded,
+    },
   } = useUser();
   const updateMetaverseUsage = useUpdateMetaverseUsage();
   const currTime = useRef(slowRefresh);
+  const [passCode, setPassCode] = useState("");
+  const [furioosEnabled, setFurioosEnabled] = useState(false);
 
   useEffect(() => {
     // CALL BACKEND
     // backend.call increase time = (SLOW_INTERVAL * currTime.current- slowRefresh)
-    console.log("refresh");
     currTime.current = slowRefresh;
     updateMetaverseUsage();
   }, [slowRefresh, updateMetaverseUsage]);
@@ -65,16 +78,59 @@ const Metaverse: React.FC = () => {
         process.env.NODE_ENV === "production" ? "production" : "local"
       ];
 
-    if (metaverseAccess && !metaverseAllowanceExceeded) {
+    if (
+      !furioosEnabled &&
+      ((metaverseWhitelistAccess && !metaverseAllowanceExceeded) ||
+        passCode === "5832")
+    ) {
+      setFurioosEnabled(true);
       // eslint-disable-next-line no-new
       new Player(furioosCode, "furioos-window", options);
     }
-  }, [isMobile, isTablet, metaverseAccess, metaverseAllowanceExceeded]);
+  }, [
+    isMobile,
+    isTablet,
+    furioosEnabled,
+    setFurioosEnabled,
+    metaverseWhitelistAccess,
+    metaverseAllowanceExceeded,
+    passCode,
+  ]);
+
+  const [onPresent] = useModal(
+    <PartnershipModal
+      onSubmit={(e, values: Values) => onSubmit(e, values)}
+      fromMetaverse
+    />
+  );
+  const onSubmit = async (e, values: Values) => {
+    e.preventDefault();
+    await postContactUsEmail(values);
+  };
+  const PassCode = (
+    <Page>
+      <Text maxWidth="600px" textAlign="center" mb="20px">
+        Please enter your passcode or login to your whitelisted account to get
+        access to the Metaverse.
+      </Text>
+      <Input
+        type="text"
+        placeholder="Enter your passcode"
+        name="passCode"
+        style={{ marginBottom: "20px", maxWidth: "400px" }}
+        onChange={(e) => {
+          setPassCode(e.target.value);
+        }}
+      />
+      <Button scale="md" variant="primary" onClick={onPresent}>
+        Click here to request access
+      </Button>
+    </Page>
+  );
 
   return (
     <>
-      {!metaverseAccess && <NotFound />}
-      {metaverseAccess && metaverseAllowanceExceeded && (
+      {metaverseWhitelistAccess && metaverseAllowanceExceeded && (
         <Notice>
           {" "}
           <Text>
@@ -84,10 +140,12 @@ const Metaverse: React.FC = () => {
         </Notice>
       )}
 
-      <Furioos
-        style={!metaverseAccess ? { height: 0 } : {}}
-        id="furioos-window"
-      />
+      {passCode === "5832" ||
+      (metaverseWhitelistAccess && !metaverseAllowanceExceeded) ? (
+        <Furioos id="furioos-window" />
+      ) : (
+        PassCode
+      )}
     </>
   );
 };

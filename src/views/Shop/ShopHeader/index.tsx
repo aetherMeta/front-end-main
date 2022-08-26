@@ -1,21 +1,59 @@
 import React, { useState } from "react";
 import { Flex, Text, Select } from "@aethermeta/uikit";
 import { addComma } from "utils/number";
+import { SortOrder, SortField, SaleState } from "store/types";
 
 interface ShopHeaderProps {
   results?: number;
+  handleSaleSort: (sortField: SortField, sortOrder: SortOrder) => void;
+  saleState: SaleState;
 }
 
-const ShopHeader: React.FC<ShopHeaderProps> = ({ results }) => {
+const getValue = (sortOrder: SortOrder, sortField: SortField) => {
+  if (sortField === "createdAt" && sortOrder === "desc") {
+    return "Newest";
+  }
+  if (sortField === "createdAt" && sortOrder === "asc") {
+    return "Oldest";
+  }
+  if (sortField === "price" && sortOrder === "asc") {
+    return "Price: Low to High";
+  }
+  if (sortField === "price" && sortOrder === "desc") {
+    return "Price: High to Low";
+  }
+  return "Newest";
+};
+
+const ShopHeader: React.FC<ShopHeaderProps> = ({
+  results,
+  handleSaleSort,
+  saleState,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState("Most recent");
 
   const handleToggle = () => setIsOpen(!isOpen);
 
   const handleSelect = (newValue) => {
-    setValue(newValue);
+    switch (newValue) {
+      case "Newest":
+        handleSaleSort("createdAt", "desc");
+        break;
+      case "Oldest":
+        handleSaleSort("createdAt", "asc");
+        break;
+      case "Price: Low to High":
+        handleSaleSort("price", "asc");
+        break;
+      case "Price: High to Low":
+        handleSaleSort("price", "desc");
+        break;
+      default:
+        handleSaleSort("createdAt", "desc");
+    }
     setIsOpen(false);
   };
+
   return (
     <Flex
       justifyContent="space-between"
@@ -31,12 +69,17 @@ const ShopHeader: React.FC<ShopHeaderProps> = ({ results }) => {
           Sort by
         </Text>
         <Select
-          value={value}
-          options={["Most recent", "Most popular ", "Latest release"]}
+          value={getValue(saleState.sortOrder, saleState.sortField)}
+          options={[
+            "Newest",
+            "Oldest",
+            "Price: Low to High",
+            "Price: High to Low",
+          ]}
           handleSelect={(newValue) => handleSelect(newValue)}
           isOpen={isOpen}
           handleToggle={handleToggle}
-          width="11.25rem"
+          width="14.25rem"
         />
       </Flex>
     </Flex>

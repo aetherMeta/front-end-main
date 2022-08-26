@@ -16,8 +16,11 @@ interface ProductImagesProps {
 }
 
 const StyledCarouselProvider = styled(CarouselProvider)`
-  width: 37.5rem;
-  height: 40rem;
+  width: 20rem;
+  height: auto;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: 37.5rem;
+  }
 `;
 
 const StyledImage = styled(Image)`
@@ -35,7 +38,7 @@ const StyledDotGroup = styled(DotGroup)`
     height: 0.625rem;
     padding: 0;
     background-color: ${({ theme }) =>
-      theme.colors.primary}; //Change back to lightgrwey
+      theme.colors.lightGrey}; //Change back to lightgrwey
     &--selected {
       background-color: ${({ theme }) => theme.colors.primary};
     }
@@ -44,20 +47,37 @@ const StyledDotGroup = styled(DotGroup)`
   }
 `;
 
+const StyledDivider = styled.div`
+  width: 1rem;
+  height: 1rem;
+`;
+
+const Container = styled.div`
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    margin-top: 0rem;
+  }
+`;
+
 const ProductImages: React.FC<ProductImagesProps> = ({
   saleState,
   saleData,
 }) => {
   if (saleState.isLoading || !saleState.isLoaded) return <></>;
+  const images = [
+    saleData.nft.asset.url,
+    ...saleData.nft.nftImages.map(({ url }) => url),
+  ];
   return (
-    <>
+    <Container>
       <StyledCarouselProvider
         naturalSlideWidth={640}
         naturalSlideHeight={600}
-        totalSlides={[saleData.nft.asset.url].length}
+        totalSlides={images.length}
       >
         <Slider>
-          {[saleData.nft.asset.url].map((image, index) => (
+          {images.map((image, index) => (
             <Slide index={index}>
               <StyledImage
                 src={image}
@@ -67,9 +87,10 @@ const ProductImages: React.FC<ProductImagesProps> = ({
             </Slide>
           ))}
         </Slider>
+        <StyledDivider />
         <StyledDotGroup />
       </StyledCarouselProvider>
-    </>
+    </Container>
   );
 };
 

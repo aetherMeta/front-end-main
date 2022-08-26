@@ -15,7 +15,6 @@ const Card = styled.div`
   padding: 0.75rem 0.75rem 2rem;
   border-radius: 1.625rem;
   background-color: ${({ theme }) => theme.colors.white};
-  
 `;
 const Image = styled.div<{ image: string }>`
   height: 16.5rem;
@@ -53,6 +52,9 @@ const CollectionCard: React.FC<CollectionCardProps> = ({ item }) => {
     };
   }, [item, setCountdown]);
 
+  // const handleClick = (id) => {
+  //   history.push(`/product/${id}`);
+  // };
   return (
     <Card>
       <Image image={item.image} />

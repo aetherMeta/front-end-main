@@ -11,6 +11,7 @@ export type { Attribute } from './models/Attribute';
 export type { AttributeDto } from './models/AttributeDto';
 export type { ChallengeRequestBodyDto } from './models/ChallengeRequestBodyDto';
 export type { ChallengeResponseDto } from './models/ChallengeResponseDto';
+export type { CollectionFilter } from './models/CollectionFilter';
 export type { CollectionResponse } from './models/CollectionResponse';
 export type { ComissionDto } from './models/ComissionDto';
 export type { CreateCollectionDto } from './models/CreateCollectionDto';

@@ -58,6 +58,7 @@ const Debug: React.FC = () => {
     tokenV: 0,
     tokenR: "",
     tokenS: "",
+    files: [],
     chainId: 4,
   };
 
@@ -98,6 +99,13 @@ const Debug: React.FC = () => {
       ...primarySale,
       [name]: value,
     });
+    if (name === "files") {
+      console.log(e.target);
+      setPrimarySaleValues({
+        ...primarySale,
+        [name]: Array.from(e.target.files),
+      });
+    }
   };
 
   const handleIpfsInputChange = (e) => {
@@ -127,7 +135,6 @@ const Debug: React.FC = () => {
   };
 
   const submitSale = async () => {
-    console.log(primarySale.uri);
     const sale = await generatePrimarySale(
       await library.provider,
       account,
@@ -228,6 +235,14 @@ const Debug: React.FC = () => {
             placeholder="price"
             name="price"
             value={primarySale.price}
+            onChange={handlePrimarySaleInputChange}
+          />
+          <Input
+            type="file"
+            placeholder="files"
+            name="files"
+            multiple
+            // value={ipfsValues.file}
             onChange={handlePrimarySaleInputChange}
           />
         </Flex>

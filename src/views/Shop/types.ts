@@ -4,9 +4,9 @@ export interface Range {
 }
 
 export const availabilities = {
-  all: "All",
-  available: "Available",
-  sold: "Sold",
+  all: "ALL",
+  available: "AVAILABLE",
+  sold: "SOLD",
 } as const;
 
 export const sales = {
@@ -28,9 +28,10 @@ export const medias = {
 } as const;
 
 export const sorts = {
-  recent: "Most recent",
-  popular: "Most popular",
-  release: "Latest release",
+  newest: "Newest",
+  oldest: "Oldest",
+  priceLow: "Price: Low to High",
+  priceHigh: "Price: High to Low",
 } as const;
 
 export type Availability = typeof availabilities[keyof typeof availabilities];

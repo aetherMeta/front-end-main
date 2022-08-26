@@ -1,33 +1,34 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { ethers } from "ethers";
 import {
   Flex,
   Text,
   Button,
   RangeSlider,
   Radio,
-  Checkbox,
+  // Checkbox,
   Panel,
   usePanel,
   AddIcon,
 } from "@aethermeta/uikit";
 import { addComma } from "utils/number";
+import { SortOrder, SortField, SaleState, SaleFilters } from "store/types";
 import {
   Availability,
   Sort,
   availabilities,
-  sales,
-  types,
-  medias,
+  // sales,
+  // types,
+  // medias,
   sorts,
 } from "../types";
 
 interface ShopFiltersProps {
   total?: number;
-  handleSort: () => void;
-  handleApply: () => void;
-  // TODO: use once hooked up with backend
-  // handleApply: (filter: Filter) => void;
+  saleState: SaleState;
+  handleSaleSort: (sortField: SortField, sortOrder: SortOrder) => void;
+  handleApply: (filters: SaleFilters) => void;
 }
 
 interface PanelProps {
@@ -45,15 +46,20 @@ const InputFlex = styled(Flex)`
   gap: 0.625rem;
 `;
 
+const StyledContainer = styled.div`
+  height: calc(100% - 49px);
+`;
+
 const ShopFiltersTablet: React.FC<ShopFiltersProps> = ({
   total,
+  saleState,
   handleApply,
-  handleSort,
+  handleSaleSort,
 }) => {
   const FiltersPanel: React.FC<PanelProps> = ({ title, onDismiss }) => {
     // ETH range
-    const [value1, setValue1] = useState(5);
-    const [value2, setValue2] = useState(15);
+    const [value1, setValue1] = useState(0);
+    const [value2, setValue2] = useState(20);
 
     // Availability
     const [radio, setRadio] = useState<Availability>(availabilities.all);
@@ -63,103 +69,105 @@ const ShopFiltersTablet: React.FC<ShopFiltersProps> = ({
       setRadio(value);
     };
 
-    // Sale
-    const [saleState, setSaleState] = useState(
-      new Array(Object.keys(sales).length).fill(false)
-    );
+    // // Sale
+    // const [saleState, setSaleState] = useState(
+    //   new Array(Object.keys(sales).length).fill(false)
+    // );
 
-    const handleSaleChange = (position) => {
-      const updatedCheckedState = saleState.map((item, index) =>
-        index === position ? !item : item
-      );
-      setSaleState(updatedCheckedState);
-    };
+    // const handleSaleChange = (position) => {
+    //   const updatedCheckedState = saleState.map((item, index) =>
+    //     index === position ? !item : item
+    //   );
+    //   setSaleState(updatedCheckedState);
+    // };
 
-    // Goods
-    const [goodsState, setGoodsState] = useState(
-      new Array(Object.keys(types).length).fill(false)
-    );
+    // // Goods
+    // const [goodsState, setGoodsState] = useState(
+    //   new Array(Object.keys(types).length).fill(false)
+    // );
 
-    const handleGoodsChange = (position) => {
-      const updatedCheckedState = goodsState.map((item, index) =>
-        index === position ? !item : item
-      );
-      setGoodsState(updatedCheckedState);
-    };
+    // const handleGoodsChange = (position) => {
+    //   const updatedCheckedState = goodsState.map((item, index) =>
+    //     index === position ? !item : item
+    //   );
+    //   setGoodsState(updatedCheckedState);
+    // };
 
-    // Medias
-    const [mediaState, setMediaState] = useState(
-      new Array(Object.keys(medias).length).fill(false)
-    );
+    // // Medias
+    // const [mediaState, setMediaState] = useState(
+    //   new Array(Object.keys(medias).length).fill(false)
+    // );
 
-    const handleMediaChange = (position) => {
-      const updatedCheckedState = mediaState.map((item, index) =>
-        index === position ? !item : item
-      );
-      setMediaState(updatedCheckedState);
-    };
+    // const handleMediaChange = (position) => {
+    //   const updatedCheckedState = mediaState.map((item, index) =>
+    //     index === position ? !item : item
+    //   );
+    //   setMediaState(updatedCheckedState);
+    // };
 
     // Clear
     const handleClear = () => {
-      setValue1(5);
-      setValue2(15);
+      setValue1(0);
+      setValue2(20);
       setRadio(availabilities.all);
-      setSaleState(new Array(Object.keys(sales).length).fill(false));
-      setGoodsState(new Array(Object.keys(types).length).fill(false));
-      setMediaState(new Array(Object.keys(medias).length).fill(false));
+      // setSaleState(new Array(Object.keys(sales).length).fill(false));
+      // setGoodsState(new Array(Object.keys(types).length).fill(false));
+      // setMediaState(new Array(Object.keys(medias).length).fill(false));
     };
     return (
       <Panel title={title} onDismiss={onDismiss}>
-        <Text variant="label" mb="1rem">
-          PRICE RANGE
-        </Text>
-        <RangeSlider
-          name="slider"
-          min={0}
-          max={20}
-          value1={value1}
-          value2={value2}
-          onValue1Changed={setValue1}
-          onValue2Changed={setValue2}
-          valueLabel="label"
-          height="2.25rem"
-        />
-        <Flex justifyContent="space-between">
-          <Text variant="bodySmall">{`${
-            Math.round(value1 * 100) / 100
-          } ETH`}</Text>
-          <Text variant="bodySmall">{`${
-            Math.round(value2 * 100) / 100
-          } ETH`}</Text>
-        </Flex>
-        <Text variant="label" mt="2rem">
-          AVAILABILITY
-        </Text>
-        <InputFlex flexDirection="column">
-          {Object.keys(availabilities).map((key) => (
-            <label
-              htmlFor={availabilities[key]}
-              style={{
-                display: "block",
-                cursor: "pointer",
-              }}
-            >
-              <Flex>
-                <Radio
-                  id={availabilities[key]}
-                  scale="sm"
-                  value={availabilities[key]}
-                  onChange={handleChange}
-                  checked={radio === availabilities[key]}
-                />
-                <Text variant="label" ml="0.625rem">
-                  {availabilities[key]}
-                </Text>
-              </Flex>
-            </label>
-          ))}
-        </InputFlex>
-        <Text variant="label" mt="2rem">
+        <StyledContainer>
+          <Flex flexDirection="column" height="100%">
+            <Text variant="label" mb="1rem">
+              PRICE RANGE
+            </Text>
+            <RangeSlider
+              name="slider"
+              min={0}
+              max={20}
+              value1={value1}
+              value2={value2}
+              onValue1Changed={setValue1}
+              onValue2Changed={setValue2}
+              valueLabel="label"
+              height="2.25rem"
+            />
+            <Flex justifyContent="space-between">
+              <Text variant="bodySmall">{`${
+                Math.round(value1 * 100) / 100
+              } ETH`}</Text>
+              <Text variant="bodySmall">{`${
+                Math.round(value2 * 100) / 100
+              } ETH`}</Text>
+            </Flex>
+            <Text variant="label" mt="2rem">
+              AVAILABILITY
+            </Text>
+            <InputFlex flexDirection="column">
+              {Object.keys(availabilities).map((key) => (
+                <label
+                  htmlFor={availabilities[key]}
+                  style={{
+                    display: "block",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Flex>
+                    <Radio
+                      id={availabilities[key]}
+                      scale="sm"
+                      value={availabilities[key]}
+                      onChange={handleChange}
+                      checked={radio === availabilities[key]}
+                    />
+                    <Text variant="label" ml="0.625rem">
+                      {availabilities[key]}
+                    </Text>
+                  </Flex>
+                </label>
+              ))}
+            </InputFlex>
+            {/* <Text variant="label" mt="2rem">
           SALES TYPE
         </Text>
         <InputFlex flexDirection="column">
@@ -236,58 +244,120 @@ const ShopFiltersTablet: React.FC<ShopFiltersProps> = ({
               </Flex>
             </label>
           ))}
-        </InputFlex>
-        <Button
-          variant="text"
-          width="3.375rem"
-          padding="0"
-          onClick={handleClear}
-        >
-          <Text variant="bodySmall">CLEAR</Text>
-        </Button>
-        <Button onClick={handleApply}>See results</Button>
+        </InputFlex> */}
+            <Flex flexDirection="column" style={{ marginTop: "auto" }}>
+              <Button
+                variant="text"
+                width="3.375rem"
+                padding="0"
+                onClick={handleClear}
+              >
+                <Text variant="bodySmall">CLEAR</Text>
+              </Button>
+              <Button
+                onClick={() => {
+                  handleApply({
+                    price: {
+                      gt: ethers.utils.parseUnits(value1.toString()).toString(),
+                      lt: ethers.utils.parseUnits(value2.toString()).toString(),
+                    },
+                    availability: radio,
+                  });
+                  onDismiss();
+                }}
+              >
+                See results
+              </Button>
+            </Flex>
+          </Flex>
+        </StyledContainer>
       </Panel>
     );
   };
 
   const SortPanel: React.FC<PanelProps> = ({ title, onDismiss }) => {
+    const getValue = (sortOrder: SortOrder, sortField: SortField) => {
+      if (sortField === "createdAt" && sortOrder === "desc") {
+        return "Newest";
+      }
+      if (sortField === "createdAt" && sortOrder === "asc") {
+        return "Oldest";
+      }
+      if (sortField === "price" && sortOrder === "asc") {
+        return "Price: Low to High";
+      }
+      if (sortField === "price" && sortOrder === "desc") {
+        return "Price: High to Low";
+      }
+      return "Newest";
+    };
     // Sort
-    const [sort, setSort] = useState<Sort>(sorts.recent);
+    const [sort, setSort] = useState<Sort>(
+      getValue(saleState.sortOrder, saleState.sortField)
+    );
 
     const handleChange = (evt) => {
       const { value } = evt.target;
       setSort(value);
     };
 
+    const handleSelect = () => {
+      switch (sort) {
+        case "Newest":
+          handleSaleSort("createdAt", "desc");
+          break;
+        case "Oldest":
+          handleSaleSort("createdAt", "asc");
+          break;
+        case "Price: Low to High":
+          handleSaleSort("price", "asc");
+          break;
+        case "Price: High to Low":
+          handleSaleSort("price", "desc");
+          break;
+        default:
+          handleSaleSort("createdAt", "desc");
+      }
+    };
+
     return (
       <Panel title={title} onDismiss={onDismiss}>
-        <InputFlex flexDirection="column">
-          {Object.keys(sorts).map((key) => (
-            <label
-              htmlFor={sorts[key]}
-              style={{
-                display: "block",
-                cursor: "pointer",
+        <StyledContainer>
+          <InputFlex flexDirection="column" style={{ height: "100%" }}>
+            {Object.keys(sorts).map((key) => (
+              <label
+                htmlFor={sorts[key]}
+                style={{
+                  display: "block",
+                  cursor: "pointer",
+                }}
+              >
+                <Flex>
+                  <Radio
+                    id={sorts[key]}
+                    scale="sm"
+                    value={sorts[key]}
+                    onChange={handleChange}
+                    checked={sort === sorts[key]}
+                  />
+                  <Text variant="label" ml="0.625rem">
+                    {sorts[key]}
+                  </Text>
+                </Flex>
+              </label>
+            ))}
+            <Button
+              size="lg"
+              onClick={() => {
+                handleSelect();
+                onDismiss();
               }}
+              style={{ marginTop: "auto", width: "100%" }}
             >
-              <Flex>
-                <Radio
-                  id={sorts[key]}
-                  scale="sm"
-                  value={sorts[key]}
-                  onChange={handleChange}
-                  checked={sort === sorts[key]}
-                />
-                <Text variant="label" ml="0.625rem">
-                  {sorts[key]}
-                </Text>
-              </Flex>
-            </label>
-          ))}
-        </InputFlex>
-        <Button size="lg" onClick={handleSort}>
-          Apply
-        </Button>
+              Apply
+            </Button>
+          </InputFlex>
+        </StyledContainer>
       </Panel>
     );
   };

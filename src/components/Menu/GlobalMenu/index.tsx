@@ -2,8 +2,6 @@ import React from "react";
 import Disclaimer from "components/DisclaimerModel";
 import { Button, Flex, useModal } from "@aethermeta/uikit";
 import { ConnectorNames } from "utils/web3React";
-import PartnershipModal, { Values } from "components/PartnershipModal";
-import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
 
 import { useUser } from "store/user/hooks";
 import useAuth from "hooks/useAuth";
@@ -18,18 +16,6 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
 
   const { data: userData, userDataLoaded } = useUser();
   const { login } = useAuth();
-
-  const [onPresent] = useModal(
-    <PartnershipModal
-      onSubmit={(e, values: Values) => onSubmit(e, values)}
-      fromMetaverse
-    />
-  );
-
-  const onSubmit = async (e, values: Values) => {
-    e.preventDefault();
-    await postContactUsEmail(values);
-  };
 
   const agreement = () => {
     try {
@@ -55,7 +41,8 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
     buttonProps = userData.metaverseAccess // boolean; checks if user is whitelisted
       ? isAgreed()
       : {
-          onClick: onPresent, // Opens form if not whitelisted and user agreed to disclaimer
+          // onClick: onPresent, // Opens form if not whitelisted and user agreed to disclaimer
+          onClick: isAgreed(),
         };
   } else {
     buttonProps = {
@@ -65,7 +52,13 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
 
   return (
     <Flex width={maxWidth ? "100%" : "auto"}>
-      <Link to={userDataLoaded && userData.metaverseAccess && "/metaverse"}>
+      <Link
+        to={
+          "/metaverse"
+          // userDataLoaded && userData.metaverseAccess ? "/metaverse" : ""
+        }
+        style={{ width: "100%" }}
+      >
         <Button
           scale="md"
           as="a"

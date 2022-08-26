@@ -8,7 +8,6 @@ import { RefreshContextProvider } from "contexts/RefreshContext";
 import { ToastsProvider } from "contexts/ToastsContext";
 import { getLibrary } from "utils/web3React";
 import { AccessTokenProvider } from "./contexts/AccessTokenContext";
-import MetamaskProvider from "./MetamaskProvider";
 
 const ThemeProviderWrapper = (props) => {
   return <ThemeProvider theme={light} {...props} />;
@@ -23,9 +22,7 @@ const Providers: React.FC = ({ children }) => {
             <RefreshContextProvider>
               <AccessTokenProvider>
                 <ModalProvider>
-                  <PanelProvider>
-                    <MetamaskProvider>{children}</MetamaskProvider>
-                  </PanelProvider>
+                  <PanelProvider>{children}</PanelProvider>
                 </ModalProvider>
               </AccessTokenProvider>
             </RefreshContextProvider>

@@ -17,11 +17,16 @@ import { Sort, sorts } from "../types";
 
 interface DetailFiltersProps {
   total?: number;
-  handleSort: () => void;
+  sortField: string;
+  sortOrder: string;
+  imageUrl: string;
+  description: string;
+  name: string;
+  handleSort: (args: { sortField: string; sortOrder: string }) => void;
 }
 
 const Description = styled(Text)`
-  width: 237px;
+  width: 310px;
   margin-bottom: 2rem;
 `;
 const StyledPanelButton = styled(Button)`
@@ -31,6 +36,7 @@ const StyledPanelButton = styled(Button)`
 
 const InputFlex = styled(Flex)`
   margin-top: 1rem;
+  height: 100%;
   gap: 0.625rem;
 `;
 
@@ -41,17 +47,66 @@ interface PanelProps {
 
 const DetailHeaderMobile: React.FC<DetailFiltersProps> = ({
   total,
+  sortField,
+  sortOrder,
+  name,
+  description,
+  imageUrl,
   handleSort,
 }) => {
   const SortPanel: React.FC<PanelProps> = ({ title, onDismiss }) => {
     // Sort
-    const [sort, setSort] = useState<Sort>(sorts.recent);
+    const sortValue = (): Sort => {
+      if (sortField === "createdAt") {
+        if (sortOrder === "asc") return sorts.oldest;
+        return sorts.newest;
+      }
+      if (sortField === "price") {
+        if (sortOrder === "asc") return sorts.priceAsc;
+        return sorts.priceDesc;
+      }
+      return sorts.newest;
+    };
 
+    const [sort, setSort] = useState<Sort>(sortValue());
     const handleChange = (evt) => {
       const { value } = evt.target;
       setSort(value);
     };
-
+    const handleApply = () => {
+      switch (sort) {
+        case "Newest":
+          handleSort({
+            sortField: "createdAt",
+            sortOrder: "desc",
+          });
+          break;
+        case "Oldest":
+          handleSort({
+            sortField: "createdAt",
+            sortOrder: "asc",
+          });
+          break;
+        case "Price: Low to High":
+          handleSort({
+            sortField: "price",
+            sortOrder: "asc",
+          });
+          break;
+        case "Price: High to Low":
+          handleSort({
+            sortField: "price",
+            sortOrder: "desc",
+          });
+          break;
+        default:
+          handleSort({
+            sortField: "createdAt",
+            sortOrder: "desc",
+          });
+      }
+      onDismiss();
+    };
     return (
       <Panel title={title} onDismiss={onDismiss}>
         <InputFlex flexDirection="column">
@@ -77,10 +132,17 @@ const DetailHeaderMobile: React.FC<DetailFiltersProps> = ({
               </Flex>
             </label>
           ))}
+          <Button
+            mt="auto"
+            mb="1rem"
+            size="lg"
+            onClick={() => {
+              handleApply();
+            }}
+          >
+            Apply
+          </Button>
         </InputFlex>
-        <Button size="lg" onClick={handleSort}>
-          Apply
-        </Button>
       </Panel>
     );
   };
@@ -91,17 +153,23 @@ const DetailHeaderMobile: React.FC<DetailFiltersProps> = ({
         <ChevronLeftIcon />
         Back to collections
       </Link>
-      <Flex justifyContent="space-between">
-        <Text variant="h2Bold" mb="1rem">
-          MCLAREN
-        </Text>
-        <Text variant="label">{`${addComma(total)} RESULTS`}</Text>
-      </Flex>
-      <Image src="/images/mclarenLogo.svg" width={310} height={237} mb="1rem" />
-      <Description>
-        First ever digital collectables are now on sale and you can unlock your
-        first piece of the MCL35M for free!
-      </Description>
+      <Text variant="h2Bold">{name}</Text>
+      <Text
+        style={{
+          textAlign: "right",
+          marginBottom: "1rem",
+          whiteSpace: "nowrap",
+        }}
+        variant="label"
+      >{`${addComma(total)} RESULTS`}</Text>
+      <Image
+        src={imageUrl}
+        width={310}
+        height={237}
+        mb="1rem"
+        imageStyle={{ borderRadius: "20px" }}
+      />
+      <Description>{description}</Description>
       <Flex alignItems="center">
         <StyledPanelButton
           variant="panel"

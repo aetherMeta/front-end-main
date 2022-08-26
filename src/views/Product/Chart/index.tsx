@@ -22,7 +22,9 @@ const Container = styled.div`
   padding: 1.75rem 2rem;
   margin-top: 2rem;
   width: 51rem;
-  margin-left: 26.5rem;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    margin-left: 26.5rem;
+  }
 `;
 
 const TableContainer = styled(Grid)`

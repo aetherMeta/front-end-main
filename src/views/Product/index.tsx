@@ -8,8 +8,7 @@ import ProductImages from "./ProductImages";
 import ProductActions from "./ProductActions";
 import ProductDescriptions from "./ProductDescriptions";
 import Chart from "./Chart";
-import MoreCollection from "./MoreCollection";
-import { chartTitle, contents, testItems } from "./TestConfig/config";
+import { chartTitle, contents } from "./TestConfig/config";
 
 const Container = styled.div`
   padding: 80px 22px 80px;
@@ -28,14 +27,18 @@ const StyledPage = styled(Page)`
 `;
 
 const StyledFlex = styled(Flex)`
-  gap: 4rem;
   margin-top: 2.875rem;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  ${({ theme }) => theme.mediaQueries.lg} {
+    gap: 4rem;
+    flex-direction: row;
+  }
 `;
 
 const Product: React.FC = () => {
   const { saleState, saleData, isLoading, isLoaded } = useSales();
-  console.log(saleState);
   return (
     <StyledPage>
       {isLoading || !isLoaded ? (
@@ -47,13 +50,7 @@ const Product: React.FC = () => {
           <StyledFlex>
             <ProductImages saleState={saleState} saleData={saleData} />
             <Flex flexDirection="column">
-              <ProductActions
-                saleState={saleState}
-                saleData={saleData}
-                handleViewMetaverse={() => {
-                  return 0;
-                }}
-              />
+              <ProductActions saleState={saleState} saleData={saleData} />
               <ProductDescriptions saleState={saleState} saleData={saleData} />
             </Flex>
           </StyledFlex>
@@ -68,7 +65,7 @@ const Product: React.FC = () => {
           </Flex>
         </Container>
       )}
-      <MoreCollection items={testItems} collectionName="I am Jennifer Le" />
+      {/* <MoreCollection items={testItems} collectionName="I am Jennifer Le" /> */}
     </StyledPage>
   );
 };

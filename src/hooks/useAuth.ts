@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
+import { useWeb3React } from "@web3-react/core";
 import {
   NoEthereumProviderError,
   UserRejectedRequestError as UserRejectedRequestErrorInjected,
@@ -24,40 +24,36 @@ const useAuth = () => {
       const connector = connectorsByName[connectorID];
       if (typeof connector !== "function" || connector) {
         await activate(connector, async (error: Error) => {
-          if (error instanceof UnsupportedChainIdError) {
-            await activate(connector);
+          window.localStorage.removeItem(connectorLocalStorageKey);
+          if (error instanceof NoEthereumProviderError) {
+            toastError("Provider Error", "No provider was found");
+          } else if (error instanceof UserRejectedRequestErrorInjected) {
+            toastError(
+              "Authorization Error",
+              "Please authorize to access your account"
+            );
           } else {
-            window.localStorage.removeItem(connectorLocalStorageKey);
-            if (error instanceof NoEthereumProviderError) {
-              toastError("Provider Error", "No provider was found");
-            } else if (error instanceof UserRejectedRequestErrorInjected) {
-              toastError(
-                "Authorization Error",
-                "Please authorize to access your account"
-              );
-            } else {
-              toastError(error.name, error.message);
-            }
+            toastError(error.name, error.message);
           }
         });
-        if (
-          accessToken === undefined ||
-          accessToken === null ||
-          accessTokenAddress !== (await connector.getAccount())
-        ) {
-          await requestSignature(
-            await connector.getAccount(),
-            getLibrary(await connector.getProvider())
-          );
-        }
       } else {
         toastError("Unable to find connector", "The connector config is wrong");
+      }
+      if (
+        ((window as any).ethereum && accessToken === undefined) ||
+        accessToken === null ||
+        accessTokenAddress !== (await connector.getAccount())
+      ) {
+        await requestSignature(
+          await connector.getAccount(),
+          getLibrary(await connector.getProvider())
+        );
       }
     },
     [accessToken, accessTokenAddress, activate, requestSignature, toastError]
   );
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
     deactivate();
     accessTokenLogout();
   }, [deactivate, accessTokenLogout]);

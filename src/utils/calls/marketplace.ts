@@ -56,5 +56,5 @@ export const primaryBuy = async (
     }
   );
   const receipt = await tx.wait();
-  return receipt.status;
+  return receipt;
 };

@@ -5,6 +5,7 @@
 export type CreatePrimarySaleDto = {
     'r': string;
     's': string;
+    files?: Array<Blob>;
     currency: string;
     amount: string;
     price: string;
