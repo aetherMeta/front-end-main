@@ -33,20 +33,28 @@ const ButtonMenuPrimaryItemFilter = styled(ButtonMenuPrimaryItem)`
 
 interface GalleryProps {
   items: Item[];
+  pageSize: number;
+  currentPage: number;
+  total: number;
+  updatePage: (page: number) => Promise<void>;
 }
 
-const GalleryMobile: React.FC<GalleryProps> = ({ items }) => {
+const GalleryMobile: React.FC<GalleryProps> = ({
+  items,
+  pageSize,
+  currentPage,
+  updatePage,
+}) => {
   const [index, setIndex] = useState(0);
 
-  const handleClick = (newIndex) => setIndex(newIndex);
+  const handleClick = (newIndex: React.SetStateAction<number>) =>
+    setIndex(newIndex);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 16;
   const shopItemsData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;
     return items.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, items]);
+  }, [currentPage, items, pageSize]);
 
   return (
     <>
@@ -54,36 +62,38 @@ const GalleryMobile: React.FC<GalleryProps> = ({ items }) => {
         <Text variant="h1Bold" mt="1rem" mr="1rem" mb="1rem">
           COLLECTIONS
         </Text>
-        <div
-          style={{
-            overflowX: "auto",
-            overflowY: "hidden",
-            scrollbarWidth: "none",
-          }}
-        >
-          <ButtonMenuPrimary
-            activeIndex={index}
-            onItemClick={handleClick}
-            scale="sm"
-            variant="subtle"
-          >
-            <ButtonMenuPrimaryItemFilter mr="1rem">
-              Haute couture clothing
-            </ButtonMenuPrimaryItemFilter>
-            <ButtonMenuPrimaryItemFilter mr="1rem">
-              Accessories
-            </ButtonMenuPrimaryItemFilter>
-            <ButtonMenuPrimaryItemFilter mr="1rem">
-              Watches & Jewelry
-            </ButtonMenuPrimaryItemFilter>
-            <ButtonMenuPrimaryItemFilter mr="1rem">
-              Homes and estates
-            </ButtonMenuPrimaryItemFilter>
-            <ButtonMenuPrimaryItemFilter mr="1rem">
-              automobile
-            </ButtonMenuPrimaryItemFilter>
-          </ButtonMenuPrimary>
-        </div>
+        {
+          // <div
+          //   style={{
+          //     overflowX: "auto",
+          //     overflowY: "hidden",
+          //     scrollbarWidth: "none",
+          //   }}
+          // >
+          //   <ButtonMenuPrimary
+          //     activeIndex={index}
+          //     onItemClick={handleClick}
+          //     scale="sm"
+          //     variant="subtle"
+          //   >
+          //     <ButtonMenuPrimaryItemFilter mr="1rem">
+          //       Haute couture clothing
+          //     </ButtonMenuPrimaryItemFilter>
+          //     <ButtonMenuPrimaryItemFilter mr="1rem">
+          //       Accessories
+          //     </ButtonMenuPrimaryItemFilter>
+          //     <ButtonMenuPrimaryItemFilter mr="1rem">
+          //       Watches & Jewelry
+          //     </ButtonMenuPrimaryItemFilter>
+          //     <ButtonMenuPrimaryItemFilter mr="1rem">
+          //       Homes and estates
+          //     </ButtonMenuPrimaryItemFilter>
+          //     <ButtonMenuPrimaryItemFilter mr="1rem">
+          //       automobile
+          //     </ButtonMenuPrimaryItemFilter>
+          //   </ButtonMenuPrimary>
+          // </div>
+        }
       </Flex>
       <GalleryGrid>
         {shopItemsData.map((item) => (
@@ -95,7 +105,7 @@ const GalleryMobile: React.FC<GalleryProps> = ({ items }) => {
           currentPage={currentPage}
           totalCount={items.length}
           pageSize={pageSize}
-          onPageChange={(page) => setCurrentPage(page)}
+          onPageChange={(page: number) => updatePage(page)}
         />
       </PaginationContainer>
     </>

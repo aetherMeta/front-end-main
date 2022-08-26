@@ -51,7 +51,7 @@ const App: React.FC = () => {
           <Route path="/collections" exact>
             <Collections />
           </Route>
-          <Route path="/collectionDetails" exact>
+          <Route path="/collection/:id" exact>
             <CollectionDetails />
           </Route>
 

@@ -3,9 +3,9 @@
 /* eslint-disable */
 
 export type CreateCollectionDto = {
-    address: string;
+    file: Blob;
     name: string;
+    description?: string;
     chainId: number;
-    description: string;
 };
 

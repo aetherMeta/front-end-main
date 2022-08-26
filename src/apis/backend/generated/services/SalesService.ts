@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { CollectionFilter } from '../models/CollectionFilter';
 import type { CreatePrimarySaleDto } from '../models/CreatePrimarySaleDto';
 import type { CreateSecondarySaleDto } from '../models/CreateSecondarySaleDto';
 import type { DateFilterValues } from '../models/DateFilterValues';
@@ -100,15 +101,15 @@ export class SalesService {
      * @throws ApiError
      */
     public static primarySaleControllerCreate({
-        requestBody,
+        formData,
     }: {
-        requestBody: CreatePrimarySaleDto,
+        formData: CreatePrimarySaleDto,
     }): CancelablePromise<PrimarySaleResponse> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/sales/primary',
-            body: requestBody,
-            mediaType: 'application/json',
+            formData: formData,
+            mediaType: 'multipart/form-data',
         });
     }
 
@@ -125,6 +126,7 @@ export class SalesService {
         createdAt,
         name,
         price,
+        collection,
         availability = 'ALL',
         updatedAt,
     }: {
@@ -136,6 +138,7 @@ export class SalesService {
         createdAt?: DateFilterValues,
         name?: FilterValues,
         price?: FilterValues,
+        collection?: CollectionFilter,
         availability?: 'AVAILABLE' | 'SOLD' | 'ALL',
         updatedAt?: DateFilterValues,
     }): CancelablePromise<PaginatedResponse> {
@@ -151,6 +154,7 @@ export class SalesService {
                 'createdAt': createdAt,
                 'name': name,
                 'price': price,
+                'collection': collection,
                 'availability': availability,
                 'updatedAt': updatedAt,
             },

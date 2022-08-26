@@ -12,6 +12,7 @@ export type UserNFTResponse = {
     collections: CollectionResponse;
     attributes: Array<AttributeDto>;
     asset: AssetDto;
+    nftImages: Array<AssetDto>;
     owned: string;
     chainId: number;
     address: string;
