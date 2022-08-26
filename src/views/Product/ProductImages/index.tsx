@@ -38,7 +38,7 @@ const StyledDotGroup = styled(DotGroup)`
     height: 0.625rem;
     padding: 0;
     background-color: ${({ theme }) =>
-      theme.colors.primary}; //Change back to lightgrwey
+      theme.colors.lightGrey}; //Change back to lightgrwey
     &--selected {
       background-color: ${({ theme }) => theme.colors.primary};
     }
@@ -65,15 +65,19 @@ const ProductImages: React.FC<ProductImagesProps> = ({
   saleData,
 }) => {
   if (saleState.isLoading || !saleState.isLoaded) return <></>;
+  const images = [
+    saleData.nft.asset.url,
+    ...saleData.nft.nftImages.map(({ url }) => url),
+  ];
   return (
     <Container>
       <StyledCarouselProvider
         naturalSlideWidth={640}
         naturalSlideHeight={600}
-        totalSlides={[saleData.nft.asset.url].length}
+        totalSlides={images.length}
       >
         <Slider>
-          {[saleData.nft.asset.url].map((image, index) => (
+          {images.map((image, index) => (
             <Slide index={index}>
               <StyledImage
                 src={image}

@@ -49,7 +49,7 @@ const ShopItems: React.FC<ShopItemsProps> = ({
                 id: item.id,
                 name: item.name,
                 highestBid: item.price,
-                image: "url(/images/shopImage.svg)",
+                image: `url(${item.nft.asset.url})`,
                 startTime: new Date(),
                 mintTime: new Date(),
               }}

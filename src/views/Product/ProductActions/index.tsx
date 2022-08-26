@@ -15,6 +15,7 @@ import PartnershipModal, { Values } from "components/PartnershipModal";
 import Disclaimer from "components/DisclaimerModel";
 import { useUser } from "store/user/hooks";
 import useAuth from "hooks/useAuth";
+import useToast from "hooks/useToast";
 
 interface ProductActionsProps {
   saleState: SaleState;
@@ -94,6 +95,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
     };
   }
   const { onBuy } = usePrimaryBuy();
+  const { toastError, toastSuccess } = useToast();
   const { account } = useWeb3React();
   if (saleState.isLoading || !saleState.isLoaded) return <></>;
   return (
@@ -139,7 +141,20 @@ const ProductActions: React.FC<ProductActionsProps> = ({
             variant="primary"
             width="100%"
             disabled={saleData.amount === saleData.amountSold}
-            onClick={() => onBuy(saleData, 1)}
+            onClick={async () => {
+              try {
+                const receipt = await onBuy(saleData, 1);
+                if (receipt) {
+                  toastSuccess(
+                    "Transaction Success!",
+                    ""
+                    // `Tansaction Hash:  ${receipt.transactionHash}`
+                  );
+                }
+              } catch {
+                toastError("Transaction Failure", "Something went wrong.");
+              }
+            }}
           >
             {saleData.amount === saleData.amountSold ? "Sold Out" : "Purchase"}
           </Button>

@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useMarketplace } from "hooks/useContract";
-import { primaryBuy } from "../../../utils/calls/marketplace";
+import { primaryBuy } from "utils/calls/marketplace";
 
 const usePrimaryBuy = () => {
   const marketplaceContract = useMarketplace();
