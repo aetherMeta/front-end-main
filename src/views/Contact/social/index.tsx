@@ -72,7 +72,12 @@ const Social: React.FC = () => {
 
   const validate = useCallback((): boolean => {
     let isValid = true;
-    const modifyErrors = initialErrors;
+    const modifyErrors = {
+      name: false,
+      company: false,
+      email: false,
+      description: false,
+    };
     Object.entries(values).forEach((entry) => {
       const [key, value] = entry;
       if (value === initialValues[key]) {
