@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useMatchBreakpoints, Flex, Spinner } from "@aethermeta/uikit";
 import Page from "components/Layout/Page";
 import {
+  useUpdateSalesSort,
   useUpdateSalesFilter,
   useDispatchSalePublicData,
   useSales,
@@ -24,6 +25,7 @@ const Container = styled.div`
   background-position: right top;
   gap: 6.875rem;
   background-color: ${({ theme }) => theme.colors.background};
+  min-height: 52rem;
   ${({ theme }) => theme.mediaQueries.lg} {
     padding 124px 70px 142px;
   }
@@ -32,23 +34,23 @@ const Container = styled.div`
 const Shop: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();
   const isSmallScreen = isTablet || isMobile;
+  const { handleSort } = useUpdateSalesSort();
   const { handleFilter } = useUpdateSalesFilter();
   useDispatchSalePublicData();
   const { data, saleState, total, pageSize, currentPage, isLoading, isLoaded } =
     useSales();
   const shopItemsData = data[currentPage];
   const { updateSalePage } = useUpdateSalePage();
-  const handleApply = (filters) => {
-    handleFilter(filters);
-
-    // Refetch?
+  const handleApply = (filter) => {
+    handleFilter(filter);
+  };
+  const handleSaleSort = (sortField, sortOrder) => {
+    handleSort(sortField, sortOrder);
   };
   return (
     <Page>
       <Container>
-        {!isSmallScreen && (
-          <ShopFilters total={total} handleApply={handleApply} />
-        )}
+        {!isSmallScreen && <ShopFilters handleApply={handleApply} />}
         {isLoading || !isLoaded ? (
           <Flex width="100%" justifyContent="center">
             <Spinner size={108} />
@@ -58,14 +60,15 @@ const Shop: React.FC = () => {
             {isSmallScreen ? (
               <ShopFiltersTablet
                 total={total}
-                handleSort={() => console.log("handleSort Tablet")}
-                handleApply={() => console.log("handleApply Tablet")}
+                saleState={saleState}
+                handleSaleSort={handleSaleSort}
+                handleApply={handleApply}
               />
             ) : (
               <ShopHeader
                 saleState={saleState}
                 results={total}
-                handleApply={handleApply}
+                handleSaleSort={handleSaleSort}
               />
             )}
             <ShopItems

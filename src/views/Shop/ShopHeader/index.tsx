@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Flex, Text, Select } from "@aethermeta/uikit";
 import { addComma } from "utils/number";
-import { SaleFilters, SortOrder, SortField, SaleState } from "store/types";
+import { SortOrder, SortField, SaleState } from "store/types";
 
 interface ShopHeaderProps {
   results?: number;
-  handleApply: (filters: SaleFilters) => void;
+  handleSaleSort: (sortField: SortField, sortOrder: SortOrder) => void;
   saleState: SaleState;
 }
 
@@ -27,49 +27,30 @@ const getValue = (sortOrder: SortOrder, sortField: SortField) => {
 
 const ShopHeader: React.FC<ShopHeaderProps> = ({
   results,
-  handleApply,
+  handleSaleSort,
   saleState,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(
-    getValue(saleState.filters.sortOrder, saleState.filters.sortField)
-  );
 
   const handleToggle = () => setIsOpen(!isOpen);
 
   const handleSelect = (newValue) => {
     switch (newValue) {
       case "Newest":
-        handleApply({
-          sortField: "createdAt",
-          sortOrder: "desc",
-        });
+        handleSaleSort("createdAt", "desc");
         break;
       case "Oldest":
-        handleApply({
-          sortField: "createdAt",
-          sortOrder: "asc",
-        });
+        handleSaleSort("createdAt", "asc");
         break;
       case "Price: Low to High":
-        handleApply({
-          sortField: "price",
-          sortOrder: "asc",
-        });
+        handleSaleSort("price", "asc");
         break;
       case "Price: High to Low":
-        handleApply({
-          sortField: "price",
-          sortOrder: "desc",
-        });
+        handleSaleSort("price", "desc");
         break;
       default:
-        handleApply({
-          sortField: "createdAt",
-          sortOrder: "desc",
-        });
+        handleSaleSort("createdAt", "desc");
     }
-    setValue(newValue);
     setIsOpen(false);
   };
 
@@ -88,7 +69,7 @@ const ShopHeader: React.FC<ShopHeaderProps> = ({
           Sort by
         </Text>
         <Select
-          value={value}
+          value={getValue(saleState.sortOrder, saleState.sortField)}
           options={[
             "Newest",
             "Oldest",

@@ -22,7 +22,7 @@ import Debug from "./views/Debug";
 import Metaverse from "./views/Metaverse";
 
 const App: React.FC = () => {
-  useEagerConnect();
+  // useEagerConnect();
   useDispatchSalePublicData();
   return (
     <Router history={history}>

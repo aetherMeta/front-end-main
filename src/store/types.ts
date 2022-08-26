@@ -25,6 +25,8 @@ export interface NftState {
 export interface SaleState {
   data: { [key: number]: Sale[] };
   filters: SaleFilters;
+  sortOrder?: SortOrder;
+  sortField?: SortField;
   total: number;
   isLoading: boolean;
   isLoaded: boolean;
@@ -37,8 +39,6 @@ export interface SaleFilters {
   createdAt?: FilterValues;
   price?: FilterValues;
   availability?: Availability;
-  sortOrder?: SortOrder;
-  sortField?: SortField;
 }
 // Store state
 export interface State {

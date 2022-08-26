@@ -16,7 +16,7 @@ const initialState: SaleState = {
 // Thunks
 export const dispatchPrimarySalePublicDataAsync =
   (page: number) => async (dispatch, getState) => {
-    const { pageSize, filters } = getState().sales;
+    const { pageSize, filters, sortOrder, sortField } = getState().sales;
     // TODO find missing items,
     try {
       dispatch(setLoading());
@@ -24,6 +24,9 @@ export const dispatchPrimarySalePublicDataAsync =
         name: filters.name,
         skip: (page - 1) * pageSize,
         take: pageSize,
+        sortField,
+        sortOrder,
+        availability: filters.availability,
         price: filters.price,
         createdAt: filters.createdAt,
         updatedAt: filters.updatedAt,
@@ -95,6 +98,11 @@ export const saleSlice = createSlice({
       state.total = action.payload.total;
       state.isLoaded = true;
     },
+    setSaleSort: (state, action) => {
+      const { sortField, sortOrder } = action.payload;
+      state.sortField = sortField;
+      state.sortOrder = sortOrder;
+    },
     setSaleTotal: (state, action) => {
       state.total = action.payload.total;
     },
@@ -118,6 +126,7 @@ export const {
   setSaleTotal,
   setSalePageSize,
   setSalePage,
+  setSaleSort,
   setSaleFilters,
   setLoading,
 } = saleSlice.actions;

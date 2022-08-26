@@ -1,39 +1,36 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Flex, Text, Button, RangeSlider } from "@aethermeta/uikit";
+import { Flex, Text, Button, RangeSlider, Radio } from "@aethermeta/uikit";
 import { addComma } from "utils/number";
 import { ethers } from "ethers";
 import { SaleFilters } from "store/types";
-// import { Availability, availabilities } from "../types";
+import { Availability, availabilities } from "../types";
 
 interface ShopFiltersProps {
-  total?: number;
   handleApply: (filters: SaleFilters) => void;
-  // TODO: use once hooked up to backend
-  // handleApply: (filter: Filter) => void;
 }
 
 const StyledText = styled(Text)`
   font-weight: 700;
 `;
 
-// const InputFlex = styled(Flex)`
-//   margin-top: 1rem;
-//   gap: 0.625rem;
-// `;
+const InputFlex = styled(Flex)`
+  margin-top: 1rem;
+  gap: 0.625rem;
+`;
 
-const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
+const ShopFilters: React.FC<ShopFiltersProps> = ({ handleApply }) => {
   // ETH range
-  const [priceRangeStart, setPriceRangeStart] = useState(5);
-  const [priceRangeEnd, setPriceRangeEnd] = useState(15);
+  const [priceRangeStart, setPriceRangeStart] = useState(0);
+  const [priceRangeEnd, setPriceRangeEnd] = useState(20);
 
   // Availability
-  // const [radio, setRadio] = useState<Availability>(availabilities.all);
+  const [radio, setRadio] = useState<Availability>(availabilities.all);
 
-  // const handleChange = (evt) => {
-  //   const { value } = evt.target;
-  //   setRadio(value);
-  // };
+  const handleChange = (evt) => {
+    const { value } = evt.target;
+    setRadio(value);
+  };
 
   // Sale
   // const [saleState, setSaleState] = useState(
@@ -73,9 +70,9 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
 
   // Clear
   const handleClear = () => {
-    setPriceRangeStart(5);
-    setPriceRangeEnd(15);
-    // setRadio(availabilities.all);
+    setPriceRangeStart(0);
+    setPriceRangeEnd(20);
+    setRadio(availabilities.all);
     // setSaleState(new Array(Object.keys(sales).length).fill(false));
     // setGoodsState(new Array(Object.keys(types).length).fill(false));
     // setMediaState(new Array(Object.keys(medias).length).fill(false));
@@ -84,9 +81,6 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
   return (
     <Flex flexDirection="column" justifyContent="flex-start" mt="5rem">
       <Text variant="h1Bold">NFTS</Text>
-      <Text variant="bodySmall" mb="2.625rem">
-        {addComma(total)}
-      </Text>
       <StyledText variant="body" mb="2rem">
         Filters
       </StyledText>
@@ -112,7 +106,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
           Math.round(priceRangeEnd * 100) / 100
         } ETH`}</Text>
       </Flex>
-      {/* <Text variant="label" mt="2rem">
+      <Text variant="label" mt="2rem">
         AVAILABILITY
       </Text>
       <InputFlex flexDirection="column">
@@ -138,7 +132,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
             </Flex>
           </label>
         ))}
-      </InputFlex> */}
+      </InputFlex>
       {/* <Text variant="label" mt="2rem">
         SALES TYPE
       </Text>
@@ -232,6 +226,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
                   .parseUnits(priceRangeEnd.toString())
                   .toString(),
               },
+              availability: radio,
             });
           }}
         >
@@ -250,10 +245,6 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ total, handleApply }) => {
       </Flex>
     </Flex>
   );
-};
-
-ShopFilters.defaultProps = {
-  total: 0,
 };
 
 export default ShopFilters;

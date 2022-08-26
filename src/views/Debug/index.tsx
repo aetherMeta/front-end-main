@@ -127,7 +127,6 @@ const Debug: React.FC = () => {
   };
 
   const submitSale = async () => {
-    console.log(primarySale.uri);
     const sale = await generatePrimarySale(
       await library.provider,
       account,
