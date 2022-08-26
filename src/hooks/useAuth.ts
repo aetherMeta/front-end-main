@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import {
   NoEthereumProviderError,
@@ -23,13 +23,13 @@ const useAuth = () => {
     async (connectorID: ConnectorNames) => {
       const connector = connectorsByName[connectorID];
       if (typeof connector !== "function" || connector) {
-        await activate(connector, async (error: Error) => {
+        const a = await activate(connector, async (error: Error) => {
           if (error instanceof UnsupportedChainIdError) {
             await activate(connector);
           } else {
             window.localStorage.removeItem(connectorLocalStorageKey);
             if (error instanceof NoEthereumProviderError) {
-              toastError("Provider Error", "No provider was found");
+              toastError("Provider Error", "Please install Metamask");
             } else if (error instanceof UserRejectedRequestErrorInjected) {
               toastError(
                 "Authorization Error",
@@ -41,9 +41,10 @@ const useAuth = () => {
           }
         });
         if (
-          accessToken === undefined ||
-          accessToken === null ||
-          accessTokenAddress !== (await connector.getAccount())
+          (window as any).ethereum &&
+          (accessToken === undefined ||
+            accessToken === null ||
+            accessTokenAddress !== (await connector.getAccount()))
         ) {
           await requestSignature(
             await connector.getAccount(),
