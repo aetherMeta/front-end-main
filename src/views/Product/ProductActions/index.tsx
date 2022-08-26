@@ -148,7 +148,10 @@ const ProductActions: React.FC<ProductActionsProps> = ({
         )}
         <Link
           style={{ width: "100%" }}
-          to={userDataLoaded && userData.metaverseAccess && "/metaverse"}
+          to={
+            "/metaverse"
+            // userDataLoaded && userData.metaverseAccess ? "/metaverse" : ""
+          }
         >
           <Button variant="secondary" width="100%" {...buttonProps}>
             View in metaverse
