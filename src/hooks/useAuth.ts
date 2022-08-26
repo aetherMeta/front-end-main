@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { useCallback } from "react";
-import { useWeb3React } from "@web3-react/core";
-=======
 import { useCallback, useState } from "react";
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
->>>>>>> feature/collection-integration
 import {
   NoEthereumProviderError,
   UserRejectedRequestError as UserRejectedRequestErrorInjected,
@@ -45,8 +40,7 @@ const useAuth = () => {
         toastError("Unable to find connector", "The connector config is wrong");
       }
       if (
-        (window as any).ethereum &&
-        accessToken === undefined ||
+        ((window as any).ethereum && accessToken === undefined) ||
         accessToken === null ||
         accessTokenAddress !== (await connector.getAccount())
       ) {
