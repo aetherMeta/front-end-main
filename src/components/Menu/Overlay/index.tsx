@@ -22,7 +22,7 @@ const Overlay = ({ setShowOverlay }) => {
         })}
       </Flex>
       <Flex flexDirection="column" alignItems="center">
-        <GlobalSettings maxWidth />
+        <GlobalSettings maxWidth setShowOverlay={setShowOverlay} />
         <UserMenu maxWidth />
         <Flex
           alignItems="center"

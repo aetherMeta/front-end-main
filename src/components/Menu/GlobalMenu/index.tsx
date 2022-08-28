@@ -9,9 +9,13 @@ import { Link } from "react-router-dom";
 
 export interface GlobalMenuProps {
   maxWidth?: boolean;
+  setShowOverlay?: (boolean) => void;
 }
 
-const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
+const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({
+  maxWidth,
+  setShowOverlay,
+}) => {
   const [onPresent1] = useModal(<Disclaimer />, false);
 
   const { data: userData, userDataLoaded } = useUser();
@@ -61,13 +65,15 @@ const GlobalMenu: React.FunctionComponent<GlobalMenuProps> = ({ maxWidth }) => {
       >
         <Button
           scale="md"
-          as="a"
           variant="secondary"
           ml={maxWidth ? "0px" : "8px"}
           mr={maxWidth ? "0px" : "16px"}
           mb={maxWidth ? "24px" : "0px"}
           width={maxWidth ? "100%" : "auto"}
           {...buttonProps}
+          onClick={() => {
+            setShowOverlay(false);
+          }}
         >
           Enter Metaverse
         </Button>

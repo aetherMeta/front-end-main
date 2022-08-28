@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useWeb3React } from "@web3-react/core";
 import { Link } from "react-router-dom";
@@ -50,6 +50,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
 }) => {
   const [onPresent1] = useModal(<Disclaimer />, false);
 
+  const [pendingSale, setPendingSale] = useState(false);
   const { data: userData, userDataLoaded } = useUser();
   const { login } = useAuth();
 
@@ -136,13 +137,14 @@ const ProductActions: React.FC<ProductActionsProps> = ({
         </Flex>
       </StyledFlex>
       <Flex style={{ gap: "0.375rem" }} mt="2rem">
-        {account ? (
+        {account && userDataLoaded && account === userData.address ? (
           <Button
             variant="primary"
             width="100%"
-            disabled={saleData.amount === saleData.amountSold}
+            disabled={pendingSale || saleData.amount === saleData.amountSold}
             onClick={async () => {
               try {
+                setPendingSale(true);
                 const buy = onBuy(saleData, 1);
                 // toastInfo(
                 //   "Transaction sent",
@@ -157,13 +159,23 @@ const ProductActions: React.FC<ProductActionsProps> = ({
                     // `Tansaction Hash:  ${receipt.transactionHash}`
                   );
                 }
-              } catch (e) {
-                console.log(e, typeof e);
-                toastError("Transaction Failure", "Something went wrong.");
+              } catch (e: any) {
+                console.log(e.code);
+                if (e?.code === "INSUFFICIENT_FUNDS") {
+                  toastError("Transaction Failure", "Insufficient Funds.");
+                } else {
+                  toastError("Transaction Failure", "Something went wrong.");
+                }
+              } finally {
+                setPendingSale(false);
               }
             }}
           >
-            {saleData.amount === saleData.amountSold ? "Sold Out" : "Purchase"}
+            {pendingSale
+              ? "Pending"
+              : saleData.amount === saleData.amountSold
+              ? "Sold Out"
+              : "Purchase"}
           </Button>
         ) : (
           <ConnectWalletButton maxWidth />
