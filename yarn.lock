@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@aethermeta/uikit@^1.0.0", "@aethermeta/uikit@^1.0.7":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@aethermeta/uikit/-/uikit-1.0.9.tgz#d663f44f48ef871751bf4e3af18da14635bb761b"
-  integrity sha512-Y5nylU/a2LaQ3zETXQnIhEBHmE39uJl4rt2ozo7vL3w4EBV5D5eAp8lCQPMuuVRK+6rAisU+XbqVk+zFuOXbRw==
+"@aethermeta/uikit@^1.0.0", "@aethermeta/uikit@^1.0.9":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@aethermeta/uikit/-/uikit-1.0.10.tgz#257b9a74ddee66efc27602b8b8da00831f7a00dd"
+  integrity sha512-Mpb8WnW/wLwNWF7azG877oNd3nT/n8aTuQSCOFjvN1tp5Ik+qj2kM44NI6RYaNtglRAXUegLuleGPlH6fTX+1Q==
   dependencies:
     "@aethermeta/uikit" "^1.0.0"
     "@rollup/plugin-url" "^6.1.0"

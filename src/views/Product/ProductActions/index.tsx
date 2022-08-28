@@ -143,7 +143,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
             disabled={saleData.amount === saleData.amountSold}
             onClick={async () => {
               try {
-                const receipt = await onBuy(saleData, 1);
+                const receipt: any = await onBuy(saleData, 1);
                 if (receipt) {
                   toastSuccess(
                     "Transaction Success!",
