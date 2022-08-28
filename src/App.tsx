@@ -4,7 +4,6 @@ import { ResetCSS } from "@aethermeta/uikit";
 // import ResetCSS from "./utils/ResetCSS";
 import { useDispatchSalePublicData } from "store/sales/hooks";
 import { ToastListener } from "./contexts/ToastsContext";
-import NotFound from "./views/NotFound";
 import About from "./views/About";
 import Contact from "./views/Contact";
 import Home from "./views/Home";
@@ -20,6 +19,7 @@ import history from "./routerHistory";
 import "./App.css";
 import Debug from "./views/Debug";
 import Metaverse from "./views/Metaverse";
+import NotFound from "./views/NotFound";
 
 const App: React.FC = () => {
   useDispatchSalePublicData();
