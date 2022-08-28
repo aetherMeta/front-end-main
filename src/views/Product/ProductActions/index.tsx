@@ -160,7 +160,6 @@ const ProductActions: React.FC<ProductActionsProps> = ({
                   );
                 }
               } catch (e: any) {
-                console.log(e.code);
                 if (e?.code === "INSUFFICIENT_FUNDS") {
                   toastError("Transaction Failure", "Insufficient Funds.");
                 } else {
