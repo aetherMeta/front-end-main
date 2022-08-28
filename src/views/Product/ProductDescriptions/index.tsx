@@ -44,7 +44,11 @@ const ProductDescriptions: React.FC<ProductDescriptionsProps> = ({
             ))}
           </Flex>
         )}
-        {index === 2 && <Text variant="body">{saleData.nft.asset.type}</Text>}
+        {index === 2 && (
+          <Text variant="body" style={{ whiteSpace: "pre-wrap" }}>
+            {saleData.nft.asset.description}
+          </Text>
+        )}
       </Flex>
     </Container>
   );
