@@ -36,7 +36,11 @@ const UserMenu: React.FunctionComponent<UserMenuProps> = ({ maxWidth }) => {
         </Flex>
       </UserMenuItem>
       <UserMenuItem>
-        <Link href="https://testnets.opensea.io/account" external>
+        <Link
+          href="https://testnets.opensea.io/account"
+          external
+          style={{ width: "100%" }}
+        >
           View Your NFTs
         </Link>
       </UserMenuItem>
