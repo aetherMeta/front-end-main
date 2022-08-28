@@ -32,6 +32,7 @@ const StyledFlex = styled(Flex)`
   flex-direction: column;
   align-items: center;
   ${({ theme }) => theme.mediaQueries.lg} {
+    align-items: flex-start;
     gap: 4rem;
     flex-direction: row;
   }
@@ -49,7 +50,7 @@ const Product: React.FC = () => {
         <Container>
           <StyledFlex>
             <ProductImages saleState={saleState} saleData={saleData} />
-            <Flex flexDirection="column">
+            <Flex flexDirection="column" alignItems="center">
               <ProductActions saleState={saleState} saleData={saleData} />
               <ProductDescriptions saleState={saleState} saleData={saleData} />
             </Flex>
