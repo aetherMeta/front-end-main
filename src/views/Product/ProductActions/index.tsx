@@ -109,6 +109,10 @@ const ProductActions: React.FC<ProductActionsProps> = ({
             {truncateWalletAddress(saleData.sellerAddress)}
           </Text>
         </Flex>
+        <Flex flexDirection="column">
+          <StyledText variant="bodySmall">Brand</StyledText>
+          <Text variant="bodySmall">Jennifer Le</Text>
+        </Flex>
         {saleData.nft.asset.data && (
           <Flex flexDirection="column">
             <StyledText variant="bodySmall">Collection</StyledText>
