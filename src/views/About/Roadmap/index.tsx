@@ -95,7 +95,7 @@ const Roadmap: React.FC = () => {
             Join us at the new edge of shopping
           </Text>
           <Text variant="body">
-            Join the AetherMeta to get access to limited edition NFTs from some
+            Join the Aether Meta to get access to limited edition NFTs from some
             of the largest brands in the business.{" "}
           </Text>
         </Flex>
@@ -109,7 +109,7 @@ const Roadmap: React.FC = () => {
             <StyledFlex3 flexDirection="column">
               <Text variant="h4Bold">The Launch</Text>
               <Text variant="body">
-                Be one of the first to visit AetherMeta in VR and explore the
+                Be one of the first to visit Aether Meta in VR and explore the
                 island.
               </Text>
               <StyledText variant="h4Bold">VIP Passes</StyledText>
@@ -120,7 +120,7 @@ const Roadmap: React.FC = () => {
               <StyledText variant="h4Bold">Avatars</StyledText>
               <Text variant="body">
                 Create and adorn your Avatar with the latest goods and
-                high-fashion looks from AetherMeta.
+                high-fashion looks from Aether Meta.
               </Text>
               <StyledText variant="h4Bold">Life in the metaverse</StyledText>
               <Text variant="body">

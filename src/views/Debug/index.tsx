@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Page from "components/Layout/Page";
 import { Button, Flex, Input, Label, Text, TextArea } from "@aethermeta/uikit";
+import NotFound from "views/NotFound";
 import {
   useDispatchUserPublicData,
   useUpdateUser,
@@ -32,6 +33,7 @@ const Debug: React.FC = () => {
   useDispatchNftPublicData();
 
   const { saleState, createPrimarySale, data: salesData } = useSales();
+
   const updateUser = useUpdateUser();
 
   const { onBuy } = usePrimaryBuy();
@@ -66,7 +68,9 @@ const Debug: React.FC = () => {
   const [primarySale, setPrimarySaleValues] = useState(
     initialPrimarySaleFormValues
   );
+  const [ipfsStatus, setIpfsStatus] = useState("");
 
+  const [accessTokenStatus, setAccessTokenStatus] = useState("");
   const [ipfsValues, setIpfsValues] = useState({
     name: "",
     description: "",
@@ -144,178 +148,190 @@ const Debug: React.FC = () => {
   };
 
   return (
-    <Page>
-      <Flex>
-        <Label>Login</Label>
-        <ConnectWalletButton />
-        {/* <Button onClick={openSignaturePrompt} /> */}
-        <Button onClick={() => console.log(accessToken)}>
-          Log access Token
-        </Button>
-        <Button onClick={() => console.log(userData)}>Log User Data</Button>
-        <Button onClick={logout}>Log out</Button>
-      </Flex>
-      <Flex>
-        <Label>User</Label>
-        <Flex>
-          <Input
-            type="email"
-            placeholder="New Email"
-            name="pendingEmail"
-            onChange={handleUserInputChange}
-          />
-          <Input
-            type="text"
-            placeholder="Username"
-            name="username"
-            onChange={handleUserInputChange}
-          />
-          <Input
-            type="text"
-            placeholder="FirstName"
-            name="firstName"
-            onChange={handleUserInputChange}
-          />
-          <Input
-            type="text"
-            placeholder="Last Name"
-            name="lastName"
-            onChange={handleUserInputChange}
-          />
-        </Flex>
-        <Button
-          onClick={() =>
-            updateUser(
-              omitBy(userValues, (v) => {
-                console.log(v.length);
-                return v.length === 0;
-              })
-            )
-          }
-        >
-          Update User Data
-        </Button>
+    <>
+      {userData.role !== "ADMIN" ? (
+        <NotFound />
+      ) : (
+        <Page>
+          <Text>{accessTokenStatus}</Text>
+          <Flex mb="20px">
+            <Label>Login</Label>
+            <ConnectWalletButton />
+            {/* <Button onClick={openSignaturePrompt} /> */}
+            <Button
+              onClick={() => {
+                console.log(accessToken);
+                setAccessTokenStatus(accessToken);
+              }}
+            >
+              Log access Token
+            </Button>
+            <Button onClick={() => console.log(userData)}>Log User Data</Button>
+            <Button onClick={logout}>Log out</Button>
+          </Flex>
+          <Flex mb="20px">
+            <Label>User</Label>
+            <Flex>
+              <Input
+                type="email"
+                placeholder="New Email"
+                name="pendingEmail"
+                onChange={handleUserInputChange}
+              />
+              <Input
+                type="text"
+                placeholder="Username"
+                name="username"
+                onChange={handleUserInputChange}
+              />
+              <Input
+                type="text"
+                placeholder="FirstName"
+                name="firstName"
+                onChange={handleUserInputChange}
+              />
+              <Input
+                type="text"
+                placeholder="Last Name"
+                name="lastName"
+                onChange={handleUserInputChange}
+              />
+            </Flex>
+            <Button
+              onClick={() =>
+                updateUser(
+                  omitBy(userValues, (v) => {
+                    console.log(v.length);
+                    return v.length === 0;
+                  })
+                )
+              }
+            >
+              Update User Data
+            </Button>
 
-        <Button onClick={() => console.log(userData)}>Log User Data</Button>
-      </Flex>
-      <Flex>
-        <Label>Nfts</Label>
-        <Button onClick={() => console.log(nftData)}>Log Nfts Data</Button>
-      </Flex>
-      <Flex>
-        <Label>Sales</Label>
-        <Button onClick={() => console.log(saleState.data)}>
-          Log Sales Data
-        </Button>
+            <Button onClick={() => console.log(userData)}>Log User Data</Button>
+          </Flex>
+          <Flex mb="20px">
+            <Label>Nfts</Label>
+            <Button onClick={() => console.log(nftData)}>Log Nfts Data</Button>
+          </Flex>
+          <Flex mb="20px">
+            <Label>Sales</Label>
+            <Button onClick={() => console.log(saleState.data)}>
+              Log Sales Data
+            </Button>
 
-        <Flex>
-          <Input
-            type="text"
-            placeholder="Uri"
-            name="uri"
-            value={primarySale.uri}
-            onChange={handlePrimarySaleInputChange}
-          />
-          <Input
-            type="text"
-            placeholder="currency"
-            name="currency"
-            value={primarySale.currency}
-            onChange={handlePrimarySaleInputChange}
-          />{" "}
-          <Input
-            type="text"
-            placeholder="amount"
-            name="amount"
-            value={primarySale.amount}
-            onChange={handlePrimarySaleInputChange}
-          />{" "}
-          <Input
-            type="text"
-            placeholder="price"
-            name="price"
-            value={primarySale.price}
-            onChange={handlePrimarySaleInputChange}
-          />
-          <Input
-            type="file"
-            placeholder="files"
-            name="files"
-            multiple
-            // value={ipfsValues.file}
-            onChange={handlePrimarySaleInputChange}
-          />
-        </Flex>
+            <Flex>
+              <Input
+                type="text"
+                placeholder="Uri"
+                name="uri"
+                value={primarySale.uri}
+                onChange={handlePrimarySaleInputChange}
+              />
+              <Input
+                type="text"
+                placeholder="currency"
+                name="currency"
+                value={primarySale.currency}
+                onChange={handlePrimarySaleInputChange}
+              />{" "}
+              <Input
+                type="text"
+                placeholder="amount"
+                name="amount"
+                value={primarySale.amount}
+                onChange={handlePrimarySaleInputChange}
+              />{" "}
+              <Input
+                type="text"
+                placeholder="price"
+                name="price"
+                value={primarySale.price}
+                onChange={handlePrimarySaleInputChange}
+              />
+              <Input
+                type="file"
+                placeholder="files"
+                name="files"
+                multiple
+                // value={ipfsValues.file}
+                onChange={handlePrimarySaleInputChange}
+              />
+            </Flex>
 
-        <Button onClick={submitSale}>Create Sale</Button>
-      </Flex>
-      <Flex>
-        <Label>Upload IPFS</Label>
-        <Input
-          type="text"
-          placeholder="name"
-          name="name"
-          value={ipfsValues.name}
-          onChange={handleIpfsInputChange}
-        />
-        <TextArea
-          placeholder="description"
-          name="description"
-          value={ipfsValues.description}
-          onChange={handleIpfsInputChange}
-        />
-        <Input
-          type="file"
-          placeholder="file"
-          name="file"
-          // value={ipfsValues.file}
-          onChange={handleIpfsInputChange}
-        />
-
-        <Input
-          type="textarea"
-          placeholder="attributes"
-          name="_attributes"
-          value={ipfsValues._attributes}
-          onChange={handleIpfsInputChange}
-        />
-
-        <Button
-          onClick={() => {
-            submitIpfs({
-              name: ipfsValues.name,
-              attributes: ipfsValues.attributes,
-              file: ipfsValues.file as any,
-              description: ipfsValues.description,
-            });
-          }}
-        >
-          Upload ipfs
-        </Button>
-      </Flex>
-
-      <Flex flexDirection="column">
-        {salesData[0]?.map((sale, i) => (
-          <>
-            <Text>SALE ENTRY: {i}</Text>
-
-            {Object.entries(sale).map(([k, v]) => (
-              <Text>
-                {k.toString()}: {JSON.stringify(v)}
-              </Text>
-            ))}
+            <Button onClick={submitSale}>Create Sale</Button>
+          </Flex>
+          <Text>{ipfsStatus}</Text>
+          <Flex mb="20px">
+            <Label>Upload IPFS</Label>
             <Input
               type="text"
-              onChange={(e) => setSaleAmount(i, e.target.value)}
-              value={saleInput[i]}
+              placeholder="name"
+              name="name"
+              value={ipfsValues.name}
+              onChange={handleIpfsInputChange}
             />
-            <Button onClick={() => onBuy(sale, saleInput[i])}>
-              BUY SALE {i}
+            <TextArea
+              placeholder="description"
+              name="description"
+              value={ipfsValues.description}
+              onChange={handleIpfsInputChange}
+            />
+            <Input
+              type="file"
+              placeholder="file"
+              name="file"
+              // value={ipfsValues.file}
+              onChange={handleIpfsInputChange}
+            />
+            <Input
+              type="textarea"
+              placeholder="attributes"
+              name="_attributes"
+              value={ipfsValues._attributes}
+              onChange={handleIpfsInputChange}
+            />
+            <Button
+              onClick={async () => {
+                const retv = await submitIpfs({
+                  name: ipfsValues.name,
+                  attributes: ipfsValues.attributes,
+                  file: ipfsValues.file as any,
+                  description: ipfsValues.description,
+                });
+                setIpfsStatus(retv.ipfsHash);
+              }}
+            >
+              Upload ipfs
             </Button>
-          </>
-        ))}
-      </Flex>
-    </Page>
+          </Flex>
+
+          <Flex flexDirection="column">
+            {salesData[0]?.map((sale, i) => (
+              <>
+                <Text>SALE ENTRY: {i}</Text>
+
+                {Object.entries(sale).map(([k, v]) => (
+                  <Text>
+                    {k.toString()}: {JSON.stringify(v)}
+                  </Text>
+                ))}
+                <Input
+                  type="text"
+                  onChange={(e) => setSaleAmount(i, e.target.value)}
+                  value={saleInput[i]}
+                />
+                <Button onClick={() => onBuy(sale, saleInput[i])}>
+                  BUY SALE {i}
+                </Button>
+              </>
+            ))}
+          </Flex>
+        </Page>
+      )}
+    </>
   );
 };
 

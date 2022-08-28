@@ -20,6 +20,7 @@ const useIpfsUpload = () => {
       formData,
     });
     console.info(retv);
+    return retv;
   }, []);
 
   return { onSubmit: handleSubmit };
