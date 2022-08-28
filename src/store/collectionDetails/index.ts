@@ -42,6 +42,7 @@ export const dispatchCollectionDetailPublicDataAsync =
           imageUrl: collectionRes.imageUrl,
           nfts: collectionRes.nfts,
           nftCount: collectionRes.nftCount,
+          collectionId: id,
           data: [
             ...res.data.map((o) => ({
               ...o,
@@ -60,6 +61,7 @@ export const collectionDetailSlice = createSlice({
   initialState,
   reducers: {
     setLoading: (state) => {
+      // state = initialState;
       state.isLoading = true;
     },
     setCollectionDetailPublicData: (state, action) => {
@@ -71,6 +73,7 @@ export const collectionDetailSlice = createSlice({
       state.nftCount = payload.nftCount;
       state.data = { ...payload.data };
       state.total = payload.total;
+      state.collectionId = payload.collectionId;
       state.isLoading = false;
       state.isLoaded = true;
     },
@@ -92,9 +95,6 @@ export const collectionDetailSlice = createSlice({
       const newFilters = action.payload;
       state.filters = { ...newFilters };
     },
-    setCollectionDetailId: (state, action) => {
-      state.collectionId = action.payload;
-    },
   },
 });
 
@@ -104,7 +104,6 @@ export const {
   resetCollectionDetailData,
   setCollectionDetailTotal,
   setCollectionDetailFilters,
-  setCollectionDetailId,
   setCollectionDetailSort,
   setLoading,
 } = collectionDetailSlice.actions;

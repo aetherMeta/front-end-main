@@ -5,8 +5,6 @@ import { useAppDispatch } from "store";
 import {
   dispatchCollectionDetailPublicDataAsync,
   setCollectionDetailFilters,
-  resetCollectionDetailData,
-  setCollectionDetailId,
   setCollectionDetailSort,
 } from "store/collectionDetails";
 import { useParams } from "react-router-dom";
@@ -21,6 +19,7 @@ type Returns = {
   nftCount: number;
   data: Sale[];
   total: number;
+  collectionId: string;
   isLoading: boolean;
   isLoaded: boolean;
   sortOrder: string;
@@ -33,44 +32,28 @@ export const useDispatchCollectionDetailPublicData = () => {
     (state: State) => state.collectionDetails
   );
   const params: { id } = useParams();
-  dispatch(setCollectionDetailId(params.id));
   useEffect(() => {
     const dispatchCollectionDetailPublicData = async () => {
-      dispatch(
-        dispatchCollectionDetailPublicDataAsync(collectionDetails.collectionId)
-      );
+      dispatchCollectionDetailPublicDataAsync(params.id);
+      // dispatch(setCollectionDetailId(params.id));
     };
-    if (collectionDetails?.collectionId) {
+    if (collectionDetails?.collectionId !== params.id) {
       dispatchCollectionDetailPublicData();
     }
-  }, [dispatch, collectionDetails.collectionId]);
+  }, [dispatch, collectionDetails.collectionId, params.id]);
 
   useEffect(() => {
     const dispatchFilterChange = async () => {
-      dispatch(resetCollectionDetailData());
-      dispatch(
-        dispatchCollectionDetailPublicDataAsync(collectionDetails.collectionId)
-      );
+      dispatch(dispatchCollectionDetailPublicDataAsync(params.id));
     };
     dispatchFilterChange();
   }, [
     dispatch,
     collectionDetails.filters,
-    collectionDetails.collectionId,
+    params.id,
     collectionDetails.sortField,
     collectionDetails.sortOrder,
   ]);
-};
-
-export const useUpdateCollectionDetailId = () => {
-  const dispatch = useAppDispatch();
-  const updateCollectionDetailPage = useCallback(
-    async (id: string) => {
-      dispatch(setCollectionDetailId(id));
-    },
-    [dispatch]
-  );
-  return { updateCollectionDetailPage };
 };
 
 export const useUpdateCollectionDetailSort = () => {
@@ -112,5 +95,6 @@ export const useCollectionDetails = (): Returns => {
     isLoaded: collectionDetails.isLoaded,
     sortOrder: collectionDetails.sortOrder,
     sortField: collectionDetails.sortField,
+    collectionId: collectionDetails.collectionId,
   };
 };

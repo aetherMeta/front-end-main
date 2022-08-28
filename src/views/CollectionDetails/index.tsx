@@ -5,6 +5,7 @@ import Page from "components/Layout/Page";
 import DetailHeader from "views/CollectionDetails/DetailHeader";
 import SelectedItem from "views/CollectionDetails/SelectedItem";
 import CollectionGallery from "views/CollectionDetails/CollectionGallery";
+import { useParams } from "react-router-dom";
 import {
   useMatchBreakpoints,
   Flex,
@@ -43,21 +44,29 @@ const CollectionDetails: React.FC = () => {
   const {
     data,
     total,
-    isLoaded,
     isLoading,
     name,
     description,
     imageUrl,
     sortOrder,
     sortField,
+    collectionId,
   } = useCollectionDetails();
   const { updateCollectionDetailSort } = useUpdateCollectionDetailSort();
   const { isTablet, isMobile } = useMatchBreakpoints();
   const isSmallScreen = isTablet || isMobile;
+  const params: { id } = useParams();
+  // if (isLoading && !isLoaded && collectionId !== params.id) {
+  //   return (
+  //     <Flex width="100%" justifyContent="center">
+  //       <Spinner size={108} />
+  //     </Flex>
+  //   );
+  // }
   return (
     <Page>
       <Container>
-        {isLoading || !isLoaded ? (
+        {isLoading || collectionId !== params.id ? (
           <Flex width="100%" justifyContent="center">
             <Spinner size={108} />
           </Flex>
