@@ -5,6 +5,7 @@ import {
   LogoutIcon,
   UserMenu as UIKitUserMenu,
   UserMenuItem,
+  Link,
 } from "@aethermeta/uikit";
 import useAuth from "hooks/useAuth";
 import ConnectWalletButton from "components/ConnectWalletButton";
@@ -33,6 +34,11 @@ const UserMenu: React.FunctionComponent<UserMenuProps> = ({ maxWidth }) => {
           Disconnect
           <LogoutIcon />
         </Flex>
+      </UserMenuItem>
+      <UserMenuItem>
+        <Link href="https://testnets.opensea.io/account" external>
+          View Your NFTs
+        </Link>
       </UserMenuItem>
     </UIKitUserMenu>
   );
