@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Flex, ButtonMenu, ButtonMenuItem, Text } from "@aethermeta/uikit";
 import { SaleState, Sale } from "store/types";
+import { capitalize } from "lodash";
 
 interface ProductDescriptionsProps {
   saleState: SaleState;
@@ -37,7 +38,9 @@ const ProductDescriptions: React.FC<ProductDescriptionsProps> = ({
         {index === 1 && (
           <Flex>
             {saleData.nft.attributes.map((attribute) => (
-              <Text variant="body">{attribute.value}</Text>
+              <Text variant="body">{`${capitalize(attribute.trait)}: ${
+                attribute.value
+              }`}</Text>
             ))}
           </Flex>
         )}
