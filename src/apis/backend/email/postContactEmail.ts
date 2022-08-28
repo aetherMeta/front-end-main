@@ -1,14 +1,13 @@
-import client from "apis/backend/client";
+import { backend } from "..";
 import { PostContactEmailRequest, PostContactEmailResponse } from "./interface";
 
 const postContactEmail = async (
   data: PostContactEmailRequest
 ): Promise<PostContactEmailResponse> => {
-  const response = await client.post<PostContactEmailResponse>(
-    "contact/message",
-    data
-  );
-  return response.data;
+  const response = await backend.contact.contactUsControllerCreate({
+    requestBody: data,
+  });
+  return response;
 };
 
 export default postContactEmail;

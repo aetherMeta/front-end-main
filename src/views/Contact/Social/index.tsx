@@ -74,7 +74,6 @@ const Social: React.FC = () => {
     let isValid = true;
     const modifyErrors = {
       name: false,
-      company: false,
       email: false,
       description: false,
     };
