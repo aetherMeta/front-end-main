@@ -21,7 +21,7 @@ const InputFlex = styled(Flex)`
 const ShopFilters: React.FC<ShopFiltersProps> = ({ handleApply }) => {
   // ETH range
   const [priceRangeStart, setPriceRangeStart] = useState(0);
-  const [priceRangeEnd, setPriceRangeEnd] = useState(20);
+  const [priceRangeEnd, setPriceRangeEnd] = useState(5);
 
   // Availability
   const [radio, setRadio] = useState<Availability>(availabilities.all);
@@ -70,7 +70,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ handleApply }) => {
   // Clear
   const handleClear = () => {
     setPriceRangeStart(0);
-    setPriceRangeEnd(20);
+    setPriceRangeEnd(5);
     setRadio(availabilities.all);
     // setSaleState(new Array(Object.keys(sales).length).fill(false));
     // setGoodsState(new Array(Object.keys(types).length).fill(false));
@@ -89,7 +89,7 @@ const ShopFilters: React.FC<ShopFiltersProps> = ({ handleApply }) => {
       <RangeSlider
         name="slider"
         min={0}
-        max={20}
+        max={5}
         value1={priceRangeStart}
         value2={priceRangeEnd}
         onValue1Changed={setPriceRangeStart}
