@@ -56,13 +56,9 @@ const App: React.FC = () => {
           <Route path="/metaverse" exact>
             <Metaverse />
           </Route>
-          {process.env.NODE_ENV !== "production" ? (
-            <Route path="/debug" exact>
-              <Debug />
-            </Route>
-          ) : (
-            <></>
-          )}
+          <Route path="/debug" exact>
+            <Debug />
+          </Route>
           <Route>
             <NotFound />
           </Route>
