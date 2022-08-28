@@ -22,6 +22,9 @@ import Metaverse from "./views/Metaverse";
 
 const App: React.FC = () => {
   useDispatchSalePublicData();
+  history.listen(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <Router history={history}>
       <GlobalStyle />

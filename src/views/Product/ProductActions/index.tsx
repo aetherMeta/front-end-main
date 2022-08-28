@@ -143,7 +143,13 @@ const ProductActions: React.FC<ProductActionsProps> = ({
             disabled={saleData.amount === saleData.amountSold}
             onClick={async () => {
               try {
-                const receipt: any = await onBuy(saleData, 1);
+                const buy = onBuy(saleData, 1);
+                // toastInfo(
+                //   "Transaction sent",
+                //   "Transactions take a short moment to process."
+                // );
+                const receipt: any = await buy;
+
                 if (receipt) {
                   toastSuccess(
                     "Transaction Success!",
@@ -151,7 +157,8 @@ const ProductActions: React.FC<ProductActionsProps> = ({
                     // `Tansaction Hash:  ${receipt.transactionHash}`
                   );
                 }
-              } catch {
+              } catch (e) {
+                console.log(e, typeof e);
                 toastError("Transaction Failure", "Something went wrong.");
               }
             }}

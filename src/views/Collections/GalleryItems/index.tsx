@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, Image, Flex } from "@aethermeta/uikit";
+import { Link } from "react-router-dom";
 import { Item } from "../types";
 
 interface GalleryProps {
@@ -9,7 +10,7 @@ interface GalleryProps {
 const GalleryItems: React.FC<GalleryProps> = ({ item }) => {
   return (
     <Flex m="1rem" flexDirection="column" maxWidth={310}>
-      <a href={`/collection/${item.id}`}>
+      <Link to={`/collection/${item.id}`}>
         <Image
           src={item.imageUrl}
           style={{ borderRadius: "20px" }}
@@ -20,7 +21,7 @@ const GalleryItems: React.FC<GalleryProps> = ({ item }) => {
         />
         <Text variant="h4Bold">{item.name}</Text>
         <Text>{item.nftCount}</Text>
-      </a>
+      </Link>
     </Flex>
   );
 };

@@ -18,6 +18,7 @@ import {
   useDispatchCollectionDetailPublicData,
   useUpdateCollectionDetailSort,
 } from "store/collectionDetails/hooks";
+import { useDispatchSalePublicData } from "store/sales/hooks";
 import DetailHeaderMobile from "./DetailHeaderMobile";
 
 const Container = styled.div`
@@ -38,6 +39,7 @@ const Container = styled.div`
 
 const CollectionDetails: React.FC = () => {
   useDispatchCollectionDetailPublicData();
+  useDispatchSalePublicData();
   const {
     data,
     total,

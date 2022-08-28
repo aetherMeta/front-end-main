@@ -26,7 +26,10 @@ const useAuth = () => {
         await activate(connector, async (error: Error) => {
           window.localStorage.removeItem(connectorLocalStorageKey);
           if (error instanceof NoEthereumProviderError) {
-            toastError("Provider Error", "No provider was found");
+            toastError(
+              "Provider Error",
+              "No wallet detected. Please install Metamask"
+            );
           } else if (error instanceof UserRejectedRequestErrorInjected) {
             toastError(
               "Authorization Error",
