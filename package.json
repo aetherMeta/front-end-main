@@ -29,7 +29,7 @@
     ]
   },
   "dependencies": {
-    "@aethermeta/uikit": "^1.0.7",
+    "@aethermeta/uikit": "^1.0.9",
     "@apollo/client": "^3.6.9",
     "@binance-chain/bsc-connector": "^1.0.0",
     "@ethersproject/experimental": "^5.0.1",
