@@ -31,9 +31,9 @@ export interface Values {
   companyDescription: string;
   companyAddress: string;
   companyWebsite: string;
-  companyTwitter: string;
-  companyInstagram: string;
-  additionalMessage: string;
+  companyTwitter?: string;
+  companyInstagram?: string;
+  additionalMessage?: string;
 }
 
 export interface Errors {
@@ -44,6 +44,9 @@ export interface Errors {
   companyDescription: boolean;
   companyAddress: boolean;
   companyWebsite: boolean;
+  companyTwitter: boolean;
+  companyInstagram: boolean;
+  additionalMessage: boolean;
 }
 
 interface PartnershipModalProps {
@@ -60,9 +63,6 @@ const initialValues = {
   companyDescription: "",
   companyAddress: "",
   companyWebsite: "",
-  companyTwitter: "",
-  companyInstagram: "",
-  additionalMessage: "",
 };
 
 const initialErrors = {
@@ -110,9 +110,6 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
       companyDescription: false,
       companyAddress: false,
       companyWebsite: false,
-      companyTwitter: false,
-      companyInstagram: false,
-      additionalMessage: false,
     };
     for (const [key, value] of Object.entries(values)) {
       if (value === initialValues[key]) {
@@ -247,21 +244,11 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
           <Checkbox onChange={(e) => setChecked(e.target.checked)} />
           <Flex justifyContent="center" alignItems="center" ml="6px">
             <InlineText variant="bodySmall">I agree with</InlineText>
-            <InlineLink
-              variant="bodySmall"
-              mx="6px"
-              href="/privacy"
-              target="_blank"
-            >
+            <InlineLink variant="bodySmall" mx="6px" href="/privacy" external>
               Privacy policy
             </InlineLink>
             <InlineText variant="bodySmall">|</InlineText>
-            <InlineLink
-              variant="bodySmall"
-              mx="6px"
-              href="/seller"
-              target="_blank"
-            >
+            <InlineLink variant="bodySmall" mx="6px" href="/seller" external>
               Seller policy
             </InlineLink>
             <InlineText variant="bodySmall">|</InlineText>
@@ -269,7 +256,7 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
               variant="bodySmall"
               mx="6px"
               href="/termsofuse"
-              target="_blank"
+              external
             >
               Terms of use
             </InlineLink>
