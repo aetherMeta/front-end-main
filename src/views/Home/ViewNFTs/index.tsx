@@ -1,20 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { Flex, Text, Button, useModal } from "@aethermeta/uikit";
-import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
-import PartnershipModal, { Values } from "../../../components/PartnershipModal";
+import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
+import PartnershipModal, { Values } from "components/PartnershipModal";
 
 const Container = styled.div`
   position: relative;
   padding: 210px 22px 0px;
   margin-top: -140px;
   height: 75vh;
-
   ${({ theme }) => theme.mediaQueries.sm} {
     padding: 210px 70px 0px;
     height: 75vh;
   }
-
   ${({ theme }) => theme.mediaQueries.lg} {
     padding: 210px 70px 70px;
     height: 90vh;
@@ -47,7 +45,7 @@ const ViewNFTs: React.FC = () => {
 
   const onSubmit = async (e, values: Values) => {
     e.preventDefault();
-    await postContactUsEmail(values);
+    await postPartnershipEmail(values);
   };
 
   return (

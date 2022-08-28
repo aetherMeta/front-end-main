@@ -9,8 +9,10 @@ import {
   TextArea,
   Spinner,
   IconButton,
+  Link,
+  Checkbox,
 } from "@aethermeta/uikit";
-import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
+import postPartnershipEmail from "apis/backend/email/postPartnershipEmail";
 import useToast from "hooks/useToast";
 
 const Container = styled.div`
@@ -53,37 +55,71 @@ const Center = styled(Text)`
   text-align: center;
 `;
 
+const InlineLink = styled(Link)`
+  display: inline-block;
+`;
+
+const InlineText = styled(Text)`
+  display: inline-block;
+`;
+
 export interface Values {
-  name: string;
-  company: string;
-  email: string;
-  description: string;
+  contactName: string;
+  contactEmail: string;
+  jobTitle: string;
+  companyName: string;
+  companyDescription: string;
+  companyAddress: string;
+  companyWebsite: string;
+  companyTwitter: string;
+  companyInstagram: string;
+  additionalMessage: string;
 }
 
 export interface Errors {
-  name: boolean;
-  company: boolean;
-  email: boolean;
-  description: boolean;
+  contactName: boolean;
+  contactEmail: boolean;
+  jobTitle: boolean;
+  companyName: boolean;
+  companyDescription: boolean;
+  companyAddress: boolean;
+  companyWebsite: boolean;
 }
 
 const initialValues = {
-  name: "",
-  company: "",
-  email: "",
-  description: "",
+  contactName: "",
+  contactEmail: "",
+  jobTitle: "",
+  companyName: "",
+  companyDescription: "",
+  companyAddress: "",
+  companyWebsite: "",
+  companyTwitter: "",
+  companyInstagram: "",
+  additionalMessage: "",
 };
+
 const initialErrors = {
-  name: false,
-  company: false,
-  email: false,
-  description: false,
+  contactName: false,
+  contactEmail: false,
+  jobTitle: false,
+  companyName: false,
+  companyDescription: false,
+  companyAddress: false,
+  companyWebsite: false,
 };
+
+const optionalFields = [
+  "companyTwitter",
+  "companyInstagram",
+  "additionalMessage",
+];
 
 const Enquires: React.FC = () => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrors);
   const [pending, setPending] = useState(false);
+  const [checked, setChecked] = useState(false);
   const { toastSuccess, toastError } = useToast();
 
   const handleInputChange = (e) => {
@@ -102,9 +138,21 @@ const Enquires: React.FC = () => {
 
   const validate = useCallback((): boolean => {
     let isValid = true;
-    const modifyErrors = initialErrors;
+    const modifyErrors = {
+      contactName: false,
+      contactEmail: false,
+      jobTitle: false,
+      companyName: false,
+      companyDescription: false,
+      companyAddress: false,
+      companyWebsite: false,
+      companyTwitter: false,
+      companyInstagram: false,
+      additionalMessage: false,
+    };
     Object.entries(values).forEach((entry) => {
       const [key, value] = entry;
+      if (optionalFields.includes(key)) return;
       if (value === initialValues[key]) {
         isValid = false;
         modifyErrors[key] = true;
@@ -124,7 +172,7 @@ const Enquires: React.FC = () => {
         try {
           const onSubmit = async (v: Values) => {
             e.preventDefault();
-            await postContactUsEmail(v);
+            await postPartnershipEmail(v);
           };
           await onSubmit(values);
           toastSuccess("Success", "Your application has been submitted!");
@@ -142,62 +190,144 @@ const Enquires: React.FC = () => {
   return (
     <Container>
       <Center variant="h3Bold">
-        Get in touch with out sales team for more details on how you can onboard
-        to the newest marketing touchpoint for generation Z.
+        Get in touch with out team for more details on how you can onboard to
+        the newest immersive shopping platform.
       </Center>
       <EnquiryContainer>
         <EnquiryContainer2>
           <Enquiry>
-            <Text variant="h3Bold">Enquiries</Text>
+            <Text variant="h3Bold">Join Us</Text>
           </Enquiry>
           <form onSubmit={handleSubmit}>
-            <Label>Name</Label>
+            <Label>Name (*)</Label>
             <Input
               type="text"
-              placeholder="Your Name"
-              name="name"
+              placeholder="Contact Name"
+              name="contactName"
               onChange={handleInputChange}
             />
             <Text variant="bodySmall" color="failure" height="20px">{`${
-              errors.name ? "Name field cannot be empty" : ""
+              errors.contactName ? "Contact name field cannot be empty" : ""
             }`}</Text>
-            <Label color="black">Company</Label>
-            <Input
-              type="text"
-              placeholder="Company Name"
-              name="company"
-              onChange={handleInputChange}
-            />{" "}
-            <br />
-            <Text variant="bodySmall" color="failure" height="20px">{`${
-              errors.company ? "Company field cannot be empty" : ""
-            }`}</Text>
-            <Label color="black">Email</Label>
+            <Label>Email (*)</Label>
             <Input
               type="email"
-              placeholder="Business Email Address"
-              name="email"
-              onChange={handleInputChange}
-            />{" "}
-            <br />
-            <Text variant="bodySmall" color="failure" height="20px">{`${
-              errors.email ? "Email field cannot be empty" : ""
-            }`}</Text>
-            <Label color="black">Description</Label>
-            <TextArea
-              placeholder="Describe your Business"
-              name="description"
+              placeholder="Contact Email"
+              name="contactEmail"
               onChange={handleInputChange}
             />
             <Text variant="bodySmall" color="failure" height="20px">{`${
-              errors.description ? "Description field cannot be empty" : ""
+              errors.contactEmail ? "Contact email field cannot be empty" : ""
             }`}</Text>
+            <Label>Job Title (*)</Label>
+            <Input
+              placeholder="Contact Job Title"
+              name="jobTitle"
+              onChange={handleInputChange}
+            />
+            <Text variant="bodySmall" color="failure" height="20px">{`${
+              errors.jobTitle ? "Job title field cannot be empty" : ""
+            }`}</Text>
+            <Label>Company Name (*)</Label>
+            <Input
+              placeholder="Company Name"
+              name="companyName"
+              onChange={handleInputChange}
+            />
+            <Text variant="bodySmall" color="failure" height="20px">{`${
+              errors.companyName ? "Company name field cannot be empty" : ""
+            }`}</Text>
+            <Label>Company Description (*)</Label>
+            <Input
+              placeholder="Company Description"
+              name="companyDescription"
+              onChange={handleInputChange}
+            />
+            <Text variant="bodySmall" color="failure" height="20px">{`${
+              errors.companyDescription
+                ? "Company description field cannot be empty"
+                : ""
+            }`}</Text>
+            <Label>Company Address (*)</Label>
+            <Input
+              placeholder="Company Address"
+              name="companyAddress"
+              onChange={handleInputChange}
+            />
+            <Text variant="bodySmall" color="failure" height="20px">{`${
+              errors.companyAddress
+                ? "Company address field cannot be empty"
+                : ""
+            }`}</Text>
+            <Label>Company Website (*)</Label>
+            <Input
+              placeholder="Company Website"
+              name="companyWebsite"
+              onChange={handleInputChange}
+            />
+            <Text variant="bodySmall" color="failure" height="20px">{`${
+              errors.companyWebsite
+                ? "Company website field cannot be empty"
+                : ""
+            }`}</Text>
+            <Label>Company Twitter</Label>
+            <Input
+              placeholder="Company Twitter"
+              name="companyTwitter"
+              onChange={handleInputChange}
+            />
+            <Text variant="bodySmall" color="failure" height="20px" />
+            <Label>Company Instagram</Label>
+            <Input
+              placeholder="Company Instagram"
+              name="companyInstagram"
+              onChange={handleInputChange}
+            />
+            <Text variant="bodySmall" color="failure" height="20px" />
+            <Label>Additional Message</Label>
+            <TextArea
+              placeholder="Additional Message"
+              name="additionalMessage"
+              onChange={handleInputChange}
+            />
+            <Flex my="16px">
+              <Checkbox onChange={(e) => setChecked(e.target.checked)} />
+              <Flex justifyContent="center" alignItems="center" ml="6px">
+                <InlineText variant="bodySmall">I agree with</InlineText>
+                <InlineLink
+                  variant="bodySmall"
+                  mx="6px"
+                  href="/privacy"
+                  target="_blank"
+                >
+                  Privacy policy
+                </InlineLink>
+                <InlineText variant="bodySmall">|</InlineText>
+                <InlineLink
+                  variant="bodySmall"
+                  mx="6px"
+                  href="/seller"
+                  target="_blank"
+                >
+                  Seller policy
+                </InlineLink>
+                <InlineText variant="bodySmall">|</InlineText>
+                <InlineLink
+                  variant="bodySmall"
+                  mx="6px"
+                  href="/termsofuse"
+                  target="_blank"
+                >
+                  Terms of use
+                </InlineLink>
+              </Flex>
+            </Flex>
             {pending ? (
               <IconButton isLoading variant="text">
                 <Spinner size={48} />
               </IconButton>
             ) : (
-              <Button variant="text" type="submit" p="0">
+              <Button variant="text" type="submit" p="0" disabled={!checked}>
                 Submit
               </Button>
             )}

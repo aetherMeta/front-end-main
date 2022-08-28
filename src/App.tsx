@@ -9,6 +9,7 @@ import About from "./views/About";
 import Contact from "./views/Contact";
 import Home from "./views/Home";
 import Partnerships from "./views/Partnerships";
+import { PrivacyPolicy, SellerPolicy, TermsOfUse } from "./views/Policies";
 import Product from "./views/Product";
 import Collections from "./views/Collections";
 import CollectionDetails from "./views/CollectionDetails";
@@ -46,6 +47,15 @@ const App: React.FC = () => {
           <Route path="/partnerships" exact>
             <Partnerships />
           </Route>
+          <Route path="/privacy" exact>
+            <PrivacyPolicy />
+          </Route>
+          <Route path="/seller" exact>
+            <SellerPolicy />
+          </Route>
+          <Route path="/termsofuse" exact>
+            <TermsOfUse />
+          </Route>
           <Route path="/product/:productHash" exact>
             <Product />
           </Route>
@@ -55,7 +65,6 @@ const App: React.FC = () => {
           <Route path="/collection/:id" exact>
             <CollectionDetails />
           </Route>
-
           <Route path="/metaverse" exact>
             <Metaverse />
           </Route>
