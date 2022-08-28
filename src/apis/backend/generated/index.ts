@@ -1,0 +1,63 @@
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export { ApiError } from './core/ApiError';
+export { CancelablePromise, CancelError } from './core/CancelablePromise';
+export { OpenAPI } from './core/OpenAPI';
+export type { OpenAPIConfig } from './core/OpenAPI';
+
+export type { AssetDto } from './models/AssetDto';
+export type { Attribute } from './models/Attribute';
+export type { AttributeDto } from './models/AttributeDto';
+export type { ChallengeRequestBodyDto } from './models/ChallengeRequestBodyDto';
+export type { ChallengeResponseDto } from './models/ChallengeResponseDto';
+export type { CollectionFilter } from './models/CollectionFilter';
+export type { CollectionResponse } from './models/CollectionResponse';
+export type { ComissionDto } from './models/ComissionDto';
+export type { CreateCollectionDto } from './models/CreateCollectionDto';
+export type { CreateContactUsDto } from './models/CreateContactUsDto';
+export type { CreateContactUsResponse } from './models/CreateContactUsResponse';
+export type { CreatePartnershipInquiryDto } from './models/CreatePartnershipInquiryDto';
+export type { CreatePrimaryAuctionDto } from './models/CreatePrimaryAuctionDto';
+export type { CreatePrimaryBidDto } from './models/CreatePrimaryBidDto';
+export type { CreatePrimarySaleDto } from './models/CreatePrimarySaleDto';
+export type { CreateSecondaryAuctionDto } from './models/CreateSecondaryAuctionDto';
+export type { CreateSecondaryBidDto } from './models/CreateSecondaryBidDto';
+export type { CreateSecondarySaleDto } from './models/CreateSecondarySaleDto';
+export type { CreateShoppingCartItemDto } from './models/CreateShoppingCartItemDto';
+export type { DateFilterValues } from './models/DateFilterValues';
+export type { FilterValues } from './models/FilterValues';
+export type { FreeJwtDto } from './models/FreeJwtDto';
+export type { IpfsUploadRequest } from './models/IpfsUploadRequest';
+export type { NFTResponse } from './models/NFTResponse';
+export type { PaginatedResponse } from './models/PaginatedResponse';
+export type { PatchNFTRequestBodyDto } from './models/PatchNFTRequestBodyDto';
+export type { PatchUserRequestDto } from './models/PatchUserRequestDto';
+export type { PostNFTRequestBodyDto } from './models/PostNFTRequestBodyDto';
+export type { PrimaryAuctionResponse } from './models/PrimaryAuctionResponse';
+export type { PrimaryBidResponse } from './models/PrimaryBidResponse';
+export type { PrimarySaleResponse } from './models/PrimarySaleResponse';
+export type { RoyaltyDto } from './models/RoyaltyDto';
+export type { SecondaryAuctionResponse } from './models/SecondaryAuctionResponse';
+export type { SecondaryBidResponse } from './models/SecondaryBidResponse';
+export type { SecondarySaleResponse } from './models/SecondarySaleResponse';
+export { ShoppingCartItemResponse } from './models/ShoppingCartItemResponse';
+export type { ShoppingCartResponse } from './models/ShoppingCartResponse';
+export type { TokenDto } from './models/TokenDto';
+export type { UpdateCollectionDto } from './models/UpdateCollectionDto';
+export type { UserNFTResponse } from './models/UserNFTResponse';
+export { UserResponseDto } from './models/UserResponseDto';
+export type { VerifyBodyDto } from './models/VerifyBodyDto';
+export type { VerifyResponseDto } from './models/VerifyResponseDto';
+export type { WhitelistUserRequestDto } from './models/WhitelistUserRequestDto';
+
+export { AuctionService } from './services/AuctionService';
+export { AuthenticationService } from './services/AuthenticationService';
+export { CollectionsService } from './services/CollectionsService';
+export { ContactService } from './services/ContactService';
+export { IpfsService } from './services/IpfsService';
+export { NfTsService } from './services/NfTsService';
+export { SalesService } from './services/SalesService';
+export { ShoppingCartService } from './services/ShoppingCartService';
+export { SocialsService } from './services/SocialsService';
+export { UserService } from './services/UserService';

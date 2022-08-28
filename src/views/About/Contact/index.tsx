@@ -30,7 +30,7 @@ const Contact: React.FC = () => {
           color="invertedContrast"
           textAlign="center"
         >
-          Questions? Ideas? Interested in opening a shop on AetherMeta?
+          Questions? Ideas? Interested in opening a shop on Aether Meta?
         </Text>
         <Text
           variant="body"

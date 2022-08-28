@@ -9,12 +9,10 @@ const Container = styled.div`
   padding: 210px 22px 0px;
   margin-top: -140px;
   height: 75vh;
-
   ${({ theme }) => theme.mediaQueries.sm} {
     padding: 210px 70px 0px;
     height: 75vh;
   }
-
   ${({ theme }) => theme.mediaQueries.lg} {
     padding: 210px 70px 70px;
     height: 90vh;

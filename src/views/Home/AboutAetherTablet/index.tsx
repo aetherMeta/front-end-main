@@ -83,7 +83,7 @@ const AboutAetherTablet: React.FC = () => {
           </StyledTitle>
           <StyledFlex mt="394px">
             <Flex flexDirection="column" maxWidth="332px">
-              <Text variant="h2Bold">What is AetherMeta?</Text>
+              <Text variant="h2Bold">What is Aether Meta?</Text>
               <Text variant="body" mt="16px">
                 AetherMeta is the future of online shopping. No longer is online
                 shopping confined to a 2D world, now you can have your own
@@ -126,7 +126,7 @@ const AboutAetherTablet: React.FC = () => {
                 style={{ borderRadius: 0 }}
               >
                 <Text variant="label" color="invertedContrast">
-                  AetherMeta Discord
+                  Aether Meta Discord
                 </Text>
               </Button>
             </Flex>

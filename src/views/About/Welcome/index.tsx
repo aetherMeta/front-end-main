@@ -141,18 +141,18 @@ const Welcome: React.FC = () => {
               as well, growing stronger as we built and interacted with it.
             </Text>
             <StyledText variant="body">
-              We named this land AetherMeta and we plan on restoring it to its
+              We named this land Aether Meta and we plan on restoring it to its
               former grandeur. As the orb reacts to vibrance and creativity, we
               are bringing artists and creatives to open shops. We are offering
-              AetherMeta NFTs to visionaries to contribute with us. Select
+              Aether Meta NFTs to visionaries to contribute with us. Select
               guests will receive exclusive invitations as well.
             </StyledText>
             <StyledText variant="body">
               Due to the exclusiveness of the Aether Orb technology and the
-              hidden nature of the floating AetherMeta city, the secret to
+              hidden nature of the floating Aether Meta city, the secret to
               accessing this breathtaking landscape is stored within highly
               advanced Wayfinders. These Wayfinders will soon become available
-              for acquisition by those seeking to explore AetherMeta.
+              for acquisition by those seeking to explore Aether Meta.
             </StyledText>
             <StyledText variant="body">
               Join us in this place of wonder and secrets. Here you will find
@@ -165,7 +165,7 @@ const Welcome: React.FC = () => {
             </StyledText>
             <StyledText variant="body">
               With your help and our team’s capabilities, we can together
-              restore AetherMeta to an everlasting ecosystem of creativity. All
+              restore Aether Meta to an everlasting ecosystem of creativity. All
               are welcome – find your way to the future.
             </StyledText>
           </TextContainer2>

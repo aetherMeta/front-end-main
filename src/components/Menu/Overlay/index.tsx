@@ -1,16 +1,21 @@
 import React from "react";
 import { Flex, Link } from "@aethermeta/uikit";
 import config, { socials } from "../config";
-// import UserMenu from "../UserMenu";
+import UserMenu from "../UserMenu";
 import GlobalSettings from "../GlobalMenu";
 
-const Overlay = () => {
+const Overlay = ({ setShowOverlay }) => {
   return (
     <Flex flexDirection="column" justifyContent="space-between" height="100%">
       <Flex flexDirection="column">
         {config?.map((entry) => {
           return (
-            <Link variant="h2" href={entry.href} color="secondary">
+            <Link
+              variant="h2"
+              href={entry.href}
+              color="secondary"
+              onClick={() => setShowOverlay(false)}
+            >
               {entry.label}
             </Link>
           );
@@ -18,7 +23,7 @@ const Overlay = () => {
       </Flex>
       <Flex flexDirection="column" alignItems="center">
         <GlobalSettings maxWidth />
-        {/* <UserMenu maxWidth /> */}
+        <UserMenu maxWidth />
         <Flex
           alignItems="center"
           justifyContent="space-around"
@@ -34,6 +39,7 @@ const Overlay = () => {
                 color="secondary"
                 mx="4px"
                 target="_blank"
+                external
               >
                 {entry.label}
               </Link>

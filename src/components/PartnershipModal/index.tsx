@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import styled from "styled-components";
 import {
   Button,
   Modal,
@@ -13,7 +14,6 @@ import {
   Flex,
 } from "@aethermeta/uikit";
 import useToast from "hooks/useToast";
-import styled from "styled-components";
 
 const InlineLink = styled(Link)`
   display: inline-block;
@@ -72,19 +72,16 @@ const initialErrors = {
   companyDescription: false,
   companyAddress: false,
   companyWebsite: false,
-  companyTwitter: false,
-  companyInstagram: false,
-  additionalMessage: false,
 };
 
 const PartnershipModal: React.FC<PartnershipModalProps> = ({
   onSubmit,
   onDismiss,
 }) => {
-  const [checked, setChecked] = useState(false);
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrors);
   const [pending, setPending] = useState(false);
+  const [checked, setChecked] = useState(false);
   const { toastSuccess, toastError } = useToast();
 
   const handleInputChange = (e) => {
@@ -103,25 +100,13 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
 
   const validate = useCallback((): boolean => {
     let isValid = true;
-    const modifyErrors = {
-      contactName: false,
-      contactEmail: false,
-      jobTitle: false,
-      companyName: false,
-      companyDescription: false,
-      companyAddress: false,
-      companyWebsite: false,
-      companyTwitter: false,
-      companyInstagram: false,
-      additionalMessage: false,
-    };
-    Object.entries(values).forEach((entry) => {
-      const [key, value] = entry;
+    const modifyErrors = initialErrors;
+    for (const [key, value] of Object.entries(values)) {
       if (value === initialValues[key]) {
         isValid = false;
         modifyErrors[key] = true;
       }
-    });
+    }
     setErrors((prevState) => {
       return { ...prevState, ...modifyErrors };
     });
