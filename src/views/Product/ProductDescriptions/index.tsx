@@ -11,7 +11,13 @@ interface ProductDescriptionsProps {
 
 const Container = styled(Flex)`
   margin-top: 3.125rem;
-  max-width: 36rem;
+  width: 100%;
+  @media screen and (min-width: 968px) {
+    width: 18rem;
+  }
+  @media screen and (min-width: 1240px) {
+    width: 36rem;
+  }
 `;
 
 const ProductDescriptions: React.FC<ProductDescriptionsProps> = ({
@@ -23,7 +29,7 @@ const ProductDescriptions: React.FC<ProductDescriptionsProps> = ({
   if (saleState.isLoading || !saleState.isLoaded) return <></>;
   return (
     <Container>
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" width="100%">
         <ButtonMenu
           activeIndex={index}
           onItemClick={handleClick}
