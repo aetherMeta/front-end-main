@@ -58,7 +58,7 @@ const SocialTablet: React.FC = () => {
           style={{ borderRadius: 0, maxWidth: "60%", margin: "1rem" }}
           href={Discord}
         >
-          AetherMeta Discord
+          Aether Meta Discord
         </Button>
         <JoinUs variant="h2Bold">Join us</JoinUs>
         <JoinUs variant="body">

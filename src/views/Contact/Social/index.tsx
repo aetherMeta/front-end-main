@@ -54,7 +54,7 @@ const Social: React.FC = () => {
             style={{ borderRadius: 0, maxWidth: "45%", margin: "1rem" }}
             href={Discord}
           >
-            AetherMeta Discord
+            Aether Meta Discord
           </Button>
           <JoinUs variant="h3Bold">Join us</JoinUs>
           <JoinUs variant="body">
@@ -76,7 +76,7 @@ const Social: React.FC = () => {
             style={{ borderRadius: 0, maxWidth: "55%", margin: "1rem" }}
             onClick={onPresent}
           >
-            Join the AetherMeta team
+            Join the Aether Meta team
           </Button>
         </Flex>
         <StyledMoon />
