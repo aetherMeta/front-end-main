@@ -6,7 +6,7 @@ import {
   useUser,
 } from "store/user/hooks";
 import styled from "styled-components";
-import { Player } from "furioos-sdk";
+import { Player, FS_SDK_EVENTS_NAME } from "furioos-sdk";
 import useRefresh from "hooks/useRefresh";
 import {
   useMatchBreakpoints,
@@ -18,6 +18,9 @@ import {
 import Page from "views/Page";
 import PartnershipModal, { Values } from "components/PartnershipModal";
 import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
+import usePrimaryBuy from "hooks/usePrimaryBuy";
+import { useSales } from "store/sales/hooks";
+import useToast from "hooks/useToast";
 // import NotFound from "../NotFound";
 
 const Notice = styled.div`
@@ -52,6 +55,13 @@ const Metaverse: React.FC = () => {
   const currTime = useRef(slowRefresh);
   const [passCode, setPassCode] = useState("");
   const [furioosEnabled, setFurioosEnabled] = useState(false);
+  const [tokenId, setTokenId] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [buy, setBuy] = useState(false);
+
+  const { onBuy } = usePrimaryBuy();
+  const { saleState, saleData, isLoading, isLoaded } = useSales();
+  const { toastError, toastSuccess } = useToast();
 
   useEffect(() => {
     // CALL BACKEND
@@ -85,7 +95,6 @@ const Metaverse: React.FC = () => {
     ) {
       setFurioosEnabled(true);
       // eslint-disable-next-line no-new
-      new Player(furioosCode, "furioos-window", options);
     }
   }, [
     isMobile,
@@ -96,6 +105,43 @@ const Metaverse: React.FC = () => {
     metaverseAllowanceExceeded,
     passCode,
   ]);
+
+  useEffect(() => {
+    if (buy) {
+      const handleBuy = async () => {
+        const salesData = saleState.data[1];
+        let index;
+        for (let i = 0; i < salesData.length; i++) {
+          if (salesData[i].id === tokenId) {
+            index = i;
+          }
+        }
+        const purchase = onBuy(salesData[index], amount);
+        const receipt: any = await purchase;
+      };
+      handleBuy();
+    }
+  }, [amount, onBuy, saleState.data, tokenId, buy]);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-new
+    if (
+      !furioosEnabled &&
+      ((metaverseWhitelistAccess && !metaverseAllowanceExceeded) ||
+        passCode === "5832")
+    ) {
+      // eslint-disable-next-line no-new
+      // TODO: Add prod sdk link to furioosCode
+      // const player = new Player(furioosCode, "furioos-window", options);
+      const player = new Player("6fDCNzAcGzLRaTYgu", "furioos-window", options);
+
+      player.on(FS_SDK_EVENTS_NAME.ON_SDK_MESSAGE, async function (data) {
+        setTokenId(data.tokenId);
+        setAmount(data.amount);
+        setBuy(true);
+      });
+    }
+  });
 
   const [onPresent] = useModal(
     <PartnershipModal
