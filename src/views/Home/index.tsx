@@ -8,6 +8,7 @@ import LearnMore from "./LearnMore";
 import AboutAether from "./AboutAether";
 import AboutAetherTablet from "./AboutAetherTablet";
 import Steps from "./Steps";
+import Collection from "./Collection";
 
 const Home: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();
@@ -16,6 +17,7 @@ const Home: React.FC = () => {
       {isTablet || isMobile ? <ViewNFTsTablet /> : <ViewNFTs />}
       <LearnMore />
       <Steps />
+      <Collection />
       {isTablet || isMobile ? <AboutAetherTablet /> : <AboutAether />}
       <Partners />
     </Page>

@@ -11,7 +11,7 @@ import {
 import { Item } from "./types";
 import CollectionCard from "./CollectionCard";
 
-interface MoreCollectionProps {
+interface CollectionProps {
   collectionName: string;
   items: Item[];
 }
@@ -48,7 +48,7 @@ const StylefRightIcon = styled(ChevronRightIcon)`
   margin: 0;
 `;
 
-const MoreCollection: React.FC<MoreCollectionProps> = ({
+const Collection: React.FC<CollectionProps> = ({
   items,
   collectionName,
 }) => {
@@ -94,4 +94,4 @@ const MoreCollection: React.FC<MoreCollectionProps> = ({
   );
 };
 
-export default MoreCollection;
+export default Collection;
