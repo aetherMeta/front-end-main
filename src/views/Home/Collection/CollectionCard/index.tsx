@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Flex, Text } from "@aethermeta/uikit";
-import { dmy } from "utils/date";
+import { dmy } from "utils/Date";
 import { Item } from "../types";
 
 interface CollectionCardProps {
