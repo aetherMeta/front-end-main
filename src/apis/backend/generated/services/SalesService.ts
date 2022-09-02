@@ -38,8 +38,6 @@ export class SalesService {
      * @throws ApiError
      */
     public static secondarySaleControllerFindAll({
-        sortField,
-        sortOrder,
         cursor,
         skip,
         take,
@@ -47,10 +45,10 @@ export class SalesService {
         name,
         price,
         availability = 'ALL',
+        sortField,
+        sortOrder,
         updatedAt,
     }: {
-        sortField?: 'createdAt' | 'updatedAt' | 'name' | 'price',
-        sortOrder?: 'asc' | 'desc',
         cursor?: string,
         skip?: number,
         take?: number,
@@ -58,14 +56,14 @@ export class SalesService {
         name?: FilterValues,
         price?: FilterValues,
         availability?: 'AVAILABLE' | 'SOLD' | 'ALL',
+        sortField?: 'createdAt' | 'updatedAt' | 'name' | 'price',
+        sortOrder?: 'asc' | 'desc',
         updatedAt?: DateFilterValues,
     }): CancelablePromise<PaginatedResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/sales/secondary',
             query: {
-                'sortField': sortField,
-                'sortOrder': sortOrder,
                 'cursor': cursor,
                 'skip': skip,
                 'take': take,
@@ -73,6 +71,8 @@ export class SalesService {
                 'name': name,
                 'price': price,
                 'availability': availability,
+                'sortField': sortField,
+                'sortOrder': sortOrder,
                 'updatedAt': updatedAt,
             },
         });
@@ -118,8 +118,6 @@ export class SalesService {
      * @throws ApiError
      */
     public static primarySaleControllerFindAll({
-        sortField,
-        sortOrder,
         cursor,
         skip,
         take,
@@ -128,10 +126,10 @@ export class SalesService {
         price,
         collection,
         availability = 'ALL',
+        sortField,
+        sortOrder,
         updatedAt,
     }: {
-        sortField?: 'createdAt' | 'updatedAt' | 'name' | 'price',
-        sortOrder?: 'asc' | 'desc',
         cursor?: string,
         skip?: number,
         take?: number,
@@ -140,14 +138,14 @@ export class SalesService {
         price?: FilterValues,
         collection?: CollectionFilter,
         availability?: 'AVAILABLE' | 'SOLD' | 'ALL',
+        sortField?: 'createdAt' | 'updatedAt' | 'name' | 'price',
+        sortOrder?: 'asc' | 'desc',
         updatedAt?: DateFilterValues,
     }): CancelablePromise<PaginatedResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/sales/primary',
             query: {
-                'sortField': sortField,
-                'sortOrder': sortOrder,
                 'cursor': cursor,
                 'skip': skip,
                 'take': take,
@@ -156,6 +154,8 @@ export class SalesService {
                 'price': price,
                 'collection': collection,
                 'availability': availability,
+                'sortField': sortField,
+                'sortOrder': sortOrder,
                 'updatedAt': updatedAt,
             },
         });

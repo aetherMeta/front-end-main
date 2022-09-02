@@ -21,18 +21,18 @@ export class CollectionsService {
      */
     public static collectionsControllerCollectionNfts({
         id,
-        sortField,
-        sortOrder,
         cursor,
         skip,
         take,
+        sortField,
+        sortOrder,
     }: {
         id: string,
-        sortField?: 'createdAt' | 'updatedAt' | 'name',
-        sortOrder?: 'asc' | 'desc',
         cursor?: string,
         skip?: number,
         take?: number,
+        sortField?: 'createdAt' | 'updatedAt' | 'name',
+        sortOrder?: 'asc' | 'desc',
     }): CancelablePromise<Array<NFTResponse>> {
         return __request(OpenAPI, {
             method: 'GET',
@@ -41,11 +41,11 @@ export class CollectionsService {
                 'id': id,
             },
             query: {
-                'sortField': sortField,
-                'sortOrder': sortOrder,
                 'cursor': cursor,
                 'skip': skip,
                 'take': take,
+                'sortField': sortField,
+                'sortOrder': sortOrder,
             },
         });
     }
@@ -72,36 +72,36 @@ export class CollectionsService {
      * @throws ApiError
      */
     public static collectionsControllerFindAll({
-        sortField,
-        sortOrder,
         cursor,
         skip,
         take,
         createdAt,
         updatedAt,
         name,
+        sortField,
+        sortOrder,
     }: {
-        sortField?: 'createdAt' | 'updatedAt' | 'name',
-        sortOrder?: 'asc' | 'desc',
         cursor?: string,
         skip?: number,
         take?: number,
         createdAt?: DateFilterValues,
         updatedAt?: DateFilterValues,
         name?: FilterValues,
+        sortField?: 'createdAt' | 'updatedAt' | 'name',
+        sortOrder?: 'asc' | 'desc',
     }): CancelablePromise<PaginatedResponse> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/collections',
             query: {
-                'sortField': sortField,
-                'sortOrder': sortOrder,
                 'cursor': cursor,
                 'skip': skip,
                 'take': take,
                 'createdAt': createdAt,
                 'updatedAt': updatedAt,
                 'name': name,
+                'sortField': sortField,
+                'sortOrder': sortOrder,
             },
         });
     }
@@ -143,6 +143,27 @@ export class CollectionsService {
             },
             formData: formData,
             mediaType: 'multipart/form-data',
+        });
+    }
+
+    /**
+     * @returns any
+     * @throws ApiError
+     */
+    public static collectionsControllerConnectPrimarySaleToCollection({
+        collectionId,
+        saleId,
+    }: {
+        collectionId: string,
+        saleId: string,
+    }): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/collections/{collectionId}/add-primary-sale/{saleId}',
+            path: {
+                'collectionId': collectionId,
+                'saleId': saleId,
+            },
         });
     }
 
