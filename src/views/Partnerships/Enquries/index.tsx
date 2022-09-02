@@ -138,7 +138,18 @@ const Enquires: React.FC = () => {
 
   const validate = useCallback((): boolean => {
     let isValid = true;
-    const modifyErrors = initialErrors;
+    const modifyErrors = {
+      contactName: false,
+      contactEmail: false,
+      jobTitle: false,
+      companyName: false,
+      companyDescription: false,
+      companyAddress: false,
+      companyWebsite: false,
+      companyTwitter: false,
+      companyInstagram: false,
+      additionalMessage: false,
+    };
     Object.entries(values).forEach((entry) => {
       const [key, value] = entry;
       if (optionalFields.includes(key)) return;

@@ -62,13 +62,13 @@ const AboutAether: React.FC = () => {
           </StyledTitle>
           <StyledFlex mt="140px" justifyContent="flex-end">
             <Flex flexDirection="column" maxWidth="310px">
-              <Text variant="h2Bold">What is AetherMeta?</Text>
+              <Text variant="h2Bold">What is Aether Meta?</Text>
               <Text variant="body" mt="16px">
-                AetherMeta is the future of online shopping. No longer is online
-                shopping confined to a 2D world, now you can have your own
-                immersive store for your customers. Customize your store, and
-                bring your products into the metaverse. Sell both “digital” and
-                “phygital” items all linked to the blockchain.
+                Aether Meta is the future of online shopping. No longer is
+                online shopping confined to a 2D world, now you can have your
+                own immersive store for your customers. Customize your store,
+                and bring your products into the metaverse. Sell both “digital”
+                and “phygital” items all linked to the blockchain.
               </Text>
               <Button
                 variant="text"
@@ -129,7 +129,7 @@ const AboutAether: React.FC = () => {
                   style={{ borderRadius: 0 }}
                 >
                   <Text variant="label" color="invertedContrast">
-                    AetherMeta Discord
+                    Aether Meta Discord
                   </Text>
                 </Button>
                 <Button
@@ -141,7 +141,7 @@ const AboutAether: React.FC = () => {
                   style={{ borderRadius: 0 }}
                 >
                   <Text variant="label" color="invertedContrast">
-                    AetherMeta Twitter
+                    Aether Meta Twitter
                   </Text>
                 </Button>
                 <Button
@@ -153,7 +153,7 @@ const AboutAether: React.FC = () => {
                   style={{ borderRadius: 0 }}
                 >
                   <Text variant="label" color="invertedContrast">
-                    AetherMeta IG
+                    Aether Meta IG
                   </Text>
                 </Button>
               </div>

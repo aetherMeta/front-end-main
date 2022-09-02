@@ -32,7 +32,7 @@ const Ready: React.FC = () => {
             Are you ready?
           </Text>
           <Text variant="body" mb="12px" textAlign="center" maxWidth="645px">
-            Do you work in the world of fashion? AetherMeta is the perfect
+            Do you work in the world of fashion? Aether Meta is the perfect
             partner to launch your initial foray into the next evolution of the
             web. Talk to our team to find out how you can get onboard.
           </Text>

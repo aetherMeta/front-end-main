@@ -4,8 +4,8 @@ import { useMatchBreakpoints } from "@aethermeta/uikit";
 import Welcome from "./Welcome";
 import Roadmap from "./Roadmap";
 import Ready from "./Ready";
-import ReadyTablet from "./ReadyTablet";
 import Contact from "./Contact";
+import ReadyTablet from "./ReadyTablet";
 
 const About: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();

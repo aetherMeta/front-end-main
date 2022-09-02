@@ -48,7 +48,6 @@ const ContactModal: React.FC<ContactModalProps> = ({ onSubmit, onDismiss }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
     setErrors({
       ...errors,
       [name]: false,
@@ -126,7 +125,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ onSubmit, onDismiss }) => {
           onChange={handleInputChange}
         />
         <Text variant="bodySmall" color="failure" height="20px">{`${
-          errors.description ? "Describe field cannot be empty" : ""
+          errors.description ? "Description field cannot be empty" : ""
         }`}</Text>
         {pending ? (
           <IconButton isLoading variant="text">

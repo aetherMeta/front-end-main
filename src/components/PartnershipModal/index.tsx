@@ -31,9 +31,9 @@ export interface Values {
   companyDescription: string;
   companyAddress: string;
   companyWebsite: string;
-  companyTwitter: string;
-  companyInstagram: string;
-  additionalMessage: string;
+  companyTwitter?: string;
+  companyInstagram?: string;
+  additionalMessage?: string;
 }
 
 export interface Errors {
@@ -44,11 +44,15 @@ export interface Errors {
   companyDescription: boolean;
   companyAddress: boolean;
   companyWebsite: boolean;
+  companyTwitter: boolean;
+  companyInstagram: boolean;
+  additionalMessage: boolean;
 }
 
 interface PartnershipModalProps {
   onSubmit: (e, values: Values) => void;
   onDismiss?: () => void;
+  fromMetaverse?: boolean;
 }
 
 const initialValues = {
@@ -59,9 +63,6 @@ const initialValues = {
   companyDescription: "",
   companyAddress: "",
   companyWebsite: "",
-  companyTwitter: "",
-  companyInstagram: "",
-  additionalMessage: "",
 };
 
 const initialErrors = {
@@ -77,6 +78,7 @@ const initialErrors = {
 const PartnershipModal: React.FC<PartnershipModalProps> = ({
   onSubmit,
   onDismiss,
+  fromMetaverse = false,
 }) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialErrors);
@@ -100,7 +102,15 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
 
   const validate = useCallback((): boolean => {
     let isValid = true;
-    const modifyErrors = initialErrors;
+    const modifyErrors = {
+      contactName: false,
+      contactEmail: false,
+      jobTitle: false,
+      companyName: false,
+      companyDescription: false,
+      companyAddress: false,
+      companyWebsite: false,
+    };
     for (const [key, value] of Object.entries(values)) {
       if (value === initialValues[key]) {
         isValid = false;
@@ -135,6 +145,13 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
 
   return (
     <Modal title="Partnership Interest" onDismiss={onDismiss}>
+      {fromMetaverse && (
+        <>
+          <Text mb="12px">
+            Please contact us to get access to the metaverse!
+          </Text>
+        </>
+      )}
       <form onSubmit={handleSubmit}>
         <Label>Name (*)</Label>
         <Input
@@ -227,21 +244,11 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
           <Checkbox onChange={(e) => setChecked(e.target.checked)} />
           <Flex justifyContent="center" alignItems="center" ml="6px">
             <InlineText variant="bodySmall">I agree with</InlineText>
-            <InlineLink
-              variant="bodySmall"
-              mx="6px"
-              href="/privacy"
-              target="_blank"
-            >
+            <InlineLink variant="bodySmall" mx="6px" href="/privacy" external>
               Privacy policy
             </InlineLink>
             <InlineText variant="bodySmall">|</InlineText>
-            <InlineLink
-              variant="bodySmall"
-              mx="6px"
-              href="/seller"
-              target="_blank"
-            >
+            <InlineLink variant="bodySmall" mx="6px" href="/seller" external>
               Seller policy
             </InlineLink>
             <InlineText variant="bodySmall">|</InlineText>
@@ -249,7 +256,7 @@ const PartnershipModal: React.FC<PartnershipModalProps> = ({
               variant="bodySmall"
               mx="6px"
               href="/termsofuse"
-              target="_blank"
+              external
             >
               Terms of use
             </InlineLink>

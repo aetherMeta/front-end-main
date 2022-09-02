@@ -1,47 +1,65 @@
 import { useCallback } from "react";
-import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
+import { useWeb3React } from "@web3-react/core";
 import {
   NoEthereumProviderError,
   UserRejectedRequestError as UserRejectedRequestErrorInjected,
 } from "@web3-react/injected-connector";
-import { connectorsByName, ConnectorNames } from "utils/web3React";
+import { connectorsByName, ConnectorNames, getLibrary } from "utils/web3React";
 import { connectorLocalStorageKey } from "constants/wallet";
 import useToast from "hooks/useToast";
+import useAccessToken from "./useAccessToken";
 
 const useAuth = () => {
   const { activate, deactivate } = useWeb3React();
+  const {
+    accessToken,
+    accessTokenAddress,
+    requestSignature,
+    logout: accessTokenLogout,
+  } = useAccessToken();
+
   const { toastError } = useToast();
   const login = useCallback(
-    (connectorID: ConnectorNames) => {
+    async (connectorID: ConnectorNames) => {
       const connector = connectorsByName[connectorID];
       if (typeof connector !== "function" || connector) {
-        activate(connector, async (error: Error) => {
-          if (error instanceof UnsupportedChainIdError) {
-            activate(connector);
+        await activate(connector, async (error: Error) => {
+          window.localStorage.removeItem(connectorLocalStorageKey);
+          if (error instanceof NoEthereumProviderError) {
+            toastError(
+              "Provider Error",
+              "No wallet detected. Please install Metamask"
+            );
+          } else if (error instanceof UserRejectedRequestErrorInjected) {
+            toastError(
+              "Authorization Error",
+              "Please authorize to access your account"
+            );
           } else {
-            window.localStorage.removeItem(connectorLocalStorageKey);
-            if (error instanceof NoEthereumProviderError) {
-              toastError("Provider Error", "No provider was found");
-            } else if (error instanceof UserRejectedRequestErrorInjected) {
-              toastError(
-                "Authorization Error",
-                "Please authorize to access your account"
-              );
-            } else {
-              toastError(error.name, error.message);
-            }
+            toastError(error.name, error.message);
           }
         });
       } else {
         toastError("Unable to find connector", "The connector config is wrong");
       }
+      if (
+        ((window as any).ethereum && accessToken === undefined) ||
+        accessToken === null ||
+        accessTokenAddress !== (await connector.getAccount())
+      ) {
+        await requestSignature(
+          await connector.getAccount(),
+          getLibrary(await connector.getProvider())
+        );
+      }
     },
-    [activate, toastError]
+    [accessToken, accessTokenAddress, activate, requestSignature, toastError]
   );
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
     deactivate();
-  }, [deactivate]);
+    accessTokenLogout();
+  }, [deactivate, accessTokenLogout]);
 
   return { login, logout };
 };
