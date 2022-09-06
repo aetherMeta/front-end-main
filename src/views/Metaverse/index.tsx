@@ -20,7 +20,7 @@ import PartnershipModal, { Values } from "components/PartnershipModal";
 import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
 import usePrimaryBuy from "hooks/usePrimaryBuy";
 import { useSales } from "store/sales/hooks";
-import useToast from "hooks/useToast";
+import { useWeb3React } from "@web3-react/core";
 // import NotFound from "../NotFound";
 
 const Notice = styled.div`
@@ -34,6 +34,7 @@ const options = {
   hideTitle: true,
   hidePlayButton: false,
   inactiveTimeout: 60000,
+  // debugAppMode: true,
 };
 
 const Furioos = styled.div`
@@ -58,10 +59,13 @@ const Metaverse: React.FC = () => {
   const [tokenId, setTokenId] = useState("");
   const [amount, setAmount] = useState(0);
   const [buy, setBuy] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [currentAccount, setCurrentAccount] = useState(null);
+  const [metaversePlayer, setMetaversePlayer]: Player | null = useState(null);
 
   const { onBuy } = usePrimaryBuy();
   const { saleState, saleData, isLoading, isLoaded } = useSales();
-  const { toastError, toastSuccess } = useToast();
+  const { account } = useWeb3React();
 
   useEffect(() => {
     // CALL BACKEND
@@ -107,23 +111,6 @@ const Metaverse: React.FC = () => {
   ]);
 
   useEffect(() => {
-    if (buy) {
-      const handleBuy = async () => {
-        const salesData = saleState.data[1];
-        let index;
-        for (let i = 0; i < salesData.length; i++) {
-          if (salesData[i].id === tokenId) {
-            index = i;
-          }
-        }
-        const purchase = onBuy(salesData[index], amount);
-        const receipt: any = await purchase;
-      };
-      handleBuy();
-    }
-  }, [amount, onBuy, saleState.data, tokenId, buy]);
-
-  useEffect(() => {
     // eslint-disable-next-line no-new
     if (
       !furioosEnabled &&
@@ -132,16 +119,60 @@ const Metaverse: React.FC = () => {
     ) {
       // eslint-disable-next-line no-new
       // TODO: Add prod sdk link to furioosCode
-      // const player = new Player(furioosCode, "furioos-window", options);
-      const player = new Player("6fDCNzAcGzLRaTYgu", "furioos-window", options);
 
-      player.on(FS_SDK_EVENTS_NAME.ON_SDK_MESSAGE, async function (data) {
-        setTokenId(data.tokenId);
-        setAmount(data.amount);
-        setBuy(true);
-      });
+      const newMetaversePlayer = new Player(
+        "6fDCNzAcGzLRaTYgu", // production
+        // "jGVqnpidlPw", // debug
+        "furioos-window",
+        options
+      );
+
+      if (account) {
+        newMetaversePlayer.on(
+          FS_SDK_EVENTS_NAME.ON_SDK_MESSAGE,
+          async function (data) {
+            console.log(data);
+            const handleBuy = async () => {
+              const salesData = saleState.data[1];
+              let index;
+              for (let i = 0; i < salesData.length; i++) {
+                if (salesData[i].id === data.tokenId) {
+                  index = i;
+                }
+              }
+              const purchase = onBuy(salesData[index], 1);
+              const receipt: any = await purchase;
+
+              if (receipt) {
+                newMetaversePlayer.sendSDKMessage({ message: "success" });
+              }
+            };
+            handleBuy();
+          }
+        );
+      }
+
+      setMetaversePlayer(newMetaversePlayer);
     }
-  });
+  }, [
+    furioosEnabled,
+    metaverseWhitelistAccess,
+    metaverseAllowanceExceeded,
+    passCode,
+    metaversePlayer,
+    onBuy,
+    saleState.data,
+    account,
+  ]);
+
+  useEffect(() => {
+    if (!currentAccount) {
+      setCurrentAccount(account);
+    }
+    if (currentAccount && currentAccount !== account) {
+      window.location.reload();
+    }
+  }, [account, currentAccount]);
 
   const [onPresent] = useModal(
     <PartnershipModal
@@ -156,8 +187,8 @@ const Metaverse: React.FC = () => {
   const PassCode = (
     <Page>
       <Text maxWidth="600px" textAlign="center" mb="20px">
-        Please enter your passcode or login to your whitelisted account to get
-        access to the Metaverse.
+        Please enter your passcode and connect your whitelisted wallet account
+        to get access to the Metaverse.
       </Text>
       <Input
         type="text"
@@ -188,7 +219,7 @@ const Metaverse: React.FC = () => {
 
       {passCode === "5832" ||
       (metaverseWhitelistAccess && !metaverseAllowanceExceeded) ? (
-        <Furioos id="furioos-window" />
+          <Furioos id="furioos-window" />
       ) : (
         PassCode
       )}
