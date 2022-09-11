@@ -21,6 +21,7 @@ import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
 import usePrimaryBuy from "hooks/usePrimaryBuy";
 import { useSales } from "store/sales/hooks";
 import { useWeb3React } from "@web3-react/core";
+import { ETH_TX_RECEIPT } from "multicodec";
 // import NotFound from "../NotFound";
 
 const Notice = styled.div`
@@ -140,8 +141,17 @@ const Metaverse: React.FC = () => {
                   index = i;
                 }
               }
+              // console.log(data.amount, data.tokenId)
               const purchase = onBuy(salesData[index], 1);
-              const receipt: any = await purchase;
+              newMetaversePlayer.sendSDKMessage({ message: "loading" });
+              let receipt: any;
+              try {
+                receipt = await purchase;
+              } catch (error) {
+                newMetaversePlayer.sendSDKMessage({ message: "cancelled" });
+                console.log(error)
+                console.log("cancelled");
+              }
 
               if (receipt) {
                 newMetaversePlayer.sendSDKMessage({ message: "success" });
@@ -219,7 +229,7 @@ const Metaverse: React.FC = () => {
 
       {passCode === "5832" ||
       (metaverseWhitelistAccess && !metaverseAllowanceExceeded) ? (
-          <Furioos id="furioos-window" />
+        <Furioos id="furioos-window" />
       ) : (
         PassCode
       )}
