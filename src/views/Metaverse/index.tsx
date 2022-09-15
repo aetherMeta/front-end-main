@@ -122,7 +122,7 @@ const Metaverse: React.FC = () => {
       // TODO: Add prod sdk link to furioosCode
 
       const newMetaversePlayer = new Player(
-        "6fDCNzAcGzLRaTYgu", // production
+        "rwRJgtCgCzHDEPQmZ", // production
         // "jGVqnpidlPw", // debug
         "furioos-window",
         options
