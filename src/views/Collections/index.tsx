@@ -45,7 +45,7 @@ const Collections: React.FC = () => {
     <Page>
       <Container>
         {isLoading || !isLoaded ? (
-          <Flex width="100%" justifyContent="center">
+          <Flex width="100%" justifyContent="center" margin="25% 0">
             <Spinner size={108} />
           </Flex>
         ) : isTablet || isMobile ? (

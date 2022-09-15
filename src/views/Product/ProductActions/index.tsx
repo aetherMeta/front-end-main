@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useWeb3React } from "@web3-react/core";
-import { Link } from "react-router-dom";
-import { Flex, Text, Button, useModal } from "@aethermeta/uikit";
+import { Flex, Text, Button, useModal, Link } from "@aethermeta/uikit";
 import { ConnectorNames } from "utils/web3React";
 import { ethers } from "ethers";
 import { dmy } from "utils/date";
@@ -185,10 +184,11 @@ const ProductActions: React.FC<ProductActionsProps> = ({
         )}
         <Link
           style={{ width: "100%" }}
-          to={
-            "/metaverse"
+          href={
+            saleData.nft.metaverseLink ?? "/metaverse"
             // userDataLoaded && userData.metaverseAccess ? "/metaverse" : ""
           }
+          external={!saleData.nft.metaverseLink.startsWith("/")}
         >
           <Button variant="secondary" width="100%" {...buttonProps}>
             View in metaverse

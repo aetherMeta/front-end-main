@@ -18,5 +18,6 @@ export type UserNFTResponse = {
     address: string;
     name?: string;
     description?: string;
+    metaverseLink?: string;
 };
 
