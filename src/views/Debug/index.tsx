@@ -1,8 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState } from "react";
-import Page from "components/Layout/Page";
 import { Button, Flex, Input, Label, Text, TextArea } from "@aethermeta/uikit";
-import NotFound from "views/NotFound";
 import {
   useDispatchUserPublicData,
   useUpdateUser,
@@ -12,6 +10,8 @@ import { omitBy } from "lodash";
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import useIpfsUpload from "views/Debug/hooks/useIpfs";
+import NotFound from "views/NotFound";
+import Page from "components/Layout/Page";
 import useAccessToken from "../../hooks/useAccessToken";
 import ConnectWalletButton from "../../components/ConnectWalletButton";
 import useAuth from "../../hooks/useAuth";
@@ -62,6 +62,7 @@ const Debug: React.FC = () => {
     tokenS: "",
     files: [],
     chainId: 4,
+    metaverseLink: "/metaverse",
   };
 
   const [userValues, setUserValues] = useState(initialUserFormValues);
@@ -249,6 +250,13 @@ const Debug: React.FC = () => {
                 placeholder="price"
                 name="price"
                 value={primarySale.price}
+                onChange={handlePrimarySaleInputChange}
+              />
+              <Input
+                type="text"
+                placeholder="metaverseLink"
+                name="metaverseLink"
+                value={primarySale.metaverseLink}
                 onChange={handlePrimarySaleInputChange}
               />
               <Input

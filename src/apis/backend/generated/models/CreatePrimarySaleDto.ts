@@ -14,6 +14,7 @@ export type CreatePrimarySaleDto = {
     royaltyRecipient: string;
     royaltyValue: number;
     uri: string;
+    metaverseLink?: string;
     chainId: number;
 };
 

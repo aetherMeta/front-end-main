@@ -23,6 +23,7 @@ export const generatePrimarySale = async (
     uri: string;
     files: any;
     chainId: number;
+    metaverseLink: string;
   }
 ) => {
   const {
@@ -36,6 +37,7 @@ export const generatePrimarySale = async (
     uri,
     files,
     chainId,
+    metaverseLink,
   } = data;
 
   const msg = {
@@ -65,6 +67,7 @@ export const generatePrimarySale = async (
     royaltyValue,
     royaltyRecipient,
     chainId,
+    metaverseLink,
     files,
   };
 };
