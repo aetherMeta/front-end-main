@@ -59,6 +59,6 @@ export const SIGNING_TYPES = {
 export const DOMAIN = {
   name: "AetherMarketplace",
   version: "1",
-  chainId: 4,
+  chainId: process.env.REACT_APP_CHAIN_ID,
   verifyingContract: getMarketPlaceAddress(),
 };
