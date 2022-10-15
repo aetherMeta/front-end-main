@@ -95,7 +95,7 @@ const Gallery: React.FC<GalleryProps> = ({
     <Flex flexDirection="column" m="3rem 0rem 1rem">
       <Flex justifyContent="space-between" m="0rem 2.5rem 1rem 0rem">
         <Text variant="h1Bold" ml="1rem">
-          COLLECTIONS
+          COLLECTIONSs
         </Text>
         <StyledSelect
           value={sortValue()}
