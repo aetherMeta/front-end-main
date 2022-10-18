@@ -272,7 +272,7 @@ const Debug: React.FC = () => {
               />
             </Flex>
 
-            <Button onClick={submitSale}>Create Sale</Button>
+            <Button onClick={submitSale}>Create Salee</Button>
           </Flex>
           <Text>{ipfsStatus}</Text>
           <Flex mb="20px">
