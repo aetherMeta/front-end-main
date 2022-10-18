@@ -12,7 +12,7 @@ import AboutAetherTablet from "./AboutAetherTablet";
 const Home: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();
   useDispatchUserPublicData();
-
+  // eslint-disable-next-line
   console.log("chain id", process.env.REACT_APP_CHAIN_ID)
   return (
     <Page>

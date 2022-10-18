@@ -16,6 +16,7 @@ export const signTypedData = async (
   primaryType: Types,
   message: any
 ) => {
+  // eslint-disable-next-line
   console.log('signTypedData', {
     method: "eth_signTypedData_v4",
     params: [address, JSON.stringify({ types, primaryType, domain, message })],
