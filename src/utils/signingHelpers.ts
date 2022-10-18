@@ -16,6 +16,10 @@ export const signTypedData = async (
   primaryType: Types,
   message: any
 ) => {
+  console.log('signTypedData', {
+    method: "eth_signTypedData_v4",
+    params: [address, JSON.stringify({ types, primaryType, domain, message })],
+  })
   return provider.request({
     method: "eth_signTypedData_v4",
     params: [address, JSON.stringify({ types, primaryType, domain, message })],

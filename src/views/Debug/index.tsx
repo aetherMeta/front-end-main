@@ -69,6 +69,8 @@ const Debug: React.FC = () => {
   const [primarySale, setPrimarySaleValues] = useState(
     initialPrimarySaleFormValues
   );
+  console.log('primarySale', primarySale);
+
   const [ipfsStatus, setIpfsStatus] = useState("");
 
   const [accessTokenStatus, setAccessTokenStatus] = useState("");
@@ -140,6 +142,7 @@ const Debug: React.FC = () => {
   };
 
   const submitSale = async () => {
+    console.log('submitSale')
     const sale = await generatePrimarySale(
       await library.provider,
       account,
