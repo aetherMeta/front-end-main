@@ -12,11 +12,11 @@ import {
   useMatchBreakpoints,
   Text,
   Input,
-  Button,
-  useModal,
+  // Button,
+  // useModal,
 } from '@aethermeta/uikit';
 import Page from 'views/Page';
-import PartnershipModal, { Values } from 'components/PartnershipModal';
+// import PartnershipModal, { Values } from 'components/PartnershipModal';
 import postContactUsEmail from 'apis/backend/email/postPartnershipEmail';
 import usePrimaryBuy from 'hooks/usePrimaryBuy';
 import { useSales } from 'store/sales/hooks';
@@ -179,10 +179,10 @@ const Metaverse: React.FC = () => {
   //    fromMetaverse
   //  />
   // );
-  const onSubmit = async (e, values: Values) => {
-    e.preventDefault();
-    await postContactUsEmail(values);
-  };
+  // const onSubmit = async (e, values: Values) => {
+  //  e.preventDefault();
+  //  await postContactUsEmail(values);
+  // };
   const PassCode = (
     <Page>
       <Text maxWidth='600px' textAlign='center' mb='20px'>
