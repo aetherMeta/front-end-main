@@ -112,12 +112,11 @@ const Metaverse: React.FC = () => {
       ((metaverseWhitelistAccess && !metaverseAllowanceExceeded) ||
         passCode === '5832')
     ) {
-      console.log('here')
       // eslint-disable-next-line no-new
       // TODO: Add prod sdk link to furioosCode
 
       const newMetaversePlayer = new Player(
-        "6fDCNzAcGzLRaTYgu", // production
+        '6fDCNzAcGzLRaTYgu', // production
         // "jGVqnpidlPw", // debug
         'furioos-window',
         options
@@ -174,12 +173,12 @@ const Metaverse: React.FC = () => {
     }
   }, [account, currentAccount]);
 
-  const [onPresent] = useModal(
-    <PartnershipModal
-      onSubmit={(e, values: Values) => onSubmit(e, values)}
-      fromMetaverse
-    />
-  );
+  // const [onPresent] = useModal(
+  //  <PartnershipModal
+  //    onSubmit={(e, values: Values) => onSubmit(e, values)}
+  //    fromMetaverse
+  //  />
+  // );
   const onSubmit = async (e, values: Values) => {
     e.preventDefault();
     await postContactUsEmail(values);
@@ -187,8 +186,7 @@ const Metaverse: React.FC = () => {
   const PassCode = (
     <Page>
       <Text maxWidth='600px' textAlign='center' mb='20px'>
-        Please enter your passcode and connect your whitelisted wallet account
-        to get access to the Metaverse.
+        Please enter your passcode to get access to the Metaverse.
       </Text>
       <Input
         type='text'
@@ -199,9 +197,9 @@ const Metaverse: React.FC = () => {
           setPassCode(e.target.value);
         }}
       />
-      <Button scale='md' variant='primary' onClick={onPresent}>
+      {/* <Button scale='md' variant='primary' onClick={onPresent}>
         Click here to request access
-      </Button>
+      </Button> */}
     </Page>
   );
 
