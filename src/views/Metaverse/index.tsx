@@ -17,7 +17,7 @@ import {
 } from '@aethermeta/uikit';
 import Page from 'views/Page';
 // import PartnershipModal, { Values } from 'components/PartnershipModal';
-import postContactUsEmail from 'apis/backend/email/postPartnershipEmail';
+// import postContactUsEmail from 'apis/backend/email/postPartnershipEmail';
 import usePrimaryBuy from 'hooks/usePrimaryBuy';
 import { useSales } from 'store/sales/hooks';
 import { useWeb3React } from '@web3-react/core';
