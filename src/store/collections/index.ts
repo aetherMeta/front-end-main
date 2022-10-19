@@ -9,7 +9,7 @@ const initialState: CollectionState = {
   isLoading: false,
   isLoaded: false,
   currentPage: 1,
-  pageSize: 12,
+  pageSize: 100,
   sortField: "createdAt",
   sortOrder: "desc",
 };
