@@ -123,22 +123,22 @@ const ProductActions: React.FC<ProductActionsProps> = ({
         <StyledText variant="bodySmall">Created on</StyledText>
         <Text variant="bodySmall">{dmy(new Date(saleData.createdAt))}</Text>
       </StyledFlex2>
-      {/* <StyledFlex mt="2.375rem">
-        <Flex flexDirection="column">
+      <StyledFlex mt="2.375rem">
+        {/* <Flex flexDirection="column">
           <Text variant="bodySmall">Price</Text>
           <Text
             variant="h4Bold"
             mt="0.75rem"
             color="primary"
           >{`${ethers.utils.formatEther(saleData.price)} ETH`}</Text>
-        </Flex>
+        </Flex> */}
         <Flex flexDirection="column">
           <Text variant="bodySmall">Remaining</Text>
           <Text variant="h4Bold" mt="0.75rem">{`${
             parseInt(saleData.amount) - parseInt(saleData.amountSold)
           }/${saleData.amount}`}</Text>
         </Flex>
-      </StyledFlex> */}
+      </StyledFlex>
       <Flex style={{ gap: "0.375rem" }} mt="2rem">
         {/* {account && userDataLoaded && account === userData.address ? (
           <Button

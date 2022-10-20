@@ -58,12 +58,12 @@ const ShopCard: React.FC<ShopCardProps> = ({ item }) => {
         </BodyHeavy>
       </Flex>
       <Divider />
-      <Flex mb="0.375rem">
+      {/* <Flex mb="0.375rem">
         <Text variant="body">Current price:{"\u00a0"}</Text>
         <BodyHeavy variant="body" color="primary">
           {`${ethers.utils.formatEther(item.highestBid)} ETH`}
         </BodyHeavy>
-      </Flex>
+      </Flex> */}
       {/* <Flex>
         <Text variant="body">Ending in</Text>
         <BodyHeavy variant="body" ml="2.25rem">
