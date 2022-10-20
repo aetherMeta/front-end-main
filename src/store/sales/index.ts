@@ -10,7 +10,7 @@ const initialState: SaleState = {
   isLoading: false,
   isLoaded: false,
   currentPage: 1,
-  pageSize: 12,
+  pageSize: 100,
 };
 
 // Thunks

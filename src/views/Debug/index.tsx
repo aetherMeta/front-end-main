@@ -54,14 +54,14 @@ const Debug: React.FC = () => {
     price: "1000000000",
     nonce: Math.floor(Math.random() * 100000).toString(),
     v: 0,
-    royaltyRecipient: "0xB57773cbBC058439De4a9075447233C364B5680B", // Dev testnet operator
+    royaltyRecipient: process.env.REACT_APP_OPERATOR_ADDRESS, // Dev testnet operator
     royaltyValue: 100,
     uri: "ipfs://QmXZ9nV13j4CxZisv6vQPTLUEKRhBAoMwZ8b3qieCLzECn",
     tokenV: 0,
     tokenR: "",
     tokenS: "",
     files: [],
-    chainId: 4,
+    chainId: parseInt(process.env.REACT_APP_CHAIN_ID),
     metaverseLink: "/metaverse",
   };
 
@@ -69,6 +69,7 @@ const Debug: React.FC = () => {
   const [primarySale, setPrimarySaleValues] = useState(
     initialPrimarySaleFormValues
   );
+
   const [ipfsStatus, setIpfsStatus] = useState("");
 
   const [accessTokenStatus, setAccessTokenStatus] = useState("");
@@ -269,7 +270,7 @@ const Debug: React.FC = () => {
               />
             </Flex>
 
-            <Button onClick={submitSale}>Create Sale</Button>
+            <Button onClick={submitSale}>Create Salee</Button>
           </Flex>
           <Text>{ipfsStatus}</Text>
           <Flex mb="20px">

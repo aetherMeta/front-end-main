@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useWeb3React } from "@web3-react/core";
+// import { useWeb3React } from "@web3-react/core";
 import { Flex, Text, Button, useModal, Link } from "@aethermeta/uikit";
 import { ConnectorNames } from "utils/web3React";
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
 import { dmy } from "utils/date";
 import { truncateWalletAddress } from "utils/addressHelpers";
 import { SaleState, Sale } from "store/types";
-import usePrimaryBuy from "hooks/usePrimaryBuy";
+// import usePrimaryBuy from "hooks/usePrimaryBuy";
 import postContactUsEmail from "apis/backend/email/postPartnershipEmail";
-import ConnectWalletButton from "components/ConnectWalletButton";
+// import ConnectWalletButton from "components/ConnectWalletButton";
 import PartnershipModal, { Values } from "components/PartnershipModal";
 import Disclaimer from "components/DisclaimerModel";
 import { useUser } from "store/user/hooks";
 import useAuth from "hooks/useAuth";
-import useToast from "hooks/useToast";
+// import useToast from "hooks/useToast";
 
 interface ProductActionsProps {
   saleState: SaleState;
@@ -49,7 +49,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
 }) => {
   const [onPresent1] = useModal(<Disclaimer />, false);
 
-  const [pendingSale, setPendingSale] = useState(false);
+  // const [pendingSale, setPendingSale] = useState(false);
   const { data: userData, userDataLoaded } = useUser();
   const { login } = useAuth();
 
@@ -94,9 +94,9 @@ const ProductActions: React.FC<ProductActionsProps> = ({
       onClick: () => login(ConnectorNames.Injected), // login user
     };
   }
-  const { onBuy } = usePrimaryBuy();
-  const { toastError, toastSuccess } = useToast();
-  const { account } = useWeb3React();
+  // const { onBuy } = usePrimaryBuy();
+  // const { toastError, toastSuccess } = useToast();
+  // const { account } = useWeb3React();
   if (saleState.isLoading || !saleState.isLoaded) return <></>;
   return (
     <Container>
@@ -123,7 +123,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
         <StyledText variant="bodySmall">Created on</StyledText>
         <Text variant="bodySmall">{dmy(new Date(saleData.createdAt))}</Text>
       </StyledFlex2>
-      <StyledFlex mt="2.375rem">
+      {/* <StyledFlex mt="2.375rem">
         <Flex flexDirection="column">
           <Text variant="bodySmall">Price</Text>
           <Text
@@ -138,9 +138,9 @@ const ProductActions: React.FC<ProductActionsProps> = ({
             parseInt(saleData.amount) - parseInt(saleData.amountSold)
           }/${saleData.amount}`}</Text>
         </Flex>
-      </StyledFlex>
+      </StyledFlex> */}
       <Flex style={{ gap: "0.375rem" }} mt="2rem">
-        {account && userDataLoaded && account === userData.address ? (
+        {/* {account && userDataLoaded && account === userData.address ? (
           <Button
             variant="primary"
             width="100%"
@@ -181,7 +181,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
           </Button>
         ) : (
           <ConnectWalletButton maxWidth />
-        )}
+        )} */}
         <Link
           style={{ width: "100%" }}
           href={

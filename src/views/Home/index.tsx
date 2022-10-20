@@ -12,6 +12,7 @@ import AboutAetherTablet from "./AboutAetherTablet";
 const Home: React.FC = () => {
   const { isTablet, isMobile } = useMatchBreakpoints();
   useDispatchUserPublicData();
+  // eslint-disable-next-line
   return (
     <Page>
       {isTablet || isMobile ? <ViewNFTsTablet /> : <ViewNFTs />}
