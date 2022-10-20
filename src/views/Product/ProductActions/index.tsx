@@ -123,7 +123,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
         <StyledText variant="bodySmall">Created on</StyledText>
         <Text variant="bodySmall">{dmy(new Date(saleData.createdAt))}</Text>
       </StyledFlex2>
-      <StyledFlex mt="2.375rem">
+      {/* <StyledFlex mt="2.375rem">
         <Flex flexDirection="column">
           <Text variant="bodySmall">Price</Text>
           <Text
@@ -138,9 +138,9 @@ const ProductActions: React.FC<ProductActionsProps> = ({
             parseInt(saleData.amount) - parseInt(saleData.amountSold)
           }/${saleData.amount}`}</Text>
         </Flex>
-      </StyledFlex>
+      </StyledFlex> */}
       <Flex style={{ gap: "0.375rem" }} mt="2rem">
-        {account && userDataLoaded && account === userData.address ? (
+        {/* {account && userDataLoaded && account === userData.address ? (
           <Button
             variant="primary"
             width="100%"
@@ -181,7 +181,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
           </Button>
         ) : (
           <ConnectWalletButton maxWidth />
-        )}
+        )} */}
         <Link
           style={{ width: "100%" }}
           href={
