@@ -18,12 +18,10 @@ const Diagram = styled.div`
   background-size: contain;
   height: 40vh;
   width: 60vh;
-
   ${({ theme }) => theme.mediaQueries.sm} {
     height: 60vh;
     width: 80vh;
   }
-
   ${({ theme }) => theme.mediaQueries.md} {
     height: 80vh;
     width: 100vh;

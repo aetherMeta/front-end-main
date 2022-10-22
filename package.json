@@ -29,7 +29,8 @@
     ]
   },
   "dependencies": {
-    "@aethermeta/uikit": "^1.0.0",
+    "@aethermeta/uikit": "^1.0.9",
+    "@apollo/client": "^3.6.9",
     "@binance-chain/bsc-connector": "^1.0.0",
     "@ethersproject/experimental": "^5.0.1",
     "@reduxjs/toolkit": "^1.5.0",
@@ -54,15 +55,20 @@
     "date-fns": "^2.21.3",
     "easymde": "^2.15.0",
     "ethers": "^5.1.4",
+    "furioos-sdk": "^2.0.0",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
     "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
     "lightweight-charts": "^3.5.0",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "multicodec": "^2.0.0",
     "multihashes": "^3.0.1",
     "node-fetch": "^2.6.1",
+    "nookies": "^2.5.2",
     "numeral": "^2.0.6",
+    "pure-react-carousel": "^1.28.1",
     "qs": "^6.9.4",
     "react": "^17.0.1",
     "react-countup": "^4.3.3",
@@ -78,6 +84,7 @@
     "react-transition-group": "^4.4.1",
     "react-window": "^1.8.6",
     "recharts": "^2.1.8",
+    "redux": "^4.2.0",
     "redux-localstorage-simple": "^2.4.1",
     "remark-gfm": "^1.0.0",
     "split-grid": "^1.0.11",
@@ -100,7 +107,7 @@
     "husky": "^7.0.0",
     "prettier": "^2.3.0",
     "source-map-explorer": "^2.5.2",
-    "ts-node": "^9.1.1"
+    "ts-node": "^10.9.1"
   },
   "resolutions": {
     "@types/react": "17.0.2",

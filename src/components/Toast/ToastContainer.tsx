@@ -48,7 +48,12 @@ const ToastContainer: React.FC<ToastContainerProps> = ({
               toast={toast}
               onRemove={onRemove}
               ttl={ttl}
-              style={{ bottom: `${bottom}px`, zIndex }}
+              style={{
+                left: `auto`,
+                right: `20px`,
+                top: `${bottom}px`,
+                zIndex,
+              }}
             />
           );
         })}

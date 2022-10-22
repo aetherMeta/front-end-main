@@ -1,4 +1,4 @@
-import client from "apis/backend/client";
+import { backend } from "..";
 import {
   PostPartnershipEmailRequest,
   PostPartnershipEmailResponse,
@@ -7,11 +7,10 @@ import {
 const postPartnershipEmail = async (
   data: PostPartnershipEmailRequest
 ): Promise<PostPartnershipEmailResponse> => {
-  const response = await client.post<PostPartnershipEmailResponse>(
-    "contact/partnership",
-    data
-  );
-  return response.data;
+  const response = await backend.contact.partnershipControllerCreate({
+    requestBody: data,
+  });
+  return response;
 };
 
 export default postPartnershipEmail;

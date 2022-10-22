@@ -6,9 +6,9 @@ export type PostPartnershipEmailRequest = {
   companyDescription: string;
   companyAddress: string;
   companyWebsite: string;
-  companyTwitter: string;
-  companyInstagram: string;
-  additionalMessage: string;
+  companyTwitter?: string;
+  companyInstagram?: string;
+  additionalMessage?: string;
 };
 
 export type PostPartnershipEmailResponse = {
@@ -19,9 +19,9 @@ export type PostPartnershipEmailResponse = {
   companyDescription: string;
   companyAddress: string;
   companyWebsite: string;
-  companyTwitter: string;
-  companyInstagram: string;
-  additionalMessage: string;
+  companyTwitter?: string;
+  companyInstagram?: string;
+  additionalMessage?: string;
 };
 
 export type PostContactEmailRequest = {
