@@ -68,6 +68,9 @@ const App: React.FC = () => {
           <Route path="/metaverse" exact>
             <Metaverse />
           </Route>
+          <Route path="/iamjenniferle" exact>
+            <Metaverse />
+          </Route>
           <Route path="/debug" exact>
             <Debug />
           </Route>
