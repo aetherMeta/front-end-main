@@ -110,7 +110,7 @@ const Metaverse: React.FC = () => {
     if (
       !furioosEnabled &&
       ((metaverseWhitelistAccess && !metaverseAllowanceExceeded) ||
-        passCode === '5832')
+        passCode === '8888')
     ) {
       // eslint-disable-next-line no-new
       // TODO: Add prod sdk link to furioosCode
